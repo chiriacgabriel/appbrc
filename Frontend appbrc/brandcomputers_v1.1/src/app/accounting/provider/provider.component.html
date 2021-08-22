@@ -1,0 +1,204 @@
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs-navigation custom-tab-pane" id="providerTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="provider-tab" data-toggle="tab" href="#provider" role="tab"
+                       aria-controls="provider" aria-selected="true">Toate produsele</a>
+                </li>
+            </ul>
+            <!-- End Nav tabs -->
+
+            <div class="tab-content" id="providerTabContent">
+
+                <!-- First Tab Content -->
+                <div class="tab-pane fade show active mx-3" id="provider" role="tabpanel"
+                     aria-labelledby="provider-tab">
+                    <div class="card card-custom">
+                        <div class="card-header">
+                            <h4 class="card-title">Furnizori</h4>
+                        </div>
+                        <!-- Content -->
+                        <div class="card-body">
+                            <div>
+                                <div class="row align-items-center float-right">
+                                    <div class="col-auto">
+                                        <input #inputSearch (keydown.enter)="getEventSearchResult($event)"
+                                               class="form-control form-control-sm"
+                                               placeholder="Cautare...">
+                                    </div>
+                                    <div class="col-auto btn-group-sm" role="group">
+
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target="#modalProvider">
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-info" (click)="clearSearch()">
+                                            <i class="fa fa-refresh" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!--        Here you can write extra buttons/actions for the toolbar              -->
+                            </div>
+                            <div class="table-responsive">
+                                <table id="datatable" class="table table-striped table-bordered table-format"
+                                       width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Nume furnizor</th>
+                                        <th scope="col">CIF</th>
+                                        <th scope="col">Registrul Comertului</th>
+                                        <th scope="col">Cod furnizor</th>
+                                        <th scope="col">Platitor TVA</th>
+                                        <th scope="col">Actiune</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <tr *ngFor="let provider of providerList">
+                                        <td>{{provider.name}}</td>
+                                        <td>{{provider.cif}}</td>
+                                        <td>{{provider.tradeRegister}}</td>
+                                        <td>{{provider.providerCode}}</td>
+                                        <td>{{provider.vatPayer === true ? 'Da' : 'Nu'}}</td>
+                                        <td>
+                                            <a type="button" class="btn btn-warning btn-link btn-icon btn-sm edit"
+                                               (click)="patchForm(provider)" data-toggle="modal"
+                                               data-target="#modalProvider">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <a type="button" class="btn btn-danger btn-link btn-icon btn-sm remove"
+                                               (click)="deleteProvider(provider)">
+                                                <i class="fa fa-times"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- end content-->
+                    </div>
+                </div>
+                <!-- End First Tab Content -->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Add/Edit Provider -->
+<div class="modal fade" id="modalProvider" data-backdrop="static" data-keyboard="false"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 *ngIf="isAddMode" class="modal-title" id="staticBackdropLabel"><img class="fav-icon"
+                                                                                        src="assets/img/icons/provider.ico"/>
+                    Adauga furnizor</h5>
+                <h5 *ngIf="!isAddMode" class="modal-title" id="editStaticBackdropLabel"><img class="fav-icon"
+                                                                                             src="assets/img/icons/provider.ico"/>
+                    Editare
+                    furnizor</h5>
+                <button (click)="closeModal()" type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="validatingForm" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="form-group col">
+                            <label for="name"><i class="fas fa-file-signature"></i> Nume furnizor</label>
+                            <input type="text" class="form-control" id="name" formControlName="name">
+                        </div>
+                        <div class="form-group col">
+                            <label for="cif"><i class="fas fa-sort-numeric-up"></i> CIF</label>
+                            <input type="text" class="form-control" id="cif" formControlName="cif">
+                        </div>
+                        <div *ngIf="isCIFPresent" class="form-group alert alert-warning">
+                            <span>{{errorMessage}}</span>
+                        </div>
+                        <div class="form-group col">
+                            <label for="tradeRegister"><i class="fas fa-swatchbook"></i> Registrul comertului</label>
+                            <input type="text" class="form-control" id="tradeRegister" formControlName="tradeRegister">
+                        </div>
+                        <div class="form-group col">
+                            <label for="providerCode"><i class="fas fa-barcode"></i> Cod furnizor</label>
+                            <input type="text" class="form-control" id="providerCode" formControlName="providerCode">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col">
+                            <label for="vatPayer"><i class="fa fa-money fa-sm"></i> Platitor TVA</label>
+                            <select id="vatPayer" class="form-control" formControlName="vatPayer">
+                                <option value="" disabled selected>Platitor TVA</option>
+                                <option value="true">DA</option>
+                                <option value="false">NU</option>
+                            </select>
+                        </div>
+                        <div class="form-group col">
+                            <label for="city"><i class="fas fa-city"></i> Localitate</label>
+                            <input type="city" class="form-control" id="city" formControlName="city">
+                        </div>
+                        <div class="form-group col">
+                            <label for="county"><i class="fas fa-city"></i> Judet</label>
+                            <ng-select id="county" formControlName="county">
+                                <ng-option *ngFor="let county of countyList" [value]="county">{{county}}</ng-option>
+                            </ng-select>
+                        </div>
+                        <div class="form-group col">
+                            <label for="country"><i class="far fa-flag"></i> Tara</label>
+                            <input type="text" class="form-control" id="country" formControlName="country">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col">
+                            <label for="streetAddress"><img class="fav-icon-small" src="assets/img/icons/address.ico"/> Adresa</label>
+                            <input type="text" class="form-control" id="streetAddress" formControlName="streetAddress">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col">
+                            <label for="iban"><i class="fas fa-money-check"></i> IBAN</label>
+                            <input type="text" class="form-control" id="iban" formControlName="iban">
+                        </div>
+                        <div class="form-group col">
+                            <label for="bank"><img class="fav-icon-small" src="assets/img/icons/bank.ico"/> Banca</label>
+                            <input type="text" class="form-control" id="bank" formControlName="bank">
+                        </div>
+                        <div class="form-group col">
+                            <label for="phoneNumber"><i class="fas fa-phone"></i> Numar telefon</label>
+                            <input type="text" class="form-control" id="phoneNumber" formControlName="phoneNumber">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col">
+                            <label for="email"><i class="far fa-envelope"></i> Email furnizor</label>
+                            <input type="text" class="form-control" id="email" formControlName="email">
+                        </div>
+                        <div class="form-group col">
+                            <label for="personOfContact"><i class="fas fa-user-clock"></i> Persoana de contact</label>
+                            <input type="text" class="form-control" id="personOfContact" formControlName="personOfContact">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button (click)="closeModal()" type="button" class="btn btn-danger" data-dismiss="modal">
+                            Inchide
+                        </button>
+                        <button id="addProvider-btn" *ngIf="isAddMode" type="submit" class="btn btn-primary"
+                                data-target="#modalProvider"
+                                [disabled]="validatingForm.invalid">Adauga
+                        </button>
+                        <button id="editProvider-btn" *ngIf="!isAddMode" type="submit" class="btn btn-success"
+                                data-target="#modalProvider"
+                                [disabled]="validatingForm.invalid">Salveaza modificarile
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal End Add/Edit Provider-->

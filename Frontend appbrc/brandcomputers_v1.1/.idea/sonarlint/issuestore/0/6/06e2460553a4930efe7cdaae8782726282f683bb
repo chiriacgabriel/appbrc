@@ -1,0 +1,11 @@
+
+@typescript:S1128"$Remove this unused import of 'Case'.(ä··‚
+Gtypescript:S1128"+Remove this unused import of 'Motherboard'.(è­ıà
+Etypescript:S1128")Remove this unused import of 'Processor'.(€²ê­
+Htypescript:S1128"'Remove this unused import of 'Storage'.(¾ÃÒÍşÿÿÿÿ
+|typescript:S3776f"TRefactor this function to reduce its Cognitive Complexity from 23 to the 15 allowed.(Ö·•Áÿÿÿÿÿ8÷Í­¶/
+Ztypescript:S1854m"7Remove this useless assignment to variable "preloader".(·í¨…8÷Í­¶/
+\typescript:S1854n"9Remove this useless assignment to variable "bodyElement".(Ú¡„8øÍ­¶/
+`typescript:S1854o"8Remove this useless assignment to variable "successDiv".(šçÆøÿÿÿÿ8øÍ­¶/
+Gtypescript:S125Â"Remove this commented out code.(ğÄ¦¯üÿÿÿÿ8øÍ­¶/
+Ptypescript:S1125à"'Remove the unnecessary boolean literal.(âÒÄøúÿÿÿÿ8øÍ­¶/

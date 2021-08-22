@@ -1,0 +1,886 @@
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs-navigation custom-tab-pane" id="processorTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="processor-tab" data-toggle="tab" href="#processor" role="tab"
+                       aria-controls="processor" aria-selected="true" (click)="goBack()">Toate produsele</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="processor-stock-tab" data-toggle="tab" href="#processor-stock" role="tab"
+                       aria-controls="processor-stock" aria-selected="false">Vezi stocuri</a>
+                </li>
+            </ul>
+            <!-- End Nav tabs -->
+
+            <div class="tab-content" id="processorTabContent">
+
+                <!-- First Tab Content -->
+                <div class="tab-pane fade show active mx-3" id="processor" role="tabpanel"
+                     aria-labelledby="processor-tab">
+                    <div class="card card-custom">
+                        <div class="card-header">
+                            <h4 class="card-title">Procesoare</h4>
+                        </div>
+                        <!-- Content -->
+                        <div class="card-body">
+                            <div>
+                                <div class="row align-items-center">
+                                    <div class="col-sm-12 col-md-6 mr-auto">
+                                        <label class="label-white-space">
+                                            Vezi
+                                            <select class="custom-select custom-select-sm form-control form-control-sm"
+                                                    id="selectPageSize"
+                                                    (change)="handlePageSizeChangeSearchAndFilter($event)">
+                                                <option>10</option>
+                                                <option>50</option>
+                                                <option>100</option>
+                                            </select>
+                                            produse
+                                        </label>
+                                    </div>
+                                    <div class="col-auto">
+                                        <input #inputSearch (keydown.enter)="getEventSearchResult($event)"
+                                               class="form-control form-control-sm"
+                                               placeholder="Cautare...">
+                                    </div>
+                                    <div class="col-auto btn-group-sm" role="group">
+
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target="#modalProcessor">
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-info" (click)="clearSearch()">
+                                            <i class="fa fa-refresh" aria-hidden="true"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-warning"
+                                                data-toggle="modal" data-target="#modal_aside_right">
+                                            <i class="fa fa-filter" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!--        Here you can write extra buttons/actions for the toolbar              -->
+                            </div>
+                            <div class="table-responsive">
+                                <table id="datatable" class="table table-striped table-bordered table-format"
+                                       width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Cod Produs</th>
+                                        <th scope="col">Serial Number</th>
+                                        <th scope="col">Nume Produs</th>
+                                        <th scope="col">Cantitate</th>
+                                        <th scope="col">Unitate de masura</th>
+                                        <th scope="col">Producator</th>
+                                        <th scope="col">Socket</th>
+                                        <th scope="col">Model</th>
+                                        <th scope="col">Frecventa nominala</th>
+                                        <th scope="col">Frecventa maxima</th>
+                                        <th scope="col">Tip memorie RAM</th>
+                                        <th scope="col">Frecventa memorie RAM</th>
+                                        <th scope="col">Numar nuclee</th>
+                                        <th scope="col">Numar thread-uri</th>
+                                        <th scope="col">Cache</th>
+                                        <th scope="col">Cooler inclus</th>
+                                        <th scope="col">Tehnologie de fabricatie</th>
+                                        <th scope="col">Putere totala disipata</th>
+                                        <th scope="col">Pret intrare (Lei)</th>
+                                        <th scope="col">Informatii produs</th>
+                                        <th scope="col">Stare</th>
+                                        <th scope="col">Actiune</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <tr *ngFor="let processor of processorList | paginate: {
+                                        id: 'processor_pagination',
+                                        itemsPerPage: pageSizeProcessor,
+                                        currentPage: pageProcessor,
+                                        totalItems: count
+                                      }; let i = index">
+                                        <td>{{processor.generateProductCode.productCode}}</td>
+                                        <td>{{processor.serialNumber}}</td>
+                                        <td>{{processor.generateProductCode.productName}}</td>
+                                        <td>{{processor.quantity}}</td>
+                                        <td>{{processor.unitOfMeasurement}}</td>
+                                        <td>{{processor.manufacturer}}</td>
+                                        <td>{{processor.socket}}</td>
+                                        <td>{{processor.model}}</td>
+                                        <td>{{processor.baseClock}}</td>
+                                        <td>{{processor.maxBoostClock}}</td>
+                                        <td>{{processor.typeOfMemoryRAM}}</td>
+                                        <td>{{processor.maxMemoryFrequency}}</td>
+                                        <td>{{processor.numberOfCpuCores}}</td>
+                                        <td>{{processor.numberOfThreads}}</td>
+                                        <td>{{processor.cache}}</td>
+                                        <td>{{processor.coolerIncluded == true ? 'Da' : 'Nu'}}</td>
+                                        <td>{{processor.lithography}}</td>
+                                        <td>{{processor.thermalDesignPower}}</td>
+                                        <td>{{processor.priceIn}}</td>
+                                        <td>{{processor.productInformation}}</td>
+                                        <td>{{processor.state}}</td>
+                                        <td>
+                                            <a id="{{i}}" type="button"
+                                               class="btn btn-warning btn-link btn-icon btn-sm edit"
+                                               (click)="patchForm(processor, i)" data-toggle="modal"
+                                               data-target="#modalProcessor">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <a type="button" class="btn btn-danger btn-link btn-icon btn-sm remove"
+                                               (click)="deleteProcessor(processor)">
+                                                <i class="fa fa-times"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <nav class="pagination-align-right" aria-label="Page navigation example">
+                                <ul class="paginator">
+                                    <pagination-controls id="processor_pagination" previousLabel="Inapoi"
+                                                         nextLabel="Urmatorul"
+                                                         responsive="true" directionLinks="true"
+                                                         (pageChange)="handlePageChangeSearchAndFilter($event)"
+                                                         (pageBoundsCorrection)="handlePageChangeSearchAndFilter($event)">
+                                    </pagination-controls>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- end content-->
+                    </div>
+                </div>
+                <!-- End First Tab Content -->
+
+                <!--  Table Processor by Product Code-->
+                <div class="tab-pane fade mx-3" id="processor-stock" role="tabpanel"
+                     aria-labelledby="processor-stock-tab">
+
+                    <!-- Table Processor by Stock-->
+                    <div *ngIf="isTableProductCodeSelected">
+                        <div class="card card-custom">
+                            <div class="card-header">
+                                <h4 class="card-title">Stock-uri</h4>
+                            </div>
+                            <div class="card-body">
+                                <div>
+                                    <div class="row align-items-center">
+                                        <div class="col-sm-12 col-md-6 mr-auto">
+                                            <label class="label-white-space">
+                                                Vezi
+                                                <select class="custom-select custom-select-sm form-control form-control-sm"
+                                                        id="selectPageSizeForStock"
+                                                        (change)="handlePageSizeChangeProductCodesWithStock($event)">
+                                                    <option>10</option>
+                                                    <option>50</option>
+                                                    <option>100</option>
+                                                </select>
+                                                coduri de produs
+                                            </label>
+                                        </div>
+                                        <div class="col-auto">
+                                            <input #inputSearchStock
+                                                   (keydown.enter)="getSearchResultProductCodesWithStock($event)"
+                                                   class="form-control form-control-sm"
+                                                   placeholder="Cautare...">
+                                        </div>
+
+                                        <div class="col-auto">
+                                            <button class="btn btn-sm btn-info"
+                                                    (click)="clearSearchProductCodesWithStock()">
+                                                <i class="fa fa-refresh" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!--        Here you can write extra buttons/actions for the toolbar              -->
+                                </div>
+                                <div class="table-responsive">
+                                    <table id="datatableStock" class="table table-striped table-bordered table-format"
+                                           width="100%">
+                                        <thead>
+                                        <tr>
+                                            <th>Cod Produs</th>
+                                            <th>Nume produs</th>
+                                            <th>Stoc</th>
+                                            <th>Pret mediu</th>
+                                            <th>Procesoare</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr *ngFor="let productCode of productCodesWithStock | paginate: {
+                                        id: 'product_codes_with_stock',
+                                        itemsPerPage: pageSizeProductCodeWithStock,
+                                        currentPage: pageProductCodeWithStock,
+                                        totalItems: countProductCodeWithStock
+                                    }">
+                                            <td>{{productCode.generateProductCode.productCode}}</td>
+                                            <td>{{productCode.generateProductCode.productName}}</td>
+                                            <td>{{productCode.stock}}</td>
+                                            <td>{{productCode.averagePrice | number: '1.2-2'}}</td>
+                                            <td>
+                                                <button (click)="getProcessorByProductCode(productCode.generateProductCode.productCode)"
+                                                        type="button" class="btn btn-sm btn-info"> Vezi <i
+                                                        class="fa fa-external-link" aria-hidden="true"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <nav class="pagination-align-right" aria-label="Page navigation example">
+                                    <ul class="paginator">
+                                        <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true"
+                                                             id="product_codes_with_stock"
+                                                             (pageChange)="handlePageChangeProductCodesWithStock($event)"
+                                                             (pageBoundsCorrection)="handlePageChangeProductCodesWithStock($event)">
+
+                                        </pagination-controls>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <!-- end content-->
+                        </div>
+                    </div>
+                    <!-- End Table Processor by Stock-->
+
+                    <!-- Table Processor by Product Code -->
+                    <div *ngIf="!isTableProductCodeSelected">
+                        <div class="card card-custom">
+                            <div class="card-header">
+                                <h4 class="card-title">Procesoare</h4>
+                            </div>
+                            <div class="card-body">
+                                <div>
+                                    <div class="row align-items-center">
+                                        <div class="col-sm-12 col-md-6 mr-auto">
+                                            <label class="label-white-space">
+                                                Vezi
+                                                <select class="custom-select custom-select-sm form-control form-control-sm"
+                                                        id="selectPageSizeByProductCode"
+                                                        (change)="handlePageSizeChangeProcessorByProductCode($event)">
+                                                    <option>10</option>
+                                                    <option>50</option>
+                                                    <option>100</option>
+                                                </select>
+                                                produse
+                                            </label>
+                                        </div>
+                                        <div class="btn-group-sm col-auto" role="group"
+                                             aria-label="add-product-back-to-list">
+                                            <button (click)="goBack()" type="button" class="btn btn-warning">Inapoi la
+                                                lista
+                                            </button>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                    data-target="#modalProcessor">
+                                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!--        Here you can write extra buttons/actions for the toolbar              -->
+                                </div>
+                                <div class="table-responsive">
+                                    <table id="datatableByProductCode"
+                                           class="table table-striped table-bordered table-format" width="100%">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">Cod Produs</th>
+                                            <th scope="col">Serial Number</th>
+                                            <th scope="col">Nume Produs</th>
+                                            <th scope="col">Cantitate</th>
+                                            <th scope="col">Unitate de masura</th>
+                                            <th scope="col">Producator</th>
+                                            <th scope="col">Socket</th>
+                                            <th scope="col">Model</th>
+                                            <th scope="col">Frecventa nominala</th>
+                                            <th scope="col">Frecventa maxima</th>
+                                            <th scope="col">Tip memorie RAM</th>
+                                            <th scope="col">Frecventa memorie RAM</th>
+                                            <th scope="col">Numar nuclee</th>
+                                            <th scope="col">Numar thread-uri</th>
+                                            <th scope="col">Cache</th>
+                                            <th scope="col">Cooler inclus</th>
+                                            <th scope="col">Tehnologie de fabricatie</th>
+                                            <th scope="col">Putere totala disipata</th>
+                                            <th scope="col">Pret intrare (Lei)</th>
+                                            <th scope="col">Informatii produs</th>
+                                            <th scope="col">Stare</th>
+                                            <th scope="col">Actiune</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        <tr *ngFor="let processor of processorListByProductCode | paginate: {
+                                                id: 'processor_by_product_code',
+                                                itemsPerPage: pageSizeProcessorByProductCode,
+                                                currentPage: pageProcessorByProductCode,
+                                                totalItems: countProcessorByProductCode
+                                        }">
+                                            <td>{{processor.generateProductCode.productCode}}</td>
+                                            <td>{{processor.serialNumber}}</td>
+                                            <td>{{processor.generateProductCode.productName}}</td>
+                                            <td>{{processor.quantity}}</td>
+                                            <td>{{processor.unitOfMeasurement}}</td>
+                                            <td>{{processor.manufacturer}}</td>
+                                            <td>{{processor.socket}}</td>
+                                            <td>{{processor.model}}</td>
+                                            <td>{{processor.baseClock}}</td>
+                                            <td>{{processor.maxBoostClock}}</td>
+                                            <td>{{processor.typeOfMemoryRAM}}</td>
+                                            <td>{{processor.maxMemoryFrequency}}</td>
+                                            <td>{{processor.numberOfCpuCores}}</td>
+                                            <td>{{processor.numberOfThreads}}</td>
+                                            <td>{{processor.cache}}</td>
+                                            <td>{{processor.coolerIncluded == true ? 'Da' : 'Nu'}}</td>
+                                            <td>{{processor.lithography}}</td>
+                                            <td>{{processor.thermalDesignPower}}</td>
+                                            <td>{{processor.priceIn}}</td>
+                                            <td>{{processor.productInformation}}</td>
+                                            <td>{{processor.state}}</td>
+                                            <td>
+                                                <a type="button" class="btn btn-warning btn-link btn-icon btn-sm edit"
+                                                   (click)="patchForm(processor, $event)" data-toggle="modal"
+                                                   data-target="#modalProcessor">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                                <a type="button" class="btn btn-danger btn-link btn-icon btn-sm remove"
+                                                   (click)="deleteProcessor(processor)">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <nav class="pagination-align-right" aria-label="Page navigation example">
+                                    <ul class="paginator">
+                                        <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true"
+                                                             id="processor_by_product_code"
+                                                             (pageChange)="handlePageChangeProcessorByProductCode($event)"
+                                                             (pageBoundsCorrection)="handlePageChangeProcessorByProductCode($event)"></pagination-controls>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <!-- end content-->
+                        </div>
+                    </div>
+                    <!-- End Table Processor by Product Code -->
+
+                </div>
+                <!--  END Table Processor by Product Code-->
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Add/Edit Processor -->
+<div class="modal fade" id="modalProcessor" data-backdrop="static" data-keyboard="false"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 *ngIf="isAddMode" class="modal-title" id="staticBackdropLabel"><img class="fav-icon"
+                                                                                        src="./assets/img/icons/cpu.ico">
+                    Adauga procesor</h5>
+                <h5 *ngIf="!isAddMode" class="modal-title" id="editStaticBackdropLabel"><img class="fav-icon"
+                                                                                             src="./assets/img/icons/cpu.ico">
+                    Editare
+                    procesor</h5>
+                <button (click)="closeModal()" type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="validatingForm" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="form-group col">
+                            <label for="generateProductCode"><i class="fa fa-barcode fa-sm"></i> Cod
+                                produs</label>
+                            <input type="text" class="form-control" id="generateProductCode"
+                                   formControlName="generateProductCode"
+                                   [value]="selectedProductCode.productCode">
+                        </div>
+
+                        <div class="form-group col-lg-4">
+                            <label for="productName"><i class="fa fa-product-hunt fa-sm"></i> Nume produs</label>
+                            <ng-select id="productName" (ngModelChange)="setGeneratedProductCode($event)"
+                                       formControlName="productName">
+                                <ng-option *ngFor="let generatedProductCode of productCodesList"
+                                           [value]="generatedProductCode">{{generatedProductCode.productName}}
+                                </ng-option>
+                            </ng-select>
+                        </div>
+
+                        <div class="form-group col">
+                            <label for="manufacturer"><i class="fa fa-industry fa-sm"></i> Producator</label>
+                            <input type="text" class="form-control" id="manufacturer" formControlName="manufacturer">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col">
+                            <label for="socket"><img class="fav-icon-small" src="./assets/img/icons/cpu.ico">
+                                Socket</label>
+                            <input type="text" class="form-control" id="socket" formControlName="socket">
+                        </div>
+
+                        <div class="form-group col-lg-4">
+                            <label for="model"><img class="fav-icon-small" src="./assets/img/icons/model_cpu.ico"> Model</label>
+                            <input type="text" class="form-control" id="model" formControlName="model">
+                        </div>
+
+                        <div class="form-group col">
+                            <label for="baseClock"><img class="fav-icon-small" src="./assets/img/icons/frequency.ico">
+                                Frecventa nominala (Mhz)</label>
+                            <input type="number" class="form-control" id="baseClock" formControlName="baseClock"
+                                   min="0">
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col">
+                            <label for="maxBoostClock"><img class="fav-icon-small"
+                                                            src="./assets/img/icons/frequency.ico"> Frecventa maxima
+                                (Mhz)</label>
+                            <input type="number" class="form-control" id="maxBoostClock" formControlName="maxBoostClock"
+                                   min="0">
+                        </div>
+
+                        <div class="form-group col-lg-4">
+                            <label for="typeOfMemoryRAM"><i class="fa fa-memory fa-sm"></i> Tip memorie RAM</label>
+                            <input type="text" class="form-control" id="typeOfMemoryRAM"
+                                   formControlName="typeOfMemoryRAM">
+                        </div>
+
+                        <div class="form-group col">
+                            <label for="maxMemoryFrequency"><i class="fa fa-memory fa-sm"></i> Frecventa memorie
+                                RAM</label>
+                            <input type="number" class="form-control" id="maxMemoryFrequency"
+                                   formControlName="maxMemoryFrequency" min="0">
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="form-group col-lg-3">
+                            <label for="quantity"><i class="fa fa-sort-numeric-up"></i> Cantitate</label>
+                            <input type="number" min="0" class="form-control" id="quantity" formControlName="quantity">
+                        </div>
+
+                        <div class="form-group col-lg-3">
+                            <label for="numberOfCpuCores"><img class="fav-icon-number-of"
+                                                               src="./assets/img/icons/number_of.ico"> Numar
+                                nuclee</label>
+                            <input type="number" class="form-control" id="numberOfCpuCores"
+                                   formControlName="numberOfCpuCores" min="0">
+                        </div>
+
+                        <div class="form-group col-lg-3">
+                            <label for="numberOfThreads"><img class="fav-icon-number-of"
+                                                              src="./assets/img/icons/number_of.ico"> Numar
+                                thread-uri</label>
+                            <input type="number" class="form-control" id="numberOfThreads"
+                                   formControlName="numberOfThreads" min="0">
+                        </div>
+
+                        <div class="form-group col-lg-3">
+                            <label for="cache"><img class="fav-icon-number-of" src="./assets/img/icons/number_of.ico">
+                                Cache</label>
+                            <input type="number" class="form-control" id="cache" formControlName="cache" min="0">
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="form-group col-lg-3">
+                            <label for="unitOfMeasurement"><img class="fav-icon-small" src="assets/img/icons/measure.ico"/> Unitate</label>
+                            <input type="text" class="form-control" id="unitOfMeasurement" formControlName="unitOfMeasurement">
+                        </div>
+
+                        <div class="form-group col-lg-3">
+                            <label for="coolerIncluded"><img class="fav-icon-small"
+                                                             src="./assets/img/icons/cpu_cooler.ico"> Cooler
+                                inclus</label>
+                            <select class="form-control" id="coolerIncluded" formControlName="coolerIncluded">
+                                <option disabled value="" selected>Cooler inclus...</option>
+                                <option value="true">Da</option>
+                                <option value="false">Nu</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-lg-3">
+                            <label for="lithography"><img class="fav-icon-small"
+                                                          src="./assets/img/icons/lithography.ico"> Tehnologie de
+                                fabricatie (nm)</label>
+                            <input type="number" class="form-control" id="lithography" formControlName="lithography"
+                                   min="0">
+                        </div>
+
+                        <div class="form-group col-lg-3">
+                            <label for="thermalDesignPower"><i class="fa fa-plug fa-sm"></i> Putere totala disipata (W)</label>
+                            <input type="number" class="form-control" id="thermalDesignPower"
+                                   formControlName="thermalDesignPower" min="0">
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col">
+                            <label for="priceIn"><i class="fa fa-money fa-sm"></i> Pret intrare (Lei)</label>
+                            <input type="number" class="form-control" id="priceIn" formControlName="priceIn" min="0">
+                        </div>
+
+                        <div class="form-group col-lg-4">
+                            <label for="state"><img class="fav-icon-small" src="./assets/img/icons/state.ico">
+                                Stare</label>
+                            <select class="form-control" id="state" formControlName="state">
+                                <option disabled value="" selected>Selecteaza stare...</option>
+                                <option *ngFor="let state of stateList">{{state}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col">
+                            <label for="productInformation"><i class="fa fa-info-circle fa-sm"></i> Informatii
+                                produs</label>
+                            <input type="text" class="form-control" id="productInformation"
+                                   formControlName="productInformation">
+                        </div>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button (click)="closeModal()" type="button" class="btn btn-danger" data-dismiss="modal">
+                            Inchide
+                        </button>
+                        <button id="addProcessor-btn" *ngIf="isAddMode" type="submit" class="btn btn-primary"
+                                data-target="#modalProcessor"
+                                [disabled]="validatingForm.invalid">Adauga
+                        </button>
+                        <button id="editProcessor-btn" *ngIf="!isAddMode" type="submit" class="btn btn-success"
+                                data-target="#modalProcessor"
+                                [disabled]="validatingForm.invalid">Salveaza modificarile
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal End Add/Edit Processor -->
+
+<!-- Modal Filter Right -->
+<div id="modal_aside_right" class="modal fixed-left fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-aside" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Filtreaza Procesoare</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body modal-body-filter">
+                <div id="accordion">
+
+                    <div class="card">
+                        <div class="card-header" id="headingManufacturer">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseManufacturer"
+                                        aria-expanded="false"
+                                        aria-controls="collapseManufacturer">
+                                    Producator<span class="arrow"></span>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseManufacturer" class="collapse" aria-labelledby="headingManufacturer"
+                             data-parent="#accordion">
+                            <div class="card-body">
+                                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                                     *ngFor="let manufacturer of manufacturersList">
+                                    <input class="form-check-input" type="checkbox" value="{{manufacturer}}"
+                                           id="{{manufacturer}}"
+                                           name="manufacturer">
+                                    <label class="form-check-label" for="{{manufacturer}}">
+                                        {{manufacturer}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header" id="headingSocket">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseSocket"
+                                        aria-expanded="false"
+                                        aria-controls="collapseSocket">
+                                    Socket<span class="arrow"></span>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseSocket" class="collapse" aria-labelledby="collapseSocket"
+                             data-parent="#accordion">
+                            <div class="card-body">
+                                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                                     *ngFor="let socket of socketsList">
+                                    <input class="form-check-input" type="checkbox" value="{{socket}}" id="{{socket}}"
+                                           name="socket">
+                                    <label class="form-check-label" for="{{socket}}">
+                                        {{socket}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header" id="headingModel">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseModel"
+                                        aria-expanded="false"
+                                        aria-controls="collapseModel">
+                                    Model<span class="arrow"></span>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseModel" class="collapse" aria-labelledby="collapseModel"
+                             data-parent="#accordion">
+                            <div class="card-body">
+                                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                                     *ngFor="let model of modelsList">
+                                    <input class="form-check-input" type="checkbox" value="{{model}}" id="{{model}}"
+                                           name="model">
+                                    <label class="form-check-label" for="{{model}}">
+                                        {{model}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header" id="headingNumberOfCpuCores">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse"
+                                        data-target="#collapseNumberOfCpuCores"
+                                        aria-expanded="false"
+                                        aria-controls="collapseNumberOfCpuCores">
+                                    Numar nuclee<span class="arrow"></span>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseNumberOfCpuCores" class="collapse" aria-labelledby="collapseNumberOfCpuCores"
+                             data-parent="#accordion">
+                            <div class="card-body">
+                                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                                     *ngFor="let numberOfCpuCores of numberOfCpuCoresList">
+                                    <input class="form-check-input" type="checkbox" value="{{numberOfCpuCores}}"
+                                           id="{{numberOfCpuCores}}"
+                                           name="numberOfCpuCores">
+                                    <label class="form-check-label" for="{{numberOfCpuCores}}">
+                                        {{numberOfCpuCores}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header" id="headingNumberOfThreads">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse"
+                                        data-target="#collapseNumberOfThreads"
+                                        aria-expanded="false"
+                                        aria-controls="collapseNumberOfThreads">
+                                    Numar thread-uri<span class="arrow"></span>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseNumberOfThreads" class="collapse" aria-labelledby="collapseNumberOfThreads"
+                             data-parent="#accordion">
+                            <div class="card-body">
+                                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                                     *ngFor="let numberOfThreads of numberOfThreadsList">
+                                    <input class="form-check-input" type="checkbox" value="{{numberOfThreads}}"
+                                           id="{{numberOfThreads}}"
+                                           name="numberOfThreads">
+                                    <label class="form-check-label" for="{{numberOfThreads}}">
+                                        {{numberOfThreads}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header" id="headingBaseClocks">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseBaseClocks"
+                                        aria-expanded="false"
+                                        aria-controls="collapseBaseClocks">
+                                    Frecventa nominala<span class="arrow"></span>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseBaseClocks" class="collapse" aria-labelledby="collapseBaseClocks"
+                             data-parent="#accordion">
+                            <div class="card-body">
+                                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                                     *ngFor="let baseClock of baseClocksList">
+                                    <input class="form-check-input" type="checkbox" value="{{baseClock}}"
+                                           id="{{baseClock}}"
+                                           name="baseClock">
+                                    <label class="form-check-label" for="{{baseClock}}">
+                                        {{baseClock}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header" id="headingMaxBoostClocks">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse"
+                                        data-target="#collapseMaxBoostClocks"
+                                        aria-expanded="false"
+                                        aria-controls="collapseMaxBoostClocks">
+                                    Frecventa maxima<span class="arrow"></span>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseMaxBoostClocks" class="collapse" aria-labelledby="collapseMaxBoostClocks"
+                             data-parent="#accordion">
+                            <div class="card-body">
+                                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                                     *ngFor="let maxBoostClock of boostsClocksList">
+                                    <input class="form-check-input" type="checkbox" value="{{maxBoostClock}}"
+                                           id="{{maxBoostClock}}"
+                                           name="maxBoostClock">
+                                    <label class="form-check-label" for="{{maxBoostClock}}">
+                                        {{maxBoostClock}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header" id="headingMaxMemoryFrequency">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse"
+                                        data-target="#collapseMaxMemoryFrequency"
+                                        aria-expanded="false"
+                                        aria-controls="collapseMaxMemoryFrequency">
+                                    Frecventa RAM<span class="arrow"></span>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseMaxMemoryFrequency" class="collapse"
+                             aria-labelledby="collapseMaxMemoryFrequency"
+                             data-parent="#accordion">
+                            <div class="card-body">
+                                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                                     *ngFor="let maxMemoryFrequency of frequenciesList">
+                                    <input class="form-check-input" type="checkbox" value="{{maxMemoryFrequency}}"
+                                           id="{{maxMemoryFrequency}}"
+                                           name="maxMemoryFrequency">
+                                    <label class="form-check-label" for="{{maxMemoryFrequency}}">
+                                        {{maxMemoryFrequency}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header" id="headingLithography">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseLithography"
+                                        aria-expanded="false"
+                                        aria-controls="collapseLithography">
+                                    Lithography (nm)<span class="arrow"></span>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseLithography" class="collapse" aria-labelledby="collapseLithography"
+                             data-parent="#accordion">
+                            <div class="card-body">
+                                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                                     *ngFor="let lithography of litographyList">
+                                    <input class="form-check-input" type="checkbox" value="{{lithography}}"
+                                           id="{{lithography}}"
+                                           name="lithography">
+                                    <label class="form-check-label" for="{{lithography}}">
+                                        {{lithography}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header" id="headingTypeOfMemoryRAM">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse"
+                                        data-target="#collapseTypeOfMemoryRAM"
+                                        aria-expanded="false"
+                                        aria-controls="collapseTypeOfMemoryRAM">
+                                    Tip RAM<span class="arrow"></span>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTypeOfMemoryRAM" class="collapse" aria-labelledby="collapseTypeOfMemoryRAM"
+                             data-parent="#accordion">
+                            <div class="card-body">
+                                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                                     *ngFor="let typeOfMemoryRam of typeOfMemoryRamList">
+                                    <input class="form-check-input" type="checkbox" value="{{typeOfMemoryRam}}"
+                                           id="{{typeOfMemoryRam}}"
+                                           name="typeOfMemoryRam">
+                                    <label class="form-check-label" for="{{typeOfMemoryRam}}">
+                                        {{typeOfMemoryRam}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header" id="headingState">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse"
+                                        data-target="#collapseState"
+                                        aria-expanded="false" aria-controls="collapseState">
+                                    Stare<span class="arrow"></span>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseState" class="collapse" aria-labelledby="headingState"
+                             data-parent="#accordion">
+                            <div class="card-body">
+                                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                                     *ngFor="let state of stateList">
+                                    <input class="form-check-input" type="checkbox" value="{{state}}" id="{{state}}"
+                                           name="state">
+                                    <label class="form-check-label" for="{{state}}">
+                                        {{state}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button (click)="resetFilters()" type="button" class="btn btn-primary">Reseteaza filtre</button>
+            </div>
+        </div>
+    </div> <!-- modal-bialog .// -->
+</div>
+<!-- End Modal Filter Right -->

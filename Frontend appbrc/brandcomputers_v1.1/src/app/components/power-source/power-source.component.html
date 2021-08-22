@@ -1,0 +1,572 @@
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs-navigation custom-tab-pane" id="powerSourceTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="power-source-tab" data-toggle="tab" href="#power-source" role="tab"
+                       aria-controls="power-source" aria-selected="true" (click)="goBack()">Toate produsele</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="power-source-stock-tab" data-toggle="tab" href="#power-source-stock" role="tab"
+                       aria-controls="power-source-stock" aria-selected="false">Vezi stocuri</a>
+                </li>
+            </ul>
+            <!-- End Nav tabs -->
+
+            <div class="tab-content" id="powerSourceTabContent">
+
+                <!-- First Tab Content -->
+                <div class="tab-pane fade show active mx-3" id="power-source" role="tabpanel"
+                     aria-labelledby="power-source-tab">
+                    <div class="card card-custom">
+                        <div class="card-header">
+                            <h4 class="card-title">Surse de alimentare</h4>
+                        </div>
+                        <!-- Content -->
+                        <div class="card-body">
+                            <div>
+                                <div class="row align-items-center">
+                                    <div class="col-sm-12 col-md-6 mr-auto">
+                                        <label class="label-white-space">
+                                            Vezi
+                                            <select class="custom-select custom-select-sm form-control form-control-sm"
+                                                    id="selectPageSize"
+                                                    (change)="handlePageSizeChangeSearchAndFilter($event)">
+                                                <option>10</option>
+                                                <option>50</option>
+                                                <option>100</option>
+                                            </select>
+                                            produse
+                                        </label>
+                                    </div>
+                                    <div class="col-auto">
+                                        <input #inputSearch (keydown.enter)="getEventSearchResult($event)"
+                                               class="form-control form-control-sm"
+                                               placeholder="Cautare...">
+                                    </div>
+                                    <div class="col-auto btn-group-sm" role="group">
+
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target="#modalPowerSource">
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-info" (click)="clearSearch()">
+                                            <i class="fa fa-refresh" aria-hidden="true"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-warning"
+                                                data-toggle="modal" data-target="#modal_aside_right">
+                                            <i class="fa fa-filter" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!--        Here you can write extra buttons/actions for the toolbar              -->
+                            </div>
+                            <div class="table-responsive">
+                                <table id="datatable" class="table table-striped table-bordered table-format"
+                                       width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Cod Produs</th>
+                                        <th scope="col">Serial Number</th>
+                                        <th scope="col">Nume Produs</th>
+                                        <th scope="col">Cantitate</th>
+                                        <th scope="col">Unitate de masura</th>
+                                        <th scope="col">Producator</th>
+                                        <th scope="col">Model</th>
+                                        <th scope="col">Tipul sursei</th>
+                                        <th scope="col">Putere (W)</th>
+                                        <th scope="col">Pret intrare (Lei)</th>
+                                        <th scope="col">Informatii produs</th>
+                                        <th scope="col">Stare</th>
+                                        <th scope="col">Actiune</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <tr *ngFor="let powerSource of powerSourcesList | paginate: {
+          id: 'power_sources_pagination',
+          itemsPerPage: pageSizePowerSources,
+          currentPage: pagePowerSources,
+          totalItems: count
+    }; let i = index">
+                                        <td>{{powerSource.generateProductCode.productCode}}</td>
+                                        <td>{{powerSource.serialNumber}}</td>
+                                        <td>{{powerSource.generateProductCode.productName}}</td>
+                                        <td>{{powerSource.quantity}}</td>
+                                        <td>{{powerSource.unitOfMeasurement}}</td>
+                                        <td>{{powerSource.manufacturer}}</td>
+                                        <td>{{powerSource.model}}</td>
+                                        <td>{{powerSource.sourceType}}</td>
+                                        <td>{{powerSource.power}}</td>
+                                        <td>{{powerSource.priceIn}}</td>
+                                        <td>{{powerSource.productInformation}}</td>
+                                        <td>{{powerSource.state}}</td>
+                                        <td>
+                                            <a id="{{i}}" type="button" class="btn btn-warning btn-link btn-icon btn-sm edit"
+                                               (click)="patchForm(powerSource, i)" data-toggle="modal"
+                                               data-target="#modalPowerSource">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <a type="button" class="btn btn-danger btn-link btn-icon btn-sm remove"
+                                               (click)="deletePowerSource(powerSource)">
+                                                <i class="fa fa-times"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <nav class="pagination-align-right" aria-label="Page navigation example">
+                                <ul class="paginator">
+                                    <pagination-controls id="power_sources_pagination" previousLabel="Inapoi" nextLabel="Urmatorul"
+                                                         responsive="true" directionLinks="true"
+                                                         (pageChange)="handlePageChangeSearchAndFilter($event)"
+                                                         (pageBoundsCorrection)="handlePageChangeSearchAndFilter($event)">
+                                    </pagination-controls>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- end content-->
+                    </div>
+                </div>
+                <!-- End First Tab Content -->
+
+                <!--  Table Power Source by Product Code-->
+                <div class="tab-pane fade mx-3" id="power-source-stock" role="tabpanel"
+                     aria-labelledby="power-source-stock-tab">
+
+                    <!-- Table Power Source by Stock-->
+                    <div *ngIf="isTableProductCodeSelected">
+                        <div class="card card-custom">
+                            <div class="card-header">
+                                <h4 class="card-title">Stock-uri</h4>
+                            </div>
+                            <div class="card-body">
+                                <div>
+                                    <div class="row align-items-center">
+                                        <div class="col-sm-12 col-md-6 mr-auto">
+                                            <label class="label-white-space">
+                                                Vezi
+                                                <select class="custom-select custom-select-sm form-control form-control-sm"
+                                                        id="selectPageSizeForStock"
+                                                        (change)="handlePageSizeChangeProductCodesWithStock($event)">
+                                                    <option>10</option>
+                                                    <option>50</option>
+                                                    <option>100</option>
+                                                </select>
+                                                coduri de produs
+                                            </label>
+                                        </div>
+                                        <div class="col-auto">
+                                            <input #inputSearchStock
+                                                   (keydown.enter)="getSearchResultProductCodesWithStock($event)"
+                                                   class="form-control form-control-sm"
+                                                   placeholder="Cautare...">
+                                        </div>
+
+                                        <div class="col-auto">
+                                            <button class="btn btn-sm btn-info"
+                                                    (click)="clearSearchProductCodeWithStock()">
+                                                <i class="fa fa-refresh" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!--        Here you can write extra buttons/actions for the toolbar              -->
+                                </div>
+                                <div class="table-responsive">
+                                    <table id="datatableStock" class="table table-striped table-bordered table-format"
+                                       width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th>Cod Produs</th>
+                                        <th>Nume produs</th>
+                                        <th>Stoc</th>
+                                        <th>Pret mediu</th>
+                                        <th>Surse de alimentare</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let productCode of productCodesWithStock | paginate: {
+                                            id: 'product_codes_with_stock',
+                                            itemsPerPage: pageSizeProductCodeWithStock,
+                                            currentPage: pageProductCodeWithStock,
+                                            totalItems: countProductCodeWithStock
+                                        }">
+                                            <td>{{productCode.generateProductCode.productCode}}</td>
+                                            <td>{{productCode.generateProductCode.productName}}</td>
+                                            <td>{{productCode.stock}}</td>
+                                            <td>{{productCode.averagePrice | number: '1.2-2'}}</td>
+                                            <td>
+                                                <button (click)="getPowerSourcesByProductCode(productCode.generateProductCode.productCode)"
+                                                        type="button" class="btn btn-sm btn-info"> Vezi <i
+                                                        class="fa fa-external-link" aria-hidden="true"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                </div>
+                                <nav class="pagination-align-right" aria-label="Page navigation example">
+                                    <ul class="paginator">
+                                        <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true" id="product_codes_with_stock"
+                                                             (pageChange)="handlePageChangeProductCodesWithStock($event)"
+                                                             (pageBoundsCorrection)="handlePageChangeProductCodesWithStock($event)"></pagination-controls>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <!-- end content-->
+                        </div>
+                    </div>
+                    <!-- End Table Power source by Stock-->
+
+                    <!-- Table Power Source by Product Code -->
+                    <div *ngIf="!isTableProductCodeSelected">
+                        <div class="card card-custom">
+                            <div class="card-header">
+                                <h4 class="card-title">Unitati optice</h4>
+                            </div>
+                            <div class="card-body">
+                                <div>
+                                    <div class="row align-items-center">
+                                        <div class="col-sm-12 col-md-6 mr-auto">
+                                            <label class="label-white-space">
+                                                Vezi
+                                                <select class="custom-select custom-select-sm form-control form-control-sm"
+                                                        id="selectPageSizeByProductCode"
+                                                        (change)="handlePageSizeChangePowerSourcesByProductCode($event)">
+                                                    <option>10</option>
+                                                    <option>50</option>
+                                                    <option>100</option>
+                                                </select>
+                                                produse
+                                            </label>
+                                        </div>
+                                        <div class="btn-group-sm col-auto" role="group"
+                                             aria-label="add-product-back-to-list">
+                                            <button (click)="goBack()" type="button" class="btn btn-warning">Inapoi la
+                                                lista
+                                            </button>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                    data-target="#modalPowerSource">
+                                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!--        Here you can write extra buttons/actions for the toolbar              -->
+                                </div>
+                                <div class="table-responsive">
+                                    <table id="datatableByProductCode"
+                                           class="table table-striped table-bordered table-format" width="100%">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">Cod Produs</th>
+                                            <th scope="col">Serial Number</th>
+                                            <th scope="col">Nume Produs</th>
+                                            <th scope="col">Cantitate</th>
+                                            <th scope="col">Unitate de masura</th>
+                                            <th scope="col">Producator</th>
+                                            <th scope="col">Model</th>
+                                            <th scope="col">Tipul sursei</th>
+                                            <th scope="col">Putere (W)</th>
+                                            <th scope="col">Pret intrare (Lei)</th>
+                                            <th scope="col">Informatii produs</th>
+                                            <th scope="col">Stare</th>
+                                            <th scope="col">Actiune</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        <tr *ngFor="let powerSource of powerSourcesListByProductCode | paginate: {
+                                            id: 'power_sources_by_product_code',
+                                            itemsPerPage: pageSizePowerSourcesByProductCode,
+                                            currentPage: pagePowerSourcesByProductCode,
+                                            totalItems: countPowerSourcesByProductCode
+                                        }">
+                                            <td>{{powerSource.generateProductCode.productCode}}</td>
+                                            <td>{{powerSource.serialNumber}}</td>
+                                            <td>{{powerSource.generateProductCode.productName}}</td>
+                                            <td>{{powerSource.quantity}}</td>
+                                            <td>{{powerSource.unitOfMeasurement}}</td>
+                                            <td>{{powerSource.manufacturer}}</td>
+                                            <td>{{powerSource.model}}</td>
+                                            <td>{{powerSource.sourceType}}</td>
+                                            <td>{{powerSource.power}}</td>
+                                            <td>{{powerSource.priceIn}}</td>
+                                            <td>{{powerSource.productInformation}}</td>
+                                            <td>{{powerSource.state}}</td>
+                                            <td>
+                                                <a type="button" class="btn btn-warning btn-link btn-icon btn-sm edit"
+                                                   (click)="patchForm(powerSource, $event)" data-toggle="modal"
+                                                   data-target="#modalPowerSource">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                                <a type="button" class="btn btn-danger btn-link btn-icon btn-sm remove"
+                                                   (click)="deletePowerSource(powerSource)">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <nav class="pagination-align-right" aria-label="Page navigation example">
+                                    <ul class="paginator">
+                                        <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true"
+                                                             id="power_sources_by_product_code"
+                                                             (pageChange)="handlePageChangePowerSourcesByProductCode($event)"
+                                                             (pageBoundsCorrection)="handlePageChangePowerSourcesByProductCode($event)"></pagination-controls>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <!-- end content-->
+                        </div>
+                    </div>
+                    <!-- End Table All Power Source by Product Code -->
+
+                </div>
+                <!--  END Table Power Source by Product Code-->
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal Add/Edit Power Source -->
+<div class="modal fade" id="modalPowerSource" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 *ngIf="isAddMode" class="modal-title" id="staticBackdropLabel"><i class="fa fa-plug fa-lg"></i> Adauga sursa
+                    de alimentare</h5>
+                <h5 *ngIf="!isAddMode" class="modal-title" id="editStaticBackdropLabel"><i class="fa fa-plug fa-lg"></i> Editare
+                    sursa de alimentare</h5>
+                <button (click)="closeModal()" type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="validatingForm" (ngSubmit)="onSubmit()">
+                    <div class="row">
+
+                        <div class="form-group col">
+                            <label for="generateProductCode"><i class="fa fa-barcode fa-sm"></i> Cod produs</label>
+                            <input type="text" class="form-control" id="generateProductCode" formControlName="generateProductCode"
+                                   [value]="selectedProductCode.productCode">
+                        </div>
+
+                        <div class="form-group col-lg-4">
+                            <label for="productName"><i class="fa fa-product-hunt fa-sm"></i> Nume produs</label>
+                            <ng-select id="productName" (ngModelChange)="setGeneratedProductCode($event)"
+                                       formControlName="productName">
+                                <ng-option *ngFor="let generatedProductCode of productCodeList"
+                                           [value]="generatedProductCode">{{generatedProductCode.productName}}
+                                </ng-option>
+                            </ng-select>
+                        </div>
+
+                        <div class="form-group col">
+                            <label for="manufacturer"><i class="fa fa-industry fa-sm"></i> Producator</label>
+                            <input type="text" class="form-control" id="manufacturer" formControlName="manufacturer">
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col">
+                            <label for="serialNumber"><i class="fa fa-barcode fa-sm"></i> Serial number</label>
+                            <input type="text" class="form-control" id="serialNumber" formControlName="serialNumber">
+
+                            <div *ngIf="isSerialNumberPresent" class="form-group alert alert-warning">
+                                <span>{{errorMessage}}</span>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label for="model"><i class="fa fa-building fa-sm"></i> Model</label>
+                            <input type="text" class="form-control" id="model" formControlName="model">
+                        </div>
+                        <div class="form-group col">
+                            <label for="sourceType"><img class="fav-icon-small" src="assets/img/icons/power_source_type.ico"> Tipul sursei</label>
+                            <input type="text" class="form-control" id="sourceType" formControlName="sourceType">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-lg-3">
+                            <label for="power"><img class="fav-icon-small" src="assets/img/icons/power_source.ico"> Putere (W)</label>
+                            <input type="number" class="form-control" id="power" formControlName="power" min="0">
+                        </div>
+
+                        <div class="form-group col-lg-3">
+                            <label for="quantity"><i class="fa fa-sort-numeric-up"></i> Cantitate</label>
+                            <input type="number" min="0" class="form-control" id="quantity" formControlName="quantity">
+                        </div>
+
+                        <div class="form-group col-lg-3">
+                            <label for="unitOfMeasurement"><img class="fav-icon-small" src="assets/img/icons/measure.ico"/> Unitate</label>
+                            <input type="text" class="form-control" id="unitOfMeasurement" formControlName="unitOfMeasurement">
+                        </div>
+
+                        <div class="form-group col-lg-3">
+                            <label for="priceIn"><i class="fa fa-money fa-sm"></i> Pret intrare (Lei)</label>
+                            <input type="number" class="form-control" id="priceIn" formControlName="priceIn" min="0">
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="form-group col-lg-4">
+                            <label for="state"><img class="fav-icon-small" src="assets/img/icons/state.ico"> Stare</label>
+                            <select type="text" class="form-control" id="state" formControlName="state">
+                                <option disabled value="" selected>Selecteaza stare...</option>
+                                <option *ngFor="let state of stateList">{{state}}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-lg-8">
+                            <label for="productInformation"><i class="fa fa-info-circle fa-sm"></i> Informatii produs</label>
+                            <input type="text" class="form-control" id="productInformation" formControlName="productInformation">
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button (click)="closeModal()" type="button" class="btn btn-danger" data-dismiss="modal">
+                            Inchide
+                        </button>
+                        <button *ngIf="isAddMode" id="addPowerSource-btn" type="submit" class="btn btn-primary"
+                                data-target="#modalPowerSource"
+                                [disabled]="validatingForm.invalid">Adauga
+                        </button>
+                        <button *ngIf="!isAddMode" id="editPowerSource-btn" type="submit" class="btn btn-success"
+                                data-target="#modalPowerSource"
+                                [disabled]="validatingForm.invalid">Salveaza modificarile
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal End Add/Edit Power Source -->
+
+<!-- Modal Filter Right -->
+<div id="modal_aside_right" class="modal fixed-left fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-aside" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Filtreaza surse de alimentare</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body modal-body-filter">
+                <div id="accordion">
+
+                    <div class="card">
+                        <div class="card-header" id="headingManufacturer">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseManufacturer"
+                                        aria-expanded="false"
+                                        aria-controls="collapseManufacturer">
+                                    Producator<span class="arrow"></span>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseManufacturer" class="collapse" aria-labelledby="headingManufacturer"
+                             data-parent="#accordion">
+                            <div class="card-body">
+                                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                                     *ngFor="let manufacturer of manufacturersList">
+                                    <input class="form-check-input" type="checkbox" value="{{manufacturer}}" id="{{manufacturer}}"
+                                           name="manufacturer">
+                                    <label class="form-check-label" for="{{manufacturer}}">
+                                        {{manufacturer}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="card">
+                        <div class="card-header" id="headingPower">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsePower"
+                                        aria-expanded="false" aria-controls="collapsePower">
+                                    Putere<span class="arrow"></span>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapsePower" class="collapse" aria-labelledby="headingPower" data-parent="#accordion">
+                            <div class="card-body">
+                                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                                     *ngFor="let powerValue of preselectedPowerValues">
+                                    <input class="form-check-input" type="checkbox" value="{{powerValue}}" id="{{powerValue}}"
+                                           name="power">
+                                    <label class="form-check-label" for="{{powerValue}}">
+                                        {{powerValue}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="card">
+                        <div class="card-header" id="headingSourceType">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSourceType"
+                                        aria-expanded="false" aria-controls="collapseSourceType">
+                                    Tipul sursei<span class="arrow"></span>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseSourceType" class="collapse" aria-labelledby="headingSourceType" data-parent="#accordion">
+                            <div class="card-body">
+                                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                                     *ngFor="let sourceType of sourceTypesList">
+                                    <input class="form-check-input" type="checkbox" value="{{sourceType}}" id="{{sourceType}}"
+                                           name="sourceType">
+                                    <label class="form-check-label" for="{{sourceType}}">
+                                        {{sourceType}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header" id="headingState">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseState"
+                                        aria-expanded="false" aria-controls="collapseState">
+                                    Stare<span class="arrow"></span>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseState" class="collapse" aria-labelledby="headingState" data-parent="#accordion">
+                            <div class="card-body">
+                                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                                     *ngFor="let state of stateList">
+                                    <input class="form-check-input" type="checkbox" value="{{state}}" id="{{state}}"
+                                           name="state">
+                                    <label class="form-check-label" for="{{state}}">
+                                        {{state}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button (click)="resetFilters()" type="button" class="btn btn-primary">Reseteaza filtre</button>
+            </div>
+        </div>
+    </div> <!-- modal-bialog .// -->
+</div>
+<!-- End Modal Filter Right -->

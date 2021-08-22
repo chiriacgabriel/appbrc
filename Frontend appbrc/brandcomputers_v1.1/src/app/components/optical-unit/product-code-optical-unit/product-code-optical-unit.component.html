@@ -1,0 +1,88 @@
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title"> Cod produs</h4>
+                </div>
+                <nav aria-label="Page navigation example">
+                    <div class="row align-items-center mx-auto">
+                        <div class="col-auto mr-auto">
+                            <input #inputSearch (keydown.enter)="getEventSearchResult($event)"
+                                   class="search form-control form-control-sm"
+                                   placeholder="Cautare...">
+                        </div>
+                        <div class="btn-group-sm col-auto pull-right" role="group"
+                             aria-label="add-product-code-refresh-search">
+                            <button id="add-product-code-btn" (click)="toggleForm()" type="button"
+                                    class="btn btn-primary">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                            </button>
+                            <button class="btn btn-info" (click)="clearSearch()">
+                                <i class="fa fa-refresh" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row ml-3">
+                        <form id="productCodeForm" *ngIf="isOpenForm" class="form-inline" [formGroup]="validatingForm"
+                              (ngSubmit)="onSubmit()">
+                            <div class="form-group">
+                                <label for="productCode"><i class="fa fa-barcode fa-sm"></i> Cod Produs</label>
+                                <input type="text" id="productCode" class="form-control mx-sm-3"
+                                       formControlName="productCode">
+                            </div>
+                            <div class="form-group">
+                                <label for="productName"><i class="fa fa-product-hunt fa-sm"></i> Nume Produs</label>
+                                <input type="text" id="productName" class="form-control mx-sm-3"
+                                       formControlName="productName">
+                            </div>
+                            <button type="submit" class="btn btn-primary" *ngIf="isAddMode">Adauga</button>
+                            <button type="submit" class="btn btn-success" *ngIf="!isAddMode">Salveaza modificarile
+                            </button>
+                            <button type="button" (click)="toggleForm()" class="btn btn-danger" id="close-btn">Inchide
+                            </button>
+                        </form>
+                    </div>
+                </nav>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-format">
+                            <thead class="">
+                            <tr>
+                                <th>Cod Produs</th>
+                                <th>Nume Produs</th>
+                                <th>Data</th>
+                                <th>Actiune</th>
+                                <th>Stare</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let productCode of productCodeList">
+                                <td>{{productCode.productCode}}</td>
+                                <td>{{productCode.productName}}</td>
+                                <td>{{productCode.createdDate | date: 'dd/MM/yyyy'}}</td>
+                                <td>
+                                    <a class="btn btn-warning btn-link btn-icon btn-sm edit" type="button"
+                                       (click)="getMyObject(productCode)">
+                                        <i class="fa fa-edit fa-lg" style="color: #d19b3d"></i></a>
+                                    <a class="btn btn-danger btn-link btn-icon btn-sm remove"
+                                       (click)="deleteProductCode(productCode)">
+                                        <i class="fa fa-times fa-lg" style="color: red"></i></a>
+                                </td>
+                                <td class="center-toggle">
+                                    <bSwitch (changeState)="setState($event, productCode)"
+                                             [switch-on-color]="'success'"
+                                             [switch-off-color]="'primary'"
+                                             [(ngModel)]="productCode.state">
+                                    </bSwitch>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

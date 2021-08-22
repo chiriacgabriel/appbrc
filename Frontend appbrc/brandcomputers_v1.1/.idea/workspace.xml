@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b76812b0-b115-4f5d-ade8-93f21588c5ac" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/app/components/fan-case/fan-case.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/shared/navbar/navbar.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/video-card/video-card.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/optical-unit/optical-unit.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/video-card/product-code-video-card/product-code-video-card.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/power-source/power-source.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/sound-card/product-code-sound-card/product-code-sound-card.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/case/case.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/unreceived/unreceived.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/memory-ram/memory-ram.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/computer/computer.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/storage/product-code-storage/product-code-storage.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/processor/processor.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/optical-unit/product-code-optical-unit/product-code-optical-unit.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/power-source/product-code-power-source/product-code-power-source.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/model/enum/EnumCategory.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/cpu-cooler/cpu-cooler.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/broken/broken.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/sound-card/sound-card.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/motherboard/motherboard.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/processor/product-code-processor/product-code-processor.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/storage/storage.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/cpu-cooler/cpu-cooler.component.html" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/helper/enum.service.ts" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="ProjectId" id="1ta9O0DQnrwuqTGd3zZJYfJAcJK" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/img/faces" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs.protractor.protractor_package" value="$PROJECT_DIR$/node_modules/protractor" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
+    <property name="ts.external.directory.path" value="D:\AppBrc\Frontend appbrc\brandcomputers_v1.1\node_modules\typescript\lib" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\AppBrc\Frontend appbrc\brandcomputers_v1.1\src\assets\img\faces" />
+      <recent name="D:\AppBrc\Frontend appbrc\brandcomputers_v1.1\src\app\unreceived" />
+      <recent name="D:\AppBrc\Frontend appbrc\brandcomputers_v1.1\src\assets\img" />
+      <recent name="D:\AppBrc\Frontend appbrc\brandcomputers_v1.1\src\assets\css" />
+      <recent name="D:\AppBrc\Frontend appbrc\brandcomputers_v1.1\src\assets\scss\paper-dashboard" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\AppBrc\Frontend appbrc\brandcomputers_v1.1\src\assets\img\icons" />
+      <recent name="D:\AppBrc\Frontend appbrc\brandcomputers_v1.1\src\app\accounting" />
+      <recent name="D:\AppBrc\Frontend appbrc\brandcomputers_v1.1\src\app\model\components" />
+      <recent name="D:\AppBrc\Frontend appbrc\brandcomputers_v1.1\src\app\model\computer" />
+      <recent name="D:\AppBrc\Frontend appbrc\brandcomputers_v1.1\src\app\model\conta" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.Angular CLI Server">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="E2E Tests (pd-pro-angularcli-e2e)" type="JavaScriptTestRunnerProtractor">
+      <config-file value="$PROJECT_DIR$/protractor.conf.js" />
+      <node-interpreter value="project" />
+      <protractor-package value="$PROJECT_DIR$/node_modules/protractor" />
+      <protractor-options value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Angular Application" type="JavascriptDebugType" uri="http://localhost:4200">
+      <method v="2" />
+    </configuration>
+    <configuration name="Angular CLI Server" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b76812b0-b115-4f5d-ade8-93f21588c5ac" name="Default Changelist" comment="" />
+      <created>1622996296822</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1622996296822</updated>
+      <workItem from="1622996298272" duration="137000" />
+      <workItem from="1622998201278" duration="15356000" />
+      <workItem from="1623088550751" duration="5898000" />
+      <workItem from="1623095690515" duration="3020000" />
+      <workItem from="1623184036532" duration="6579000" />
+      <workItem from="1623250649154" duration="21194000" />
+      <workItem from="1623343709658" duration="3253000" />
+      <workItem from="1623429348453" duration="456000" />
+      <workItem from="1623429816908" duration="63922000" />
+      <workItem from="1623564651401" duration="9087000" />
+      <workItem from="1623784025333" duration="927000" />
+      <workItem from="1623827694705" duration="27301000" />
+      <workItem from="1623941882350" duration="16354000" />
+      <workItem from="1624095527601" duration="12292000" />
+      <workItem from="1624208504894" duration="3256000" />
+      <workItem from="1624380895798" duration="1407000" />
+      <workItem from="1624458676633" duration="1195000" />
+      <workItem from="1624756130819" duration="5358000" />
+      <workItem from="1624983519527" duration="2796000" />
+      <workItem from="1625089014535" duration="1070000" />
+      <workItem from="1625154311298" duration="4677000" />
+      <workItem from="1625225328072" duration="2060000" />
+      <workItem from="1625501321151" duration="767000" />
+      <workItem from="1625505239477" duration="15211000" />
+      <workItem from="1625585932198" duration="1860000" />
+      <workItem from="1625676950621" duration="16559000" />
+      <workItem from="1625756663101" duration="5682000" />
+      <workItem from="1626027054767" duration="7713000" />
+      <workItem from="1626207118038" duration="3794000" />
+      <workItem from="1626274782465" duration="16295000" />
+      <workItem from="1626329984761" duration="4075000" />
+      <workItem from="1626712475421" duration="10855000" />
+      <workItem from="1626773723008" duration="25769000" />
+      <workItem from="1627110029231" duration="24624000" />
+      <workItem from="1627149848594" duration="9172000" />
+      <workItem from="1627218291189" duration="5487000" />
+      <workItem from="1627224617021" duration="4603000" />
+      <workItem from="1627400361029" duration="2982000" />
+      <workItem from="1627488634707" duration="1206000" />
+      <workItem from="1627654496623" duration="593000" />
+      <workItem from="1628608134769" duration="1809000" />
+      <workItem from="1628697950909" duration="4284000" />
+      <workItem from="1628783674154" duration="12097000" />
+      <workItem from="1628919021828" duration="35487000" />
+      <workItem from="1629052371341" duration="43732000" />
+      <workItem from="1629479308070" duration="8425000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

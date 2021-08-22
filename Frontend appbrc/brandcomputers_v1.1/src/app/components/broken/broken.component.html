@@ -1,0 +1,82 @@
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Categorii</h4>
+                </div>
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header" id="headingFormat">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse"
+                                        data-target="#collapsePcServer"
+                                        aria-expanded="false"
+                                        aria-controls="#collapsePcServer"> Pc / Server
+                                    <span class="arrow"></span>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapsePcServer" class="collapse" aria-labelledby="headingFormat"
+                             data-parent="#accordion">
+                            <div class="card-header" *ngFor="let category of categoryList">
+                                <h5 class="mb-0 adjust-total">
+                                    <button (click)="getCategory(category.name)" class="btn btn-link btn-adjust" data-target="#collapseState">
+                                        {{category.name}}
+                                    </button>
+                                    <span class="text-muted"><small class="txt-total">Total: {{category.total}}</small></span>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="title">Componente</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-format">
+                            <thead class="">
+                            <tr>
+                                <th>Cod Produs</th>
+                                <th>Nume Produs</th>
+                                <th>Serial Number</th>
+                                <th>Producator</th>
+                                <th>Categorie</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let broken of brokenList | paginate: {
+                            id: 'broken_pagination',
+                            itemsPerPage: pageSize,
+                            currentPage: page,
+                            totalItems: count
+}">
+                                <td>{{broken.generateProductCode.productCode}}</td>
+                                <td>{{broken.generateProductCode.productName}}</td>
+                                <td>{{broken.serialNumber}}</td>
+                                <td>{{broken.manufacturer}}</td>
+                                <td>{{broken.category}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <nav class="pagination-align-right" aria-label="Page navigation example">
+                            <ul class="paginator">
+                                <pagination-controls id="broken_pagination" previousLabel="Inapoi"
+                                                     nextLabel="Urmatorul"
+                                                     responsive="true" directionLinks="true"
+                                                     (pageChange)="handlePageChange($event)"
+                                                     (pageBoundsCorrection)="handlePageChange($event)">
+                                </pagination-controls>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

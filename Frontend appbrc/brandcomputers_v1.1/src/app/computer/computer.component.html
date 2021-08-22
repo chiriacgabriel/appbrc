@@ -1,0 +1,965 @@
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs-navigation custom-tab-pane" id="computerTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="computer-tab" data-toggle="tab" href="#computer" role="tab"
+                       aria-controls="computer" aria-selected="true" (click)="goBack()">Toate produsele</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="computer-stock-tab" data-toggle="tab" href="#computer-stock" role="tab"
+                       aria-controls="computer-stock" aria-selected="false">Vezi stocuri</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="computer-dismantled-tab" data-toggle="tab" href="#computer-dismantled" role="tab"
+                       aria-controls="computer-dismantled" aria-selected="false">Dezmembrate</a>
+                </li>
+            </ul>
+            <!-- End Nav tabs -->
+            <div class="tab-content" id="computerTabContent">
+
+                <!-- First Tab Content -->
+                <div class="tab-pane fade show active mx-3" id="computer" role="tabpanel"
+                     aria-labelledby="computer-tab">
+                    <div class="card card-custom">
+                        <div class="card-header">
+                            <h4 class="card-title">PC/SERVER</h4>
+                        </div>
+                        <!-- Content -->
+                        <div class="card-body">
+                            <div>
+                                <div class="row align-items-center">
+                                    <div class="col-sm-12 col-md-6 mr-auto">
+                                        <label class="label-white-space">
+                                            Vezi
+                                            <select class="custom-select custom-select-sm form-control form-control-sm"
+                                                    id="selectPageSize"
+                                                    (change)="handlePageSizeChangeSearchAndFilter($event)">
+                                                <option>10</option>
+                                                <option>50</option>
+                                                <option>100</option>
+                                            </select>
+                                            produse
+                                        </label>
+                                    </div>
+                                    <div class="col-auto">
+                                        <input #inputSearch (keydown.enter)="getEventSearchResult($event)"
+                                               class="form-control form-control-sm"
+                                               placeholder="Cautare...">
+                                    </div>
+                                    <div class="col-auto btn-group-sm" role="group">
+
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target="#modalComputer">
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-info" (click)="clearSearch()">
+                                            <i class="fa fa-refresh" aria-hidden="true"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-warning"
+                                                data-toggle="modal" data-target="#modal_aside_right">
+                                            <i class="fa fa-filter" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!--        Here you can write extra buttons/actions for the toolbar              -->
+                            </div>
+                            <div class="table-responsive">
+                                <table id="datatable" class="table table-striped table-bordered table-format"
+                                       width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Actiune</th>
+                                        <th scope="col">Cod Produs</th>
+                                        <th scope="col">Serial Number</th>
+                                        <th scope="col">Nume Produs</th>
+                                        <th scope="col">Cantitate</th>
+                                        <th scope="col">Unitate de masura</th>
+                                        <th scope="col">Producator</th>
+                                        <th scope="col">Model</th>
+                                        <th scope="col">Form</th>
+                                        <th scope="col">Tip CPU</th>
+                                        <th scope="col">Model CPU</th>
+                                        <th scope="col">Tip RAM</th>
+                                        <th scope="col">Capacitate RAM</th>
+                                        <th scope="col">Nr sloturi DIMM</th>
+                                        <th scope="col">Frecventa RAM</th>
+                                        <th scope="col">HDD Inclus</th>
+                                        <th scope="col">Tip HDD</th>
+                                        <th scope="col">Capacitate HDD</th>
+                                        <th scope="col">Unitate optica inclusa</th>
+                                        <th scope="col">Unitate optica</th>
+                                        <th scope="col">Placa video inclusa</th>
+                                        <th scope="col">Placa video</th>
+                                        <th scope="col">Placa sunet inclusa</th>
+                                        <th scope="col">Placa sunet</th>
+                                        <th scope="col">Placa retea inclusa</th>
+                                        <th scope="col">Placa retea</th>
+                                        <th scope="col">Pret intrare (Lei)</th>
+                                        <th scope="col">Informatii produs</th>
+                                        <th scope="col">Stare</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <tr *ngFor="let computer of computerList | paginate: {
+                                        id: 'computer_pagination',
+                                        itemsPerPage: pageSizeComputer,
+                                        currentPage: pageComputer,
+                                        totalItems: count
+                                    }">
+                                        <td>
+                                            <a type="button" class="btn btn-warning btn-link btn-icon btn-sm edit"
+                                               (click)="patchForm(computer)" data-toggle="modal"
+                                               data-target="#modalComputer">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <a type="button" class="btn btn-danger btn-link btn-icon btn-sm remove"
+                                               (click)="deleteComputer(computer)">
+                                                <i class="fa fa-times"></i>
+                                            </a>
+                                            <a type="button" id="dismantled" class="btn btn-primary btn-link btn-icon btn-sm"
+                                               (click)="dismantlingComputer(computer)">
+                                                <i class="fa fa-cogs"></i>
+                                            </a>
+                                        </td>
+                                        <td>{{computer.generateProductCode.productCode}}</td>
+                                        <td>{{computer.serialNumber}}</td>
+                                        <td>{{computer.generateProductCode.productName}}</td>
+                                        <td>{{computer.quantity}}</td>
+                                        <td>{{computer.unitOfMeasurement}}</td>
+                                        <td>{{computer.manufacturer}}</td>
+                                        <td>{{computer.model}}</td>
+                                        <td>{{computer.form}}</td>
+                                        <td>{{computer.cpuType}}</td>
+                                        <td>{{computer.cpuModel}}</td>
+                                        <td>{{computer.memoryType}}</td>
+                                        <td>{{computer.memoryCapacity}}</td>
+                                        <td>{{computer.numberOfDIMM}}</td>
+                                        <td>{{computer.memoryFrequency}}</td>
+                                        <td>{{computer.storageExist == true ? 'Da' : 'Nu'}}</td>
+                                        <td>{{computer.storageType}}</td>
+                                        <td>{{computer.storageCapacity}}</td>
+                                        <td>{{computer.opticalUnitExist == true ? 'Da' : 'Nu'}}</td>
+                                        <td>{{computer.opticalUnit}}</td>
+                                        <td>{{computer.videoCardExist == true ? 'Da' : 'Nu'}}</td>
+                                        <td>{{computer.videoCard}}</td>
+                                        <td>{{computer.soundCardExist == true ? 'Da' : 'Nu'}}</td>
+                                        <td>{{computer.soundCard}}</td>
+                                        <td>{{computer.networkCardExist == true ? 'Da' : 'Nu'}}</td>
+                                        <td>{{computer.networkCard}}</td>
+                                        <td>{{computer.priceIn}}</td>
+                                        <td>{{computer.productInformation}}</td>
+                                        <td>{{computer.state}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <nav class="pagination-align-right" aria-label="Page navigation example">
+                                <ul class="paginator">
+                                    <pagination-controls id="computer_pagination" previousLabel="Inapoi" nextLabel="Urmatorul"
+                                                         responsive="true" directionLinks="true"
+                                                         (pageChange)="handlePageChangeSearchAndFilter($event)"
+                                                         (pageBoundsCorrection)="handlePageChangeSearchAndFilter($event)">
+                                    </pagination-controls>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- end content-->
+                    </div>
+                </div>
+                <!-- End First Tab Content -->
+
+                <!--  Table Computer by Product Code-->
+                <div class="tab-pane fade mx-3" id="computer-stock" role="tabpanel"
+                     aria-labelledby="computer-stock-tab">
+
+                    <!-- Table Computer by Stock-->
+                    <div *ngIf="isTableProductCodeSelected">
+                        <div class="card card-custom">
+                            <div class="card-header">
+                                <h4 class="card-title">Stock-uri</h4>
+                            </div>
+                            <div class="card-body">
+                                <div>
+                                    <div class="row align-items-center">
+                                        <div class="col-sm-12 col-md-6 mr-auto">
+                                            <label class="label-white-space">
+                                                Vezi
+                                                <select class="custom-select custom-select-sm form-control form-control-sm"
+                                                        id="selectPageSizeForStock"
+                                                        (change)="handlePageSizeChangeProductCodesWithStock($event)">
+                                                    <option>10</option>
+                                                    <option>50</option>
+                                                    <option>100</option>
+                                                </select>
+                                                coduri de produs
+                                            </label>
+                                        </div>
+                                        <div class="col-auto">
+                                            <input #inputSearchStock
+                                                   (keydown.enter)="getSearchResultProductCodesWithStock($event)"
+                                                   class="form-control form-control-sm"
+                                                   placeholder="Cautare...">
+                                        </div>
+
+                                        <div class="col-auto">
+                                            <button class="btn btn-sm btn-info"
+                                                    (click)="clearSearchProductCodesWithStock()">
+                                                <i class="fa fa-refresh" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!--        Here you can write extra buttons/actions for the toolbar              -->
+                                </div>
+                                <div class="table-responsive">
+                                    <table id="datatableStock" class="table table-striped table-bordered table-format"
+                                           width="100%">
+                                        <thead>
+                                        <tr>
+                                            <th>Cod Produs</th>
+                                            <th>Nume produs</th>
+                                            <th>Stoc</th>
+                                            <th>Pret mediu</th>
+                                            <th>PC/SERVER</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr *ngFor="let productCode of productCodesWithStock | paginate: {
+                                        id: 'product_codes_with_stock',
+                                        itemsPerPage: pageSizeProductCodeWithStock,
+                                        currentPage: pageProductCodeWithStock,
+                                        totalItems: countProductCodeWithStock
+                                    }">
+                                            <td>{{productCode.generateProductCode.productCode}}</td>
+                                            <td>{{productCode.generateProductCode.productName}}</td>
+                                            <td>{{productCode.stock}}</td>
+                                            <td>{{productCode.averagePrice | number: '1.2-2'}}</td>
+                                            <td>
+                                                <button (click)="getComputerByProductCode(productCode.generateProductCode.productCode)"
+                                                        type="button" class="btn btn-sm btn-info"> Vezi <i
+                                                        class="fa fa-external-link" aria-hidden="true"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <nav class="pagination-align-right" aria-label="Page navigation example">
+                                    <ul class="paginator">
+                                        <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true" id="product_codes_with_stock"
+                                                             (pageChange)="handlePageChangeProductCodesWithStock($event)"
+                                                             (pageBoundsCorrection)="handlePageChangeProductCodesWithStock($event)">
+
+                                        </pagination-controls>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <!-- end content-->
+                        </div>
+                    </div>
+                    <!-- End Table Computer by Stock-->
+
+                    <!-- Table Computer by Product Code -->
+                    <div *ngIf="!isTableProductCodeSelected">
+                        <div class="card card-custom">
+                            <div class="card-header">
+                                <h4 class="card-title">Unitati de Stocare</h4>
+                            </div>
+                            <div class="card-body">
+                                <div>
+                                    <div class="row align-items-center">
+                                        <div class="col-sm-12 col-md-6 mr-auto">
+                                            <label class="label-white-space">
+                                                Vezi
+                                                <select class="custom-select custom-select-sm form-control form-control-sm"
+                                                        id="selectPageSizeByProductCode"
+                                                        (change)="handlePageSizeChangeComputerByProductCode($event)">
+                                                    <option>10</option>
+                                                    <option>50</option>
+                                                    <option>100</option>
+                                                </select>
+                                                produse
+                                            </label>
+                                        </div>
+                                        <div class="btn-group-sm col-auto" role="group"
+                                             aria-label="add-product-back-to-list">
+                                            <button (click)="goBack()" type="button" class="btn btn-warning">Inapoi la
+                                                lista
+                                            </button>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                    data-target="#modalComputer">
+                                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!--        Here you can write extra buttons/actions for the toolbar              -->
+                                </div>
+                                <div class="table-responsive">
+                                    <table id="datatableByProductCode"
+                                           class="table table-striped table-bordered table-format" width="100%">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">Actiune</th>
+                                            <th scope="col">Cod Produs</th>
+                                            <th scope="col">Serial Number</th>
+                                            <th scope="col">Nume Produs</th>
+                                            <th scope="col">Cantitate</th>
+                                            <th scope="col">Unitate de masura</th>
+                                            <th scope="col">Producator</th>
+                                            <th scope="col">Model</th>
+                                            <th scope="col">Form</th>
+                                            <th scope="col">Tip CPU</th>
+                                            <th scope="col">Model CPU</th>
+                                            <th scope="col">Tip RAM</th>
+                                            <th scope="col">Capacitate RAM</th>
+                                            <th scope="col">Nr sloturi DIMM</th>
+                                            <th scope="col">Frecventa RAM</th>
+                                            <th scope="col">HDD Inclus</th>
+                                            <th scope="col">Tip HDD</th>
+                                            <th scope="col">Capacitate HDD</th>
+                                            <th scope="col">Unitate optica inclusa</th>
+                                            <th scope="col">Unitate optica</th>
+                                            <th scope="col">Placa video inclusa</th>
+                                            <th scope="col">Placa video</th>
+                                            <th scope="col">Placa sunet inclusa</th>
+                                            <th scope="col">Placa sunet</th>
+                                            <th scope="col">Placa retea inclusa</th>
+                                            <th scope="col">Placa retea</th>
+                                            <th scope="col">Pret intrare (Lei)</th>
+                                            <th scope="col">Informatii produs</th>
+                                            <th scope="col">Stare</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        <tr *ngFor="let computer of computerListByProductCode | paginate: {
+                                            id: 'computer_by_product_code',
+                                            itemsPerPage: pageSizeComputerByProductCode,
+                                            currentPage: pageComputerByProductCode,
+                                            totalItems: countComputerByProductCode
+                                        }">
+                                            <td>
+                                                <a type="button" class="btn btn-warning btn-link btn-icon btn-sm edit"
+                                                   (click)="patchForm(computer)" data-toggle="modal"
+                                                   data-target="#modalComputer">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                                <a type="button" class="btn btn-danger btn-link btn-icon btn-sm remove"
+                                                   (click)="deleteComputer(computer)">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </td>
+                                            <td>{{computer.generateProductCode.productCode}}</td>
+                                            <td>{{computer.serialNumber}}</td>
+                                            <td>{{computer.generateProductCode.productName}}</td>
+                                            <td>{{computer.quantity}}</td>
+                                            <td>{{computer.unitOfMeasurement}}</td>
+                                            <td>{{computer.manufacturer}}</td>
+                                            <td>{{computer.model}}</td>
+                                            <td>{{computer.form}}</td>
+                                            <td>{{computer.cpuType}}</td>
+                                            <td>{{computer.cpuModel}}</td>
+                                            <td>{{computer.memoryType}}</td>
+                                            <td>{{computer.memoryCapacity}}</td>
+                                            <td>{{computer.numberOfDIMM}}</td>
+                                            <td>{{computer.memoryFrequency}}</td>
+                                            <td>{{computer.storageExist == true ? 'Da' : 'Nu'}}</td>
+                                            <td>{{computer.storageType}}</td>
+                                            <td>{{computer.storageCapacity}}</td>
+                                            <td>{{computer.opticalUnitExist == true ? 'Da' : 'Nu'}}</td>
+                                            <td>{{computer.opticalUnit}}</td>
+                                            <td>{{computer.videoCardExist == true ? 'Da' : 'Nu'}}</td>
+                                            <td>{{computer.videoCard}}</td>
+                                            <td>{{computer.soundCardExist == true ? 'Da' : 'Nu'}}</td>
+                                            <td>{{computer.soundCard}}</td>
+                                            <td>{{computer.networkCardExist == true ? 'Da' : 'Nu'}}</td>
+                                            <td>{{computer.networkCard}}</td>
+                                            <td>{{computer.priceIn}}</td>
+                                            <td>{{computer.productInformation}}</td>
+                                            <td>{{computer.state}}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <nav class="pagination-align-right" aria-label="Page navigation example">
+                                    <ul class="paginator">
+                                        <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true"
+                                                             id="computer_by_product_code"
+                                                             (pageChange)="handlePageChangeComputerByProductCode($event)"
+                                                             (pageBoundsCorrection)="handlePageChangeComputerByProductCode($event)"></pagination-controls>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <!-- end content-->
+                        </div>
+                    </div>
+                    <!-- End Table Computer by Product Code -->
+
+                </div>
+                <!--  END Table Computer by Product Code-->
+
+                <!--  Table Computer dismantled-->
+                <div class="tab-pane fade mx-3" id="computer-dismantled" role="tabpanel"
+                     aria-labelledby="computer-dismantled-tab">
+                    <div class="card card-custom">
+                        <div class="card-header">
+                            <h4 class="card-title">Dezmembrate</h4>
+                        </div>
+                        <!-- Content -->
+                        <div class="card-body">
+                            <div>
+                                <div class="row align-items-center">
+                                    <div class="col-sm-12 col-md-6 mr-auto">
+                                        <label class="label-white-space">
+                                            Vezi
+                                            <select class="custom-select custom-select-sm form-control form-control-sm"
+                                                    id="selectPageSizeDismantled"
+                                                    (change)="handlePageSizeChangeDismantled($event)">
+                                                <option>10</option>
+                                                <option>50</option>
+                                                <option>100</option>
+                                            </select>
+                                            produse
+                                        </label>
+                                    </div>
+                                    <div class="col-auto">
+                                        <input #inputSearch (keydown.enter)="getEventSearchResult($event)"
+                                               class="form-control form-control-sm"
+                                               placeholder="Cautare...">
+                                    </div>
+                                    <div class="col-auto btn-group-sm" role="group">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target="#modalComputer">
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-info" (click)="clearSearch()">
+                                            <i class="fa fa-refresh" aria-hidden="true"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-warning"
+                                                data-toggle="modal" data-target="#modal_aside_right">
+                                            <i class="fa fa-filter" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!--        Here you can write extra buttons/actions for the toolbar              -->
+                            </div>
+                            <div class="table-responsive">
+                                <table id="datatableDismantled" class="table table-striped table-bordered table-format"
+                                       width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Actiune</th>
+                                        <th scope="col">Cod Produs</th>
+                                        <th scope="col">Serial Number</th>
+                                        <th scope="col">Nume Produs</th>
+                                        <th scope="col">Cantitate</th>
+                                        <th scope="col">Unitate de masura</th>
+                                        <th scope="col">Producator</th>
+                                        <th scope="col">Model</th>
+                                        <th scope="col">Form</th>
+                                        <th scope="col">Tip CPU</th>
+                                        <th scope="col">Model CPU</th>
+                                        <th scope="col">Tip RAM</th>
+                                        <th scope="col">Capacitate RAM</th>
+                                        <th scope="col">Nr sloturi DIMM</th>
+                                        <th scope="col">Frecventa RAM</th>
+                                        <th scope="col">HDD Inclus</th>
+                                        <th scope="col">Tip HDD</th>
+                                        <th scope="col">Capacitate HDD</th>
+                                        <th scope="col">Unitate optica inclusa</th>
+                                        <th scope="col">Unitate optica</th>
+                                        <th scope="col">Placa video inclusa</th>
+                                        <th scope="col">Placa video</th>
+                                        <th scope="col">Placa sunet inclusa</th>
+                                        <th scope="col">Placa sunet</th>
+                                        <th scope="col">Placa retea inclusa</th>
+                                        <th scope="col">Placa retea</th>
+                                        <th scope="col">Pret intrare (Lei)</th>
+                                        <th scope="col">Informatii produs</th>
+                                        <th scope="col">Stare</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr *ngFor="let computer of computersDismantledList | paginate: {
+        id: 'computer_pagination_dismantled',
+        itemsPerPage: pageSizeComputerDismantled,
+        currentPage: pageComputerDismantled,
+        totalItems: countComputerDismantled
+    }">
+                                        <td>
+                                            <a type="button" class="btn btn-warning btn-link btn-icon btn-sm edit"
+                                               (click)="patchForm(computer)" data-toggle="modal"
+                                               data-target="#modalComputer">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                        </td>
+                                        <td>{{computer.generateProductCode.productCode}}</td>
+                                        <td>{{computer.serialNumber}}</td>
+                                        <td>{{computer.generateProductCode.productName}}</td>
+                                        <td>{{computer.quantity}}</td>
+                                        <td>{{computer.unitOfMeasurement}}</td>
+                                        <td>{{computer.manufacturer}}</td>
+                                        <td>{{computer.model}}</td>
+                                        <td>{{computer.form}}</td>
+                                        <td>{{computer.cpuType}}</td>
+                                        <td>{{computer.cpuModel}}</td>
+                                        <td>{{computer.memoryType}}</td>
+                                        <td>{{computer.memoryCapacity}}</td>
+                                        <td>{{computer.numberOfDIMM}}</td>
+                                        <td>{{computer.memoryFrequency}}</td>
+                                        <td>{{computer.storageExist == true ? 'Da' : 'Nu'}}</td>
+                                        <td>{{computer.storageType}}</td>
+                                        <td>{{computer.storageCapacity}}</td>
+                                        <td>{{computer.opticalUnitExist == true ? 'Da' : 'Nu'}}</td>
+                                        <td>{{computer.opticalUnit}}</td>
+                                        <td>{{computer.videoCardExist == true ? 'Da' : 'Nu'}}</td>
+                                        <td>{{computer.videoCard}}</td>
+                                        <td>{{computer.soundCardExist == true ? 'Da' : 'Nu'}}</td>
+                                        <td>{{computer.soundCard}}</td>
+                                        <td>{{computer.networkCardExist == true ? 'Da' : 'Nu'}}</td>
+                                        <td>{{computer.networkCard}}</td>
+                                        <td>{{computer.priceIn}}</td>
+                                        <td>{{computer.productInformation}}</td>
+                                        <td>{{computer.state}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <nav class="pagination-align-right" aria-label="Page navigation example">
+                                <ul class="paginator">
+                                    <pagination-controls id="computer_pagination_dismantled" previousLabel="Inapoi" nextLabel="Urmatorul"
+                                                         responsive="true" directionLinks="true"
+                                                         (pageChange)="handlePageSizeChangeDismantled($event)"
+                                                         (pageBoundsCorrection)="handlePageSizeChangeDismantled($event)">
+                                    </pagination-controls>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- end content-->
+                    </div>
+                </div>
+                <!--  END Table Computer dismantled-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Add/Edit Computer -->
+<div class="modal fade" id="modalComputer" data-backdrop="static" data-keyboard="false"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 *ngIf="isAddMode" class="modal-title" id="staticBackdropLabel">
+                    <img class="fav-icon" src="./assets/img/icons/computer.ico">
+                    Adauga PC/Server</h5>
+                <h5 *ngIf="!isAddMode" class="modal-title" id="editStaticBackdropLabel">
+                    <img class="fav-icon" src="./assets/img/icons/computer.ico">
+                    Editare
+                    PC/Server</h5>
+                <button (click)="closeModal()" type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="validatingForm" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="form-group col">
+                            <label for="generateProductCode"><i class="fa fa-barcode fa-sm"></i> Cod produs</label>
+                            <input type="text" class="form-control" id="generateProductCode" formControlName="generateProductCode"
+                                   [value]="selectedProductCode.productCode">
+                        </div>
+                        <div class="form-group col">
+                            <label for="productName"><i class="fa fa-product-hunt fa-sm"></i> Nume produs</label>
+                            <ng-select id="productName" (ngModelChange)="setGeneratedProductCode($event)"
+                                       formControlName="productName">
+                                <ng-option *ngFor="let generatedProductCode of productCodesList"
+                                           [value]="generatedProductCode">{{generatedProductCode.productName}}
+                                </ng-option>
+                            </ng-select>
+                        </div>
+
+                        <div class="form-group col">
+                            <label for="serialNumber"><i class="fa fa-barcode fa-sm"></i> Serial number</label>
+                            <input type="text" class="form-control" id="serialNumber" formControlName="serialNumber">
+                            <div *ngIf="isSerialNumberPresent" class="form-group alert alert-warning">
+                                <span>{{errorMessage}}</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="form-group col">
+                            <label for="manufacturer"><i class="fa fa-industry fa-sm"></i> Producator</label>
+                            <input type="text" class="form-control" id="manufacturer" formControlName="manufacturer">
+                        </div>
+
+                        <div class="form-group col">
+                            <label for="model"><img class="fav-icon-small" src="./assets/img/icons/video-card.ico"> Model</label>
+                            <input type="text" class="form-control" id="model" formControlName="model">
+                        </div>
+                        <div class="form-group col">
+                            <label for="form"><img class="fav-icon-small" src="./assets/img/icons/video_card_profile.ico"> Form</label>
+                            <input type="text" class="form-control" id="form" formControlName="form">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col">
+                            <label for="cpuType"><img class="fav-icon-small" src="./assets/img/icons/video_card_profile.ico"> Tip Procesor</label>
+                            <input type="text" class="form-control" id="cpuType" formControlName="cpuType">
+                        </div>
+
+                        <div class="form-group col">
+                            <label for="cpuModel"><img class="fav-icon-small" src="./assets/img/icons/video_card_profile.ico"> Model Procesor</label>
+                            <input type="text" class="form-control" id="cpuModel" formControlName="cpuModel">
+                        </div>
+
+                        <div class="form-group col">
+                            <label for="memoryType"><img class="fav-icon-small" src="./assets/img/icons/video_card_profile.ico"> Tip RAM</label>
+                            <input type="text" class="form-control" id="memoryType" formControlName="memoryType">
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="form-group col">
+                            <label for="memoryCapacity"><img class="fav-icon-small" src="./assets/img/icons/video_card_profile.ico"> Capacitate RAM</label>
+                            <input type="number" min="0" class="form-control" id="memoryCapacity" formControlName="memoryCapacity">
+                        </div>
+
+                        <div class="form-group col">
+                            <label for="numberOfDIMM"><img class="fav-icon-small" src="./assets/img/icons/video_card_profile.ico"> Numar DIMM</label>
+                            <input type="number" min="0" class="form-control" id="numberOfDIMM" formControlName="numberOfDIMM">
+                        </div>
+
+                        <div class="form-group col">
+                            <label for="memoryFrequency"><img class="fav-icon-small" src="./assets/img/icons/video_card_profile.ico"> Frecventa RAM (MHZ)</label>
+                            <input type="number" min="0" class="form-control" id="memoryFrequency" formControlName="memoryFrequency">
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col">
+                            <label for="storageExist"><img class="fav-icon-small" src="./assets/img/icons/vga.ico"> HDD Inclus</label>
+                            <select class="form-control" id="storageExist" formControlName="storageExist" (change)="getSelectedOption($event)">
+                                <option value="true">Da</option>
+                                <option value="false">Nu</option>
+                            </select>
+                        </div>
+                        <div class="form-group col">
+                            <label for="storageType"><img class="fav-icon-small" src="./assets/img/icons/video_card_profile.ico"> Tip HDD</label>
+                            <input type="text" class="form-control" id="storageType" formControlName="storageType">
+                        </div>
+                        <div class="form-group col">
+                            <label for="storageCapacity"><img class="fav-icon-small" src="./assets/img/icons/video_card_profile.ico"> Capacitate HDD</label>
+                            <input type="number" class="form-control" id="storageCapacity" formControlName="storageCapacity">
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="form-group col">
+                            <label for="opticalUnitExist"><img class="fav-icon-small" src="./assets/img/icons/vga.ico"> Unitate optica inclusa</label>
+                            <select class="form-control" id="opticalUnitExist" formControlName="opticalUnitExist" (change)="getSelectedOption($event)">
+                                <option value="true">Da</option>
+                                <option value="false">Nu</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col">
+                            <label for="opticalUnit"><img class="fav-icon-small" src="./assets/img/icons/video_card_profile.ico"> Unitate optica</label>
+                            <input type="text" class="form-control" id="opticalUnit" formControlName="opticalUnit">
+                        </div>
+
+                        <div class="form-group col">
+                            <label for="videoCardExist"><img class="fav-icon-small" src="./assets/img/icons/vga.ico"> Placa video inclusa</label>
+                            <select class="form-control" id="videoCardExist" formControlName="videoCardExist" (change)="getSelectedOption($event)">
+                                <option value="true">Da</option>
+                                <option value="false">Nu</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col">
+                            <label for="videoCard"><img class="fav-icon-small" src="./assets/img/icons/video_card_profile.ico"> Placa video</label>
+                            <input type="text" class="form-control" id="videoCard" formControlName="videoCard">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col">
+                            <label for="soundCardExist"><img class="fav-icon-small" src="./assets/img/icons/vga.ico"> Placa sunet inclusa</label>
+                            <select class="form-control" id="soundCardExist" formControlName="soundCardExist" (change)="getSelectedOption($event)">
+                                <option value="true">Da</option>
+                                <option value="false">Nu</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col">
+                            <label for="soundCard"><img class="fav-icon-small" src="./assets/img/icons/video_card_profile.ico"> Placa sunet</label>
+                            <input type="text" class="form-control" id="soundCard" formControlName="soundCard">
+                        </div>
+
+                        <div class="form-group col">
+                            <label for="networkCardExist"><img class="fav-icon-small" src="./assets/img/icons/vga.ico"> Placa retea inclusa</label>
+                            <select class="form-control" id="networkCardExist" formControlName="networkCardExist" (change)="getSelectedOption($event)">
+                                <option value="true">Da</option>
+                                <option value="false">Nu</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col">
+                            <label for="networkCard"><img class="fav-icon-small" src="./assets/img/icons/video_card_profile.ico"> Placa retea</label>
+                            <input type="text" class="form-control" id="networkCard" formControlName="networkCard">
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-lg-4">
+                            <label for="quantity"><i class="fa fa-sort-numeric-up"></i> Cantitate</label>
+                            <input type="number" min="0" class="form-control" id="quantity" formControlName="quantity">
+                        </div>
+
+                        <div class="form-group col-lg-4">
+                            <label for="unitOfMeasurement"><img class="fav-icon-small" src="assets/img/icons/measure.ico"/> Unitate</label>
+                            <input type="text" class="form-control" id="unitOfMeasurement" formControlName="unitOfMeasurement">
+                        </div>
+
+                        <div class="form-group col-lg-4">
+                            <label for="priceIn"><i class="fa fa-money fa-sm"></i> Pret intrare (Lei)</label>
+                            <input type="number" class="form-control" id="priceIn" formControlName="priceIn" min="0">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-lg-4">
+                            <label for="state"><img class="fav-icon-small" src="./assets/img/icons/state.ico"> Stare</label>
+                            <select class="form-control" id="state" formControlName="state">
+                                <option disabled value="" selected>Selecteaza stare...</option>
+                                <option *ngFor="let state of stateList">{{state}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-8">
+                            <label for="productInformation"><i class="fa fa-info-circle fa-sm"></i> Informatii produs</label>
+                            <input type="text" class="form-control" id="productInformation" formControlName="productInformation">
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button (click)="closeModal()" type="button" class="btn btn-danger" data-dismiss="modal">
+                            Inchide
+                        </button>
+                        <button id="addComputer-btn" *ngIf="isAddMode" type="submit" class="btn btn-primary"
+                                data-target="#modalComputer"
+                                [disabled]="validatingForm.invalid">Adauga
+                        </button>
+                        <button id="editComputer-btn" *ngIf="!isAddMode" type="submit" class="btn btn-success"
+                                data-target="#modalComputer"
+                                [disabled]="validatingForm.invalid">Salveaza modificarile
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal End Add/Edit Computer -->
+
+<!-- Modal Filter Right -->
+<div id="modal_aside_right" class="modal fixed-left fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-aside" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Filtreaza PC/SERVER</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body modal-body-filter">
+                <div id="accordion">
+
+                    <div class="card">
+                        <div class="card-header" id="headingManufacturer">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseManufacturer"
+                                        aria-expanded="false"
+                                        aria-controls="collapseManufacturer">Producator<span class="arrow"></span>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseManufacturer" class="collapse" aria-labelledby="headingManufacturer"
+                             data-parent="#accordion">
+                            <div class="card-body">
+                                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                                     *ngFor="let manufacturer of manufacturerList">
+                                    <input class="form-check-input" type="checkbox" value="{{manufacturer}}" id="{{manufacturer}}"
+                                           name="manufacturer">
+                                    <label class="form-check-label" for="{{manufacturer}}">
+                                        {{manufacturer}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header" id="headingForm">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseForm"
+                                        aria-expanded="false"
+                                        aria-controls="collapseForm">Form<span class="arrow"></span>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseForm" class="collapse" aria-labelledby="headingForm"
+                             data-parent="#accordion">
+                            <div class="card-body">
+                                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                                     *ngFor="let form of formList">
+                                    <input class="form-check-input" type="checkbox" value="{{form}}" id="{{form}}"
+                                           name="form">
+                                    <label class="form-check-label" for="{{form}}">
+                                        {{form}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header" id="headingVideoCardExist">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseVideoCardExist"
+                                        aria-expanded="false"
+                                        aria-controls="collapseVideoCardExist">
+                                    Placa video inclusa<span class="arrow"></span>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseVideoCardExist" class="collapse" aria-labelledby="headingVideoCardExist"
+                             data-parent="#accordion">
+                            <div class="card-body">
+                                <div (change)="getRequestParamsForFilter($event)" class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="true" id="videoCardExistTrue" name="videoCardExist">
+                                    <label class="form-check-label" for="videoCardExistTrue">Da</label>
+                                </div>
+                                <div (change)="getRequestParamsForFilter($event)" class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="false" id="videoCardExistFalse" name="videoCardExist">
+                                    <label class="form-check-label" for="videoCardExistFalse">Nu</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header" id="headingOpticalUnitExist">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOpticalUnitExist"
+                                        aria-expanded="false"
+                                        aria-controls="collapseOpticalUnitExist">
+                                    Unitate optica inclusa<span class="arrow"></span>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseOpticalUnitExist" class="collapse" aria-labelledby="headingOpticalUnitExist"
+                             data-parent="#accordion">
+                            <div class="card-body">
+                                <div (change)="getRequestParamsForFilter($event)" class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="true" id="opticalUnitExistTrue" name="opticalUnitExist">
+                                    <label class="form-check-label" for="opticalUnitExistTrue">Da</label>
+                                </div>
+                                <div (change)="getRequestParamsForFilter($event)" class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="false" id="opticalUnitExistFalse" name="opticalUnitExist">
+                                    <label class="form-check-label" for="opticalUnitExistFalse">Nu</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header" id="headingStorageCapacity">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseStorageCapacity"
+                                        aria-expanded="false"
+                                        aria-controls="collapseStorageCapacity">Capacitate HDD<span class="arrow"></span>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseStorageCapacity" class="collapse" aria-labelledby="headingStorageCapacity"
+                             data-parent="#accordion">
+                            <div class="card-body">
+                                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                                     *ngFor="let storageCapacity of storageCapacityList">
+                                    <input class="form-check-input" type="checkbox" value="{{storageCapacity}}" id="{{storageCapacity}}"
+                                           name="storageCapacity">
+                                    <label class="form-check-label" for="{{storageCapacity}}">
+                                        {{storageCapacity}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header" id="headingMemoryCapacity">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseMemoryCapacity"
+                                        aria-expanded="false"
+                                        aria-controls="collapseMemoryCapacity">Capacitate RAM<span class="arrow"></span>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseMemoryCapacity" class="collapse" aria-labelledby="headingMemoryCapacity"
+                             data-parent="#accordion">
+                            <div class="card-body">
+                                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                                     *ngFor="let memoryCapacity of memoryCapacityList">
+                                    <input class="form-check-input" type="checkbox" value="{{memoryCapacity}}" id="{{memoryCapacity}}"
+                                           name="memoryCapacity">
+                                    <label class="form-check-label" for="{{memoryCapacity}}">
+                                        {{memoryCapacity}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header" id="headingCpuModel">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseCpuModel"
+                                        aria-expanded="false" aria-controls="collapseCpuModel">Model CPU<span class="arrow"></span>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseCpuModel" class="collapse" aria-labelledby="headingCpuModel" data-parent="#accordion">
+                            <div class="card-body">
+                                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                                     *ngFor="let cpuModel of cpuModelList">
+                                    <input class="form-check-input" type="checkbox" value="{{cpuModel}}" id="{{cpuModel}}"
+                                           name="cpuModel">
+                                    <label class="form-check-label" for="{{cpuModel}}">
+                                        {{cpuModel}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button (click)="resetFilters()" type="button" class="btn btn-primary">Reseteaza filtre</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal Filter Right -->
+

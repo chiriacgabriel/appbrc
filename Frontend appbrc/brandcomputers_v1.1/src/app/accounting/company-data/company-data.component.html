@@ -1,0 +1,159 @@
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs-navigation custom-tab-pane" id="companyTab" role="contaTab">
+                <li class="nav-item">
+                    <a class="nav-link active" id="company-data-tab" data-toggle="tab" href="#company-data" role="tab"
+                       aria-controls="company-data" aria-selected="true">Date companie</a>
+                </li>
+
+            </ul>
+            <!-- End Nav tabs -->
+
+            <div class="tab-content" id="contaTabContent">
+
+                <!-- First Tab Content -->
+                <div class="tab-pane fade show active mx-3" id="company-data" role="tabpanel"
+                     aria-labelledby="companyTab">
+                    <form [formGroup]="validatingForm" (ngSubmit)="onSubmit()">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card card-custom">
+                                    <div class="card-header">
+                                        <h5 class="title">OBLIGATORIU</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Nume companie</label>
+                                                    <input type="text" class="form-control"
+                                                           placeholder="Nume Companie" formControlName="name">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>CIF</label>
+                                                    <input type="text" class="form-control" placeholder="CIF" formControlName="cif">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Registrul Comertului</label>
+                                                    <input type="text" class="form-control"
+                                                           placeholder="Registrul Comertului" formControlName="tradeRegister">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Localitate</label>
+                                                    <input type="text" class="form-control"
+                                                           placeholder="Localitate" formControlName="city">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Adresa</label>
+                                                    <input type="text" class="form-control"
+                                                           placeholder="Adresa" formControlName="streetAddress">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Judet</label>
+                                                    <input type="text" class="form-control"
+                                                           placeholder="Judet" formControlName="county">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Capital Social</label>
+                                                    <input type="text" class="form-control"
+                                                           placeholder="Capital Social" formControlName="socialCapital">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Platitor TVA</label>
+                                                    <select type="radio" class="form-control" formControlName="vatPayer">
+                                                        <option value="" disabled selected>Platitor TVA</option>
+                                                        <option value="true">DA</option>
+                                                        <option value="false">NU</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card card-custom">
+                                    <div class="card-header">
+                                        <h5 class="title">OPTIONAL</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Banca</label>
+                                                    <input type="text" class="form-control" placeholder="Banca"
+                                                           formControlName="bank">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>IBAN</label>
+                                                    <input type="text" class="form-control" placeholder="IBAN"
+                                                           formControlName="iban">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Telefon</label>
+                                                    <input type="text" class="form-control" placeholder="Telefon"
+                                                           formControlName="phone">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>FAX</label>
+                                                    <input type="text" class="form-control" placeholder="FAX" formControlName="fax">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Adresa de email</label>
+                                                    <input type="email" class="form-control" placeholder="Email" formControlName="email">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Adresa web</label>
+                                                    <input type="text" class="form-control"
+                                                           placeholder="Adresa web" formControlName="webAddress">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Date aditionale</label>
+                                                    <input type="text" class="form-control"
+                                                           placeholder="Date aditionale" formControlName="additionalData">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mx-auto float-right">
+                            <button type="submit" class="btn btn-success">Salveaza modificarile</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

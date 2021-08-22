@@ -1,0 +1,11 @@
+
+Jtypescript:S1128")Remove this unused import of 'OnDestroy'.(´£°ùÿÿÿÿ
+Mtypescript:S1128",Remove this unused import of 'HostListener'.(´£°ùÿÿÿÿ
+Ltypescript:S1128"0Remove this unused import of 'LocationStrategy'.(·È›‡
+Ptypescript:S1128"4Remove this unused import of 'PathLocationStrategy'.(·È›‡
+Ltypescript:S1128"0Remove this unused import of 'PlatformLocation'.(·È›‡
+ntypescript:S4325"RThis assertion is unnecessary since it does not change the type of the expression.(’‚ŠÂ
+stypescript:S4325 "RThis assertion is unnecessary since it does not change the type of the expression.(‘Á®”úÿÿÿÿ
+Ltypescript:S18548"0Remove this useless assignment to variable "ps".(™ÀÉš
+Qtypescript:S18549"0Remove this useless assignment to variable "ps".(Â–ôıÿÿÿÿ
+:typescript:S125D"Remove this commented out code.(²ˆ¢Ì

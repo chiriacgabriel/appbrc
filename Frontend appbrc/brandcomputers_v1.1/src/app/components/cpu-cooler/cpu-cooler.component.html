@@ -1,0 +1,539 @@
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs-navigation custom-tab-pane" id="cpuCoolerTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="cpu-cooler-tab" data-toggle="tab" href="#cpu-cooler" role="tab"
+                       aria-controls="cpu-cooler" aria-selected="true" (click)="goBack()">Toate produsele</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="cpu-cooler-stock-tab" data-toggle="tab" href="#cpu-cooler-stock" role="tab"
+                       aria-controls="cpu-cooler-stock" aria-selected="false">Vezi stocuri</a>
+                </li>
+            </ul>
+            <!-- End Nav tabs -->
+
+            <div class="tab-content" id="cpuCoolerTabContent">
+
+                <!-- First Tab Content -->
+                <div class="tab-pane fade show active mx-3" id="cpu-cooler" role="tabpanel"
+                     aria-labelledby="cpu-cooler-tab">
+                    <div class="card card-custom">
+                        <div class="card-header">
+                            <h4 class="card-title">Coolere CPU</h4>
+                        </div>
+                        <!-- Content -->
+                        <div class="card-body">
+                            <div>
+                                <div class="row align-items-center">
+                                    <div class="col-sm-12 col-md-6 mr-auto">
+                                        <label class="label-white-space">
+                                            Vezi
+                                            <select class="custom-select custom-select-sm form-control form-control-sm"
+                                                    id="selectPageSize"
+                                                    (change)="handlePageSizeChangeSearchAndFilter($event)">
+                                                <option>10</option>
+                                                <option>50</option>
+                                                <option>100</option>
+                                            </select>
+                                            produse
+                                        </label>
+                                    </div>
+                                    <div class="col-auto">
+                                        <input #inputSearch (keydown.enter)="getEventSearchResult($event)"
+                                               class="form-control form-control-sm"
+                                               placeholder="Cautare...">
+                                    </div>
+                                    <div class="col-auto btn-group-sm" role="group">
+
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target="#modalCpuCooler">
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-info" (click)="clearSearch()">
+                                            <i class="fa fa-refresh" aria-hidden="true"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-warning"
+                                                data-toggle="modal" data-target="#modal_aside_right">
+                                            <i class="fa fa-filter" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!--        Here you can write extra buttons/actions for the toolbar              -->
+                            </div>
+                            <div class="table-responsive">
+                                <table id="datatable" class="table table-striped table-bordered table-format"
+                                       width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Cod Produs</th>
+                                        <th scope="col">Serial Number</th>
+                                        <th scope="col">Nume Produs</th>
+                                        <th scope="col">Cantitate</th>
+                                        <th scope="col">Unitate de masura</th>
+                                        <th scope="col">Producator</th>
+                                        <th scope="col">Socket</th>
+                                        <th scope="col">Pret intrare (Lei)</th>
+                                        <th scope="col">Informatii produs</th>
+                                        <th scope="col">Stare</th>
+                                        <th scope="col">Actiune</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <tr *ngFor="let cpuCooler of cpuCoolerList | paginate: {
+        id: 'cpu_cooler_pagination',
+        itemsPerPage: pageSizeCpuCooler,
+        currentPage: pageCpuCooler,
+        totalItems: count
+  }; let i = index">
+                                        <td>{{cpuCooler.generateProductCode.productCode}}</td>
+                                        <td>{{cpuCooler.serialNumber}}</td>
+                                        <td>{{cpuCooler.generateProductCode.productName}}</td>
+                                        <td>{{cpuCooler.quantity}}</td>
+                                        <td>{{cpuCooler.unitOfMeasurement}}</td>
+                                        <td>{{cpuCooler.manufacturer}}</td>
+                                        <td>{{cpuCooler.socket}}</td>
+                                        <td>{{cpuCooler.priceIn}}</td>
+                                        <td>{{cpuCooler.productInformation}}</td>
+                                        <td>{{cpuCooler.state}}</td>
+                                        <td>
+                                            <a id="{{i}}" type="button" class="btn btn-warning btn-link btn-icon btn-sm edit"
+                                               (click)="patchForm(cpuCooler, i)" data-toggle="modal"
+                                               data-target="#modalCpuCooler">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <a type="button" class="btn btn-danger btn-link btn-icon btn-sm remove"
+                                               (click)="deleteCpuCooler(cpuCooler)">
+                                                <i class="fa fa-times"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <nav class="pagination-align-right" aria-label="Page navigation example">
+                                <ul class="paginator">
+                                    <pagination-controls id="cpu_cooler_pagination" previousLabel="Inapoi"
+                                                         nextLabel="Urmatorul"
+                                                         responsive="true" directionLinks="true"
+                                                         (pageChange)="handlePageChangeSearchAndFilter($event)"
+                                                         (pageBoundsCorrection)="handlePageChangeSearchAndFilter($event)">
+                                    </pagination-controls>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- end content-->
+                    </div>
+                </div>
+                <!-- End First Tab Content -->
+
+                <!--  Table Cpu Cooler by Product Code-->
+                <div class="tab-pane fade mx-3" id="cpu-cooler-stock" role="tabpanel"
+                     aria-labelledby="cpu-cooler-stock-tab">
+
+                    <!-- Table Stock Cpu Cooler by Stock-->
+                    <div *ngIf="isTableProductCodeSelected">
+                        <div class="card card-custom">
+                            <div class="card-header">
+                                <h4 class="card-title">Stock-uri</h4>
+                            </div>
+                            <div class="card-body">
+                                <div>
+                                    <div class="row align-items-center">
+                                        <div class="col-sm-12 col-md-6 mr-auto">
+                                            <label class="label-white-space">
+                                                Vezi
+                                                <select class="custom-select custom-select-sm form-control form-control-sm"
+                                                        id="selectPageSizeForStock"
+                                                        (change)="handlePageSizeChangeProductCodesWithStock($event)">
+                                                    <option>10</option>
+                                                    <option>50</option>
+                                                    <option>100</option>
+                                                </select>
+                                                coduri de produs
+                                            </label>
+                                        </div>
+                                        <div class="col-auto">
+                                            <input #inputSearchStock
+                                                   (keydown.enter)="getSearchResultProductCodesWithStock($event)"
+                                                   class="form-control form-control-sm"
+                                                   placeholder="Cautare...">
+                                        </div>
+
+                                        <div class="col-auto">
+                                            <button class="btn btn-sm btn-info"
+                                                    (click)="clearSearchProductCodesWithStock()">
+                                                <i class="fa fa-refresh" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!--        Here you can write extra buttons/actions for the toolbar              -->
+                                </div>
+                                <div class="table-responsive">
+                                <table id="datatableStock" class="table table-striped table-bordered table-format"
+                                       width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th>Cod Produs</th>
+                                        <th>Nume produs</th>
+                                        <th>Stoc</th>
+                                        <th>Pret mediu</th>
+                                        <th>Coolere CPU</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr *ngFor="let productCode of productCodesWithStock | paginate: {
+id: 'product_codes_with_stock',
+itemsPerPage: pageSizeProductCodeWithStock,
+currentPage: pageProductCodeWithStock,
+totalItems: countProductCodeWithStock
+}">
+                                        <td>{{productCode.generateProductCode.productCode}}</td>
+                                        <td>{{productCode.generateProductCode.productName}}</td>
+                                        <td>{{productCode.stock}}</td>
+                                        <td>{{productCode.averagePrice | number: '1.2-2'}}</td>
+                                        <td>
+                                            <button (click)="getCpuCoolerByProductCode(productCode.generateProductCode.productCode)"
+                                                    type="button" class="btn btn-sm btn-info"> Vezi <i
+                                                    class="fa fa-external-link" aria-hidden="true"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                </div>
+                                <nav class="pagination-align-right" aria-label="Page navigation example">
+                                    <ul class="paginator">
+                                        <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true"
+                                                             id="product_codes_with_stock"
+                                                             (pageChange)="handlePageChangeProductCodesWithStock($event)"
+                                                             (pageBoundsCorrection)="handlePageChangeProductCodesWithStock($event)"></pagination-controls>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <!-- end content-->
+                        </div>
+                    </div>
+                    <!-- End Table Stock Cpu Cooler by Stock-->
+
+                    <!-- Table Cpu cooler by Product Code -->
+                    <div *ngIf="!isTableProductCodeSelected">
+                        <div class="card card-custom">
+                            <div class="card-header">
+                                <h4 class="card-title">Coolere CPU</h4>
+                            </div>
+                            <div class="card-body">
+                                <div>
+                                    <div class="row align-items-center">
+                                        <div class="col-sm-12 col-md-6 mr-auto">
+                                            <label class="label-white-space">
+                                                Vezi
+                                                <select class="custom-select custom-select-sm form-control form-control-sm"
+                                                        id="selectPageSizeByProductCode"
+                                                        (change)="handlePageSizeChangeCpuCoolerByProductCode($event)">
+                                                    <option>10</option>
+                                                    <option>50</option>
+                                                    <option>100</option>
+                                                </select>
+                                                produse
+                                            </label>
+                                        </div>
+                                        <div class="btn-group-sm col-auto" role="group"
+                                             aria-label="add-product-back-to-list">
+                                            <button (click)="goBack()" type="button" class="btn btn-warning">Inapoi la
+                                                lista
+                                            </button>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                    data-target="#modalCpuCooler">
+                                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!--        Here you can write extra buttons/actions for the toolbar              -->
+                                </div>
+                                <div class="table-responsive">
+                                    <table id="datatableByProductCode"
+                                           class="table table-striped table-bordered table-format" width="100%">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">Cod Produs</th>
+                                            <th scope="col">Serial Number</th>
+                                            <th scope="col">Nume Produs</th>
+                                            <th scope="col">Cantitate</th>
+                                            <th scope="col">Unitate de masura</th>
+                                            <th scope="col">Producator</th>
+                                            <th scope="col">Stock</th>
+                                            <th scope="col">Pret intrare (Lei)</th>
+                                            <th scope="col">Informatii produs</th>
+                                            <th scope="col">Stare</th>
+                                            <th scope="col">Actiune</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        <tr *ngFor="let cpuCooler of cpuCoolerListByProductCode | paginate: {
+        id: 'cpu_cooler_by_product_code',
+itemsPerPage: pageSizeCpuCoolerByProductCode,
+currentPage: pageCpuCoolerByProductCode,
+totalItems: countCpuCoolerByProductCode
+}">
+                                            <td>{{cpuCooler.generateProductCode.productCode}}</td>
+                                            <td>{{cpuCooler.serialNumber}}</td>
+                                            <td>{{cpuCooler.generateProductCode.productName}}</td>
+                                            <td>{{cpuCooler.quantity}}</td>
+                                            <td>{{cpuCooler.unitOfMeasurement}}</td>
+                                            <td>{{cpuCooler.manufacturer}}</td>
+                                            <td>{{cpuCooler.stock}}</td>
+                                            <td>{{cpuCooler.priceIn}}</td>
+                                            <td>{{cpuCooler.productInformation}}</td>
+                                            <td>{{cpuCooler.state}}</td>
+                                            <td>
+                                                <a type="button" class="btn btn-warning btn-link btn-icon btn-sm edit"
+                                                   (click)="patchForm(cpuCooler, $event)" data-toggle="modal"
+                                                   data-target="#modalCpuCooler">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                                <a type="button" class="btn btn-danger btn-link btn-icon btn-sm remove"
+                                                   (click)="deleteCpuCooler(cpuCooler)">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <nav class="pagination-align-right" aria-label="Page navigation example">
+                                    <ul class="paginator">
+                                        <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true"
+                                                             id="cpu_cooler_by_product_code"
+                                                             (pageChange)="handlePageChangeCpuCoolerByProductCode($event)"
+                                                             (pageBoundsCorrection)="handlePageChangeCpuCoolerByProductCode($event)"></pagination-controls>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <!-- end content-->
+                        </div>
+                    </div>
+                    <!-- End Table All Cpu Cooler by Product Code -->
+
+                </div>
+                <!--  END Table Cpu Cooler by Product Code-->
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Add/Edit Cpu Cooler -->
+<div class="modal fade" id="modalCpuCooler" data-backdrop="static" data-keyboard="false"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 *ngIf="isAddMode" class="modal-title" id="staticBackdropLabel"><img class="fav-icon-small"
+                                                                                        src="assets/img/icons/cpu_cooler.ico"/>
+                    Adauga cooler CPU</h5>
+                <h5 *ngIf="!isAddMode" class="modal-title" id="editStaticBackdropLabel"><img class="fav-icon-small"
+                                                                                             src="assets/img/icons/cpu_cooler.ico"/>
+                    Editare
+                    cooler CPU</h5>
+                <button (click)="closeModal()" type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="validatingForm" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="form-group col">
+                            <label for="generateProductCode"><i class="fa fa-barcode fa-sm"></i> Cod
+                                produs</label>
+                            <input type="text" class="form-control" id="generateProductCode"
+                                   formControlName="generateProductCode"
+                                   [value]="selectedProductCode.productCode">
+                        </div>
+
+                        <div class="form-group col-lg-4">
+                            <label for="productName"><i class="fa fa-product-hunt fa-sm"></i> Nume produs</label>
+                            <ng-select id="productName" (ngModelChange)="setGeneratedProductCode($event)"
+                                       formControlName="productName">
+                                <ng-option *ngFor="let generatedProductCode of productCodesList"
+                                           [value]="generatedProductCode">
+                                    {{generatedProductCode.productName}}
+                                </ng-option>
+                            </ng-select>
+                        </div>
+
+                        <div class="form-group col">
+                            <label for="manufacturer"><i class="fa fa-industry fa-sm"></i> Producator</label>
+                            <input type="text" class="form-control" id="manufacturer" formControlName="manufacturer">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-lg-4">
+                            <label for="socket"><img class="fav-icon-small" src="assets/img/icons/cpu.ico"/>
+                                Socket</label>
+                            <input type="text" class="form-control" id="socket" formControlName="socket">
+                        </div>
+
+                        <div class="form-group col-lg-4">
+                            <label for="quantity"><i class="fa fa-sort-numeric-up"></i> Cantitate</label>
+                            <input type="number" min="0" class="form-control" id="quantity" formControlName="quantity">
+                        </div>
+
+                        <div class="form-group col-lg-4">
+                            <label for="priceIn"><i class="fa fa-money fa-sm"></i> Pret intrare (Lei)</label>
+                            <input type="number" class="form-control" id="priceIn" formControlName="priceIn" min="0">
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+
+                        <div class="form-group col-lg-4">
+                            <label for="unitOfMeasurement"><img class="fav-icon-small" src="assets/img/icons/measure.ico"/> Unitate</label>
+                            <input type="text" class="form-control" id="unitOfMeasurement" formControlName="unitOfMeasurement">
+                        </div>
+
+                        <div class="form-group col-lg-4">
+                            <label for="state"><img class="fav-icon-small" src="assets/img/icons/state.ico"/>
+                                Stare</label>
+                            <select class="form-control" id="state" formControlName="state">
+                                <option disabled value="" selected>Selecteaza stare...</option>
+                                <option *ngFor="let state of stateList">{{state}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label for="productInformation"><i class="fa fa-info-circle fa-sm"></i> Informatii
+                                produs</label>
+                            <input type="text" class="form-control" id="productInformation"
+                                   formControlName="productInformation">
+                        </div>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button (click)="closeModal()" type="button" class="btn btn-danger" data-dismiss="modal">
+                            Inchide
+                        </button>
+                        <button id="addCpuCooler-btn" *ngIf="isAddMode" type="submit" class="btn btn-primary"
+                                data-target="#modalCpuCooler"
+                                [disabled]="validatingForm.invalid">Adauga
+                        </button>
+                        <button id="editCpuCooler-btn" *ngIf="!isAddMode" type="submit" class="btn btn-success"
+                                data-target="#modalCpuCooler"
+                                [disabled]="validatingForm.invalid">Salveaza modificarile
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal End Add/Edit Cpu Cooler -->
+
+<!-- Modal Filter Right -->
+<div id="modal_aside_right" class="modal fixed-left fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-aside" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Filtreaza coolere CPU</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body modal-body-filter">
+                <div id="accordion">
+
+                    <div class="card">
+                        <div class="card-header" id="headingManufacturer">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseManufacturer"
+                                        aria-expanded="false"
+                                        aria-controls="collapseManufacturer">
+                                    Producator<span class="arrow"></span>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseManufacturer" class="collapse" aria-labelledby="headingManufacturer"
+                             data-parent="#accordion">
+                            <div class="card-body">
+                                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                                     *ngFor="let manufacturer of manufacturersList">
+                                    <input class="form-check-input" type="checkbox" value="{{manufacturer}}"
+                                           id="{{manufacturer}}"
+                                           name="manufacturer">
+                                    <label class="form-check-label" for="{{manufacturer}}">
+                                        {{manufacturer}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header" id="headingSocket">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseSocket"
+                                        aria-expanded="false"
+                                        aria-controls="collapseSocket">
+                                    Socket<span class="arrow"></span>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseSocket" class="collapse" aria-labelledby="headingSocket"
+                             data-parent="#accordion">
+                            <div class="card-body">
+                                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                                     *ngFor="let socketCpuCooler of socketsCpuCooler">
+                                    <input class="form-check-input" type="checkbox" value="{{socketCpuCooler}}"
+                                           id="{{socketCpuCooler}}"
+                                           name="socket">
+                                    <label class="form-check-label" for="{{socketCpuCooler}}">
+                                        {{socketCpuCooler}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="card">
+                        <div class="card-header" id="headingState">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse"
+                                        data-target="#collapseState"
+                                        aria-expanded="false" aria-controls="collapseState">
+                                    Stare<span class="arrow"></span>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseState" class="collapse" aria-labelledby="headingState"
+                             data-parent="#accordion">
+                            <div class="card-body">
+                                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                                     *ngFor="let state of stateList">
+                                    <input class="form-check-input" type="checkbox" value="{{state}}" id="{{state}}"
+                                           name="state">
+                                    <label class="form-check-label" for="{{state}}">
+                                        {{state}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button (click)="resetFilters()" type="button" class="btn btn-primary">Reseteaza filtre</button>
+            </div>
+        </div>
+    </div> <!-- modal-bialog .// -->
+</div>
+<!-- End Modal Filter Right -->
