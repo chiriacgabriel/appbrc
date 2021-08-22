@@ -1,0 +1,8 @@
+
+Ltypescript:S1128"+Remove this unused import of 'Motherboard'.(ãÑ´ãøÿÿÿÿ
+Htypescript:S3863
+"''@angular/router' import is duplicated.(ÅÛ­üÿÿÿÿÿ
+Atypescript:S1128"%Remove this unused import of 'style'.(‘ù
+\typescript:S1128"@Remove this unused import of 'GenerateProductCodeCaseComponent'.(ªÉÑ
+Ztypescript:S107I"?Constructor has too many parameters (10). Maximum allowed is 7.(°åÁ²
+Qtypescript:S1135Í"4Complete the task associated to this "TODO" comment.(ÓñàÍ

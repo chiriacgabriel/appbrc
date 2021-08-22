@@ -1,0 +1,994 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="issues">
+    <option name="index">
+      <map>
+        <entry key="$USER_HOME$/Downloads/paper-dashboard-angular-master/paper-dashboard-angular-master/src/app/app.module.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/Downloads/paper-dashboard-angular-master/paper-dashboard-angular-master/src/app/layouts/admin-layout/admin-layout.module.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/Downloads/paper-dashboard-angular-master/paper-dashboard-angular-master/src/app/layouts/admin-layout/admin-layout.routing.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/BrandComputerApplication.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/casing/controller/CaseRestController.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/casing/dto/CaseDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/casing/model/Case.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/casing/model/GenerateProductCodeCase.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/casing/repository/CaseRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/casing/services/CaseService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/cpu_cooler/dto/CpuCoolerDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/cpu_cooler/dto/GenerateProductCodeCpuCoolerDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/cpu_cooler/mapper/CpuCoolerMapper.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/cpu_cooler/model/CpuCooler.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/cpu_cooler/model/GenerateProductCodeCpuCooler.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/cpu_cooler/repository/CpuCoolerRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/cpu_cooler/service/CpuCoolerService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/fan_case/dto/FanCaseDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/fan_case/dto/GenerateProductCodeFanCaseDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/fan_case/mapper/FanCaseMapper.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/fan_case/model/FanCase.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/fan_case/model/GenerateProductCodeFanCase.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/fan_case/repository/FanCaseRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/fan_case/services/FanCaseService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/memory_ram/dto/GenerateProductCodeMemoryRamDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/memory_ram/dto/MemoryRamDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/memory_ram/mapper/MemoryRamMapper.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/memory_ram/model/GenerateProductCodeMemoryRam.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/memory_ram/model/MemoryRam.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/memory_ram/repository/MemoryRamRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/memory_ram/service/MemoryRamService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/motherboard/controller/MotherboardRestController.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/motherboard/dto/GenerateProductCodeMotherboardDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/motherboard/dto/MotherboardDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/motherboard/mapper/MotherboardMapper.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/motherboard/model/GenerateProductCodeMotherboard.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/motherboard/model/Motherboard.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/motherboard/repository/MotherboardRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/motherboard/services/MotherboardService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/optical_unit/dto/GenerateProductCodeOpticalUnitDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/optical_unit/dto/OpticalUnitDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/optical_unit/mapper/OpticalUnitMapper.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/optical_unit/model/GenerateProductCodeOpticalUnit.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/optical_unit/model/OpticalUnit.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/optical_unit/repository/OpticalUnitRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/optical_unit/service/OpticalUnitService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/powersource/controller/PowerSourceRestController.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/powersource/dto/GenerateProductCodePowerSourceDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/powersource/dto/PowerSourceDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/powersource/mapper/PowerSourceMapper.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/powersource/model/GenerateProductCodePowerSource.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/powersource/model/PowerSource.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/powersource/repository/PowerSourceRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/powersource/services/PowerSourceService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/processor/controller/ProcessorRestController.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/processor/dto/GenerateProductCodeProcessorDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/processor/dto/ProcessorDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/processor/mapper/ProcessorMapper.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/processor/model/GenerateProductCodeProcessor.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/processor/model/Processor.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/processor/repository/ProcessorRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/processor/service/ProcessorService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/sound_card/dto/GenerateProductCodeSoundCardDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/sound_card/dto/SoundCardDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/sound_card/mapper/SoundCardMapper.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/sound_card/model/GenerateProductCodeSoundCard.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/sound_card/model/SoundCard.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/sound_card/repository/SoundCardRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/sound_card/service/SoundCardService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/storage/dto/GenerateProductCodeStorageDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/storage/dto/StorageDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/storage/mapper/StorageMapper.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/storage/model/GenerateProductCodeStorage.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/storage/model/Storage.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/storage/repository/StorageRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/storage/service/StorageService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/video_card/dto/GenerateProductCodeVideoCardDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/video_card/dto/VideoCardDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/video_card/mapper/VideoCardMapper.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/video_card/model/GenerateProductCodeVideoCard.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/video_card/model/VideoCard.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/video_card/repository/VideoCardRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/video_card/services/VideoCardService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/exa.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/app/components/dashboard/child-components/case/case.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/app/components/dashboard/child-components/case/case.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/app/components/dashboard/child-components/cpu-cooler/cpu-cooler.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/app/components/dashboard/child-components/cpu-cooler/cpu-cooler.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/app/components/dashboard/child-components/fan-case/fan-case.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/app/components/dashboard/child-components/fan-case/fan-case.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/app/components/dashboard/child-components/memory-ram/memory-ram.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/app/components/dashboard/child-components/memory-ram/memory-ram.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/app/components/dashboard/child-components/motherboard/motherboard.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/app/components/dashboard/child-components/motherboard/motherboard.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/app/components/dashboard/child-components/optical-unit/optical-unit.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/app/components/dashboard/child-components/optical-unit/optical-unit.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/app/components/dashboard/child-components/power-source/power-source.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/app/components/dashboard/child-components/power-source/power-source.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/app/components/dashboard/child-components/processor/processor.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/app/model/CpuCooler.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/app/model/FanCase.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/app/model/MemoryRam.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/app/model/Motherboard.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/app/model/OpticalUnit.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/app/model/PowerSource.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/environments/environment.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/app.routing.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/case/case.component.css">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/case/case.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/case/case.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/case/product-code-case/product-code-case.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/case/product-code-case/product-code-case.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/components.module.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/components.routing.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/cpu-cooler/product-code-cpu-cooler/product-code-cpu-cooler.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/fan-case/fan-case.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/fan-case/product-code-fan-case/product-code-fan-case.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/memory-ram/memory-ram.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/memory-ram/memory-ram.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/memory-ram/product-code-memory-ram/product-code-memory-ram.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/memory-ram/product-code-memory-ram/product-code-memory-ram.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/motherboard/motherboard.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/motherboard/product-code-motherboard/product-code-motherboard.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/optical-unit/optical-unit.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/optical-unit/optical-unit.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/optical-unit/product-code-optical-unit/product-code-optical-unit.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/power-source/power-source.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/power-source/power-source.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/power-source/product-code-power-source/product-code-power-source.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/power-source/product-code-power-source/product-code-power-source.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/processor/processor.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/processor/processor.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/processor/product-code-processor/product-code-processor.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/processor/product-code-processor/product-code-processor.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/sound-card/product-code-sound-card/product-code-sound-card.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/sound-card/product-code-sound-card/product-code-sound-card.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/sound-card/sound-card.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/sound-card/sound-card.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/storage/product-code-storage/product-code-storage.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/storage/product-code-storage/product-code-storage.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/storage/storage.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/storage/storage.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/video-card/product-code-video-card/product-code-video-card.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/video-card/product-code-video-card/product-code-video-card.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/video-card/video-card.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/components/video-card/video-card.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/model/Case.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/model/OpticalUnit.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/model/PowerSource.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/model/Processor.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/model/SoundCard.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/model/Storage.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/model/VideoCard.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/services/components/case.service.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/shared/navbar/navbar.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/sidebar/sidebar.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/sidebar/sidebar.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/tables/datatable.net/datatable.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/app/tables/datatable.net/datatable.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/assets/css/_table_format.css">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/assets/scss/paper-dashboard/_cards.scss">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/assets/scss/paper-dashboard/_modals.scss">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/assets/scss/paper-dashboard/_pagination.scss">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../brandcomputers_v1.1/src/assets/scss/paper-dashboard/_sidebar-and-main-panel.scss">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../paper-dashboard-pro-angular-v1.4.0/documentation/css/documentation.css">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../paper-dashboard-pro-angular-v1.4.0/documentation/css/paper-dashboard.css">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../paper-dashboard-pro-angular-v1.4.0/src/app/app.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../paper-dashboard-pro-angular-v1.4.0/src/app/app.module.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../paper-dashboard-pro-angular-v1.4.0/src/app/app.routing.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../paper-dashboard-pro-angular-v1.4.0/src/app/components/notifications/notifications.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../paper-dashboard-pro-angular-v1.4.0/src/app/dashboard/dashboard.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../paper-dashboard-pro-angular-v1.4.0/src/app/helper/auth-guard.guard.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../paper-dashboard-pro-angular-v1.4.0/src/app/helper/auth.guard.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../paper-dashboard-pro-angular-v1.4.0/src/app/helper/authorization.interceptor.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../paper-dashboard-pro-angular-v1.4.0/src/app/helper/notification.service.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../paper-dashboard-pro-angular-v1.4.0/src/app/layouts/admin/admin-layout.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../paper-dashboard-pro-angular-v1.4.0/src/app/pages/login/login.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../paper-dashboard-pro-angular-v1.4.0/src/app/pages/login/login.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../paper-dashboard-pro-angular-v1.4.0/src/app/pages/pages.module.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../paper-dashboard-pro-angular-v1.4.0/src/app/pages/pages.routing.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../paper-dashboard-pro-angular-v1.4.0/src/app/pages/register/register.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../paper-dashboard-pro-angular-v1.4.0/src/app/pages/register/register.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../paper-dashboard-pro-angular-v1.4.0/src/app/services/login.service.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../paper-dashboard-pro-angular-v1.4.0/src/app/services/register.service.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../paper-dashboard-pro-angular-v1.4.0/src/app/services/token-storage.service.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../paper-dashboard-pro-angular-v1.4.0/src/app/shared/fixedplugin/fixedplugin.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../paper-dashboard-pro-angular-v1.4.0/src/app/sidebar/sidebar.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../paper-dashboard-pro-angular-v1.4.0/src/app/sidebar/sidebar.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../paper-dashboard-pro-angular-v1.4.0/src/assets/scss/paper-dashboard/_sidebar-and-main-panel.scss">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../paper-dashboard-pro-angular-v1.4.0/src/assets/scss/paper-dashboard/_variables.scss">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../paper-dashboard-pro-angular-v1.4.0/src/environments/environment.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../paper-dashboard-pro-angular-v1.4.0/src/index.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../SDA/JavaScript from scratch/Files from class/JavaScript08 - Recap-jQuery/index.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../SDA/JavaScript from scratch/Files from class/JavaScript08 - Recap-jQuery/js08.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../SDA/JavaScript from scratch/Files from class/JavaScript09 - Recap - jQueryv2/index.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../SDA/JavaScript from scratch/Files from class/JavaScript09 - Recap - jQueryv2/js09.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../SDA/JavaScript from scratch/Files from class/JavaScript09 - Recap - jQueryv2/style.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
