@@ -1,0 +1,810 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 ">
+        <h1 class="h4"><img class="fav-icon" src="assets/icons/video-card.ico"/> Placi video</h1>
+      </div>
+
+      <ul class="nav nav-tabs" id="videoCardTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="video-card-tab" data-toggle="tab" href="#video-card" role="tab"
+             aria-controls="video-card" aria-selected="true" (click)="goBack()">Toate produsele</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="video-card-stock-tab" data-toggle="tab" href="#video-card-stock" role="tab"
+             aria-controls="video-card-stock" aria-selected="false">Vezi stocuri</a>
+        </li>
+      </ul>
+
+      <div class="tab-content" id="video-cardTabContent">
+
+        <!-- Tab Table Video Card -->
+        <div class="tab-pane fade show active mx-3" id="video-card" role="tabpanel" aria-labelledby="video-card-tab">
+          <nav aria-label="Page navigation example">
+            <div class="row py-3">
+              <div class="col-auto mr-auto">
+                <div class="form-control-custom pull-left">
+                  <span class="pagination-info">Vezi </span>
+                  <select class="btn-secondary" id="selectPageSize"
+                          (change)="handlePageSizeChangeSearchAndFilter($event)">
+                    <option>10</option>
+                    <option>50</option>
+                    <option>100</option>
+                  </select>
+                  <span class="pagination-info"> produse</span>
+                </div>
+              </div>
+              <div class="col-auto">
+                <input #inputSearch (keydown.enter)="getEventSearchResult($event)" class="search form-control"
+                       placeholder="Cautare...">
+              </div>
+              <div class="btn-group col-auto" role="group" aria-label="filter-refresh-search">
+                <button type="button" class="btn btn-primary" data-toggle="modal"
+                        data-target="#modalVideoCard">
+                  <i class="fa fa-plus" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="btn btn-info" (click)="clearSearch()">
+                  <i class="fa fa-refresh" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="btn btn-warning"
+                        data-toggle="modal" data-target="#modal_aside_right">
+                  <i class="fa fa-filter" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </nav>
+
+          <table class="table table-sm table-striped table-hover shadow-sm motherboard-table-custom">
+            <thead class="thead-dark">
+            <tr>
+              <th scope="col">Cod Produs</th>
+              <th scope="col">Serial Number</th>
+              <th scope="col">Nume Produs</th>
+              <th scope="col">Producator</th>
+              <th scope="col">Model</th>
+
+              <th scope="col">Memorie</th>
+              <th scope="col">Profil</th>
+              <th scope="col">VGA</th>
+              <th scope="col">HDMI</th>
+              <th scope="col">DVI</th>
+              <th scope="col">DisplayPort</th>
+              <th scope="col">Nr.porturi VGA</th>
+              <th scope="col">Nr.porturi HDMI</th>
+              <th scope="col">Nr.porturi DVI</th>
+              <th scope="col">Nr.porturi DisplayPort</th>
+              <th scope="col">Tip memorie</th>
+              <th scope="col">Nr. de biti</th>
+              <th scope="col">Serie</th>
+
+              <th scope="col">Pret intrare (Lei)</th>
+              <th scope="col">Informatii produs</th>
+              <th scope="col">Stare</th>
+              <th scope="col">Actiune</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let videoCard of videoCardList | paginate: {
+        id: 'video_card_pagination',
+        itemsPerPage: pageSizeVideoCard,
+        currentPage: pageVideoCard,
+        totalItems: count
+  }">
+              <td>{{videoCard.productCode}}</td>
+              <td>{{videoCard.serialNumber}}</td>
+              <td>{{videoCard.productName}}</td>
+              <td>{{videoCard.manufacturer}}</td>
+
+              <td>{{videoCard.model}}</td>
+              <td>{{videoCard.memory}}</td>
+              <td>{{videoCard.profile}}</td>
+              <td>{{videoCard.vga == true ? 'Da' : 'Nu'}}</td>
+              <td>{{videoCard.numberOfPortsVGA}}</td>
+              <td>{{videoCard.hdmi == true ? 'Da' : 'Nu'}}</td>
+              <td>{{videoCard.numberOfPortsHDMI}}</td>
+              <td>{{videoCard.dvi == true ? 'Da' : 'Nu'}}</td>
+              <td>{{videoCard.numberOfPortsDVI}}</td>
+              <td>{{videoCard.displayPort == true ? 'Da' : 'Nu'}}</td>
+              <td>{{videoCard.numberOfPortsDisplayPort}}</td>
+              <td>{{videoCard.typeOfMemory}}</td>
+              <td>{{videoCard.numberOfBits}}</td>
+              <td>{{videoCard.series}}</td>
+
+              <td>{{videoCard.priceIn}}</td>
+              <td>{{videoCard.productInformation}}</td>
+              <td>{{videoCard.state}}</td>
+              <td>
+                <a class="mr-2" type="button" (click)="patchForm(videoCard)" data-toggle="modal"
+                   data-target="#modalVideoCard"><i
+                  class="fa fa-edit fa-lg" style="color: #d19b3d"></i></a>
+                <a type="button" (click)="deleteVideoCard(videoCard)"><i class="fa fa-trash fa-lg"
+                                                                     style="color: red"></i></a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+
+          <!--    CARD TABLE FOR RESOLUTIONS UNDER 1024-->
+          <div class="row row-cols-1 row-cols-lg-2" id="card-component">
+            <div *ngFor="let videoCard of videoCardList | paginate: {
+    id: 'video_card_pagination',
+    itemsPerPage: pageSizeVideoCard,
+    currentPage: pageVideoCard,
+    totalItems: count
+    }" class="col mb-4">
+              <div class="card border-secondary mb-3 h-100">
+                <div class="card-header text-center"><span class="h6">Cod Produs: </span>{{videoCard.productCode}}</div>
+                <div class="card-body text-card-custom">
+                  <span class="title-span-custom">Serial Number: </span> <span class="pull-right">{{videoCard.serialNumber}}</span>
+                  <br><span class="title-span-custom">Nume Produs: </span> <span class="pull-right">{{videoCard.productName}}</span>
+                  <br><span class="title-span-custom">Producator: </span> <span class="pull-right">{{videoCard.manufacturer}}</span>
+                  <br><span class="title-span-custom">Model: </span> <span class="pull-right">{{videoCard.model}}</span>
+
+                  <br><span class="title-span-custom">Memorie: </span> <span class="pull-right">{{videoCard.memory}}</span>
+                  <br><span class="title-span-custom">Profil: </span> <span class="pull-right">{{videoCard.profile}}</span>
+                  <br><span class="title-span-custom">VGA: </span> <span class="pull-right">{{videoCard.vga}}</span>
+                  <br><span class="title-span-custom">Nr.porturi VGA: </span> <span class="pull-right">{{videoCard.numberOfPortsVGA}}</span>
+                  <br><span class="title-span-custom">HDMI: </span> <span class="pull-right">{{videoCard.hdmi}}</span>
+                  <br><span class="title-span-custom">Nr.porturi HDMI: </span> <span class="pull-right">{{videoCard.numberOfPortsHDMI}}</span>
+                  <br><span class="title-span-custom">DVI: </span> <span class="pull-right">{{videoCard.dvi}}</span>
+                  <br><span class="title-span-custom">Nr.porturi DVI: </span> <span class="pull-right">{{videoCard.numberOfPortsDVI}}</span>
+                  <br><span class="title-span-custom">DisplayPort: </span> <span class="pull-right">{{videoCard.displayPort}}</span>
+                  <br><span class="title-span-custom">Nr.porturi DisplayPort: </span> <span class="pull-right">{{videoCard.numberOfPortsDisplayPort}}</span>
+                  <br><span class="title-span-custom">Tip memorie: </span> <span class="pull-right">{{videoCard.typeOfMemory}}</span>
+                  <br><span class="title-span-custom">Nr. de biti: </span> <span class="pull-right">{{videoCard.numberOfBits}}</span>
+                  <br><span class="title-span-custom">Serie: </span> <span class="pull-right">{{videoCard.series}}</span>
+
+                  <br><span class="title-span-custom">Pret intrare: </span> <span class="pull-right">{{videoCard.priceIn}}</span>
+                  <br><span class="title-span-custom">Informatii produs: </span> <span class="pull-right">{{videoCard.productInformation}}</span>
+                  <br><span class="title-span-custom">Stare: </span> <span class="pull-right">{{videoCard.state}}</span>
+                  <br><span class="title-span-custom">Actiune: </span>
+                  <span class="pull-right">
+            <a class="mr-2" type="button" (click)="patchForm(videoCard)" data-toggle="modal"
+               data-target="#modalVideoCard"><i
+              class="fa fa-edit fa-lg" style="color: #d19b3d"></i></a>
+            <a type="button" (click)="deleteVideoCard(videoCard)"><i class="fa fa-trash fa-lg"
+                                                                 style="color: red"></i></a>
+            </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--    END CARD TABLE FOR RESOLUTIONS UNDER 1024-->
+
+          <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-end">
+              <pagination-controls id="video_card_pagination" previousLabel="Inapoi" nextLabel="Urmatorul"
+                                   responsive="true" directionLinks="true"
+                                   (pageChange)="handlePageChangeSearchAndFilter($event)"
+                                   (pageBoundsCorrection)="handlePageChangeSearchAndFilter($event)">
+              </pagination-controls>
+            </ul>
+          </nav>
+
+        </div>
+        <!-- End Tab Table Video Card -->
+
+        <!-- Table Video Card by Product Code -->
+        <div class="tab-pane fade mx-3" id="video-card-stock" role="tabpanel" aria-labelledby="video-card-stock-tab">
+
+          <!-- Table Stock Video Card -->
+          <div *ngIf="isTableProductCodeSelected">
+            <nav aria-label="Page navigation stock table">
+              <div class="row py-3">
+                <div class="col-auto mr-auto">
+                  <div class="form-control-custom pull left">
+                    <span class="pagination-info">Vezi </span>
+                    <select class="btn-secondary" id="selectPageSizeForStock" (change)="handlePageSizeChangeProductCodesWithStock($event)">
+                      <option>10</option>
+                      <option>50</option>
+                      <option>100</option>
+                    </select>
+                    <span class="pagination-info"> coduri de produs</span>
+                  </div>
+                </div>
+                <div class="col-auto my-auto-2">
+                  <input #inputSearchStock (keydown.enter)="getSearchResultProductCodesWithStock($event)"
+                         class="search form-control"
+                         placeholder="Cautare...">
+                </div>
+                <div class="col-auto">
+                  <button class="btn btn-info" (click)="clearSearchProductCodesWithStock()">
+                    <i class="fa fa-refresh" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+            </nav>
+            <table class="table table-striped table-hover shadow-sm table-power-source">
+              <thead class="thead-dark">
+              <tr>
+                <th>Cod Produs</th>
+                <th>Nume produs</th>
+                <th>Stoc</th>
+                <th>Pret mediu</th>
+                <th>Placi video</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let productCode of productCodesWithStock | paginate: {
+id: 'product_codes_with_stock',
+itemsPerPage: pageSizeProductCodeWithStock,
+currentPage: pageProductCodeWithStock,
+totalItems: countProductCodeWithStock
+}">
+                <td>{{productCode.productCode}}</td>
+                <td>{{productCode.productName}}</td>
+                <td>{{productCode.stock}}</td>
+                <td>{{productCode.averagePrice | number: '1.2-2'}}</td>
+                <td>
+                  <button (click)="getVideoCardByProductCode(productCode.productCode)" type="button" class="btn btn-info">
+                    Vezi <i class="fa fa-external-link" aria-hidden="true"></i>
+                  </button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+
+            <!--    CARD TABLE FOR RESOLUTIONS UNDER 1024-->
+            <div class="row row-cols-1 row-cols-lg-2" id="card-component-by-stock">
+              <div *ngFor="let productCode of productCodesWithStock | paginate: {
+                        id: 'product_codes_with_stock',
+                        itemsPerPage: pageSizeProductCodeWithStock,
+                        currentPage: pageProductCodeWithStock,
+                        totalItems: countProductCodeWithStock
+                        }" class="col mb-4">
+                <div class="card border-secondary mb-3 h-100" >
+                  <div class="card-header text-center"><span class="h6">Cod Produs: </span>{{productCode.productCode}}</div>
+                  <div class="card-body text-card-custom">
+                    <br><span class="title-span-custom">Nume Produs: </span> <span class="pull-right">{{productCode.productName}}</span>
+                    <br><span class="title-span-custom">Stock: </span> <span class="pull-right">{{productCode.stock}}</span>
+                    <br><span class="title-span-custom">Pret mediu: </span> <span class="pull-right">{{productCode.averagePrice | number: '1.2-2'}}</span>
+                    <br><span class="title-span-custom">Placi video: </span>
+                    <button (click)="getVideoCardByProductCode(productCode.productCode)" type="button"
+                            class="btn btn-info pull-right">
+                      Vezi <i class="fa fa-external-link" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--    END CARD TABLE FOR RESOLUTIONS UNDER 1024-->
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-end">
+                <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true" id="product_codes_with_stock"
+                                     (pageChange)="handlePageChangeProductCodesWithStock($event)"
+                                     (pageBoundsCorrection)="handlePageChangeProductCodesWithStock($event)"></pagination-controls>
+              </ul>
+            </nav>
+          </div>
+          <!-- End Table Stock Video Card -->
+
+          <!-- Table Video Card by Product Code -->
+          <div *ngIf="!isTableProductCodeSelected">
+            <nav aria-label="Page navigation example">
+              <div class="row py-3">
+                <div class="col-auto mr-auto">
+                  <div class="form-control-custom pull-left">
+                    <span class="pagination-info">Vezi </span>
+                    <select class="btn-secondary" id="selectPageSizeByProductCode"
+                            (change)="handlePageSizeChangeVideoCardByProductCode($event)">
+                      <option>10</option>
+                      <option>50</option>
+                      <option>100</option>
+                    </select>
+                    <span class="pagination-info"> produse</span>
+                  </div>
+                </div>
+                <div class="btn-group col-auto" role="group" aria-label="add-product-back-to-list">
+                  <button (click)="goBack()" type="button" class="btn btn-warning" >Inapoi la lista</button>
+                  <button type="button" class="btn btn-primary" data-toggle="modal"
+                          data-target="#modalVideoCard">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+            </nav>
+            <table class="table table-sm table-striped table-hover shadow-sm motherboard-table-custom">
+              <thead class="thead-dark">
+              <tr>
+                <th scope="col">Cod Produs</th>
+                <th scope="col">Serial Number</th>
+                <th scope="col">Nume Produs</th>
+                <th scope="col">Producator</th>
+                <th scope="col">Model</th>
+
+                <th scope="col">Memorie</th>
+                <th scope="col">Profil</th>
+                <th scope="col">VGA</th>
+                <th scope="col">HDMI</th>
+                <th scope="col">DVI</th>
+                <th scope="col">DisplayPort</th>
+                <th scope="col">Nr.porturi VGA</th>
+                <th scope="col">Nr.porturi HDMI</th>
+                <th scope="col">Nr.porturi DVI</th>
+                <th scope="col">Nr.porturi DisplayPort</th>
+                <th scope="col">Tip memorie</th>
+                <th scope="col">Nr. de biti</th>
+                <th scope="col">Serie</th>
+
+                <th scope="col">Pret intrare (Lei)</th>
+                <th scope="col">Informatii produs</th>
+                <th scope="col">Stare</th>
+                <th scope="col">Actiune</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let videoCard of videoCardListByProductCode | paginate: {
+        id: 'video_card_by_product_code',
+itemsPerPage: pageSizeVideoCardByProductCode,
+currentPage: pageVideoCardByProductCode,
+totalItems: countVideoCardByProductCode
+}">
+                <td>{{videoCard.productCode}}</td>
+                <td>{{videoCard.serialNumber}}</td>
+                <td>{{videoCard.productName}}</td>
+                <td>{{videoCard.manufacturer}}</td>
+
+                <td>{{videoCard.model}}</td>
+                <td>{{videoCard.memory}}</td>
+                <td>{{videoCard.profile}}</td>
+                <td>{{videoCard.vga == true ? 'Da' : 'Nu'}}</td>
+                <td>{{videoCard.numberOfPortsVGA}}</td>
+                <td>{{videoCard.hdmi == true ? 'Da' : 'Nu'}}</td>
+                <td>{{videoCard.numberOfPortsHDMI}}</td>
+                <td>{{videoCard.dvi == true ? 'Da' : 'Nu'}}</td>
+                <td>{{videoCard.numberOfPortsDVI}}</td>
+                <td>{{videoCard.displayPort == true ? 'Da' : 'Nu'}}</td>
+                <td>{{videoCard.numberOfPortsDisplayPort}}</td>
+                <td>{{videoCard.typeOfMemory}}</td>
+                <td>{{videoCard.numberOfBits}}</td>
+                <td>{{videoCard.series}}</td>
+
+                <td>{{videoCard.priceIn}}</td>
+                <td>{{videoCard.productInformation}}</td>
+                <td>{{videoCard.state}}</td>
+                <td>
+                  <a class="mr-2" type="button" (click)="patchForm(videoCard)" data-toggle="modal" data-target="#modalVideoCard"><i
+                    class="fa fa-edit fa-lg" style="color: #d19b3d"></i></a>
+                  <a type="button" (click)="deleteVideoCard(videoCard)"><i class="fa fa-trash fa-lg"
+                                                                       style="color: red"></i></a>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+
+            <!--    CARD TABLE FOR RESOLUTIONS UNDER 1024-->
+            <div class="row row-cols-1 row-cols-lg-2" id="card-component-by-product-code">
+              <div *ngFor="let videoCard of videoCardListByProductCode | paginate: {
+                        id: 'video_card_by_product_code',
+                        itemsPerPage: pageSizeVideoCardByProductCode,
+                        currentPage: pageVideoCardByProductCode,
+                        totalItems: countVideoCardByProductCode
+                        }" class="col mb-4">
+                <div class="card border-secondary mb-3 h-100">
+                  <div class="card-header text-center"><span class="h6">Cod Produs: </span>{{videoCard.productCode}}</div>
+                  <div class="card-body text-card-custom">
+                    <span class="title-span-custom">Serial Number: </span> <span class="pull-right">{{videoCard.serialNumber}}</span>
+                    <br><span class="title-span-custom">Nume Produs: </span> <span class="pull-right">{{videoCard.productName}}</span>
+                    <br><span class="title-span-custom">Producator: </span> <span class="pull-right">{{videoCard.manufacturer}}</span>
+                    <br><span class="title-span-custom">Model: </span> <span class="pull-right">{{videoCard.model}}</span>
+
+                    <br><span class="title-span-custom">Memorie: </span> <span class="pull-right">{{videoCard.memory}}</span>
+                    <br><span class="title-span-custom">Profil: </span> <span class="pull-right">{{videoCard.profile}}</span>
+                    <br><span class="title-span-custom">VGA: </span> <span class="pull-right">{{videoCard.vga}}</span>
+                    <br><span class="title-span-custom">Nr.porturi VGA: </span> <span class="pull-right">{{videoCard.numberOfPortsVGA}}</span>
+                    <br><span class="title-span-custom">HDMI: </span> <span class="pull-right">{{videoCard.hdmi}}</span>
+                    <br><span class="title-span-custom">Nr.porturi HDMI: </span> <span class="pull-right">{{videoCard.numberOfPortsHDMI}}</span>
+                    <br><span class="title-span-custom">DVI: </span> <span class="pull-right">{{videoCard.dvi}}</span>
+                    <br><span class="title-span-custom">Nr.porturi DVI: </span> <span class="pull-right">{{videoCard.numberOfPortsDVI}}</span>
+                    <br><span class="title-span-custom">DisplayPort: </span> <span class="pull-right">{{videoCard.displayPort}}</span>
+                    <br><span class="title-span-custom">Nr.porturi DisplayPort: </span> <span class="pull-right">{{videoCard.numberOfPortsDisplayPort}}</span>
+                    <br><span class="title-span-custom">Tip memorie: </span> <span class="pull-right">{{videoCard.typeOfMemory}}</span>
+                    <br><span class="title-span-custom">Nr. de biti: </span> <span class="pull-right">{{videoCard.numberOfBits}}</span>
+                    <br><span class="title-span-custom">Serie: </span> <span class="pull-right">{{videoCard.series}}</span>
+
+                    <br><span class="title-span-custom">Pret intrare: </span> <span class="pull-right">{{videoCard.priceIn}}</span>
+                    <br><span class="title-span-custom">Informatii produs: </span> <span class="pull-right">{{videoCard.productInformation}}</span>
+                    <br><span class="title-span-custom">Stare: </span> <span class="pull-right">{{videoCard.state}}</span>
+                    <br><span class="title-span-custom">Actiune: </span>
+                    <span class="pull-right">
+            <a class="mr-2" type="button" (click)="patchForm(videoCard)" data-toggle="modal"
+               data-target="#modalVideoCard"><i
+              class="fa fa-edit fa-lg" style="color: #d19b3d"></i></a>
+            <a type="button" (click)="deleteVideoCard(videoCard)"><i class="fa fa-trash fa-lg"
+                                                                 style="color: red"></i></a>
+            </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--    END CARD TABLE FOR RESOLUTIONS UNDER 1024-->
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-end">
+                <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true" id="video_card_by_product_code"
+                                     (pageChange)="handlePageChangeVideoCardByProductCode($event)"
+                                     (pageBoundsCorrection)="handlePageChangeVideoCardByProductCode($event)"></pagination-controls>
+              </ul>
+            </nav>
+          </div>
+          <!-- End Table All Video Card by Product Code -->
+        </div>
+        <!-- End Table Video Card by Product Code -->
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal Add/Edit Video Card -->
+<div class="modal fade" id="modalVideoCard" data-backdrop="static" data-keyboard="false"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 *ngIf="isAddMode" class="modal-title" id="staticBackdropLabel"><img class="fav-icon"
+                                                                                src="assets/icons/video-card.ico">
+          Adauga placa video</h5>
+        <h5 *ngIf="!isAddMode" class="modal-title" id="editStaticBackdropLabel"><img class="fav-icon"
+                                                                                     src="assets/icons/video-card.ico">
+          Editare
+          placa video</h5>
+        <button (click)="closeModal()" type="button" class="close" data-dismiss="modal"
+                aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="validatingForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="form-group col">
+              <label for="productCode"><i class="fa fa-barcode fa-sm"></i> Cod produs</label>
+              <input type="text" class="form-control" id="productCode" [value]="selectedProductCode"
+                     formControlName="productCode">
+            </div>
+            <div class="form-group col-lg-4">
+              <label for="productName"><i class="fa fa-product-hunt fa-sm"></i> Nume produs</label>
+              <ng-select id="productName" (ngModelChange)="setGeneratedProductCode($event)"
+                         formControlName="productName">
+                <ng-option *ngFor="let generatedProductCode of productCodesList"
+                           [value]="generatedProductCode.productName">
+                  {{generatedProductCode.productName}}
+                </ng-option>
+              </ng-select>
+            </div>
+            <div class="form-group col">
+              <label for="manufacturer"><i class="fa fa-industry fa-sm"></i> Producator</label>
+              <input type="text" class="form-control" id="manufacturer" formControlName="manufacturer">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col">
+              <label for="serialNumber"><i class="fa fa-barcode fa-sm"></i> Serial number</label>
+              <input type="text" class="form-control" id="serialNumber" formControlName="serialNumber">
+              <div *ngIf="isSerialNumberPresent" class="form-group alert alert-warning">
+                <span>{{errorMessage}}</span>
+              </div>
+            </div>
+            <div class="form-group col-lg-4">
+              <label for="model"><img class="fav-icon-small" src="assets/icons/video-card.ico"> Model</label>
+              <input type="text" class="form-control" id="model" formControlName="model">
+            </div>
+            <div class="form-group col">
+              <label for="profile"><img class="fav-icon-small" src="assets/icons/video_card_profile.ico"> Profil</label>
+              <input type="text" class="form-control" id="profile" formControlName="profile">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col">
+              <label for="priceIn"><i class="fa fa-money fa-sm"></i> Pret intrare (Lei)</label>
+              <input type="number" class="form-control" id="priceIn" formControlName="priceIn" min="0">
+            </div>
+            <div class="form-group col-lg-4">
+              <label for="state"><img class="fav-icon-small" src="assets/icons/state.ico"> Stare</label>
+              <select class="form-control" id="state" formControlName="state">
+                <option disabled value="" selected>Selecteaza stare...</option>
+                <option *ngFor="let state of stateList">{{state}}</option>
+              </select>
+            </div>
+            <div class="form-group col">
+              <label for="productInformation"><i class="fa fa-info-circle fa-sm"></i> Informatii produs</label>
+              <input type="text" class="form-control" id="productInformation" formControlName="productInformation">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col">
+              <label for="vga"><img class="fav-icon-small" src="assets/icons/vga.ico"> VGA</label>
+              <select class="form-control" id="vga" formControlName="vga" (change)="getSelectedPort($event)">
+                <option value="true">Da</option>
+                <option value="false">Nu</option>
+              </select>
+            </div>
+            <div class="form-group col-lg-4">
+              <label for="numberOfPortsVGA"><img class="fav-icon-number-of" src="assets/icons/number_of.ico"> Nr. porturi VGA</label>
+              <input type="number" class="form-control" id="numberOfPortsVGA" formControlName="numberOfPortsVGA" min="0">
+            </div>
+            <div class="form-group col">
+              <label for="hdmi"><img class="fav-icon-small" src="assets/icons/hdmi.ico"> HDMI</label>
+              <select class="form-control" id="hdmi" formControlName="hdmi" (change)="getSelectedPort($event)">
+                <option value="true">Da</option>
+                <option value="false">Nu</option>
+              </select>
+            </div>
+            <div class="form-group col">
+              <label for="numberOfPortsHDMI"><img class="fav-icon-number-of" src="assets/icons/number_of.ico"> Nr. porturi HDMI</label>
+              <input type="number" class="form-control" id="numberOfPortsHDMI" formControlName="numberOfPortsHDMI" min="0">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col">
+              <label for="dvi"><img class="fav-icon-small" src="assets/icons/dvi.ico"> DVI</label>
+              <select class="form-control" id="dvi" formControlName="dvi" (change)="getSelectedPort($event)">
+                <option value="true">Da</option>
+                <option value="false">Nu</option>
+              </select>
+            </div>
+            <div class="form-group col-lg-4">
+              <label for="numberOfPortsDVI"><img class="fav-icon-number-of" src="assets/icons/number_of.ico"> Nr. porturi DVI</label>
+              <input type="number" class="form-control" id="numberOfPortsDVI" formControlName="numberOfPortsDVI" min="0">
+            </div>
+            <div class="form-group col">
+              <label for="displayPort"><img class="fav-icon-small" src="assets/icons/displayport.ico"> DisplayPort</label>
+              <select class="form-control" id="displayPort" formControlName="displayPort" (change)="getSelectedPort($event)">
+                <option value="true">Da</option>
+                <option value="false">Nu</option>
+              </select>
+            </div>
+            <div class="form-group col">
+              <label for="numberOfPortsDisplayPort"><img class="fav-icon-number-of" src="assets/icons/number_of.ico"> Nr. porturi DP</label>
+              <input type="number" class="form-control" id="numberOfPortsDisplayPort" formControlName="numberOfPortsDisplayPort" min="0">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col">
+              <label for="memory"><img class="fav-icon-small" src="assets/icons/video_memory.ico"> Memorie</label>
+              <input type="number" class="form-control" id="memory" formControlName="memory" min="0">
+            </div>
+            <div class="form-group col-lg-4">
+              <label for="typeOfMemory"><i class="fas fa-question fa-sm"></i> Tip memorie</label>
+              <input type="text" class="form-control" id="typeOfMemory" formControlName="typeOfMemory">
+            </div>
+            <div class="form-group col">
+              <label for="numberOfBits"><img class="fav-icon-small" src="assets/icons/bits.ico"> Nr. de biti</label>
+              <input type="number" class="form-control" id="numberOfBits" formControlName="numberOfBits" min="0">
+            </div>
+            <div class="form-group col">
+              <label for="series"><img class="fav-icon-small" src="assets/icons/series.ico"> Serie</label>
+              <input type="text" class="form-control" id="series" formControlName="series">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button (click)="closeModal()" type="button" class="btn btn-danger" data-dismiss="modal">
+              Inchide
+            </button>
+            <button id="addVideoCard-btn" *ngIf="isAddMode" type="submit" class="btn btn-primary"
+                    data-target="#modalVideoCard"
+                    [disabled]="validatingForm.invalid">Adauga
+            </button>
+            <button id="editVideoCard-btn" *ngIf="!isAddMode" type="submit" class="btn btn-success"
+                    data-target="#modalVideoCard"
+                    [disabled]="validatingForm.invalid">Salveaza modificarile
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal End Add/Edit Video Card -->
+
+<!-- Modal Filter Right -->
+<div id="modal_aside_right" class="modal fixed-left fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-aside" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Filtreaza placi video</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="accordion">
+
+          <div class="card">
+            <div class="card-header" id="headingManufacturer">
+              <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseManufacturer"
+                        aria-expanded="false"
+                        aria-controls="collapseManufacturer">Producator<span class="arrow"></span>
+                </button>
+              </h5>
+            </div>
+            <div id="collapseManufacturer" class="collapse" aria-labelledby="headingManufacturer"
+                 data-parent="#accordion">
+              <div class="card-body">
+                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                     *ngFor="let manufacturer of manufacturerList">
+                  <input class="form-check-input" type="checkbox" value="{{manufacturer}}" id="{{manufacturer}}"
+                         name="manufacturer">
+                  <label class="form-check-label" for="{{manufacturer}}">
+                    {{manufacturer}}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="headingModel">
+              <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseModel"
+                        aria-expanded="false"
+                        aria-controls="collapseModel">Model<span class="arrow"></span>
+                </button>
+              </h5>
+            </div>
+            <div id="collapseModel" class="collapse" aria-labelledby="headingModel"
+                 data-parent="#accordion">
+              <div class="card-body">
+                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                     *ngFor="let model of modelList">
+                  <input class="form-check-input" type="checkbox" value="{{model}}" id="{{model}}"
+                         name="model">
+                  <label class="form-check-label" for="{{model}}">
+                    {{model}}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="headingMemory">
+              <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseMemory"
+                        aria-expanded="false"
+                        aria-controls="collapseMemory">
+                  Memorie<span class="arrow"></span>
+                </button>
+              </h5>
+            </div>
+            <div id="collapseMemory" class="collapse" aria-labelledby="headingMemory"
+                 data-parent="#accordion">
+              <div class="card-body">
+                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                     *ngFor="let memory of memoryList">
+                  <input class="form-check-input" type="checkbox" value="{{memory}}" id="{{memory}}"
+                         name="memory">
+                  <label class="form-check-label" for="{{memory}}">
+                    {{memory}}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="headingProfile">
+              <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseProfile"
+                        aria-expanded="false"
+                        aria-controls="collapseProfile">Profil<span class="arrow"></span>
+                </button>
+              </h5>
+            </div>
+            <div id="collapseProfile" class="collapse" aria-labelledby="headingProfile"
+                 data-parent="#accordion">
+              <div class="card-body">
+                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                     *ngFor="let profile of profileList">
+                  <input class="form-check-input" type="checkbox" value="{{profile}}" id="{{profile}}"
+                         name="profile">
+                  <label class="form-check-label" for="{{profile}}">
+                    {{profile}}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="headingTypeOfMemory">
+              <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTypeOfMemory"
+                        aria-expanded="false"
+                        aria-controls="collapseTypeOfMemory">Tip memorie<span class="arrow"></span>
+                </button>
+              </h5>
+            </div>
+            <div id="collapseTypeOfMemory" class="collapse" aria-labelledby="headingTypeOfMemory"
+                 data-parent="#accordion">
+              <div class="card-body">
+                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                     *ngFor="let typeOfMemory of typeOfMemoryList">
+                  <input class="form-check-input" type="checkbox" value="{{typeOfMemory}}" id="{{typeOfMemory}}"
+                         name="typeOfMemory">
+                  <label class="form-check-label" for="{{typeOfMemory}}">
+                    {{typeOfMemory}}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="headingNumberOfBits">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseNumberOfBits"
+                        aria-expanded="false" aria-controls="collapseNumberOfBits">Nr. bits<span class="arrow"></span>
+                </button>
+              </h5>
+            </div>
+            <div id="collapseNumberOfBits" class="collapse" aria-labelledby="headingNumberOfBits" data-parent="#accordion">
+              <div class="card-body">
+                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                     *ngFor="let numberOfBits of numberOfBitsList">
+                  <input class="form-check-input" type="checkbox" value="{{numberOfBits}}" id="{{numberOfBits}}"
+                         name="numberOfBits">
+                  <label class="form-check-label" for="{{numberOfBits}}">
+                    {{numberOfBits}}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="headingSeries">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSeries"
+                        aria-expanded="false" aria-controls="collapseSeries">Serie<span class="arrow"></span>
+                </button>
+              </h5>
+            </div>
+            <div id="collapseSeries" class="collapse" aria-labelledby="headingSeries" data-parent="#accordion">
+              <div class="card-body">
+                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                     *ngFor="let series of seriesList">
+                  <input class="form-check-input" type="checkbox" value="{{series}}" id="{{series}}"
+                         name="series">
+                  <label class="form-check-label" for="{{series}}">
+                    {{series}}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="headingState">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseState"
+                        aria-expanded="false" aria-controls="collapseState">Stare<span class="arrow"></span>
+                </button>
+              </h5>
+            </div>
+            <div id="collapseState" class="collapse" aria-labelledby="headingState" data-parent="#accordion">
+              <div class="card-body">
+                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                     *ngFor="let state of stateListFilter">
+                  <input class="form-check-input" type="checkbox" value="{{state}}" id="{{state}}"
+                         name="state">
+                  <label class="form-check-label" for="{{state}}">
+                    {{state}}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button (click)="resetFilters()" type="button" class="btn btn-primary">Reseteaza filtre</button>
+      </div>
+    </div>
+  </div> <!-- modal-bialog .// -->
+</div>
+<!-- End Modal Filter Right -->

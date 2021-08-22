@@ -1,0 +1,225 @@
+//***********************Side Nav Menu *************************//
+.nav-side-menu {
+  overflow: auto;
+  font-family: verdana;
+  font-size: 12px;
+  font-weight: 200;
+  background-color: #2e353d;
+  position: fixed;
+  top: 0px;
+  width: 13vw;
+  height: 100%;
+  color: #e1ffff;
+  .brand {
+    background-color: #2e353d;
+    line-height: 50px;
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    height: 50px;
+    img {
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: 5px;
+    }
+  }
+  .toggle-btn {
+    display: none;
+  }
+  li {
+    padding-left: 0px;
+    border-left: 3px solid #2e353d;
+    border-bottom: 1px solid #23282e;
+    a {
+      text-decoration: none;
+      color: #e1ffff;
+      i {
+        padding-left: 10px;
+        width: 20px;
+        padding-right: 20px;
+      }
+    }
+  }
+  li:hover {
+    border-left: 3px solid #d19b3d;
+    background-color: #4f5b69;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+  }
+  ul, li {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    line-height: 35px;
+    cursor: pointer;
+    :not(collapsed) .arrow:before {
+      font-family: FontAwesome;
+      content: "\f078";
+      display: inline-block;
+      padding-left: 10px;
+      padding-right: 10px;
+      vertical-align: middle;
+      float: right;
+    }
+    .active {
+      border-left: 3px solid #d19b3d;
+      background-color: #4f5b69;
+    }
+    .sub-menu {
+      li {
+        background-color: #181c20;
+        border: none;
+        line-height: 28px;
+        border-bottom: 1px solid #23282e;
+        margin-left: 0px;
+      }
+      li:hover {
+        background-color: #020203;
+      }
+      li:before {
+        font-family: FontAwesome;
+        content: "\f105";
+        display: inline-block;
+        padding-left: 10px;
+        padding-right: 10px;
+        vertical-align: middle;
+      }
+      .group-product-code {
+        li {
+          padding-left: 25px;
+        }
+      }
+    }
+  }
+}
+//******************** Responsive Side Nav Menu ****************//
+@media (max-width: 1150px) {
+  .nav-side-menu {
+    position: relative;
+    width: 100%;
+    .brand {
+      display: none;
+      text-align: left !important;
+      font-size: 22px;
+      padding-left: 20px;
+      line-height: 50px !important;
+    }
+  }
+  .col-sm-2 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding-right: 0;
+  }
+}
+@media (min-width: 1151px) {
+  .nav-side-menu .menu-list .menu-content {
+    display: block;
+  }
+}
+//***********************End Side Nav Menu********************//
+//***********************Nav Bar Menu********************//
+.fa-2x {
+  font-size: 2em;
+}
+.fa {
+  position: relative;
+  display: table-cell;
+  width: 60px;
+  height: 36px;
+  text-align: center;
+  vertical-align: middle;
+  font-size:20px;
+}
+.navbar {
+  height: 55px;
+  background: rgba(0, 0, 0, 0.03);
+  padding-left: 16px;
+  padding-right: 16px;
+  border-bottom: 1px solid #d6d6d6;
+  box-shadow: 0 0 4px rgba(0, 0, 0, .1);
+  button {
+    border: none;
+    background-color: inherit;
+  }
+  .dropdown {
+    padding-left: 10px;
+    a {
+      font-family: "Titillium Web", sans-serif;
+      color: #555;
+      font-weight: 600;
+    }
+  }
+  .dropdown-menu {
+    border-radius: 1px;
+    border-color: #e5e5e5;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+    a:hover {
+      cursor: pointer;
+    }
+    li {
+      margin-left: -20px;
+      a {
+        color: #777;
+        padding: 8px 20px;
+        line-height: normal;
+        display: flex;
+        flex: 0 0 auto;
+      }
+      a:hover, a:active {
+        color: #333;
+      }
+    }
+    .material-icons {
+      font-size: 21px;
+      line-height: 16px;
+      vertical-align: middle;
+      margin-top: -2px;
+    }
+  }
+  a {
+    float: left;
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  a:hover {
+    background-color: transparent;
+    cursor: pointer;
+  }
+  a:active {
+    color: white;
+  }
+  .navbar-brand{
+    float: left;
+    padding: 5px;
+  }
+  .nav-item {
+    i {
+      font-weight: 600;
+      color: #555;
+    }
+  }
+  .nav {
+    img {
+      border-radius: 40%;
+      width: 36px;
+      height: 36px;
+      float: left;
+      margin: 0 10px 0 0;
+    }
+  }
+}
+//***********************End Nav Bar Menu********************//
+//***********************Grid Layout********************//
+.row {
+  margin-right: 0;
+}
+body {
+  background: #F7F7F7 !important;
+  margin: 0;
+  padding: 0;
+}
+//***********************End Grid Layout********************//

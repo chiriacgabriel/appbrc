@@ -1,0 +1,111 @@
+<html xmlns="http://www.w3.org/1999/html">
+<body>
+
+<div class="container-fluid px-0">
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu-content">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="d-flex">
+        <ul class="nav nav-pills">
+          <li class="nav-item dropdown">
+            <a aria-expanded="false" data-toggle="dropdown" class="dropdown-toggle user-action"><img
+              src="./assets/images/user-512.png" class="avatar" alt="Avatar">
+              <span
+                style="display: inline-block !important; padding-top: 4px;">{{user.lastName}} {{user.firstName}}<b
+                class="caret"></b></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li style="margin-top: 10px;"><a><i class="fa fa-user-o"></i> Profile</a></li>
+              <li><a><i class="fa fa-sliders"></i> Settings</a></li>
+              <li class="divider"></li>
+              <li><a (click)="logout()"><i class="fa fa-power-off"></i> Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="row g-0">
+    <div class="col-sm-2 col-md-12 col-lg-2">
+      <div class="nav-side-menu">
+        <div class="brand"><img class="d-block my-2 mx-auto" src="./assets/images/logo120x38.png" alt="brandComputers">
+        </div>
+        <div class="menu-list">
+          <ul id="menu-content" class="menu-content collapse out">
+            <li class="active">
+              <a [routerLink]="['/dashboard']">
+                <i class="fa fa-dashboard fa-lg"></i> Panou de control
+              </a>
+            </li>
+            <li data-toggle="collapse" data-target="#components" class="collapsed">
+              <a><i class="fa fa-server fa-lg"></i> Componente PC/Server <span class="arrow"></span></a>
+            </li>
+            <ul class="sub-menu collapse" id="components">
+              <li routerLink="case"><a>Carcase</a></li>
+              <li routerLink="fan-case"><a>Coolere Carcasa</a></li>
+              <li routerLink="cpu-cooler"><a>Coolere CPU</a></li>
+              <li routerLink="memory-ram"><a>Memorii RAM</a></li>
+              <li routerLink="motherboard"><a>Placi de baza</a></li>
+              <li routerLink="sound-card"><a>Placi de sunet</a></li>
+              <li routerLink="video-card"><a>Placi video</a></li>
+              <li routerLink="processor"><a>Procesoare</a></li>
+              <li routerLink="power-source"><a>Surse de alimentare</a></li>
+              <li routerLink="storage"><a>Unitati de stocare</a></li>
+              <li routerLink="optical-unit"><a>Unitati optice</a></li>
+            </ul>
+            <li data-toggle="collapse" data-target="#admin" class="collapsed">
+              <a><i class="fa fa-cogs fa-lg"></i> Administrare <span class="arrow"></span></a>
+            </li>
+            <ul class="sub-menu collapse" id="admin">
+              <li data-toggle="collapse" data-target="#productCode" class="collapsed"> Cod Produs</li>
+              <ul class="sub-menu collapse group-product-code" id="productCode">
+                <li routerLink="generate-product-code-case"> Carcase</li>
+                <li routerLink="generate-product-code-fan-case"><a> Coolere Carcasa</a></li>
+                <li routerLink="generate-product-code-cpu-cooler"><a> Coolere CPU</a></li>
+                <li routerLink="generate-product-code-memory-ram"><a> Memorii RAM</a></li>
+                <li routerLink="generate-product-code-motherboard"><a> Placi de baza</a></li>
+                <li routerLink="generate-product-code-sound-card"><a> Placi de sunet</a></li>
+                <li routerLink="generate-product-code-video-card"><a> Placi video</a></li>
+                <li routerLink="generate-product-code-processor"><a> Procesoare</a></li>
+                <li routerLink="generate-product-code-power-source"><a> Surse de alimentare</a></li>
+                <li routerLink="generate-product-code-storage"><a> Unitati de stocare</a></li>
+                <li routerLink="generate-product-code-optical-unit"><a> Unitati optice</a></li>
+              </ul>
+            </ul>
+            <li data-toggle="collapse" data-target="#new" class="collapsed">
+              <a><i class="fa fa-line-chart fa-lg"></i> Rapoarte <span class="arrow"></span></a>
+            </li>
+            <ul class="sub-menu collapse" id="new">
+              <li>New New 1</li>
+              <li>New New 2</li>
+              <li>New New 3</li>
+            </ul>
+            <li>
+              <a>
+                <i class="fa fa-user fa-lg"></i> Profile
+              </a>
+            </li>
+            <li>
+              <a>
+                <i class="fa fa-users fa-lg"></i> Users
+              </a>
+            </li>
+            <li>
+              <a (click)="logout()">
+                <i class="fa fa-power-off fa-lg" style="color: #d19b3d"></i> Deconecteaza-te
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-10 col-md-10 col-lg-10 mx-auto">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

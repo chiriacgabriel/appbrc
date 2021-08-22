@@ -1,0 +1,10 @@
+@import "./src/app/components/dashboard/child-components/power-source/power-source.component";
+
+#motherboardTab {
+  margin: auto;
+  max-width: calc(100% - 2em);
+}
+
+.motherboard-table-custom {
+  font-size: 12px;
+}
