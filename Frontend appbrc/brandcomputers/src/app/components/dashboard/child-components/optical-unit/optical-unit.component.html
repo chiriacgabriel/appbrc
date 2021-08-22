@@ -1,0 +1,544 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 ">
+        <h1 class="h4"><img class="fav-icon" src="../../../../../assets/icons/optical_unit.ico"> Unitati optice</h1>
+      </div>
+
+      <ul class="nav nav-tabs" id="opticalUnitTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="optical-unit-tab" data-toggle="tab" href="#optical-unit" role="tab"
+             aria-controls="optical-unit" aria-selected="true" (click)="goBack()">Toate produsele</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="optical-unit-stock-tab" data-toggle="tab" href="#optical-unit-stock" role="tab"
+             aria-controls="optical-unit-stock" aria-selected="false">Vezi stocuri</a>
+        </li>
+      </ul>
+
+      <div class="tab-content" id="opticalUnitTabContent">
+
+        <!-- Tab Table Optical Unit -->
+        <div class="tab-pane fade show active mx-3" id="optical-unit" role="tabpanel" aria-labelledby="optical-unit-tab">
+          <nav aria-label="Page navigation example">
+            <div class="row py-3">
+              <div class="col-auto mr-auto">
+                <div class="form-control-custom pull-left">
+                  <span class="pagination-info">Vezi </span>
+                  <select class="btn-secondary" id="selectPageSize"
+                          (change)="handlePageSizeChangeSearchAndFilter($event)">
+                    <option>10</option>
+                    <option>50</option>
+                    <option>100</option>
+                  </select>
+                  <span class="pagination-info"> produse</span>
+                </div>
+              </div>
+              <div class="col-auto">
+                <input #inputSearch (keydown.enter)="getEventSearchResult($event)" class="search form-control"
+                       placeholder="Cautare...">
+              </div>
+              <div class="btn-group col-auto" role="group" aria-label="filter-refresh-search">
+                <button type="button" class="btn btn-primary" data-toggle="modal"
+                        data-target="#modalOpticalUnit">
+                  <i class="fa fa-plus" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="btn btn-info" (click)="clearSearch()">
+                  <i class="fa fa-refresh" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="btn btn-warning"
+                        data-toggle="modal" data-target="#modal_aside_right">
+                  <i class="fa fa-filter" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </nav>
+
+          <table class="table table-sm table-striped table-hover shadow-sm motherboard-table-custom">
+            <thead class="thead-dark">
+            <tr>
+              <th scope="col">Cod Produs</th>
+              <th scope="col">Serial Number</th>
+              <th scope="col">Nume Produs</th>
+              <th scope="col">Producator</th>
+              <th scope="col">Tip</th>
+              <th scope="col">Pret intrare (Lei)</th>
+              <th scope="col">Informatii produs</th>
+              <th scope="col">Stare</th>
+              <th scope="col">Actiune</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let opticalUnit of opticalUnitList | paginate: {
+        id: 'optical_unit_pagination',
+        itemsPerPage: pageSizeOpticalUnit,
+        currentPage: pageOpticalUnit,
+        totalItems: count
+  }">
+              <td>{{opticalUnit.generateProductCodeOpticalUnit.productCode}}</td>
+              <td>{{opticalUnit.serialNumber}}</td>
+              <td>{{opticalUnit.generateProductCodeOpticalUnit.productName}}</td>
+              <td>{{opticalUnit.manufacturer}}</td>
+              <td>{{opticalUnit.type}}</td>
+              <td>{{opticalUnit.priceIn}}</td>
+              <td>{{opticalUnit.productInformation}}</td>
+              <td>{{opticalUnit.state}}</td>
+              <td>
+                <a class="mr-2" type="button" (click)="patchForm(opticalUnit)" data-toggle="modal"
+                   data-target="#modalOpticalUnit"><i
+                  class="fa fa-edit fa-lg" style="color: #d19b3d"></i></a>
+                <a type="button" (click)="deleteOpticalUnit(opticalUnit)"><i class="fa fa-trash fa-lg"
+                                                                         style="color: red"></i></a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+
+          <!--    CARD TABLE FOR RESOLUTIONS UNDER 1024-->
+          <div class="row row-cols-1 row-cols-lg-2" id="card-component">
+            <div *ngFor="let opticalUnit of opticalUnitList | paginate: {
+    id: 'optical_unit_pagination',
+    itemsPerPage: pageSizeOpticalUnit,
+    currentPage: pageOpticalUnit,
+    totalItems: count
+    }" class="col mb-4">
+              <div class="card border-secondary mb-3 h-100">
+                <div class="card-header text-center"><span class="h6">Cod Produs: </span>{{opticalUnit.generateProductCodeOpticalUnit.productCode}}</div>
+                <div class="card-body text-card-custom">
+                  <span class="title-span-custom">Serial Number: </span> <span
+                  class="pull-right">{{opticalUnit.serialNumber}}</span>
+                  <br><span class="title-span-custom">Nume Produs: </span> <span
+                  class="pull-right">{{opticalUnit.generateProductCodeOpticalUnit.productName}}</span>
+                  <br><span class="title-span-custom">Producator: </span> <span
+                  class="pull-right">{{opticalUnit.manufacturer}}</span>
+                  <br><span class="title-span-custom">Tip: </span> <span
+                  class="pull-right">{{opticalUnit.model}}</span>
+                  <br><span class="title-span-custom">Pret intrare: </span> <span
+                  class="pull-right">{{opticalUnit.priceIn}}</span>
+                  <br><span class="title-span-custom">Informatii produs: </span> <span
+                  class="pull-right">{{opticalUnit.productInformation}}</span>
+                  <br><span class="title-span-custom">Stare: </span> <span class="pull-right">{{opticalUnit.state}}</span>
+                  <br><span class="title-span-custom">Actiune: </span>
+                  <span class="pull-right">
+            <a class="mr-2" type="button" (click)="patchForm(opticalUnit)" data-toggle="modal"
+               data-target="#modalOpticalUnit"><i
+              class="fa fa-edit fa-lg" style="color: #d19b3d"></i></a>
+            <a type="button" (click)="deleteOpticalUnit(opticalUnit)"><i class="fa fa-trash fa-lg"
+                                                                     style="color: red"></i></a>
+            </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--    END CARD TABLE FOR RESOLUTIONS UNDER 1024-->
+
+          <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-end">
+              <pagination-controls id="optical_unit_pagination" previousLabel="Inapoi" nextLabel="Urmatorul"
+                                   responsive="true" directionLinks="true"
+                                   (pageChange)="handlePageChangeSearchAndFilter($event)"
+                                   (pageBoundsCorrection)="handlePageChangeSearchAndFilter($event)">
+              </pagination-controls>
+            </ul>
+          </nav>
+
+        </div>
+        <!-- End Tab Table Optical Unit -->
+
+        <!-- Table Optical Unit by Product Code -->
+        <div class="tab-pane fade mx-3" id="optical-unit-stock" role="tabpanel" aria-labelledby="optical-unit-stock-tab">
+
+          <!-- Table Stock Optical Unit -->
+          <div *ngIf="isTableProductCodeSelected">
+            <nav aria-label="Page navigation stock table">
+              <div class="row py-3">
+                <div class="col-auto mr-auto">
+                  <div class="form-control-custom pull left">
+                    <span class="pagination-info">Vezi </span>
+                    <select class="btn-secondary" id="selectPageSizeForStock" (change)="handlePageSizeChangeProductCodesWithStock($event)">
+                      <option>10</option>
+                      <option>50</option>
+                      <option>100</option>
+                    </select>
+                    <span class="pagination-info"> coduri de produs</span>
+                  </div>
+                </div>
+                <div class="col-auto my-auto-2">
+                  <input #inputSearchStock (keydown.enter)="getSearchResultProductCodesWithStock($event)"
+                         class="search form-control"
+                         placeholder="Cautare...">
+                </div>
+                <div class="col-auto">
+                  <button class="btn btn-info" (click)="clearSearchProductCodesWithStock()">
+                    <i class="fa fa-refresh" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+            </nav>
+            <table class="table table-striped table-hover shadow-sm table-power-source">
+              <thead class="thead-dark">
+              <tr>
+                <th>Cod Produs</th>
+                <th>Nume produs</th>
+                <th>Stoc</th>
+                <th>Pret mediu</th>
+                <th>Unitati Optice</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let productCode of productCodesWithStock | paginate: {
+id: 'product_codes_with_stock',
+itemsPerPage: pageSizeProductCodeWithStock,
+currentPage: pageProductCodeWithStock,
+totalItems: countProductCodeWithStock
+}">
+                <td>{{productCode.generateProductCodeOpticalUnit.productCode}}</td>
+                <td>{{productCode.generateProductCodeOpticalUnit.productName}}</td>
+                <td>{{productCode.stock}}</td>
+                <td>{{productCode.averagePrice | number: '1.2-2'}}</td>
+                <td>
+                  <button (click)="getOpticalUnitByProductCode(productCode.generateProductCodeOpticalUnit.productCode)" type="button" class="btn btn-info">
+                    Vezi <i class="fa fa-external-link" aria-hidden="true"></i>
+                  </button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+
+            <!--    CARD TABLE FOR RESOLUTIONS UNDER 1024-->
+            <div class="row row-cols-1 row-cols-lg-2" id="card-component-by-stock">
+              <div *ngFor="let productCode of productCodesWithStock | paginate: {
+                        id: 'product_codes_with_stock',
+                        itemsPerPage: pageSizeProductCodeWithStock,
+                        currentPage: pageProductCodeWithStock,
+                        totalItems: countProductCodeWithStock
+                        }" class="col mb-4">
+                <div class="card border-secondary mb-3 h-100" >
+                  <div class="card-header text-center"><span class="h6">Cod Produs: </span>{{productCode.generateProductCodeOpticalUnit.productCode}}</div>
+                  <div class="card-body text-card-custom">
+                    <br><span class="title-span-custom">Nume Produs: </span> <span class="pull-right">{{productCode.generateProductCodeOpticalUnit.productName}}</span>
+                    <br><span class="title-span-custom">Stock: </span> <span class="pull-right">{{productCode.stock}}</span>
+                    <br><span class="title-span-custom">Pret mediu: </span> <span class="pull-right">{{productCode.averagePrice | number: '1.2-2'}}</span>
+                    <br><span class="title-span-custom">Unitati Optice: </span>
+                    <button (click)="getOpticalUnitByProductCode(productCode.generateProductCodeOpticalUnit.productCode)" type="button"
+                            class="btn btn-info pull-right">
+                      Vezi <i class="fa fa-external-link" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--    END CARD TABLE FOR RESOLUTIONS UNDER 1024-->
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-end">
+                <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true" id="product_codes_with_stock"
+                                     (pageChange)="handlePageChangeProductCodesWithStock($event)"
+                                     (pageBoundsCorrection)="handlePageChangeProductCodesWithStock($event)"></pagination-controls>
+              </ul>
+            </nav>
+          </div>
+          <!-- End Table Stock Optical Unit -->
+
+          <!-- Table Optical Unit by Product Code -->
+          <div *ngIf="!isTableProductCodeSelected">
+            <nav aria-label="Page navigation example">
+              <div class="row py-3">
+                <div class="col-auto mr-auto">
+                  <div class="form-control-custom pull-left">
+                    <span class="pagination-info">Vezi </span>
+                    <select class="btn-secondary" id="selectPageSizeByProductCode"
+                            (change)="handlePageSizeChangeOpticalUnitByProductCode($event)">
+                      <option>10</option>
+                      <option>50</option>
+                      <option>100</option>
+                    </select>
+                    <span class="pagination-info"> produse</span>
+                  </div>
+                </div>
+                <div class="btn-group col-auto" role="group" aria-label="add-product-back-to-list">
+                  <button (click)="goBack()" type="button" class="btn btn-warning" >Inapoi la lista</button>
+                  <button type="button" class="btn btn-primary" data-toggle="modal"
+                          data-target="#modalOpticalUnit">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+            </nav>
+            <table class="table table-sm table-striped table-hover shadow-sm motherboard-table-custom">
+              <thead class="thead-dark">
+              <tr>
+                <th scope="col">Cod Produs</th>
+                <th scope="col">Serial Number</th>
+                <th scope="col">Nume Produs</th>
+                <th scope="col">Producator</th>
+                <th scope="col">Tip</th>
+                <th scope="col">Pret intrare (Lei)</th>
+                <th scope="col">Informatii produs</th>
+                <th scope="col">Stare</th>
+                <th scope="col">Actiune</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let opticalUnit of opticalUnitListByProductCode | paginate: {
+        id: 'optical_unit_by_product_code',
+itemsPerPage: pageSizeOpticalUnitByProductCode,
+currentPage: pageOpticalUnitByProductCode,
+totalItems: countOpticalUnitByProductCode
+}">
+                <td>{{opticalUnit.generateProductCodeOpticalUnit.productCode}}</td>
+                <td>{{opticalUnit.serialNumber}}</td>
+                <td>{{opticalUnit.generateProductCodeOpticalUnit.productName}}</td>
+                <td>{{opticalUnit.manufacturer}}</td>
+                <td>{{opticalUnit.type}}</td>
+                <td>{{opticalUnit.priceIn}}</td>
+                <td>{{opticalUnit.productInformation}}</td>
+                <td>{{opticalUnit.state}}</td>
+                <td>
+                  <a class="mr-2" type="button" (click)="patchForm(opticalUnit)" data-toggle="modal" data-target="#modalOpticalUnit"><i
+                    class="fa fa-edit fa-lg" style="color: #d19b3d"></i></a>
+                  <a type="button" (click)="deleteOpticalUnit(opticalUnit)"><i class="fa fa-trash fa-lg"
+                                                                           style="color: red"></i></a>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+
+            <!--    CARD TABLE FOR RESOLUTIONS UNDER 1024-->
+            <div class="row row-cols-1 row-cols-lg-2" id="card-component-by-product-code">
+              <div *ngFor="let opticalUnit of opticalUnitListByProductCode | paginate: {
+                        id: 'optical_unit_by_product_code',
+                        itemsPerPage: pageSizeOpticalUnitByProductCode,
+                        currentPage: pageOpticalUnitByProductCode,
+                        totalItems: countOpticalUnitByProductCode
+                        }" class="col mb-4">
+                <div class="card border-secondary mb-3 h-100">
+                  <div class="card-header text-center"><span class="h6">Cod Produs: </span>{{opticalUnit.generateProductCodeOpticalUnit.productCode}}</div>
+                  <div class="card-body text-card-custom">
+                    <span class="title-span-custom">Serial Number: </span> <span class="pull-right">{{opticalUnit.serialNumber}}</span>
+                    <br><span class="title-span-custom">Nume Produs: </span> <span class="pull-right">{{opticalUnit.generateProductCodeOpticalUnit.productName}}</span>
+                    <br><span class="title-span-custom">Producator: </span> <span class="pull-right">{{opticalUnit.manufacturer}}</span>
+                    <br><span class="title-span-custom">Tip: </span> <span class="pull-right">{{opticalUnit.type}}</span>
+                    <br><span class="title-span-custom">Pret intrare: </span> <span class="pull-right">{{opticalUnit.priceIn}}</span>
+                    <br><span class="title-span-custom">Informatii produs: </span> <span class="pull-right">{{opticalUnit.productInformation}}</span>
+                    <br><span class="title-span-custom">Stare: </span> <span class="pull-right">{{opticalUnit.state}}</span>
+                    <br><span class="title-span-custom">Actiune: </span>
+                    <span class="pull-right">
+            <a class="mr-2" type="button" (click)="patchForm(opticalUnit)" data-toggle="modal" data-target="#modalOpticalUnit"><i
+              class="fa fa-edit fa-lg" style="color: #d19b3d"></i></a>
+            <a type="button" (click)="deleteOpticalUnit(opticalUnit)"><i class="fa fa-trash fa-lg" style="color: red"></i></a>
+            </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--    END CARD TABLE FOR RESOLUTIONS UNDER 1024-->
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-end">
+                <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true" id="optical_unit_by_product_code"
+                                     (pageChange)="handlePageChangeOpticalUnitByProductCode($event)"
+                                     (pageBoundsCorrection)="handlePageChangeOpticalUnitByProductCode($event)"></pagination-controls>
+              </ul>
+            </nav>
+          </div>
+          <!-- End Table All Optical Unit by Product Code -->
+        </div>
+        <!-- End Table Optical Unit by Product Code -->
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal Add/Edit Optical Unit -->
+<div class="modal fade" id="modalOpticalUnit" data-backdrop="static" data-keyboard="false"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 *ngIf="isAddMode" class="modal-title" id="staticBackdropLabel"><img class="fav-icon-small" src="../../../../../assets/icons/optical_unit.ico"> Adauga unitate optica</h5>
+        <h5 *ngIf="!isAddMode" class="modal-title" id="editStaticBackdropLabel"><img class="fav-icon-small" src="../../../../../assets/icons/optical_unit.ico"> Editare
+          unitate optica</h5>
+        <button (click)="closeModal()" type="button" class="close" data-dismiss="modal"
+                aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="validatingForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="form-group col">
+              <label for="generateProductCodeOpticalUnit"><i class="fa fa-barcode fa-sm"></i> Cod produs</label>
+              <input type="text" class="form-control" id="generateProductCodeOpticalUnit" formControlName="generateProductCodeOpticalUnit"
+                     [value]="selectedProductCode.productCode">
+            </div>
+
+            <div class="form-group col-lg-4">
+              <label for="productName"><i class="fa fa-product-hunt fa-sm"></i> Nume produs</label>
+              <ng-select id="productName" (ngModelChange)="setGeneratedProductCode($event)"
+                         formControlName="productName">
+                <ng-option *ngFor="let generatedProductCode of productCodesList"
+                           [value]="generatedProductCode">
+                  {{generatedProductCode.productName}}
+                </ng-option>
+              </ng-select>
+            </div>
+
+            <div class="form-group col">
+              <label for="manufacturer"><i class="fa fa-industry fa-sm"></i> Producator</label>
+              <input type="text" class="form-control" id="manufacturer" formControlName="manufacturer">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col">
+              <label for="serialNumber"><i class="fa fa-barcode fa-sm"></i> Serial number</label>
+              <input type="text" class="form-control" id="serialNumber" formControlName="serialNumber">
+
+              <div *ngIf="isSerialNumberPresent" class="form-group alert alert-warning">
+                <span>{{errorMessage}}</span>
+              </div>
+            </div>
+
+            <div class="form-group col-lg-4">
+              <label for="type"><i class="fa fa-compact-disc fa-sm"></i> Tip</label>
+              <input type="text" class="form-control" id="type" formControlName="type">
+            </div>
+
+            <div class="form-group col">
+              <label for="priceIn"><i class="fa fa-money fa-sm"></i> Pret intrare (Lei)</label>
+              <input type="number" class="form-control" id="priceIn" formControlName="priceIn" min="0">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-lg-4">
+              <label for="state"><img class="fav-icon-small" src="../../../../../assets/icons/state.ico"> Stare</label>
+              <select class="form-control" id="state" formControlName="state">
+                <option disabled value="" selected>Selecteaza stare...</option>
+                <option *ngFor="let state of stateList">{{state}}</option>
+              </select>
+            </div>
+            <div class="form-group col-lg-8">
+              <label for="productInformation"><i class="fa fa-info-circle fa-sm"></i> Informatii produs</label>
+              <input type="text" class="form-control" id="productInformation" formControlName="productInformation">
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button (click)="closeModal()" type="button" class="btn btn-danger" data-dismiss="modal">
+              Inchide
+            </button>
+            <button id="addOpticalUnit-btn" *ngIf="isAddMode" type="submit" class="btn btn-primary"
+                    data-target="#modalOpticalUnit"
+                    [disabled]="validatingForm.invalid">Adauga
+            </button>
+            <button id="editOpticalUnit-btn" *ngIf="!isAddMode" type="submit" class="btn btn-success"
+                    data-target="#modalOpticalUnit"
+                    [disabled]="validatingForm.invalid">Salveaza modificarile
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal End Add/Edit Optical Unit -->
+
+<!-- Modal Filter Right -->
+<div id="modal_aside_right" class="modal fixed-left fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-aside" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Filtreaza placi de sunet</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="accordion">
+
+          <div class="card">
+            <div class="card-header" id="headingManufacturer">
+              <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseManufacturer"
+                        aria-expanded="false"
+                        aria-controls="collapseManufacturer">
+                  Producator<span class="arrow"></span>
+                </button>
+              </h5>
+            </div>
+            <div id="collapseManufacturer" class="collapse" aria-labelledby="headingManufacturer"
+                 data-parent="#accordion">
+              <div class="card-body">
+                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                     *ngFor="let manufacturer of manufacturersList">
+                  <input class="form-check-input" type="checkbox" value="{{manufacturer}}" id="{{manufacturer}}"
+                         name="manufacturer">
+                  <label class="form-check-label" for="{{manufacturer}}">
+                    {{manufacturer}}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="headingType">
+              <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseType"
+                        aria-expanded="false"
+                        aria-controls="collapseType">
+                  Model<span class="arrow"></span>
+                </button>
+              </h5>
+            </div>
+            <div id="collapseType" class="collapse" aria-labelledby="headingType"
+                 data-parent="#accordion">
+              <div class="card-body">
+                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                     *ngFor="let type of typeList">
+                  <input class="form-check-input" type="checkbox" value="{{type}}" id="{{type}}"
+                         name="type">
+                  <label class="form-check-label" for="{{type}}">
+                    {{type}}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="headingState">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseState"
+                        aria-expanded="false" aria-controls="collapseState">
+                  Stare<span class="arrow"></span>
+                </button>
+              </h5>
+            </div>
+            <div id="collapseState" class="collapse" aria-labelledby="headingState" data-parent="#accordion">
+              <div class="card-body">
+                <div (change)="getRequestParamsForFilter($event)" class="form-check"
+                     *ngFor="let state of stateList">
+                  <input class="form-check-input" type="checkbox" value="{{state}}" id="{{state}}"
+                         name="state">
+                  <label class="form-check-label" for="{{state}}">
+                    {{state}}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button (click)="resetFilters()" type="button" class="btn btn-primary">Reseteaza filtre</button>
+      </div>
+    </div>
+  </div> <!-- modal-bialog .// -->
+</div>
+<!-- End Modal Filter Right -->
