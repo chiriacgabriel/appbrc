@@ -4,6 +4,7 @@ import com.app.brc.brandcomputer.components.casing.dto.CaseDTO;
 import com.app.brc.brandcomputer.components.casing.mapper.CaseMapper;
 import com.app.brc.brandcomputer.components.casing.repository.CaseRepository;
 import com.app.brc.brandcomputer.components.casing.validator.CaseValidator;
+import net.sf.jasperreports.engine.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -136,5 +137,15 @@ public class CaseService {
     public void deleteCase(int id) {
         caseRepository.deleteById(id);
     }
+
+//    private void testingJasperReports(){
+//        JasperReport report = JasperCompileManager.compileReport();
+//
+//        Map<String, Object> parameters = new HashMap<>();
+//        parameters.put();
+//
+//        JRDataSource dataSource = new JREmptyDataSource(); //your dbconnection
+//        JasperPrint jasperPrint = JasperFillManager.fillReport(report, parameters, dataSource);
+//    }
 
 }

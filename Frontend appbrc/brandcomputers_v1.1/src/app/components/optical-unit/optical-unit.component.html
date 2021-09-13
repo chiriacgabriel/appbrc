@@ -1,3 +1,4 @@
+
 <div class="main-content">
     <div class="row">
         <div class="col-md-12">
@@ -67,6 +68,7 @@
                                        width="100%">
                                     <thead>
                                     <tr>
+                                        <th scope="col">Actiune</th>
                                         <th scope="col">Cod Produs</th>
                                         <th scope="col">Serial Number</th>
                                         <th scope="col">Nume Produs</th>
@@ -77,7 +79,6 @@
                                         <th scope="col">Pret intrare (Lei)</th>
                                         <th scope="col">Informatii produs</th>
                                         <th scope="col">Stare</th>
-                                        <th scope="col">Actiune</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -87,7 +88,18 @@
         itemsPerPage: pageSizeOpticalUnit,
         currentPage: pageOpticalUnit,
         totalItems: count
-  }; let i = index">
+  }, let i = index;">
+                                        <td>
+                                            <a type="button" id="{{i}}" class="btn btn-warning btn-link btn-icon btn-sm edit"
+                                               (click)="patchForm(opticalUnit, i)" data-toggle="modal"
+                                               data-target="#modalOpticalUnit">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <a type="button" class="btn btn-danger btn-link btn-icon btn-sm remove"
+                                               (click)="deleteOpticalUnit(opticalUnit)">
+                                                <i class="fa fa-times"></i>
+                                            </a>
+                                        </td>
                                         <td>{{opticalUnit.generateProductCode.productCode}}</td>
                                         <td>{{opticalUnit.serialNumber}}</td>
                                         <td>{{opticalUnit.generateProductCode.productName}}</td>
@@ -98,17 +110,7 @@
                                         <td>{{opticalUnit.priceIn}}</td>
                                         <td>{{opticalUnit.productInformation}}</td>
                                         <td>{{opticalUnit.state}}</td>
-                                        <td>
-                                            <a id="{{i}}" type="button" class="btn btn-warning btn-link btn-icon btn-sm edit"
-                                               (click)="patchForm(opticalUnit, i)" data-toggle="modal"
-                                               data-target="#modalOpticalUnit">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
-                                            <a type="button" class="btn btn-danger btn-link btn-icon btn-sm remove"
-                                               (click)="deleteOpticalUnit(opticalUnit)">
-                                                <i class="fa fa-times"></i>
-                                            </a>
-                                        </td>
+
                                     </tr>
                                     </tbody>
                                 </table>
@@ -256,6 +258,7 @@ totalItems: countProductCodeWithStock
                                            class="table table-striped table-bordered table-format" width="100%">
                                         <thead>
                                         <tr>
+                                            <th scope="col">Actiune</th>
                                             <th scope="col">Cod Produs</th>
                                             <th scope="col">Serial Number</th>
                                             <th scope="col">Nume Produs</th>
@@ -266,7 +269,7 @@ totalItems: countProductCodeWithStock
                                             <th scope="col">Pret intrare (Lei)</th>
                                             <th scope="col">Informatii produs</th>
                                             <th scope="col">Stare</th>
-                                            <th scope="col">Actiune</th>
+
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -277,16 +280,6 @@ itemsPerPage: pageSizeOpticalUnitByProductCode,
 currentPage: pageOpticalUnitByProductCode,
 totalItems: countOpticalUnitByProductCode
 }">
-                                            <td>{{opticalUnit.generateProductCode.productCode}}</td>
-                                            <td>{{opticalUnit.serialNumber}}</td>
-                                            <td>{{opticalUnit.generateProductCode.productName}}</td>
-                                            <td>{{opticalUnit.quantity}}</td>
-                                            <td>{{opticalUnit.unitOfMeasurement}}</td>
-                                            <td>{{opticalUnit.manufacturer}}</td>
-                                            <td>{{opticalUnit.type}}</td>
-                                            <td>{{opticalUnit.priceIn}}</td>
-                                            <td>{{opticalUnit.productInformation}}</td>
-                                            <td>{{opticalUnit.state}}</td>
                                             <td>
                                                 <a type="button" class="btn btn-warning btn-link btn-icon btn-sm edit"
                                                    (click)="patchForm(opticalUnit, $event)" data-toggle="modal"
@@ -298,6 +291,17 @@ totalItems: countOpticalUnitByProductCode
                                                     <i class="fa fa-times"></i>
                                                 </a>
                                             </td>
+                                            <td>{{opticalUnit.generateProductCode.productCode}}</td>
+                                            <td>{{opticalUnit.serialNumber}}</td>
+                                            <td>{{opticalUnit.generateProductCode.productName}}</td>
+                                            <td>{{opticalUnit.quantity}}</td>
+                                            <td>{{opticalUnit.unitOfMeasurement}}</td>
+                                            <td>{{opticalUnit.manufacturer}}</td>
+                                            <td>{{opticalUnit.type}}</td>
+                                            <td>{{opticalUnit.priceIn}}</td>
+                                            <td>{{opticalUnit.productInformation}}</td>
+                                            <td>{{opticalUnit.state}}</td>
+
                                         </tr>
                                         </tbody>
                                     </table>
@@ -323,7 +327,6 @@ totalItems: countOpticalUnitByProductCode
     </div>
 </div>
 
-
 <!-- Modal Add/Edit Optical Unit -->
 <div class="modal fade" id="modalOpticalUnit" data-backdrop="static" data-keyboard="false"
      aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -333,7 +336,7 @@ totalItems: countOpticalUnitByProductCode
                 <h5 *ngIf="isAddMode" class="modal-title" id="staticBackdropLabel"><img class="fav-icon-small" src="assets/img/icons/optical_unit.ico"> Adauga unitate optica</h5>
                 <h5 *ngIf="!isAddMode" class="modal-title" id="editStaticBackdropLabel"><img class="fav-icon-small" src="assets/img/icons/optical_unit.ico"> Editare
                     unitate optica</h5>
-                <button (click)="closeModal()" type="button" class="close" data-dismiss="modal"
+                <button (click)="closeModal()" #closeAddEditModal type="button" class="close" data-dismiss="modal"
                         aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -388,8 +391,8 @@ totalItems: countOpticalUnitByProductCode
                     <div class="row">
 
                         <div class="form-group col-lg-4">
-                            <label for="quantity"><i class="fa fa-sort-numeric-up"></i> Cantitate</label>
-                            <input type="number" min="0" class="form-control" id="quantity" formControlName="quantity">
+                            <label for="quantity"><i class="fas fa-sort-numeric-up"></i> Cantitate</label>
+                            <input type="number" class="form-control" id="quantity" formControlName="quantity" min="0">
                         </div>
 
                         <div class="form-group col-lg-4">
@@ -405,6 +408,7 @@ totalItems: countOpticalUnitByProductCode
                             </select>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="form-group col-lg-12">
                             <label for="productInformation"><i class="fa fa-info-circle fa-sm"></i> Informatii produs</label>

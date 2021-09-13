@@ -1,6 +1,5 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {GenerateProductCode} from '../model/components/GenerateProductCode';
 import {HttpErrorResponse, HttpParams} from '@angular/common/http';
 import {EnumService} from '../helper/enum.service';
 import {ComputerService} from '../services/computer/computer.service';
@@ -10,9 +9,11 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {FilterService} from '../helper/filter.service';
 import {GenerateProductCodeService} from '../services/components/generate-product-code.service';
 import {EnumState} from '../model/enum/EnumState';
-import {Computer} from '../model/computer/Computer';
 import Swal from 'sweetalert2';
+import {VideoCard} from '../model/components/VideoCard';
 import {NotificationService} from '../helper/notification.service';
+import { GenerateProductCode } from 'app/model/components/GenerateProductCode';
+import { Computer } from 'app/model/computer/Computer';
 
 @Component({
     selector: 'app-computer',
@@ -28,6 +29,7 @@ export class ComputerComponent implements OnInit {
 
     @ViewChild('inputSearch') inputSearch: ElementRef;
     @ViewChild('inputSearchStock') inputSearchStock: ElementRef;
+    @ViewChild('closeAddEditModal') closeAddEditModal;
 
     id: number;
     getProductCode: string;
@@ -50,14 +52,14 @@ export class ComputerComponent implements OnInit {
     pageProductCodeWithStock = 1;
     countProductCodeWithStock: any;
 
-    computerListByProductCode = [];
-    pageSizeComputerByProductCode = 10;
-    pageComputerByProductCode = 1;
-
     computersDismantledList = [];
     pageSizeComputerDismantled = 10;
     pageComputerDismantled = 1;
     countComputerDismantled: any;
+
+    computerListByProductCode = [];
+    pageSizeComputerByProductCode = 10;
+    pageComputerByProductCode = 1;
 
     countComputerByProductCode: any;
     params = new HttpParams();
@@ -89,13 +91,14 @@ export class ComputerComponent implements OnInit {
         this.stateList = this.enumService.getValues(EnumState);
         this.computerForm();
         this.getComputerSearchResult();
+        this.getComputersDismantled();
         this.getAllDataForFilter();
         this.getAllProductCodesWithStock();
         this.getAllGenerateProductCodes();
         this.getRouting();
-        this.getComputersDismantled();
 
     }
+
 
     get formFields() {
         return this.validatingForm.controls;
@@ -107,8 +110,6 @@ export class ComputerComponent implements OnInit {
             productName: new FormControl('', Validators.required),
             serialNumber: new FormControl('', Validators.required),
             manufacturer: new FormControl('', Validators.required),
-            quantity: new FormControl('', Validators.required),
-            unitOfMeasurement: new FormControl('', Validators.required),
             model: new FormControl('', Validators.required),
             form: new FormControl('', Validators.required),
             cpuType: new FormControl('', Validators.required),
@@ -130,6 +131,8 @@ export class ComputerComponent implements OnInit {
             networkCard: new FormControl('', Validators.required),
             state: new FormControl('', Validators.required),
             productInformation: new FormControl('', Validators.required),
+            quantity: new FormControl('', Validators.required),
+            unitOfMeasurement: new FormControl('', Validators.required),
             priceIn: new FormControl('', Validators.required),
             dismantled: new FormControl(''),
             createdBy: new FormControl(''),
@@ -156,6 +159,16 @@ export class ComputerComponent implements OnInit {
                 this.inputSearch.nativeElement.value = '';
 
             }
+        }, (error: HttpErrorResponse) => {
+            this.errorMessage = error.error.message;
+        });
+    }
+
+    getComputersDismantled() {
+        const params = this.getPaginationParams(this.pageComputerDismantled, this.pageSizeComputerDismantled);
+        this.computerService.getDismantled(params).subscribe((data: any) => {
+           this.computersDismantledList = data.content;
+           this.countComputerDismantled = data.totalElements;
         }, (error: HttpErrorResponse) => {
             this.errorMessage = error.error.message;
         });
@@ -324,6 +337,7 @@ export class ComputerComponent implements OnInit {
         this.getComputersDismantled();
         this.toggleProductCodeTable();
     }
+
     /***************************** End Search, Pagination, Filter for second table tab **********************/
 
 
@@ -332,12 +346,14 @@ export class ComputerComponent implements OnInit {
     closeModal() {
         this.isAddMode = true;
         this.validatingForm.reset();
-        this.reloadPageService.skipLocation('computer');
+        this.closeAddEditModal.nativeElement.click();
 
         if (this.isSerialNumberPresent) {
             this.isSerialNumberPresent = false;
             this.errorMessage = '';
         }
+
+        this.router.navigate([], {});
     }
 
     getRouting() {
@@ -395,9 +411,12 @@ export class ComputerComponent implements OnInit {
         this.computerService.add(this.validatingForm.value)
             .toPromise()
             .then((response) => {
-                this.reloadPageService.reload();
+                this.closeAddEditModal.nativeElement.click();
                 this.isSerialNumberPresent = false;
-                document.querySelector('.modal-backdrop').remove();
+                this.formFields.generateProductCode.disable();
+                this.formFields.productName.enable();
+                this.getComputerSearchResult();
+                this.getAllProductCodesWithStock();
             }).catch((error: HttpErrorResponse) => {
             this.isSerialNumberPresent = true;
             this.errorMessage = error.error.message;
@@ -415,10 +434,14 @@ export class ComputerComponent implements OnInit {
         this.computerService.editById(this.id, this.validatingForm.value)
             .toPromise()
             .then((response) => {
-                this.router.navigate(['computer']).then(() => this.reloadPageService.reload());
+                this.closeAddEditModal.nativeElement.click();
+                this.formFields.generateProductCode.disable();
+                this.formFields.productName.enable();
                 this.isAddMode = true;
                 this.isSerialNumberPresent = false;
-                document.querySelector('.modal-backdrop').remove();
+                this.getComputerSearchResult();
+                this.getAllProductCodesWithStock();
+                this.router.navigate([], {});
             }).catch((error: HttpErrorResponse) => {
 
             this.isSerialNumberPresent = true;
@@ -488,16 +511,10 @@ export class ComputerComponent implements OnInit {
 
     }
 
-    /***********************End Create, Update, Delete *************************************************************************/
 
-    getComputersDismantled() {
-        const params = this.getPaginationParams(this.pageComputerDismantled, this.pageSizeComputerDismantled);
-        this.computerService.getDismantled(params).subscribe((data: any) => {
-            this.computersDismantledList = data.content;
-            this.countComputerDismantled = data.totalElements;
-        }, (error: HttpErrorResponse) => {
-            this.errorMessage = error.error.message;
-        });
+
+    getSelectedOption(event) {
+
     }
 
     dismantlingComputer(computer: Computer) {
@@ -514,11 +531,8 @@ export class ComputerComponent implements OnInit {
             })
             .catch((error: HttpErrorResponse) => {
                 this.errorMessage = error.error.message;
-            })
+        })
     }
 
 
-    getSelectedOption(event: any) {
-
-    }
 }

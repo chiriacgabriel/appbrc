@@ -5,7 +5,6 @@ import {ActivatedRoute, Router } from '@angular/router';
 import { EnumService } from 'app/helper/enum.service';
 import { FilterService } from 'app/helper/filter.service';
 import { EnumState } from 'app/model/enum/EnumState';
-import { GenerateProductCode } from 'app/model/components/GenerateProductCode';
 import { PowerSource } from 'app/model/components/PowerSource';
 import { GenerateProductCodeService } from 'app/services/components/generate-product-code.service';
 import { PowerSourceService } from 'app/services/components/power-source.service';
@@ -13,6 +12,7 @@ import { ReloadPageService } from 'app/services/reload-page.service';
 import { TokenStorageService } from 'app/services/token-storage.service';
 import Swal from 'sweetalert2';
 import {Location} from '@angular/common';
+import { GenerateProductCode } from 'app/model/components/GenerateProductCode';
 
 @Component({
   selector: 'app-power-source',
@@ -28,6 +28,7 @@ export class PowerSourceComponent implements OnInit {
 
   @ViewChild('inputSearch') inputSearch: ElementRef;
   @ViewChild('inputSearchStock') inputSearchStock: ElementRef;
+  @ViewChild('closeAddEditModal') closeAddEditModal;
 
   validatingForm: FormGroup;
   id: number;
@@ -40,8 +41,8 @@ export class PowerSourceComponent implements OnInit {
   powerSourcesListByProductCode = [];
   manufacturersList: string[] = [];
   sourceTypesList: string[] = [];
-  productCodeList: GenerateProductCode[] = [];
-  productCodeListInactive: GenerateProductCode[] = [];
+  productCodesList: GenerateProductCode[] = [];
+  productCodesListInactive: GenerateProductCode[] = [];
   query = '';
   preselectedPowerValues = ['Sub 500', '500 - 800', '801 - 1000', 'Peste 1000'];
   isFiltered = false;
@@ -102,9 +103,9 @@ export class PowerSourceComponent implements OnInit {
       model: new FormControl('', Validators.required),
       power: new FormControl('', Validators.required),
       sourceType: new FormControl('', Validators.required),
+      priceIn: new FormControl('', Validators.required),
       quantity: new FormControl('', Validators.required),
       unitOfMeasurement: new FormControl('', Validators.required),
-      priceIn: new FormControl('', Validators.required),
       productInformation: new FormControl('', Validators.required),
       state: new FormControl('', Validators.required),
       createdBy: new FormControl(''),
@@ -144,8 +145,8 @@ export class PowerSourceComponent implements OnInit {
 
   getAllGenerateProductCodes(): void {
     this.productCodeService.getAll(PowerSource.generateProductURL).subscribe((data: any) =>{
-      this.productCodeList = data.filter(productCode => productCode.state === true);
-      this.productCodeListInactive = data.filter(productCode => productCode.state === false);
+      this.productCodesList = data.filter(productCode => productCode.state === true);
+      this.productCodesListInactive = data.filter(productCode => productCode.state === false);
     }, (err: HttpErrorResponse) => {
       this.errorMessage = err.error.message;
     });
@@ -222,19 +223,19 @@ export class PowerSourceComponent implements OnInit {
     }
   }
 
-  patchForm(powerSource: any, param: any) {
-    const productCodeInactive = this.productCodeListInactive
+  patchForm(powerSource, param: any) {
+    this.isAddMode = false;
+
+    const productCodeInactive = this.productCodesListInactive
+        .find(s => s.productCode === powerSource.generateProductCode.productCode);
+    const productCodeActive = this.productCodesList
         .find(s => s.productCode === powerSource.generateProductCode.productCode);
 
-    const productCodeActive = this.productCodeList
-        .find(s => s.productCode === powerSource.generateProductCode.productCode);
-
-    if (productCodeInactive !== undefined && productCodeInactive.state === false){
+    if (productCodeInactive !== undefined && productCodeInactive.state === false) {
       this.productCodeService.inactiveProductCode(param, productCodeInactive);
-      return null;
+      return;
     }
 
-    this.isAddMode = false;
     this.selectedProductCode = powerSource.generateProductCode;
     this.validatingForm.patchValue(powerSource);
     this.validatingForm.get('productName')
@@ -305,7 +306,6 @@ export class PowerSourceComponent implements OnInit {
   /************************** End Search, Pagination, Filter for second table tab *************************/
 
   getPowerSourcesByProductCode(productCode: string): void {
-
     this.toggleProductCodeTable();
     this.getProductCode = productCode;
     const params = this.getPaginationParams(this.pagePowerSourcesByProductCode, this.pageSizePowerSourcesByProductCode);
@@ -365,11 +365,13 @@ export class PowerSourceComponent implements OnInit {
     this.powerSourceService.add(this.validatingForm.value)
         .toPromise()
         .then((response) => {
-
-          this.reloadPageService.reload();
+          this.closeAddEditModal.nativeElement.click();
+          this.formFields.generateProductCode.disable();
+          this.formFields.productName.enable();
           this.isSerialNumberPresent = false;
-          document.querySelector('.modal-backdrop').remove();
-
+          this.getPowerSourceSearchResults();
+          this.getAllProductCodesWithStock();
+          this.router.navigate([], {});
         }).catch((error) => {
 
       this.isSerialNumberPresent = true;
@@ -389,10 +391,14 @@ export class PowerSourceComponent implements OnInit {
     this.powerSourceService.editById(this.id, this.validatingForm.value)
         .toPromise()
         .then((response) => {
-          this.router.navigate(['components/power-source']).then(() => this.reloadPageService.reload());
+          this.closeAddEditModal.nativeElement.click();
+          this.formFields.generateProductCode.disable();
+          this.formFields.productName.enable();
           this.isAddMode = true;
           this.isSerialNumberPresent = false;
-          document.querySelector('.modal-backdrop').remove();
+          this.getAllProductCodesWithStock();
+          this.getPowerSourceSearchResults();
+          this.router.navigate([], {});
 
         }).catch((error: HttpErrorResponse) => {
       this.isSerialNumberPresent = true;
@@ -435,7 +441,8 @@ export class PowerSourceComponent implements OnInit {
   closeModal() {
     this.isAddMode = true;
     this.validatingForm.reset();
-    this.reloadPageService.skipLocation('components/power-source');
+    this.closeAddEditModal.nativeElement.click();
+    this.router.navigate([], {});
 
     if (this.isSerialNumberPresent){
       this.isSerialNumberPresent = false;
@@ -459,7 +466,7 @@ export class PowerSourceComponent implements OnInit {
     if (event === undefined || event === null){
       return;
     }
-    this.selectedProductCode = this.productCodeList.find(p => p.productName === event.productName);
+    this.selectedProductCode = this.productCodesList.find(p => p.productName === event.productName);
   }
 
   toggleProductCodeTable(){
@@ -472,6 +479,7 @@ export class PowerSourceComponent implements OnInit {
       this.isTableProductCodeSelected = !this.isTableProductCodeSelected;
     }
   }
+
   /***********************End General Functions **********************************************************/
 
 }

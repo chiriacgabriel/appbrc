@@ -3,7 +3,7 @@ import {BrokenService} from '../../services/components/broken.service';
 import {EnumService} from '../../helper/enum.service';
 import {EnumCategory} from '../../model/enum/EnumCategory';
 import { HttpErrorResponse } from '@angular/common/http';
-import {ObjCategory} from '../../model/components/ObjCategory';
+import { ObjCategory } from 'app/model/components/ObjCategory';
 
 @Component({
     selector: 'app-broken',
@@ -52,6 +52,7 @@ export class BrokenComponent implements OnInit {
                 cat.total = data[enumCategory].totalElements;
                 this.categoryList.push(cat);
             }
+
 
         }, (error: HttpErrorResponse) => {
             this.errorMessage = error.error.message;

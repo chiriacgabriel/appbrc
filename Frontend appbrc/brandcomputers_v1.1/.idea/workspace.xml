@@ -2,7 +2,50 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b76812b0-b115-4f5d-ade8-93f21588c5ac" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/casing/services/CaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/casing/services/CaseService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/broken/broken.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/broken/broken.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/case/case.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/case/case.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/case/case.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/case/case.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/case/product-code-case/product-code-case.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/case/product-code-case/product-code-case.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/case/product-code-case/product-code-case.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/case/product-code-case/product-code-case.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/components.routing.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/components.routing.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/cpu-cooler/cpu-cooler.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/cpu-cooler/cpu-cooler.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/cpu-cooler/cpu-cooler.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/cpu-cooler/cpu-cooler.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/cpu-cooler/product-code-cpu-cooler/product-code-cpu-cooler.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/cpu-cooler/product-code-cpu-cooler/product-code-cpu-cooler.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/fan-case/fan-case.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/fan-case/fan-case.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/fan-case/fan-case.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/fan-case/fan-case.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/fan-case/product-code-fan-case/product-code-fan-case.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/fan-case/product-code-fan-case/product-code-fan-case.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/front.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/memory-ram/memory-ram.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/memory-ram/memory-ram.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/memory-ram/memory-ram.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/memory-ram/memory-ram.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/memory-ram/product-code-memory-ram/product-code-memory-ram.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/memory-ram/product-code-memory-ram/product-code-memory-ram.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/motherboard/motherboard.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/motherboard/motherboard.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/motherboard/motherboard.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/motherboard/motherboard.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/motherboard/product-code-motherboard/product-code-motherboard.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/motherboard/product-code-motherboard/product-code-motherboard.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/optical-unit/optical-unit.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/optical-unit/optical-unit.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/optical-unit/optical-unit.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/optical-unit/optical-unit.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/optical-unit/product-code-optical-unit/product-code-optical-unit.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/optical-unit/product-code-optical-unit/product-code-optical-unit.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/power-source/power-source.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/power-source/power-source.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/power-source/power-source.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/power-source/power-source.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/power-source/product-code-power-source/product-code-power-source.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/power-source/product-code-power-source/product-code-power-source.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/processor/processor.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/processor/processor.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/processor/processor.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/processor/processor.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/processor/product-code-processor/product-code-processor.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/processor/product-code-processor/product-code-processor.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/sound-card/product-code-sound-card/product-code-sound-card.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/sound-card/product-code-sound-card/product-code-sound-card.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/sound-card/sound-card.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/sound-card/sound-card.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/sound-card/sound-card.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/sound-card/sound-card.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/storage/product-code-storage/product-code-storage.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/storage/product-code-storage/product-code-storage.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/storage/storage.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/storage/storage.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/storage/storage.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/storage/storage.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/video-card/product-code-video-card/product-code-video-card.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/video-card/product-code-video-card/product-code-video-card.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/video-card/video-card.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/video-card/video-card.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/video-card/video-card.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/video-card/video-card.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/computer/computer.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/computer/computer.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/computer/computer.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/computer/computer.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/dashboard/dashboard.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/dashboard.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,30 +72,37 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/app/components/fan-case/fan-case.component.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/shared/navbar/navbar.component.ts" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/app/components/video-card/video-card.component.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/components/optical-unit/optical-unit.component.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/components/video-card/product-code-video-card/product-code-video-card.component.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/components/power-source/power-source.component.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/components/sound-card/product-code-sound-card/product-code-sound-card.component.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/components/case/case.component.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/unreceived/unreceived.component.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/components/memory-ram/memory-ram.component.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/computer/computer.component.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/components/storage/product-code-storage/product-code-storage.component.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/components/processor/processor.component.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/components/optical-unit/product-code-optical-unit/product-code-optical-unit.component.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/components/power-source/product-code-power-source/product-code-power-source.component.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/model/enum/EnumCategory.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/components/cpu-cooler/cpu-cooler.component.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/components/broken/broken.component.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/components/sound-card/sound-card.component.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/components/motherboard/motherboard.component.ts" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/app/components/processor/product-code-processor/product-code-processor.component.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/components/storage/storage.component.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/components/cpu-cooler/cpu-cooler.component.html" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/sound-card/product-code-sound-card/product-code-sound-card.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/storage/product-code-storage/product-code-storage.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/dashboard/dashboard.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/broken/broken.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/case/case.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/video-card/product-code-video-card/product-code-video-card.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/cpu-cooler/cpu-cooler.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/computer/product-code-computer/product-code-computer.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/fan-case/fan-case.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/memory-ram/memory-ram.component.ts" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/app/helper/enum.service.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/computer/computer.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/motherboard/motherboard.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/power-source/power-source.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/storage/storage.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/shared/navbar/navbar.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/sound-card/sound-card.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/case/product-code-case/product-code-case.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/unreceived/unreceived.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/cpu-cooler/product-code-cpu-cooler/product-code-cpu-cooler.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/fan-case/product-code-fan-case/product-code-fan-case.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/model/enum/EnumCategory.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/memory-ram/product-code-memory-ram/product-code-memory-ram.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/processor/processor.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/optical-unit/optical-unit.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/motherboard/product-code-motherboard/product-code-motherboard.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/optical-unit/product-code-optical-unit/product-code-optical-unit.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/cpu-cooler/cpu-cooler.component.html" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/power-source/product-code-power-source/product-code-power-source.component.ts" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectId" id="1ta9O0DQnrwuqTGd3zZJYfJAcJK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -169,6 +219,9 @@
       <workItem from="1629052371341" duration="43732000" />
       <workItem from="1629479308070" duration="8425000" />
       <workItem from="1629646203839" duration="356000" />
+      <workItem from="1631355288207" duration="1334000" />
+      <workItem from="1631426786168" duration="1187000" />
+      <workItem from="1631428004597" duration="2325000" />
     </task>
     <servers />
   </component>

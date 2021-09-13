@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
   public gradientChartOptionsConfigurationWithNumbersAndGrid: any;
 
   public activeUsersChartType;
-  public activeUsersChartData:Array<any>;
+  public activeUsersChartData: Array<any>;
   public activeUsersChartOptions:any;
   public activeUsersChartLabels:Array<any>;
   public activeUsersChartColors:Array<any>

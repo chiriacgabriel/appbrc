@@ -484,11 +484,11 @@
                                     </thead>
                                     <tbody>
                                     <tr *ngFor="let computer of computersDismantledList | paginate: {
-        id: 'computer_pagination_dismantled',
-        itemsPerPage: pageSizeComputerDismantled,
-        currentPage: pageComputerDismantled,
-        totalItems: countComputerDismantled
-    }">
+                        id: 'computer_pagination_dismantled',
+                        itemsPerPage: pageSizeComputerDismantled,
+                        currentPage: pageComputerDismantled,
+                        totalItems: countComputerDismantled
+                    }">
                                         <td>
                                             <a type="button" class="btn btn-warning btn-link btn-icon btn-sm edit"
                                                (click)="patchForm(computer)" data-toggle="modal"
@@ -542,6 +542,7 @@
                     </div>
                 </div>
                 <!--  END Table Computer dismantled-->
+
             </div>
         </div>
     </div>
@@ -560,7 +561,7 @@
                     <img class="fav-icon" src="./assets/img/icons/computer.ico">
                     Editare
                     PC/Server</h5>
-                <button (click)="closeModal()" type="button" class="close" data-dismiss="modal"
+                <button (click)="closeModal()" #closeAddEditModal type="button" class="close" data-dismiss="modal"
                         aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -721,10 +722,11 @@
                         </div>
 
                     </div>
+
                     <div class="row">
                         <div class="form-group col-lg-4">
-                            <label for="quantity"><i class="fa fa-sort-numeric-up"></i> Cantitate</label>
-                            <input type="number" min="0" class="form-control" id="quantity" formControlName="quantity">
+                            <label for="quantity"><i class="fas fa-sort-numeric-up"></i> Cantitate</label>
+                            <input type="number" class="form-control" id="quantity" formControlName="quantity" min="0">
                         </div>
 
                         <div class="form-group col-lg-4">
@@ -737,8 +739,8 @@
                             <input type="number" class="form-control" id="priceIn" formControlName="priceIn" min="0">
                         </div>
                     </div>
-
                     <div class="row">
+
                         <div class="form-group col-lg-4">
                             <label for="state"><img class="fav-icon-small" src="./assets/img/icons/state.ico"> Stare</label>
                             <select class="form-control" id="state" formControlName="state">

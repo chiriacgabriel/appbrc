@@ -28,6 +28,7 @@ export class OpticalUnitComponent implements OnInit {
 
   @ViewChild('inputSearch') inputSearch: ElementRef;
   @ViewChild('inputSearchStock')inputSearchStock: ElementRef;
+  @ViewChild('closeAddEditModal') closeAddEditModal;
 
   id: number;
   selectedProductCode = new GenerateProductCode();
@@ -42,7 +43,7 @@ export class OpticalUnitComponent implements OnInit {
   productCodesWithStock = [];
   opticalUnitListByProductCode = [];
   productCodesList: GenerateProductCode[] = [];
-  productCodeListInactive: GenerateProductCode[] = [];
+  productCodesListInactive: GenerateProductCode[] = [];
 
   pageSizeOpticalUnit = 10;
   pageOpticalUnit = 1;
@@ -99,11 +100,11 @@ export class OpticalUnitComponent implements OnInit {
       productName: new FormControl('', Validators.required),
       serialNumber: new FormControl('', Validators.required),
       manufacturer: new FormControl('', Validators.required),
-      quantity: new FormControl('', Validators.required),
-      unitOfMeasurement: new FormControl('', Validators.required),
       type: new FormControl('', Validators.required),
       productInformation: new FormControl('', Validators.required),
       priceIn: new FormControl('', Validators.required),
+      quantity: new FormControl('', Validators.required),
+      unitOfMeasurement: new FormControl('', Validators.required),
       state: new FormControl('', Validators.required),
       createdBy: new FormControl(''),
       updatedBy: new FormControl('')
@@ -264,7 +265,6 @@ export class OpticalUnitComponent implements OnInit {
   }
 
   getOpticalUnitByProductCode(productCode: any) {
-
     this.toggleProductCodeTable();
     this.getProductCode = productCode;
     const params = this.getPaginationParams(this.pageOpticalUnitByProductCode, this.pageSizeOpticalUnitByProductCode);
@@ -300,12 +300,15 @@ export class OpticalUnitComponent implements OnInit {
   closeModal() {
     this.isAddMode = true;
     this.validatingForm.reset();
-    this.reloadPageService.skipLocation('components/optical-unit');
+    this.closeAddEditModal.nativeElement.click();
+    this.router.navigate([], {});
 
     if (this.isSerialNumberPresent){
       this.isSerialNumberPresent = false;
       this.errorMessage = '';
     }
+
+    this.router.navigate([], {});
   }
 
   getRouting() {
@@ -344,6 +347,9 @@ export class OpticalUnitComponent implements OnInit {
       this.getProductCode = null;
       this.toggleProductCodeTable();
     }
+
+    //TODO
+    // redo the location.back it causes some errors
   }
 
   /************************** End General Functions ******************************************************/
@@ -359,9 +365,12 @@ export class OpticalUnitComponent implements OnInit {
     this.opticalUnitService.add(this.validatingForm.value)
         .toPromise()
         .then((response) => {
-          this.reloadPageService.reload();
+          this.closeAddEditModal.nativeElement.click();
+          this.formFields.generateProductCode.disable();
+          this.formFields.productName.enable();
           this.isSerialNumberPresent = false;
-          document.querySelector('.modal-backdrop').remove();
+          this.getOpticalUnitSearchResult();
+          this.getAllProductCodesWithStock();
         }).catch((error: HttpErrorResponse) => {
       this.isSerialNumberPresent = true;
       this.errorMessage = error.error.message;
@@ -379,10 +388,14 @@ export class OpticalUnitComponent implements OnInit {
     this.opticalUnitService.editById(this.id, this.validatingForm.value)
         .toPromise()
         .then((response) => {
-          this.router.navigate(['components/optical-unit']).then(() => this.reloadPageService.reload());
+          this.closeAddEditModal.nativeElement.click();
+          this.getOpticalUnitSearchResult();
+          this.getAllProductCodesWithStock();
           this.isAddMode = true;
           this.isSerialNumberPresent = false;
-          document.querySelector('.modal-backdrop').remove();
+          this.formFields.generateProductCode.disable();
+          this.formFields.productName.enable();
+          this.router.navigate([], {});
         }).catch((error: HttpErrorResponse) => {
 
       this.isSerialNumberPresent = true;
@@ -425,18 +438,18 @@ export class OpticalUnitComponent implements OnInit {
   }
 
   patchForm(opticalUnit: any, param: any) {
-    const productCodeInactive = this.productCodeListInactive
-        .find(s => s.productCode === opticalUnit.generateProductCode.productCode);
+    this.isAddMode = false;
 
+    const productCodeInactive = this.productCodesListInactive
+        .find(s => s.productCode === opticalUnit.generateProductCode.productCode);
     const productCodeActive = this.productCodesList
         .find(s => s.productCode === opticalUnit.generateProductCode.productCode);
 
-    if (productCodeInactive !== undefined && productCodeInactive.state === false){
+    if (productCodeInactive !== undefined && productCodeInactive.state === false) {
       this.productCodeService.inactiveProductCode(param, productCodeInactive);
-      return null;
+      return;
     }
 
-    this.isAddMode = false;
     this.selectedProductCode = opticalUnit.generateProductCode;
     this.validatingForm.patchValue(opticalUnit);
     this.validatingForm.get('productName')
@@ -448,7 +461,7 @@ export class OpticalUnitComponent implements OnInit {
   getAllGenerateProductCodes(): void {
     this.productCodeService.getAll(OpticalUnit.generateProductURL).subscribe((data: any) => {
       this.productCodesList = data.filter(productCode => productCode.state === true);
-      this.productCodeListInactive = data.filter(productCode => productCode.state === false);
+      this.productCodesListInactive = data.filter(productCode => productCode.state === false);
     }, (error: HttpErrorResponse) => {
       this.errorMessage = error.error.message;
     });

@@ -9,10 +9,11 @@ import { CpuCoolerService } from 'app/services/components/cpu-cooler.service';
 import { GenerateProductCodeService } from 'app/services/components/generate-product-code.service';
 import { ReloadPageService } from 'app/services/reload-page.service';
 import { TokenStorageService } from 'app/services/token-storage.service';
-import {GenerateProductCode} from '../../model/components/GenerateProductCode';
 import {Location} from '@angular/common';
 import { CpuCooler } from 'app/model/components/CpuCooler';
 import Swal from 'sweetalert2';
+import { GenerateProductCode } from 'app/model/components/GenerateProductCode';
+
 
 @Component({
   selector: 'app-cpu-cooler',
@@ -29,6 +30,7 @@ export class CpuCoolerComponent implements OnInit {
 
   @ViewChild('inputSearch') inputSearch: ElementRef;
   @ViewChild('inputSearchStock')inputSearchStock: ElementRef;
+  @ViewChild('closeAddEditModal') closeAddEditModal;
 
   id: number;
   selectedProductCode = new GenerateProductCode();
@@ -43,7 +45,7 @@ export class CpuCoolerComponent implements OnInit {
   productCodesWithStock = [];
   cpuCoolerListByProductCode = [];
   productCodesList: GenerateProductCode[] = [];
-  productCodeListInactive: GenerateProductCode[] = [];
+  productCodesListInactive: GenerateProductCode[] = [];
 
   pageSizeCpuCooler = 10;
   pageCpuCooler = 1;
@@ -65,6 +67,8 @@ export class CpuCoolerComponent implements OnInit {
   validatingForm: FormGroup;
   params = new HttpParams();
 
+  test: any;
+
   constructor(private cpuCoolerService: CpuCoolerService,
               private formBuilder: FormBuilder,
               private tokenService: TokenStorageService,
@@ -74,7 +78,9 @@ export class CpuCoolerComponent implements OnInit {
               private enumService: EnumService,
               private filterService: FilterService,
               private productCodeService: GenerateProductCodeService,
-              private location: Location) { }
+              private location: Location) {
+
+  }
 
   ngOnInit(): void {
     this.stateList = this.enumService.getValues(EnumState);
@@ -99,9 +105,9 @@ export class CpuCoolerComponent implements OnInit {
       manufacturer: new FormControl('', Validators.required),
       socket: new FormControl('', Validators.required),
       productInformation: new FormControl('', Validators.required),
+      priceIn: new FormControl('', Validators.required),
       quantity: new FormControl('', Validators.required),
       unitOfMeasurement: new FormControl('', Validators.required),
-      priceIn: new FormControl('', Validators.required),
       state: new FormControl('', Validators.required),
       createdBy: new FormControl(''),
       updatedBy: new FormControl('')
@@ -262,7 +268,6 @@ export class CpuCoolerComponent implements OnInit {
   }
 
   getCpuCoolerByProductCode(productCode: any) {
-
     this.toggleProductCodeTable();
     this.getProductCode = productCode;
     const params = this.getPaginationParams(this.pageCpuCoolerByProductCode, this.pageSizeCpuCoolerByProductCode);
@@ -298,7 +303,8 @@ export class CpuCoolerComponent implements OnInit {
   closeModal() {
     this.isAddMode = true;
     this.validatingForm.reset();
-    this.reloadPageService.skipLocation('components/cpu-cooler');
+    this.closeAddEditModal.nativeElement.click();
+    this.router.navigate([], {queryParams: {}});
   }
 
   getRouting() {
@@ -337,6 +343,9 @@ export class CpuCoolerComponent implements OnInit {
       this.getProductCode = null;
       this.toggleProductCodeTable();
     }
+
+    //TODO
+    // redo the location.back it causes some errors
   }
 
   /************************** End General Functions ******************************************************/
@@ -352,8 +361,11 @@ export class CpuCoolerComponent implements OnInit {
     this.cpuCoolerService.add(this.validatingForm.value)
         .toPromise()
         .then((response) => {
-          this.reloadPageService.reload();
-          document.querySelector('.modal-backdrop').remove();
+          this.closeAddEditModal.nativeElement.click();
+          this.formFields.generateProductCode.disable();
+          this.formFields.productName.enable();
+          this.getCpuCoolerSearchResult();
+          this.getAllProductCodesWithStock();
         }).catch((error: HttpErrorResponse) => {
       this.errorMessage = error.error.message;
       document.getElementById('addCpuCooler-btn').setAttribute('data-backdrop', 'static');
@@ -370,9 +382,13 @@ export class CpuCoolerComponent implements OnInit {
     this.cpuCoolerService.editById(this.id, this.validatingForm.value)
         .toPromise()
         .then((response) => {
-          this.router.navigate(['components/cpu-cooler']).then(() => this.reloadPageService.reload());
+          this.closeAddEditModal.nativeElement.click();
+          this.getCpuCoolerSearchResult();
+          this.getAllProductCodesWithStock();
           this.isAddMode = true;
-          document.querySelector('.modal-backdrop').remove();
+          this.router.navigate([], {queryParams: {}});
+          this.formFields.generateProductCode.disable();
+          this.formFields.productName.enable();
         }).catch((error: HttpErrorResponse) => {
       this.errorMessage = error.error.message;
       document.getElementById('editCpuCooler-btn').setAttribute('data-backdrop', 'static');
@@ -413,18 +429,17 @@ export class CpuCoolerComponent implements OnInit {
   }
 
   patchForm(cpuCooler: any, param: any) {
-    const productCodeInactive = this.productCodeListInactive
+    this.isAddMode = false;
+    const productCodeInactive = this.productCodesListInactive
         .find(s => s.productCode === cpuCooler.generateProductCode.productCode);
-
     const productCodeActive = this.productCodesList
         .find(s => s.productCode === cpuCooler.generateProductCode.productCode);
 
-    if (productCodeInactive !== undefined && productCodeInactive.state === false){
+    if (productCodeInactive !== undefined && productCodeInactive.state === false) {
       this.productCodeService.inactiveProductCode(param, productCodeInactive);
-      return null;
+      return;
     }
 
-    this.isAddMode = false;
     this.selectedProductCode = cpuCooler.generateProductCode;
     this.validatingForm.patchValue(cpuCooler);
     this.validatingForm.get('productName')
@@ -436,7 +451,7 @@ export class CpuCoolerComponent implements OnInit {
   getAllGenerateProductCodes(): void {
     this.productCodeService.getAll(CpuCooler.generateProductURL).subscribe((data: any) => {
       this.productCodesList = data.filter(productCode => productCode.state === true);
-      this.productCodeListInactive = data.filter(productCode => productCode.state === false);
+      this.productCodesListInactive = data.filter(productCode => productCode.state === false);
     }, (error: HttpErrorResponse) => {
       this.errorMessage = error.error.message;
     });
@@ -450,6 +465,7 @@ export class CpuCoolerComponent implements OnInit {
 
   }
   /***********************End Create, Update, Delete ****************************************************/
+
 
 
 }

@@ -4,9 +4,9 @@ import {HttpErrorResponse, HttpParams} from '@angular/common/http';
 import {GenerateProductCodeService} from '../../../services/components/generate-product-code.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ReloadPageService} from '../../../services/reload-page.service';
-import {GenerateProductCode} from '../../../model/components/GenerateProductCode';
 import Swal from 'sweetalert2';
 import {Processor} from '../../../model/components/Processor';
+import { GenerateProductCode } from 'app/model/components/GenerateProductCode';
 
 @Component({
   selector: 'app-product-code-processor',
@@ -189,4 +189,5 @@ export class ProductCodeProcessorComponent implements OnInit {
     this.validatingForm.get('state').setValue(event.currentValue);
     this.editProductCode();
   }
+
 }

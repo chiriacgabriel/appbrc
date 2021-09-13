@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {RouterModule} from '@angular/router';
+import {PreloadAllModules, RouterModule} from '@angular/router';
 import {HttpModule} from '@angular/http';
 import {APP_BASE_HREF} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -29,7 +29,9 @@ import { ProviderComponent } from './accounting/provider/provider.component';
         BrowserAnimationsModule,
         FormsModule,
         RouterModule.forRoot(AppRoutes, {
-            useHash: true
+            useHash: true,
+            preloadingStrategy: PreloadAllModules,
+            relativeLinkResolution: 'legacy'
         }),
         NgbModule,
         HttpClientModule,

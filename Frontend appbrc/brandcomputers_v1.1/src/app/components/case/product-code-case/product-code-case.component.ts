@@ -5,8 +5,8 @@ import {GenerateProductCodeService} from '../../../services/components/generate-
 import {ActivatedRoute, Router} from '@angular/router';
 import {ReloadPageService} from '../../../services/reload-page.service';
 import {Case} from '../../../model/components/Case';
-import { GenerateProductCode } from 'app/model/components/GenerateProductCode';
 import Swal from 'sweetalert2';
+import {GenerateProductCode} from '../../../model/components/GenerateProductCode';
 
 @Component({
   moduleId: module.id,
@@ -28,7 +28,6 @@ export class ProductCodeCaseComponent implements OnInit {
   searchQuery = '';
   params = new HttpParams();
   state_default: boolean = true;
-
 
   constructor(private generateProductCodeService: GenerateProductCodeService,
               private formBuild: FormBuilder,

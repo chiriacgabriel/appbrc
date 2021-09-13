@@ -68,6 +68,7 @@
                                        width="100%">
                                     <thead>
                                     <tr>
+                                        <th scope="col">Actiune</th>
                                         <th scope="col">Cod Produs</th>
                                         <th scope="col">Serial Number</th>
                                         <th scope="col">Nume Produs</th>
@@ -84,7 +85,7 @@
                                         <th scope="col">Pret intrare (Lei)</th>
                                         <th scope="col">Informatii produs</th>
                                         <th scope="col">Stare</th>
-                                        <th scope="col">Actiune</th>
+
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -94,7 +95,18 @@
           itemsPerPage: pageSizeMotherboard,
           currentPage: pageMotherboard,
           totalItems: count
-    }; let i = index">
+    }, let i = index;">
+                                        <td>
+                                            <a type="button" id="{{i}}" class="btn btn-warning btn-link btn-icon btn-sm edit"
+                                               (click)="patchForm(motherboard, i)" data-toggle="modal"
+                                               data-target="#modalMotherboard">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <a type="button" class="btn btn-danger btn-link btn-icon btn-sm remove"
+                                               (click)="deleteMotherboard(motherboard)">
+                                                <i class="fa fa-times"></i>
+                                            </a>
+                                        </td>
                                         <td>{{motherboard.generateProductCode.productCode}}</td>
                                         <td>{{motherboard.serialNumber}}</td>
                                         <td>{{motherboard.generateProductCode.productName}}</td>
@@ -111,17 +123,7 @@
                                         <td>{{motherboard.priceIn}}</td>
                                         <td>{{motherboard.productInformation}}</td>
                                         <td>{{motherboard.state}}</td>
-                                        <td>
-                                            <a id="{{i}}" type="button" class="btn btn-warning btn-link btn-icon btn-sm edit"
-                                               (click)="patchForm(motherboard, i)" data-toggle="modal"
-                                               data-target="#modalMotherboard">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
-                                            <a type="button" class="btn btn-danger btn-link btn-icon btn-sm remove"
-                                               (click)="deleteMotherboard(motherboard)">
-                                                <i class="fa fa-times"></i>
-                                            </a>
-                                        </td>
+
                                     </tr>
                                     </tbody>
                                 </table>
@@ -269,6 +271,7 @@
                                            class="table table-striped table-bordered table-format" width="100%">
                                         <thead>
                                         <tr>
+                                            <th scope="col">Actiune</th>
                                             <th scope="col">Cod Produs</th>
                                             <th scope="col">Serial Number</th>
                                             <th scope="col">Nume Produs</th>
@@ -285,7 +288,7 @@
                                             <th scope="col">Pret intrare (Lei)</th>
                                             <th scope="col">Informatii produs</th>
                                             <th scope="col">Stare</th>
-                                            <th scope="col">Actiune</th>
+
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -296,6 +299,17 @@
             currentPage: pageMotherboardsByProductCode,
             totalItems: countMotherboardsByProductCode
             }">
+                                            <td>
+                                                <a type="button" class="btn btn-warning btn-link btn-icon btn-sm edit"
+                                                   (click)="patchForm(motherboard, $event)" data-toggle="modal"
+                                                   data-target="#modalMotherboard">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                                <a type="button" class="btn btn-danger btn-link btn-icon btn-sm remove"
+                                                   (click)="deleteMotherboard(motherboard)">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </td>
                                             <td>{{motherboard.generateProductCode.productCode}}</td>
                                             <td>{{motherboard.serialNumber}}</td>
                                             <td>{{motherboard.generateProductCode.productName}}</td>
@@ -312,17 +326,7 @@
                                             <td>{{motherboard.priceIn}}</td>
                                             <td>{{motherboard.productInformation}}</td>
                                             <td>{{motherboard.state}}</td>
-                                            <td>
-                                                <a type="button" class="btn btn-warning btn-link btn-icon btn-sm edit"
-                                                   (click)="patchForm(motherboard, $event)" data-toggle="modal"
-                                                   data-target="#modalMotherboard">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
-                                                <a type="button" class="btn btn-danger btn-link btn-icon btn-sm remove"
-                                                   (click)="deleteMotherboard(motherboard)">
-                                                    <i class="fa fa-times"></i>
-                                                </a>
-                                            </td>
+
                                         </tr>
                                         </tbody>
                                     </table>
@@ -358,7 +362,7 @@
                 <h5 *ngIf="isAddMode" class="modal-title" id="staticBackdropLabel"><img class="fav-icon-small" src="assets/img/icons/motherboard.ico"/> Adauga placa de baza</h5>
                 <h5 *ngIf="!isAddMode" class="modal-title" id="editStaticBackdropLabel"><img class="fav-icon-small" src="assets/img/icons/motherboard.ico"/> Editare
                     placa de baza</h5>
-                <button (click)="closeModal()" type="button" class="close" data-dismiss="modal"
+                <button (click)="closeModal()" #closeAddEditModal type="button" class="close" data-dismiss="modal"
                         aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -377,7 +381,7 @@
                             <label for="productName"><i class="fa fa-product-hunt fa-sm"></i> Nume produs</label>
                             <ng-select id="productName" (ngModelChange)="setGeneratedProductCode($event)"
                                        formControlName="productName">
-                                <ng-option *ngFor="let generatedProductCode of productCodeList"
+                                <ng-option *ngFor="let generatedProductCode of productCodesList"
                                            [value]="generatedProductCode">{{generatedProductCode.productName}}
                                 </ng-option>
                             </ng-select>
@@ -412,8 +416,8 @@
                     <div class="row">
 
                         <div class="form-group col-lg-3">
-                            <label for="quantity"><i class="fa fa-sort-numeric-up"></i> Cantitate</label>
-                            <input type="number" min="0" class="form-control" id="quantity" formControlName="quantity">
+                            <label for="quantity"><i class="fas fa-sort-numeric-up"></i> Cantitate</label>
+                            <input type="number" class="form-control" id="quantity" formControlName="quantity" min="0">
                         </div>
 
                         <div class="form-group col-lg-3">

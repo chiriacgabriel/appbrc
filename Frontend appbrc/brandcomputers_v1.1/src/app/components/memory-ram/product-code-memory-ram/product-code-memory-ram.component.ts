@@ -4,9 +4,9 @@ import {HttpErrorResponse, HttpParams} from '@angular/common/http';
 import {GenerateProductCodeService} from '../../../services/components/generate-product-code.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ReloadPageService} from '../../../services/reload-page.service';
-import {GenerateProductCode} from '../../../model/components/GenerateProductCode';
 import Swal from 'sweetalert2';
 import {MemoryRam} from '../../../model/components/MemoryRam';
+import { GenerateProductCode } from 'app/model/components/GenerateProductCode';
 
 @Component({
   selector: 'app-product-code-memory-ram',
@@ -191,4 +191,5 @@ export class ProductCodeMemoryRamComponent implements OnInit {
     this.validatingForm.get('state').setValue(event.currentValue);
     this.editProductCode();
   }
+
 }

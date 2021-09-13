@@ -1,6 +1,5 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {GenerateProductCode} from '../../model/components/GenerateProductCode';
 import {HttpErrorResponse, HttpParams} from '@angular/common/http';
 import {EnumService} from '../../helper/enum.service';
 import {StorageService} from '../../services/components/storage.service';
@@ -15,6 +14,7 @@ import {Storage} from '../../model/components/Storage';
 import Swal from 'sweetalert2';
 import { VideoCardService } from 'app/services/components/video-card.service';
 import { VideoCard } from 'app/model/components/VideoCard';
+import { GenerateProductCode } from 'app/model/components/GenerateProductCode';
 
 @Component({
   selector: 'app-video-card',
@@ -30,6 +30,7 @@ export class VideoCardComponent implements OnInit {
 
   @ViewChild('inputSearch') inputSearch: ElementRef;
   @ViewChild('inputSearchStock') inputSearchStock: ElementRef;
+  @ViewChild('closeAddEditModal') closeAddEditModal;
 
   id: number;
   getProductCode: string;
@@ -55,8 +56,8 @@ export class VideoCardComponent implements OnInit {
   isAddMode: boolean;
   isSerialNumberPresent = false;
   validatingForm: FormGroup;
-  productCodesList: GenerateProductCode[] = [];
-  productCodeListInactive: GenerateProductCode[] = [];
+  productCodesList = [];
+  productCodesListInactive = [];
   stateList = [];
 
   manufacturerList = [];
@@ -105,8 +106,6 @@ export class VideoCardComponent implements OnInit {
       productName: new FormControl('', Validators.required),
       serialNumber: new FormControl('', Validators.required),
       manufacturer: new FormControl('', Validators.required),
-      quantity: new FormControl('', Validators.required),
-      unitOfMeasurement: new FormControl('', Validators.required),
       model: new FormControl('', Validators.required),
       memory: new FormControl('', Validators.required),
       profile: new FormControl('', Validators.required),
@@ -123,6 +122,8 @@ export class VideoCardComponent implements OnInit {
       series: new FormControl('', Validators.required),
       productInformation: new FormControl('', Validators.required),
       priceIn: new FormControl('', Validators.required),
+      quantity: new FormControl('', Validators.required),
+      unitOfMeasurement: new FormControl('', Validators.required),
       state: new FormControl('', Validators.required),
       createdBy: new FormControl(''),
       updatedBy: new FormControl('')
@@ -285,7 +286,6 @@ export class VideoCardComponent implements OnInit {
   }
 
   getVideoCardByProductCode(productCode: any) {
-
     this.toggleProductCodeTable();
     this.getProductCode = productCode;
     const params = this.getPaginationParams(this.pageVideoCardByProductCode, this.pageSizeVideoCardByProductCode);
@@ -322,12 +322,14 @@ export class VideoCardComponent implements OnInit {
   closeModal() {
     this.isAddMode = true;
     this.validatingForm.reset();
-    this.reloadPageService.skipLocation('components/video-card');
+    this.closeAddEditModal.nativeElement.click();
 
     if (this.isSerialNumberPresent) {
       this.isSerialNumberPresent = false;
       this.errorMessage = '';
     }
+
+    this.router.navigate([], {});
   }
 
   getRouting() {
@@ -366,6 +368,9 @@ export class VideoCardComponent implements OnInit {
       this.getProductCode = null;
       this.toggleProductCodeTable();
     }
+
+    //TODO
+    // redo the location.back it causes some errors
   }
 
   /************************** End General Functions ******************************************************/
@@ -382,9 +387,12 @@ export class VideoCardComponent implements OnInit {
     this.videoCardService.add(this.validatingForm.value)
         .toPromise()
         .then((response) => {
-          this.reloadPageService.reload();
+          this.closeAddEditModal.nativeElement.click();
           this.isSerialNumberPresent = false;
-          document.querySelector('.modal-backdrop').remove();
+          this.formFields.generateProductCode.disable();
+          this.formFields.productName.enable();
+          this.getVideoCardSearchResult();
+          this.getAllProductCodesWithStock();
         }).catch((error: HttpErrorResponse) => {
           this.isSerialNumberPresent = true;
           this.errorMessage = error.error.message;
@@ -402,12 +410,15 @@ export class VideoCardComponent implements OnInit {
     this.videoCardService.editById(this.id, this.validatingForm.value)
         .toPromise()
         .then((response) => {
-          this.router.navigate(['components/video-card']).then(() => this.reloadPageService.reload());
+          this.closeAddEditModal.nativeElement.click();
+          this.formFields.generateProductCode.disable();
+          this.formFields.productName.enable();
           this.isAddMode = true;
           this.isSerialNumberPresent = false;
-          document.querySelector('.modal-backdrop').remove();
+          this.getAllProductCodesWithStock();
+          this.getVideoCardSearchResult();
+          this.router.navigate([], {});
         }).catch((error: HttpErrorResponse) => {
-
           this.isSerialNumberPresent = true;
           this.errorMessage = error.error.message;
           document.getElementById('editVideoCard-btn').setAttribute('data-backdrop', 'static');
@@ -447,18 +458,18 @@ export class VideoCardComponent implements OnInit {
   }
 
   patchForm(videoCard: any, param: any) {
-    const productCodeInactive = this.productCodeListInactive
-        .find(s => s.productCode === videoCard.generateProductCode.productCode);
+    this.isAddMode = false;
 
+    const productCodeInactive = this.productCodesListInactive
+        .find(s => s.productCode === videoCard.generateProductCode.productCode);
     const productCodeActive = this.productCodesList
         .find(s => s.productCode === videoCard.generateProductCode.productCode);
 
-    if (productCodeInactive !== undefined && productCodeInactive.state === false){
+    if (productCodeInactive !== undefined && productCodeInactive.state === false) {
       this.productCodeService.inactiveProductCode(param, productCodeInactive);
-      return null;
+      return;
     }
 
-    this.isAddMode = false;
     this.selectedProductCode = videoCard.generateProductCode;
     this.validatingForm.patchValue(videoCard);
     this.validatingForm.get('productName')
@@ -470,7 +481,7 @@ export class VideoCardComponent implements OnInit {
   getAllGenerateProductCodes(): void {
     this.productCodeService.getAll(VideoCard.generateProductURL).subscribe((data: any) => {
       this.productCodesList = data.filter(productCode => productCode.state === true);
-      this.productCodeListInactive = data.filter(productCode => productCode.state === false);
+      this.productCodesListInactive = data.filter(productCode => productCode.state === false);
     }, (error: HttpErrorResponse) => {
       this.errorMessage = error.error.message;
     });

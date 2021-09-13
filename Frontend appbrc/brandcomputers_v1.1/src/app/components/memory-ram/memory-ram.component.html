@@ -67,12 +67,12 @@
                                        width="100%">
                                     <thead>
                                     <tr>
+                                        <th scope="col">Actiune</th>
                                         <th scope="col">Cod Produs</th>
                                         <th scope="col">Serial Number</th>
                                         <th scope="col">Nume Produs</th>
                                         <th scope="col">Cantitate</th>
                                         <th scope="col">Unitate de masura</th>
-                                        <th scope="col">Producator</th>
                                         <th scope="col">Module</th>
                                         <th scope="col">Tip memorie</th>
                                         <th scope="col">Frecventa</th>
@@ -80,7 +80,7 @@
                                         <th scope="col">Pret intrare (Lei)</th>
                                         <th scope="col">Informatii produs</th>
                                         <th scope="col">Stare</th>
-                                        <th scope="col">Actiune</th>
+
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -90,7 +90,18 @@
         itemsPerPage: pageSizeMemoryRam,
         currentPage: pageMemoryRam,
         totalItems: count
-  } let i = index">
+  }, let i = index;">
+                                        <td>
+                                            <a type="button" id="{{i}}" class="btn btn-warning btn-link btn-icon btn-sm edit"
+                                               (click)="patchForm(memoryRam, i)" data-toggle="modal"
+                                               data-target="#modalMemoryRam">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <a type="button" class="btn btn-danger btn-link btn-icon btn-sm remove"
+                                               (click)="deleteMemoryRam(memoryRam)">
+                                                <i class="fa fa-times"></i>
+                                            </a>
+                                        </td>
                                         <td>{{memoryRam.generateProductCode.productCode}}</td>
                                         <td>{{memoryRam.serialNumber}}</td>
                                         <td>{{memoryRam.generateProductCode.productName}}</td>
@@ -104,17 +115,7 @@
                                         <td>{{memoryRam.priceIn}}</td>
                                         <td>{{memoryRam.productInformation}}</td>
                                         <td>{{memoryRam.state}}</td>
-                                        <td>
-                                            <a id="{{i}}" type="button" class="btn btn-warning btn-link btn-icon btn-sm edit"
-                                               (click)="patchForm(memoryRam, i)" data-toggle="modal"
-                                               data-target="#modalMemoryRam">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
-                                            <a type="button" class="btn btn-danger btn-link btn-icon btn-sm remove"
-                                               (click)="deleteMemoryRam(memoryRam)">
-                                                <i class="fa fa-times"></i>
-                                            </a>
-                                        </td>
+
                                     </tr>
                                     </tbody>
                                 </table>
@@ -262,10 +263,11 @@ totalItems: countProductCodeWithStock
                                            class="table table-striped table-bordered table-format" width="100%">
                                         <thead>
                                         <tr>
+                                            <th scope="col">Actiune</th>
                                             <th scope="col">Cod Produs</th>
                                             <th scope="col">Serial Number</th>
                                             <th scope="col">Nume Produs</th>
-                                            <th scope="col">Capacitate</th>
+                                            <th scope="col">Cantitate</th>
                                             <th scope="col">Unitate de masura</th>
                                             <th scope="col">Producator</th>
                                             <th scope="col">Module</th>
@@ -275,7 +277,7 @@ totalItems: countProductCodeWithStock
                                             <th scope="col">Pret intrare (Lei)</th>
                                             <th scope="col">Informatii produs</th>
                                             <th scope="col">Stare</th>
-                                            <th scope="col">Actiune</th>
+
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -286,6 +288,17 @@ itemsPerPage: pageSizeMemoryRamByProductCode,
 currentPage: pageMemoryRamByProductCode,
 totalItems: countMemoryRamByProductCode
 }">
+                                            <td>
+                                                <a type="button" class="btn btn-warning btn-link btn-icon btn-sm edit"
+                                                   (click)="patchForm(memoryRam, $event)" data-toggle="modal"
+                                                   data-target="#modalMemoryRam">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                                <a type="button" class="btn btn-danger btn-link btn-icon btn-sm remove"
+                                                   (click)="deleteMemoryRam(memoryRam)">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </td>
                                             <td>{{memoryRam.generateProductCode.productCode}}</td>
                                             <td>{{memoryRam.serialNumber}}</td>
                                             <td>{{memoryRam.generateProductCode.productName}}</td>
@@ -299,17 +312,7 @@ totalItems: countMemoryRamByProductCode
                                             <td>{{memoryRam.priceIn}}</td>
                                             <td>{{memoryRam.productInformation}}</td>
                                             <td>{{memoryRam.state}}</td>
-                                            <td>
-                                                <a type="button" class="btn btn-warning btn-link btn-icon btn-sm edit"
-                                                   (click)="patchForm(memoryRam, $event)" data-toggle="modal"
-                                                   data-target="#modalMemoryRam">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
-                                                <a type="button" class="btn btn-danger btn-link btn-icon btn-sm remove"
-                                                   (click)="deleteMemoryRam(memoryRam)">
-                                                    <i class="fa fa-times"></i>
-                                                </a>
-                                            </td>
+
                                         </tr>
                                         </tbody>
                                     </table>
@@ -346,7 +349,7 @@ totalItems: countMemoryRamByProductCode
                 <h5 *ngIf="isAddMode" class="modal-title" id="staticBackdropLabel"><i class="fas fa-memory fa-lg"></i> Adauga memorie RAM</h5>
                 <h5 *ngIf="!isAddMode" class="modal-title" id="editStaticBackdropLabel"><i class="fas fa-memory fa-lg"></i> Editare
                     memorie RAM</h5>
-                <button (click)="closeModal()" type="button" class="close" data-dismiss="modal"
+                <button (click)="closeModal()" #closeAddEditModal type="button" class="close" data-dismiss="modal"
                         aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -418,8 +421,8 @@ totalItems: countMemoryRamByProductCode
                         </div>
 
                         <div class="form-group col-lg-3">
-                            <label for="quantity"><i class="fa fa-sort-numeric-up"></i> Cantitate</label>
-                            <input type="number" min="0" class="form-control" id="quantity" formControlName="quantity">
+                            <label for="quantity"><i class="fas fa-sort-numeric-up"></i> Cantitate</label>
+                            <input type="number" class="form-control" id="quantity" formControlName="quantity" min="0">
                         </div>
 
                         <div class="form-group col-lg-3">

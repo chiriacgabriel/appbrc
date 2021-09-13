@@ -8,7 +8,6 @@ import {PanelsComponent} from './panels/panels.component';
 import {SweetAlertComponent} from './sweetalert/sweetalert.component';
 import {TypographyComponent} from './typography/typography.component';
 import {CaseComponent} from './case/case.component';
-import {ProductCodeCaseComponent} from './case/product-code-case/product-code-case.component';
 import {CpuCoolerComponent} from './cpu-cooler/cpu-cooler.component';
 import {ProductCodeCpuCoolerComponent} from './cpu-cooler/product-code-cpu-cooler/product-code-cpu-cooler.component';
 import {FanCaseComponent} from './fan-case/fan-case.component';
@@ -31,6 +30,7 @@ import {VideoCardComponent} from './video-card/video-card.component';
 import {ProductCodeVideoCardComponent} from './video-card/product-code-video-card/product-code-video-card.component';
 import {BrokenComponent} from './broken/broken.component';
 import {ProductCodeComputerComponent} from '../computer/product-code-computer/product-code-computer.component';
+import {ProductCodeCaseComponent} from './case/product-code-case/product-code-case.component';
 
 
 export const ComponentsRoutes: Routes = [{
@@ -210,14 +210,14 @@ export const ComponentsRoutes: Routes = [{
 }, {
     path: '',
     children: [{
-        path: 'product-code-computer',
-        component: ProductCodeComputerComponent
+        path: 'broken',
+        component: BrokenComponent,
     }]
 }, {
     path: '',
     children: [{
-        path: 'broken',
-        component: BrokenComponent,
+        path: 'product-code-computer',
+        component: ProductCodeComputerComponent
     }]
 }
 ];

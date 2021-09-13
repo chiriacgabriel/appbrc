@@ -1,7 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {HttpErrorResponse, HttpParams} from '@angular/common/http';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {GenerateProductCode} from '../../model/components/GenerateProductCode';
 import {FanCaseService} from '../../services/components/fan-case.service';
 import {ReloadPageService} from '../../services/reload-page.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -13,6 +12,7 @@ import {FanCase} from '../../model/components/FanCase';
 import Swal from 'sweetalert2';
 import {Location} from '@angular/common';
 import { EnumState } from 'app/model/enum/EnumState';
+import { GenerateProductCode } from 'app/model/components/GenerateProductCode';
 
 @Component({
   selector: 'app-fan-case',
@@ -28,6 +28,7 @@ export class FanCaseComponent implements OnInit {
 
   @ViewChild('inputSearch') inputSearch: ElementRef;
   @ViewChild('inputSearchStock') inputSearchStock: ElementRef;
+  @ViewChild('closeAddEditModal') closeAddEditModal;
   params = new HttpParams();
   validatingForm: FormGroup;
   id: number;
@@ -43,7 +44,7 @@ export class FanCaseComponent implements OnInit {
 
   selectedProductCode = new GenerateProductCode();
   productCodesList: GenerateProductCode[] = [];
-  productCodeListInactive: GenerateProductCode[] = [];
+  productCodesListInactive: GenerateProductCode[] = [];
   stateList: any;
 
   isFiltered = false;
@@ -95,9 +96,9 @@ export class FanCaseComponent implements OnInit {
       manufacturer: new FormControl('', Validators.required),
       dimension: new FormControl('', Validators.required),
       productInformation: new FormControl('', Validators.required),
+      priceIn: new FormControl('', Validators.required),
       quantity: new FormControl('', Validators.required),
       unitOfMeasurement: new FormControl('', Validators.required),
-      priceIn: new FormControl('', Validators.required),
       state: new FormControl('', Validators.required),
       createdBy: new FormControl(''),
       updatedBy: new FormControl('')
@@ -255,7 +256,6 @@ export class FanCaseComponent implements OnInit {
   }
 
   getFanCasesByProductCode(productCode: any) {
-
     this.toggleProductCodeTable();
     this.getProductCode = productCode;
     const params = this.getPaginationParams(this.pageFanCasesByProductCode, this.pageSizeFanCasesByProductCode);
@@ -293,7 +293,9 @@ export class FanCaseComponent implements OnInit {
   closeModal() {
     this.isAddMode = true;
     this.validatingForm.reset();
-    this.reloadPageService.skipLocation('components/fan-case');
+    this.closeAddEditModal.nativeElement.click();
+    this.router.navigate([], {queryParams: {}});
+
   }
 
   getRouting() {
@@ -349,8 +351,11 @@ export class FanCaseComponent implements OnInit {
     this.fanCaseService.add(this.validatingForm.value)
         .toPromise()
         .then((response) => {
-          this.reloadPageService.reload();
-          document.querySelector('.modal-backdrop').remove();
+          this.closeAddEditModal.nativeElement.click();
+          this.formFields.generateProductCode.disable();
+          this.formFields.productName.enable();
+          this.getFanCaseSearchResult();
+          this.getAllProductCodesWithStock();
         }).catch((error: HttpErrorResponse) => {
       this.errorMessage = error.error.message;
       document.getElementById('addFanCase-btn').setAttribute('data-backdrop', 'static');
@@ -367,9 +372,13 @@ export class FanCaseComponent implements OnInit {
     this.fanCaseService.editById(this.id, this.validatingForm.value)
         .toPromise()
         .then((response) => {
-          this.router.navigate(['components/fan-case']).then(() => this.reloadPageService.reload());
+          this.closeAddEditModal.nativeElement.click();
+          this.getFanCaseSearchResult();
+          this.getAllProductCodesWithStock();
           this.isAddMode = true;
-          document.querySelector('.modal-backdrop').remove();
+          this.router.navigate([], {queryParams: {}});
+          this.formFields.generateProductCode.disable();
+          this.formFields.productName.enable();
         }).catch((error: HttpErrorResponse) => {
       this.errorMessage = error.error.message;
       document.getElementById('editFanCase-btn').setAttribute('data-backdrop', 'static');
@@ -409,19 +418,18 @@ export class FanCaseComponent implements OnInit {
     }
   }
 
-  patchForm(fanCase: any, param: any) {
-    const productCodeInactive = this.productCodeListInactive
+  patchForm(fanCase: any, param) {
+    this.isAddMode = false;
+    const productCodeInactive = this.productCodesListInactive
         .find(s => s.productCode === fanCase.generateProductCode.productCode);
-
     const productCodeActive = this.productCodesList
         .find(s => s.productCode === fanCase.generateProductCode.productCode);
 
-    if (productCodeInactive !== undefined && productCodeInactive.state === false){
+    if (productCodeInactive !== undefined && productCodeInactive.state === false) {
       this.productCodeService.inactiveProductCode(param, productCodeInactive);
-      return null;
+      return;
     }
 
-    this.isAddMode = false;
     this.selectedProductCode = fanCase.generateProductCode;
     this.validatingForm.patchValue(fanCase);
     this.validatingForm.get('productName')
@@ -433,7 +441,7 @@ export class FanCaseComponent implements OnInit {
   getAllGenerateProductCodes(): void {
     this.productCodeService.getAll(FanCase.generateProductURL).subscribe((data: any) => {
       this.productCodesList = data.filter(productCode => productCode.state === true);
-      this.productCodeListInactive = data.filter(productCode => productCode.state === false);
+      this.productCodesListInactive = data.filter(productCode => productCode.state === false);
     }, (error: HttpErrorResponse) => {
       this.errorMessage = error.error.message;
     });

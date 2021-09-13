@@ -1,7 +1,6 @@
-import {Component, DoCheck, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {HttpErrorResponse, HttpParams} from '@angular/common/http';
-import { GenerateProductCode } from 'app/model/components/GenerateProductCode';
 import {CaseService} from '../../services/components/case.service';
 import {TokenStorageService} from '../../services/token-storage.service';
 import {ReloadPageService} from '../../services/reload-page.service';
@@ -16,6 +15,7 @@ import { EnumCompatibleMotherboardServer } from 'app/model/enum/EnumCompatibleMo
 import { Case } from 'app/model/components/Case';
 import Swal from 'sweetalert2';
 import {NotificationService} from '../../helper/notification.service';
+import { GenerateProductCode } from 'app/model/components/GenerateProductCode';
 
 
 @Component({
@@ -33,12 +33,13 @@ export class CaseComponent implements OnInit {
 
     @ViewChild('inputSearch') inputSearch: ElementRef;
     @ViewChild('inputSearchStock') inputSearchStock: ElementRef;
+    @ViewChild('closeAddEditModal') closeAddEditModal;
 
     id: number;
     selectedProductCode = new GenerateProductCode();
     getProductCode: string;
 
-    caseList: Case[] = [];
+    caseList = [];
     stateList: string[] = [];
     productCodesWithStock = [];
     caseListByProductCode = [];
@@ -84,8 +85,8 @@ export class CaseComponent implements OnInit {
                 private enumService: EnumService,
                 private filterService: FilterService,
                 private productCodeService: GenerateProductCodeService,
-                private location: Location,
-                private notificationService: NotificationService) {
+                private notificationService: NotificationService,
+                private location: Location) {
     }
 
     ngOnInit(): void {
@@ -115,14 +116,15 @@ export class CaseComponent implements OnInit {
             compatibleMotherboard: new FormControl({value: '', disabled: true}, Validators.required),
             powerSourceIncluded: new FormControl('', Validators.required),
             sourcePower: new FormControl('', Validators.required),
+            priceIn: new FormControl('', Validators.required),
             quantity: new FormControl('', Validators.required),
             unitOfMeasurement: new FormControl('', Validators.required),
-            priceIn: new FormControl('', Validators.required),
             productInformation: new FormControl('', Validators.required),
             state: new FormControl('', Validators.required),
             createdBy: new FormControl(''),
             updatedBy: new FormControl('')
         });
+
     }
 
     /************************** END FORM ****************************************************/
@@ -132,12 +134,11 @@ export class CaseComponent implements OnInit {
     getCaseSearchResult() {
         const params = this.getPaginationParams(this.pageCase, this.pageSizeCase);
         this.caseService.getSearchResult(this.query, params).subscribe((data: any) => {
-
             this.caseList = data.content.map(obj => new Case(obj));
             this.count = data.totalElements;
             if (this.query !== '') {
                 this.caseList = [];
-                for (let item of data.content.map(obj => new Case(obj))) {
+                for (let item of data.content) {
                     this.caseList.push(item);
                 }
                 this.count = data.totalElements;
@@ -153,7 +154,7 @@ export class CaseComponent implements OnInit {
         this.caseService.getFilter(this.params, pageParams).subscribe((data: any) => {
             this.count = data.totalElements;
             this.caseList = [];
-            for (let item of data.content.map(obj => new Case(obj))){
+            for (let item of data.content){
                 this.caseList.push(item);
             }
             this.query = '';
@@ -238,8 +239,11 @@ export class CaseComponent implements OnInit {
         this.caseService.add(this.validatingForm.value)
             .toPromise()
             .then((response) => {
-                this.reloadPageService.reload();
-                document.querySelector('.modal-backdrop').remove();
+                this.closeAddEditModal.nativeElement.click();
+                this.formFields.generateProductCode.disable();
+                this.formFields.productName.enable();
+                this.getCaseSearchResult();
+                this.getAllProductCodesWithStock();
             }).catch((error: HttpErrorResponse) => {
             this.errorMessage = error.error.message;
             document.getElementById('addCase-btn').setAttribute('data-backdrop', 'static');
@@ -256,11 +260,14 @@ export class CaseComponent implements OnInit {
         this.caseService.editById(this.id, this.validatingForm.value)
             .toPromise()
             .then((response) => {
-                // this.getCaseSearchResult();
-                this.router.navigate(['components/case']).then(() => this.reloadPageService.reload());
-
-                document.querySelector('.modal-backdrop').remove();
+                this.closeAddEditModal.nativeElement.click();
+                this.getCaseSearchResult();
+                this.getAllProductCodesWithStock();
+                this.router.navigate([], {queryParams: {}});
+                this.formFields.generateProductCode.disable();
+                this.formFields.productName.enable();
                 this.isAddMode = true;
+
             }).catch((error: HttpErrorResponse) => {
             this.errorMessage = error.error.message;
             document.getElementById('editCase-btn').setAttribute('data-backdrop', 'static');
@@ -300,16 +307,14 @@ export class CaseComponent implements OnInit {
     }
 
     patchForm(aCase: any, param: any) {
-
         const productCodeInactive = this.productCodeListInactive
             .find(s => s.productCode === aCase.generateProductCode.productCode);
-
         const productCodeActive = this.productCodeList
             .find(s => s.productCode === aCase.generateProductCode.productCode);
 
-        if (productCodeInactive !== undefined && productCodeInactive.state === false){
+        if (productCodeInactive !== undefined && productCodeInactive.state === false) {
             this.productCodeService.inactiveProductCode(param, productCodeInactive);
-            return null;
+            return;
         }
 
         this.isAddMode = false;
@@ -317,8 +322,8 @@ export class CaseComponent implements OnInit {
         this.validatingForm.patchValue(aCase);
         this.validatingForm.get('productName')
             .setValue(productCodeActive);
-
         this.router.navigate(['components/case'], {queryParams: {id: aCase.id}});
+
     }
 
     getAllGenerateProductCodes(): void {
@@ -354,7 +359,8 @@ export class CaseComponent implements OnInit {
     closeModal() {
         this.isAddMode = true;
         this.validatingForm.reset();
-        this.reloadPageService.skipLocation('components/case');
+        this.closeAddEditModal.nativeElement.click();
+        this.router.navigate([], {queryParams: {}});
 
     }
 

@@ -67,6 +67,7 @@
                                        width="100%">
                                     <thead>
                                     <tr>
+                                        <th scope="col">Actiune</th>
                                         <th scope="col">Cod Produs</th>
                                         <th scope="col">Serial Number</th>
                                         <th scope="col">Nume Produs</th>
@@ -77,7 +78,7 @@
                                         <th scope="col">Pret intrare (Lei)</th>
                                         <th scope="col">Informatii produs</th>
                                         <th scope="col">Stare</th>
-                                        <th scope="col">Actiune</th>
+
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -87,7 +88,18 @@
         itemsPerPage: pageSizeCpuCooler,
         currentPage: pageCpuCooler,
         totalItems: count
-  }; let i = index">
+  }, let i = index;">
+                                        <td>
+                                            <a type="button" id="{{i}}" class="btn btn-warning btn-link btn-icon btn-sm edit"
+                                               (click)="patchForm(cpuCooler, i)" data-toggle="modal"
+                                               data-target="#modalCpuCooler">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <a type="button" class="btn btn-danger btn-link btn-icon btn-sm remove"
+                                               (click)="deleteCpuCooler(cpuCooler)">
+                                                <i class="fa fa-times"></i>
+                                            </a>
+                                        </td>
                                         <td>{{cpuCooler.generateProductCode.productCode}}</td>
                                         <td>{{cpuCooler.serialNumber}}</td>
                                         <td>{{cpuCooler.generateProductCode.productName}}</td>
@@ -98,17 +110,7 @@
                                         <td>{{cpuCooler.priceIn}}</td>
                                         <td>{{cpuCooler.productInformation}}</td>
                                         <td>{{cpuCooler.state}}</td>
-                                        <td>
-                                            <a id="{{i}}" type="button" class="btn btn-warning btn-link btn-icon btn-sm edit"
-                                               (click)="patchForm(cpuCooler, i)" data-toggle="modal"
-                                               data-target="#modalCpuCooler">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
-                                            <a type="button" class="btn btn-danger btn-link btn-icon btn-sm remove"
-                                               (click)="deleteCpuCooler(cpuCooler)">
-                                                <i class="fa fa-times"></i>
-                                            </a>
-                                        </td>
+
                                     </tr>
                                     </tbody>
                                 </table>
@@ -258,6 +260,7 @@ totalItems: countProductCodeWithStock
                                            class="table table-striped table-bordered table-format" width="100%">
                                         <thead>
                                         <tr>
+                                            <th scope="col">Actiune</th>
                                             <th scope="col">Cod Produs</th>
                                             <th scope="col">Serial Number</th>
                                             <th scope="col">Nume Produs</th>
@@ -268,7 +271,7 @@ totalItems: countProductCodeWithStock
                                             <th scope="col">Pret intrare (Lei)</th>
                                             <th scope="col">Informatii produs</th>
                                             <th scope="col">Stare</th>
-                                            <th scope="col">Actiune</th>
+
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -279,16 +282,6 @@ itemsPerPage: pageSizeCpuCoolerByProductCode,
 currentPage: pageCpuCoolerByProductCode,
 totalItems: countCpuCoolerByProductCode
 }">
-                                            <td>{{cpuCooler.generateProductCode.productCode}}</td>
-                                            <td>{{cpuCooler.serialNumber}}</td>
-                                            <td>{{cpuCooler.generateProductCode.productName}}</td>
-                                            <td>{{cpuCooler.quantity}}</td>
-                                            <td>{{cpuCooler.unitOfMeasurement}}</td>
-                                            <td>{{cpuCooler.manufacturer}}</td>
-                                            <td>{{cpuCooler.stock}}</td>
-                                            <td>{{cpuCooler.priceIn}}</td>
-                                            <td>{{cpuCooler.productInformation}}</td>
-                                            <td>{{cpuCooler.state}}</td>
                                             <td>
                                                 <a type="button" class="btn btn-warning btn-link btn-icon btn-sm edit"
                                                    (click)="patchForm(cpuCooler, $event)" data-toggle="modal"
@@ -300,6 +293,17 @@ totalItems: countCpuCoolerByProductCode
                                                     <i class="fa fa-times"></i>
                                                 </a>
                                             </td>
+                                            <td>{{cpuCooler.generateProductCode.productCode}}</td>
+                                            <td>{{cpuCooler.serialNumber}}</td>
+                                            <td>{{cpuCooler.generateProductCode.productName}}</td>
+                                            <td>{{cpuCooler.quantity}}</td>
+                                            <td>{{cpuCooler.unitOfMeasurement}}</td>
+                                            <td>{{cpuCooler.manufacturer}}</td>
+                                            <td>{{cpuCooler.stock}}</td>
+                                            <td>{{cpuCooler.priceIn}}</td>
+                                            <td>{{cpuCooler.productInformation}}</td>
+                                            <td>{{cpuCooler.state}}</td>
+
                                         </tr>
                                         </tbody>
                                     </table>
@@ -340,7 +344,7 @@ totalItems: countCpuCoolerByProductCode
                                                                                              src="assets/img/icons/cpu_cooler.ico"/>
                     Editare
                     cooler CPU</h5>
-                <button (click)="closeModal()" type="button" class="close" data-dismiss="modal"
+                <button (click)="closeModal()" #closeAddEditModal type="button" class="close" data-dismiss="modal"
                         aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -379,12 +383,10 @@ totalItems: countCpuCoolerByProductCode
                                 Socket</label>
                             <input type="text" class="form-control" id="socket" formControlName="socket">
                         </div>
-
                         <div class="form-group col-lg-4">
-                            <label for="quantity"><i class="fa fa-sort-numeric-up"></i> Cantitate</label>
-                            <input type="number" min="0" class="form-control" id="quantity" formControlName="quantity">
+                            <label for="quantity"><i class="fas fa-sort-numeric-up"></i> Cantitate</label>
+                            <input type="number" class="form-control" id="quantity" formControlName="quantity" min="0">
                         </div>
-
                         <div class="form-group col-lg-4">
                             <label for="priceIn"><i class="fa fa-money fa-sm"></i> Pret intrare (Lei)</label>
                             <input type="number" class="form-control" id="priceIn" formControlName="priceIn" min="0">
@@ -392,7 +394,6 @@ totalItems: countCpuCoolerByProductCode
                     </div>
 
                     <div class="row">
-
 
                         <div class="form-group col-lg-4">
                             <label for="unitOfMeasurement"><img class="fav-icon-small" src="assets/img/icons/measure.ico"/> Unitate</label>

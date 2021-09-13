@@ -5,7 +5,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {EnumService} from 'app/helper/enum.service';
 import {FilterService} from 'app/helper/filter.service';
 import {EnumState} from 'app/model/enum/EnumState';
-import {GenerateProductCode} from 'app/model/components/GenerateProductCode';
 import {SoundCard} from 'app/model/components/SoundCard';
 import {GenerateProductCodeService} from 'app/services/components/generate-product-code.service';
 import {SoundCardService} from 'app/services/components/sound-card.service';
@@ -14,21 +13,23 @@ import {TokenStorageService} from 'app/services/token-storage.service';
 import Swal from 'sweetalert2';
 
 import {Location} from '@angular/common';
+import { GenerateProductCode } from 'app/model/components/GenerateProductCode';
 
 @Component({
     selector: 'app-sound-card',
     templateUrl: './sound-card.component.html',
     styleUrls: ['./sound-card.component.css',
-      '../../../assets/css/_modal_filter.css',
-      '../../../assets/css/_table_format.css',
-      '../../../assets/css/_tab_pane_custom.css',
-      '../../../assets/css/_fav_icons_custom.css',
-      '../../../assets/css/_pagination_custom.css']
+        '../../../assets/css/_modal_filter.css',
+        '../../../assets/css/_table_format.css',
+        '../../../assets/css/_tab_pane_custom.css',
+        '../../../assets/css/_fav_icons_custom.css',
+        '../../../assets/css/_pagination_custom.css']
 })
 export class SoundCardComponent implements OnInit {
 
     @ViewChild('inputSearch') inputSearch: ElementRef;
     @ViewChild('inputSearchStock') inputSearchStock: ElementRef;
+    @ViewChild('closeAddEditModal') closeAddEditModal;
 
     id: number;
     selectedProductCode = new GenerateProductCode();
@@ -43,7 +44,7 @@ export class SoundCardComponent implements OnInit {
     productCodesWithStock = [];
     soundCardListByProductCode = [];
     productCodesList: GenerateProductCode[] = [];
-    productCodeListInactive: GenerateProductCode[] = [];
+    productCodesListInactive: GenerateProductCode[] = [];
 
     pageSizeSoundCard = 10;
     pageSoundCard = 1;
@@ -100,12 +101,12 @@ export class SoundCardComponent implements OnInit {
             generateProductCode: new FormControl({value: '', disabled: true}, Validators.required),
             productName: new FormControl('', Validators.required),
             serialNumber: new FormControl('', Validators.required),
-            quantity: new FormControl('', Validators.required),
-            unitOfMeasurement: new FormControl('', Validators.required),
             manufacturer: new FormControl('', Validators.required),
             model: new FormControl('', Validators.required),
             productInformation: new FormControl('', Validators.required),
             priceIn: new FormControl('', Validators.required),
+            quantity: new FormControl('', Validators.required),
+            unitOfMeasurement: new FormControl('', Validators.required),
             state: new FormControl('', Validators.required),
             createdBy: new FormControl(''),
             updatedBy: new FormControl('')
@@ -268,7 +269,6 @@ export class SoundCardComponent implements OnInit {
     }
 
     getSoundCardByProductCode(productCode: any) {
-
         this.toggleProductCodeTable();
         this.getProductCode = productCode;
         const params = this.getPaginationParams(this.pageSoundCardByProductCode, this.pageSizeSoundCardByProductCode);
@@ -304,12 +304,14 @@ export class SoundCardComponent implements OnInit {
     closeModal() {
         this.isAddMode = true;
         this.validatingForm.reset();
-        this.reloadPageService.skipLocation('components/sound-card');
+        this.closeAddEditModal.nativeElement.click();
 
         if (this.isSerialNumberPresent) {
             this.isSerialNumberPresent = false;
             this.errorMessage = '';
         }
+
+        this.router.navigate([], {});
     }
 
     getRouting() {
@@ -348,6 +350,9 @@ export class SoundCardComponent implements OnInit {
             this.getProductCode = null;
             this.toggleProductCodeTable();
         }
+
+        //TODO
+        // redo the location.back it causes some errors
     }
 
     /************************** End General Functions ******************************************************/
@@ -364,9 +369,13 @@ export class SoundCardComponent implements OnInit {
             .toPromise()
             .then((response) => {
 
-                this.reloadPageService.reload();
+                this.getSoundCardSearchResult();
+                this.getAllProductCodesWithStock();
+                this.formFields.generateProductCode.disable();
+                this.formFields.productName.enable();
+                this.closeAddEditModal.nativeElement.click();
                 this.isSerialNumberPresent = false;
-                document.querySelector('.modal-backdrop').remove();
+
 
             }).catch((error: HttpErrorResponse) => {
 
@@ -387,10 +396,14 @@ export class SoundCardComponent implements OnInit {
             .toPromise()
             .then((response) => {
 
-                this.router.navigate(['components/sound-card']).then(() => this.reloadPageService.reload());
+                this.closeAddEditModal.nativeElement.click();
+                this.formFields.generateProductCode.disable();
+                this.formFields.productName.enable();
                 this.isAddMode = true;
                 this.isSerialNumberPresent = false;
-                document.querySelector('.modal-backdrop').remove();
+                this.getSoundCardSearchResult();
+                this.getAllProductCodesWithStock();
+                this.router.navigate([], {});
 
             }).catch((error: HttpErrorResponse) => {
 
@@ -434,18 +447,18 @@ export class SoundCardComponent implements OnInit {
     }
 
     patchForm(soundCard: any, param: any) {
-        const productCodeInactive = this.productCodeListInactive
-            .find(s => s.productCode === soundCard.generateProductCode.productCode);
+        this.isAddMode = false;
 
+        const productCodeInactive = this.productCodesListInactive
+            .find(s => s.productCode === soundCard.generateProductCode.productCode);
         const productCodeActive = this.productCodesList
             .find(s => s.productCode === soundCard.generateProductCode.productCode);
 
-        if (productCodeInactive !== undefined && productCodeInactive.state === false){
+        if (productCodeInactive !== undefined && productCodeInactive.state === false) {
             this.productCodeService.inactiveProductCode(param, productCodeInactive);
-            return null;
+            return;
         }
 
-        this.isAddMode = false;
         this.selectedProductCode = soundCard.generateProductCode;
         this.validatingForm.patchValue(soundCard);
         this.validatingForm.get('productName')
@@ -457,7 +470,7 @@ export class SoundCardComponent implements OnInit {
     getAllGenerateProductCodes(): void {
         this.productCodeService.getAll(SoundCard.generateProductURL).subscribe((data: any) => {
             this.productCodesList = data.filter(productCode => productCode.state === true);
-            this.productCodeListInactive = data.filter(productCode => productCode.state === false);
+            this.productCodesListInactive = data.filter(productCode => productCode.state === false);
         }, (error: HttpErrorResponse) => {
             this.errorMessage = error.error.message;
         });
