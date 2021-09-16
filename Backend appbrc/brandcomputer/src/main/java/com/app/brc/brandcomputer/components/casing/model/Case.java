@@ -1,15 +1,12 @@
 package com.app.brc.brandcomputer.components.casing.model;
 
-import com.app.brc.brandcomputer.accounting.nir.model.Nir;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import javax.transaction.Transactional;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
+
 
 @Getter
 @Setter
@@ -17,6 +14,7 @@ import java.util.Set;
 @AllArgsConstructor
 @EqualsAndHashCode
 @Builder
+@ToString
 @Entity
 @Table(name = "cases")
 public class Case {
@@ -27,7 +25,7 @@ public class Case {
 
     @ManyToOne
     @JoinColumn(name = "productCode_id")
-    private GenerateProductCodeCase generateProductCodeCase;
+    private GenerateProductCodeCase generateProductCode;
 
     private String serialNumber;
     private String manufacturer;

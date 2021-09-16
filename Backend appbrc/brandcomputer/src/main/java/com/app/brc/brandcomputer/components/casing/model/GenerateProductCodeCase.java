@@ -15,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @EqualsAndHashCode
 @Builder
+@ToString
 @Entity
 @Table(name = "generateProductCodeCase")
 public class GenerateProductCodeCase {
@@ -27,7 +28,7 @@ public class GenerateProductCodeCase {
     private LocalDate createdDate;
     private boolean state;
 
-    @OneToMany(mappedBy = "generateProductCodeCase")
+    @OneToMany(mappedBy = "generateProductCode")
     @JsonIgnore
     private List<Case> caseList = new ArrayList<>();
 }

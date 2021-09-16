@@ -94,6 +94,7 @@ export class UnreceivedComponent implements OnInit {
     getUnreceived() {
         this.nirService.getAllUnreceived().subscribe((data: any) => {
             this.unreceivedList = data;
+            console.log(data);
         }, (error: HttpErrorResponse) => {
             this.errorMessage = error.error.message;
         });
@@ -190,26 +191,6 @@ export class UnreceivedComponent implements OnInit {
             progress((100 / stepCount) * current_step);
         });
 
-
-        // submitBtn.addEventListener('click', () => {
-        //
-        //     const timer = ms => new Promise(res => setTimeout(res, ms));
-        //
-        //     timer(3000)
-        //         .then(() => {
-        //             bodyElement.classList.add('loaded');
-        //         }).then(() => {
-        //             step[stepCount].classList.remove('d-block');
-        //             step[stepCount].classList.add('d-none');
-        //             prevBtn.classList.remove('d-inline-block');
-        //             prevBtn.classList.add('d-none');
-        //             submitBtn.classList.remove('d-inline-block');
-        //             submitBtn.classList.add('d-none');
-        //             succcessDiv.classList.remove('d-none');
-        //             succcessDiv.classList.add('d-block');
-        //     })
-        //
-        // });
     }
 
     noForm() {
@@ -223,6 +204,8 @@ export class UnreceivedComponent implements OnInit {
     selectProduct(unreceived: any, event: any) {
         if (event.target.checked == true){
             this.checkedList.push(unreceived);
+            console.log(unreceived);
+            console.log(this.checkedList);
         }else {
             for (let i = 0; i < this.checkedList.length; i++){
                 if (this.checkedList[i].id == unreceived.id && this.checkedList[i].category == unreceived.category){

@@ -34,9 +34,9 @@ export class GenerateProductCodeService {
             generateProductCode, httpOptions);
     }
 
-    update(url: string, id: number, generatedProductCodeCase: GenerateProductCode): Observable<GenerateProductCode> {
+    update(url: string, id: number, generatedProductCode: GenerateProductCode): Observable<GenerateProductCode> {
         return this.http.put<GenerateProductCode>(`${this.apiServerUrl}/api/` + url + '/' + id,
-            generatedProductCodeCase, httpOptions);
+            generatedProductCode, httpOptions);
     }
 
     delete(url: string, id: number): Observable<GenerateProductCode> {

@@ -4,6 +4,7 @@ import com.app.brc.brandcomputer.accounting.nir.dto.NirDTO;
 import com.app.brc.brandcomputer.accounting.nir.model.Nir;
 import com.app.brc.brandcomputer.accounting.nir.repository.NirRepository;
 import com.app.brc.brandcomputer.components.casing.mapper.CaseMapper;
+import com.app.brc.brandcomputer.components.casing.model.Case;
 import com.app.brc.brandcomputer.components.casing.repository.CaseRepository;
 import com.app.brc.brandcomputer.components.cpu_cooler.mapper.CpuCoolerMapper;
 import com.app.brc.brandcomputer.components.cpu_cooler.repository.CpuCoolerRepository;
@@ -222,6 +223,7 @@ public class NirMapper {
 
     }
 
+    //setReceived is a setter from the OBJECT passed
     private <T> void setReceived(T t, JpaRepository jpa, int id) {
         Optional<T> optionalObject = jpa.findById(id);
         try{

@@ -19,7 +19,7 @@ public class BrokenMapper {
     public BrokenDTO map(Case aCase) {
         return BrokenDTO.builder()
                 .id(aCase.getId())
-                .generateProductCode(aCase.getGenerateProductCodeCase())
+                .generateProductCode(aCase.getGenerateProductCode())
                 .serialNumber(aCase.getSerialNumber())
                 .manufacturer(aCase.getManufacturer())
                 .category(aCase.getCategory())

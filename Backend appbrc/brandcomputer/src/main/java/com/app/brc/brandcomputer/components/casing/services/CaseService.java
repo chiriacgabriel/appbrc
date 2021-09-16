@@ -40,7 +40,7 @@ public class CaseService {
 
     public Page<CaseDTO> getCasesByProductCode(String productCode, int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
-        return caseRepository.findAllByGenerateProductCodeCase(caseRepository.findByProductCode(productCode), pageable)
+        return caseRepository.findAllByGenerateProductCode(caseRepository.findByProductCode(productCode), pageable)
                 .map(aCase -> caseMapper.map(aCase));
     }
 
@@ -137,15 +137,5 @@ public class CaseService {
     public void deleteCase(int id) {
         caseRepository.deleteById(id);
     }
-
-//    private void testingJasperReports(){
-//        JasperReport report = JasperCompileManager.compileReport();
-//
-//        Map<String, Object> parameters = new HashMap<>();
-//        parameters.put();
-//
-//        JRDataSource dataSource = new JREmptyDataSource(); //your dbconnection
-//        JasperPrint jasperPrint = JasperFillManager.fillReport(report, parameters, dataSource);
-//    }
 
 }

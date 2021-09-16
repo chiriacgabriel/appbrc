@@ -22,7 +22,7 @@ public class CaseMapper {
 
     public Case map(CaseDTO caseDTO){
         return Case.builder()
-                .generateProductCodeCase(caseDTO.getGenerateProductCode())
+                .generateProductCode(caseDTO.getGenerateProductCode())
                 .serialNumber(caseDTO.getSerialNumber())
                 .manufacturer(caseDTO.getManufacturer())
                 .caseType(caseDTO.getCaseType())
@@ -49,7 +49,7 @@ public class CaseMapper {
     public CaseDTO map(Case aCase){
         return CaseDTO.builder()
                 .id(aCase.getId())
-                .generateProductCode(aCase.getGenerateProductCodeCase())
+                .generateProductCode(aCase.getGenerateProductCode())
                 .serialNumber(aCase.getSerialNumber())
                 .manufacturer(aCase.getManufacturer())
                 .caseType(aCase.getCaseType())
@@ -83,7 +83,7 @@ public class CaseMapper {
 
         Case dbCase = caseOptional.get();
 
-        dbCase.setGenerateProductCodeCase(caseDTO.getGenerateProductCode());
+        dbCase.setGenerateProductCode(caseDTO.getGenerateProductCode());
         dbCase.setManufacturer(caseDTO.getManufacturer());
         dbCase.setCaseType(caseDTO.getCaseType());
         dbCase.setCompatibleMotherboard(caseDTO.getCompatibleMotherboard());

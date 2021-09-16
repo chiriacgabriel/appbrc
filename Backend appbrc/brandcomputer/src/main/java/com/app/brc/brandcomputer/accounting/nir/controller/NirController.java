@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -41,6 +40,9 @@ public class NirController {
         if (nirValidator.validateNirNumber(nirDTO.getNirNumber())){
             return ResponseEntity.badRequest().body(new MessageResponse("Nir number already exist !"));
         }
+
+        nirService.generateNir(nirDTO);
+
         nirService.add(nirDTO);
         return ResponseEntity.ok().build();
     }

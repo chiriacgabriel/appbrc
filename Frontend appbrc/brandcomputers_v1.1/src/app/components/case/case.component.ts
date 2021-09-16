@@ -320,8 +320,11 @@ export class CaseComponent implements OnInit {
         this.isAddMode = false;
         this.selectedProductCode = aCase.generateProductCode;
         this.validatingForm.patchValue(aCase);
-        this.validatingForm.get('productName')
-            .setValue(productCodeActive);
+        this.validatingForm.get('productName').setValue(productCodeActive);
+
+        console.log("From productName: ", this.formFields.productName);
+        console.log("ProductCodeActive: ", productCodeActive);
+
         this.router.navigate(['components/case'], {queryParams: {id: aCase.id}});
 
     }
