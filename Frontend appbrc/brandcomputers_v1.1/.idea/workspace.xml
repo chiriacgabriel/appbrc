@@ -2,20 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b76812b0-b115-4f5d-ade8-93f21588c5ac" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/controller/NirController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/controller/NirController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/dto/NirDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/dto/NirDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/mapper/NirMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/mapper/NirMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/services/NirService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/services/NirService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/broken/BrokenMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/broken/BrokenMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/casing/mapper/CaseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/casing/mapper/CaseMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/casing/model/Case.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/casing/model/Case.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/casing/model/GenerateProductCodeCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/casing/model/GenerateProductCodeCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/casing/repository/CaseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/casing/repository/CaseRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/casing/services/CaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/casing/services/CaseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/product_code/ProductCodeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/product_code/ProductCodeMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/product_code/ProductCodeRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/product_code/ProductCodeRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/config/WebSecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/case/case.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/case/case.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/services/components/generate-product-code.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/components/generate-product-code.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/unreceived/unreceived.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/unreceived/unreceived.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,7 +184,7 @@
       <workItem from="1631428004597" duration="7143000" />
       <workItem from="1631726669653" duration="604000" />
       <workItem from="1631732612647" duration="3977000" />
-      <workItem from="1631816654136" duration="1344000" />
+      <workItem from="1631816654136" duration="1671000" />
     </task>
     <servers />
   </component>

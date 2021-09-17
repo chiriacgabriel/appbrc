@@ -11,6 +11,7 @@ public class ProductCodeMapper {
                 .productCode(productCode.getProductCode())
                 .productName(productCode.getProductName())
                 .createdDate(productCode.getCreatedDate())
+                .category(productCode.getCategory())
                 .state(productCode.isState())
                 .build();
     }
@@ -20,6 +21,7 @@ public class ProductCodeMapper {
                 .productCode(productCodeDTO.getProductCode())
                 .productName(productCodeDTO.getProductName())
                 .createdDate(productCodeDTO.getCreatedDate())
+                .category(productCodeDTO.getCategory())
                 .state(productCodeDTO.isState())
                 .build();
     }
