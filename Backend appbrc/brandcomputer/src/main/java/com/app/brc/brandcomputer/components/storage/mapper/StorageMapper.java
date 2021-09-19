@@ -22,7 +22,7 @@ public class StorageMapper {
 
     public Storage map(StorageDTO storageDTO){
         return Storage.builder()
-                .generateProductCodeStorage(storageDTO.getGenerateProductCode())
+                .generateProductCode(storageDTO.getGenerateProductCode())
                 .serialNumber(storageDTO.getSerialNumber())
                 .manufacturer(storageDTO.getManufacturer())
                 .model(storageDTO.getModel())
@@ -50,7 +50,7 @@ public class StorageMapper {
     public StorageDTO map(Storage storage){
         return StorageDTO.builder()
                 .id(storage.getId())
-                .generateProductCode(storage.getGenerateProductCodeStorage())
+                .generateProductCode(storage.getGenerateProductCode())
                 .serialNumber(storage.getSerialNumber())
                 .manufacturer(storage.getManufacturer())
                 .model(storage.getModel())
@@ -85,7 +85,7 @@ public class StorageMapper {
 
         Storage dbStorage = optional.get();
 
-        dbStorage.setGenerateProductCodeStorage(storageDTO.getGenerateProductCode());
+        dbStorage.setGenerateProductCode(storageDTO.getGenerateProductCode());
         dbStorage.setSerialNumber(storageDTO.getSerialNumber());
         dbStorage.setManufacturer(storageDTO.getManufacturer());
 

@@ -29,7 +29,7 @@ public class BrokenMapper {
     public BrokenDTO map(CpuCooler cpuCooler) {
         return BrokenDTO.builder()
                 .id(cpuCooler.getId())
-                .generateProductCode(cpuCooler.getGenerateProductCodeCpuCooler())
+                .generateProductCode(cpuCooler.getGenerateProductCode())
                 .serialNumber(cpuCooler.getSerialNumber())
                 .manufacturer(cpuCooler.getManufacturer())
                 .category(cpuCooler.getCategory())
@@ -39,7 +39,7 @@ public class BrokenMapper {
     public BrokenDTO map(FanCase fanCase) {
         return BrokenDTO.builder()
                 .id(fanCase.getId())
-                .generateProductCode(fanCase.getGenerateProductCodeFanCase())
+                .generateProductCode(fanCase.getGenerateProductCode())
                 .serialNumber(fanCase.getSerialNumber())
                 .manufacturer(fanCase.getManufacturer())
                 .category(fanCase.getCategory())
@@ -49,7 +49,7 @@ public class BrokenMapper {
     public BrokenDTO map(MemoryRam memoryRam) {
         return BrokenDTO.builder()
                 .id(memoryRam.getId())
-                .generateProductCode(memoryRam.getGenerateProductCodeMemoryRam())
+                .generateProductCode(memoryRam.getGenerateProductCode())
                 .serialNumber(memoryRam.getManufacturer())
                 .manufacturer(memoryRam.getManufacturer())
                 .category(memoryRam.getCategory())
@@ -59,7 +59,7 @@ public class BrokenMapper {
     public BrokenDTO map(Motherboard motherboard) {
         return BrokenDTO.builder()
                 .id(motherboard.getId())
-                .generateProductCode(motherboard.getGenerateProductCodeMotherboard())
+                .generateProductCode(motherboard.getGenerateProductCode())
                 .serialNumber(motherboard.getSerialNumber())
                 .manufacturer(motherboard.getManufacturer())
                 .category(motherboard.getCategory())
@@ -69,7 +69,7 @@ public class BrokenMapper {
     public BrokenDTO map(OpticalUnit opticalUnit) {
         return BrokenDTO.builder()
                 .id(opticalUnit.getId())
-                .generateProductCode(opticalUnit.getGenerateProductCodeOpticalUnit())
+                .generateProductCode(opticalUnit.getGenerateProductCode())
                 .serialNumber(opticalUnit.getSerialNumber())
                 .manufacturer(opticalUnit.getManufacturer())
                 .category(opticalUnit.getCategory())
@@ -79,7 +79,7 @@ public class BrokenMapper {
     public BrokenDTO map(PowerSource powerSource) {
         return BrokenDTO.builder()
                 .id(powerSource.getId())
-                .generateProductCode(powerSource.getGenerateProductCodePowerSource())
+                .generateProductCode(powerSource.getGenerateProductCode())
                 .serialNumber(powerSource.getSerialNumber())
                 .manufacturer(powerSource.getManufacturer())
                 .category(powerSource.getCategory())
@@ -89,7 +89,7 @@ public class BrokenMapper {
     public BrokenDTO map(Processor processor) {
         return BrokenDTO.builder()
                 .id(processor.getId())
-                .generateProductCode(processor.getGenerateProductCodeProcessor())
+                .generateProductCode(processor.getGenerateProductCode())
                 .serialNumber(processor.getSerialNumber())
                 .manufacturer(processor.getManufacturer())
                 .category(processor.getCategory())
@@ -99,7 +99,7 @@ public class BrokenMapper {
     public BrokenDTO map(SoundCard soundCard) {
         return BrokenDTO.builder()
                 .id(soundCard.getId())
-                .generateProductCode(soundCard.getGenerateProductCodeSoundCard())
+                .generateProductCode(soundCard.getGenerateProductCode())
                 .serialNumber(soundCard.getSerialNumber())
                 .manufacturer(soundCard.getManufacturer())
                 .category(soundCard.getCategory())
@@ -109,7 +109,7 @@ public class BrokenMapper {
     public BrokenDTO map(Storage storage) {
         return BrokenDTO.builder()
                 .id(storage.getId())
-                .generateProductCode(storage.getGenerateProductCodeStorage())
+                .generateProductCode(storage.getGenerateProductCode())
                 .serialNumber(storage.getSerialNumber())
                 .manufacturer(storage.getManufacturer())
                 .category(storage.getCategory())
@@ -119,7 +119,7 @@ public class BrokenMapper {
     public BrokenDTO map(VideoCard videoCard) {
         return BrokenDTO.builder()
                 .id(videoCard.getId())
-                .generateProductCode(videoCard.getGenerateProductCodeVideoCard())
+                .generateProductCode(videoCard.getGenerateProductCode())
                 .serialNumber(videoCard.getSerialNumber())
                 .manufacturer(videoCard.getManufacturer())
                 .category(videoCard.getCategory())

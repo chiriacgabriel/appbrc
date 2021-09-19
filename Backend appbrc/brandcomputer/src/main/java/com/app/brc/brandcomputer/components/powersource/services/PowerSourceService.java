@@ -35,7 +35,7 @@ public class PowerSourceService {
 
     public Page<PowerSourceDTO> getPowerSourcesByProductCode(String productCode, int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
-        return powerSourceRepository.findAllByGenerateProductCodePowerSource(powerSourceRepository.findByProductCode(productCode), pageable)
+        return powerSourceRepository.findAllByGenerateProductCode(powerSourceRepository.findByProductCode(productCode), pageable)
                 .map(powerSource -> powerSourceMapper.map(powerSource));
     }
 
@@ -49,7 +49,7 @@ public class PowerSourceService {
             PowerSourceDTO powerSourceDTO = PowerSourceDTO.builder()
                     .generateProductCode(powerSourceRepository.findByProductCode(s))
                     .averagePrice(powerSourceRepository.averagePriceByProductCode(s))
-                    .stock(powerSourceRepository.sumAllByGenerateProductCodePowerSource(s))
+                    .stock(powerSourceRepository.sumAllByGenerateProductCode(s))
                     .build();
             powerSourceDTOList.add(powerSourceDTO);
         });
@@ -70,7 +70,7 @@ public class PowerSourceService {
             PowerSourceDTO powerSourceDTO = PowerSourceDTO.builder()
                     .generateProductCode(powerSourceRepository.findByProductCode(s))
                     .averagePrice(powerSourceRepository.averagePriceByProductCode(s))
-                    .stock(powerSourceRepository.sumAllByGenerateProductCodePowerSource(s))
+                    .stock(powerSourceRepository.sumAllByGenerateProductCode(s))
                     .build();
             powerSourceDTOList.add(powerSourceDTO);
         });

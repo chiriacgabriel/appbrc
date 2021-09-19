@@ -1,8 +1,6 @@
 package com.app.brc.brandcomputer.components.storage.repository;
 
-import com.app.brc.brandcomputer.components.casing.model.Case;
-import com.app.brc.brandcomputer.components.sound_card.model.SoundCard;
-import com.app.brc.brandcomputer.components.storage.model.GenerateProductCodeStorage;
+import com.app.brc.brandcomputer.components.product_code.model.ProductCode;
 import com.app.brc.brandcomputer.components.storage.model.Storage;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,8 +15,8 @@ import java.util.List;
 @Repository
 public interface StorageRepository extends JpaRepository<Storage, Integer>, JpaSpecificationExecutor<Storage> {
 
-    String queryMultiMatch = "SELECT s FROM Storage s WHERE s.generateProductCodeStorage.productCode LIKE %:query% OR " +
-            "s.generateProductCodeStorage.productName LIKE %:query% OR " +
+    String queryMultiMatch = "SELECT s FROM Storage s WHERE s.generateProductCode.productCode LIKE %:query% OR " +
+            "s.generateProductCode.productName LIKE %:query% OR " +
             "s.serialNumber LIKE %:query% OR " +
             "s.manufacturer LIKE %:query% OR " +
             "s.model LIKE %:query% OR " +
@@ -27,8 +25,8 @@ public interface StorageRepository extends JpaRepository<Storage, Integer>, JpaS
             "s.productInformation LIKE %:query% OR " +
             "s.state LIKE %:query%";
 
-    String countQueryMultiMatch = "SELECT COUNT(s) FROM Storage s WHERE s.generateProductCodeStorage.productCode LIKE %:query% OR " +
-            "s.generateProductCodeStorage.productName LIKE %:query% OR " +
+    String countQueryMultiMatch = "SELECT COUNT(s) FROM Storage s WHERE s.generateProductCode.productCode LIKE %:query% OR " +
+            "s.generateProductCode.productName LIKE %:query% OR " +
             "s.serialNumber LIKE %:query% OR " +
             "s.manufacturer LIKE %:query% OR " +
             "s.model LIKE %:query% OR " +
@@ -55,26 +53,26 @@ public interface StorageRepository extends JpaRepository<Storage, Integer>, JpaS
     @Query(value = "SELECT DISTINCT rpm FROM Storage")
     List<Integer> findAllRPMs();
 
-    Page<Storage> findAllByGenerateProductCodeStorage(GenerateProductCodeStorage productCode, Pageable pageable);
+    Page<Storage> findAllByGenerateProductCode(ProductCode productCode, Pageable pageable);
 
-    @Query(value = "SELECT DISTINCT generateProductCodeStorage.productCode FROM Storage",
-            countQuery = "SELECT COUNT(DISTINCT generateProductCodeStorage.productCode) FROM Storage")
+    @Query(value = "SELECT DISTINCT generateProductCode.productCode FROM Storage",
+            countQuery = "SELECT COUNT(DISTINCT generateProductCode.productCode) FROM Storage")
     Page<String> findAllDistinctProductCodes(Pageable pageable);
 
-    @Query(value = "SELECT DISTINCT s.generateProductCodeStorage FROM Storage s WHERE s.generateProductCodeStorage.productCode =:productCode")
-    GenerateProductCodeStorage findByProductCode(@Param("productCode") String productCode);
+    @Query(value = "SELECT DISTINCT s.generateProductCode FROM Storage s WHERE s.generateProductCode.productCode =:productCode")
+    ProductCode findByProductCode(@Param("productCode") String productCode);
 
-    @Query(value = "SELECT DISTINCT s.generateProductCodeStorage.productName FROM Storage s WHERE s.generateProductCodeStorage.productCode =:productCode")
+    @Query(value = "SELECT DISTINCT s.generateProductCode.productName FROM Storage s WHERE s.generateProductCode.productCode =:productCode")
     String findDistinctProductNameByProductCode(@Param("productCode") String productCode);
 
-    @Query(value = "SELECT AVG(s.priceIn) FROM Storage s WHERE s.generateProductCodeStorage.productCode =:productCode")
+    @Query(value = "SELECT AVG(s.priceIn) FROM Storage s WHERE s.generateProductCode.productCode =:productCode")
     Double averagePriceByProductCode(@Param("productCode") String productCode);
 
-    @Query(value = "SELECT SUM(s.quantity) FROM Storage s WHERE s.generateProductCodeStorage.productCode =:productCode")
-    long sumAllByGenerateProductCodeStorage(@Param("productCode") String productCode);
+    @Query(value = "SELECT SUM(s.quantity) FROM Storage s WHERE s.generateProductCode.productCode =:productCode")
+    long sumAllByGenerateProductCode(@Param("productCode") String productCode);
 
-    @Query(value = "SELECT DISTINCT s.generateProductCodeStorage.productCode FROM Storage s WHERE s.generateProductCodeStorage.productCode LIKE %:search% OR s.generateProductCodeStorage.productName LIKE %:search%",
-            countQuery = "SELECT COUNT(DISTINCT s) FROM Storage s WHERE s.generateProductCodeStorage.productCode LIKE %:search% OR s.generateProductCodeStorage.productName LIKE %:search%")
+    @Query(value = "SELECT DISTINCT s.generateProductCode.productCode FROM Storage s WHERE s.generateProductCode.productCode LIKE %:search% OR s.generateProductCode.productName LIKE %:search%",
+            countQuery = "SELECT COUNT(DISTINCT s) FROM Storage s WHERE s.generateProductCode.productCode LIKE %:search% OR s.generateProductCode.productName LIKE %:search%")
     Page<String> findAllDistinctByProductNameOrProductCode(@Param("search") String search, Pageable pageable);
 
     boolean existsBySerialNumber (String serialNumber);

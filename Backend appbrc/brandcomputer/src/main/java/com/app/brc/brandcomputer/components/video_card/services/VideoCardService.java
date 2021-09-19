@@ -42,7 +42,7 @@ public class VideoCardService {
     public Page<VideoCardDTO> getVideoCardsByProductCode(String productCode, int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
 
-        return videoCardRepository.findAllByGenerateProductCodeVideoCard(videoCardRepository.findByProductCode(productCode), pageable)
+        return videoCardRepository.findAllByGenerateProductCode(videoCardRepository.findByProductCode(productCode), pageable)
                 .map(videoCard -> videoCardMapper.map(videoCard));
     }
 
@@ -56,7 +56,7 @@ public class VideoCardService {
             VideoCardDTO videoCardDTO = VideoCardDTO.builder()
                     .generateProductCode(videoCardRepository.findByProductCode(s))
                     .averagePrice(videoCardRepository.averagePriceByProductCode(s))
-                    .stock(videoCardRepository.sumAllByGenerateProductCodeVideoCard(s))
+                    .stock(videoCardRepository.sumAllByGenerateProductCode(s))
                     .build();
             stockList.add(videoCardDTO);
 
@@ -79,7 +79,7 @@ public class VideoCardService {
             VideoCardDTO videoCardDTO = VideoCardDTO.builder()
                     .generateProductCode(videoCardRepository.findByProductCode(s))
                     .averagePrice(videoCardRepository.averagePriceByProductCode(s))
-                    .stock(videoCardRepository.sumAllByGenerateProductCodeVideoCard(s))
+                    .stock(videoCardRepository.sumAllByGenerateProductCode(s))
                     .build();
             searchStockList.add(videoCardDTO);
         });

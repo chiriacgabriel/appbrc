@@ -1,6 +1,6 @@
 package com.app.brc.brandcomputer.components.motherboard.model;
 
-import com.app.brc.brandcomputer.accounting.nir.model.Nir;
+import com.app.brc.brandcomputer.components.product_code.model.ProductCode;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -24,7 +24,7 @@ public class Motherboard {
 
     @ManyToOne
     @JoinColumn(name = "productCode_id")
-    private GenerateProductCodeMotherboard generateProductCodeMotherboard;
+    private ProductCode generateProductCode;
 
     private String serialNumber;
     private String manufacturer;
@@ -45,9 +45,11 @@ public class Motherboard {
     private String soldBy;
     private boolean sold;
     private boolean received;
+
     @CreationTimestamp
     private LocalDateTime createdDate;
     private String createdBy;
+
     @UpdateTimestamp
     private LocalDateTime lastUpdated;
     private String updatedBy;

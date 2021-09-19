@@ -1,6 +1,6 @@
 package com.app.brc.brandcomputer.components.video_card.dto;
 
-import com.app.brc.brandcomputer.components.video_card.model.GenerateProductCodeVideoCard;
+import com.app.brc.brandcomputer.components.product_code.model.ProductCode;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -15,7 +15,7 @@ public class VideoCardDTO {
 
     private int id;
 
-    private GenerateProductCodeVideoCard generateProductCode;
+    private ProductCode generateProductCode;
 
     private String serialNumber;
     private String manufacturer;

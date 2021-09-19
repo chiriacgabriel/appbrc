@@ -20,16 +20,4 @@ export class MemoryRam {
   updatedBy: string;
   quantity: number;
   unitOfMeasurement: string;
-
-  static get generateProductURL(): string {
-    return 'generate-product-code-memory-ram';
-  }
-
-  static get generateProductURLSearch(): string {
-    return 'generate-product-code-memory-ram/search';
-  }
-
-  static get productCodeURI(): string {
-    return 'product-code-memory-ram'
-  }
 }

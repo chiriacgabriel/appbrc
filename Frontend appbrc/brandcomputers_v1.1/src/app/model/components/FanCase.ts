@@ -17,16 +17,4 @@ export class FanCase {
   updatedBy: string;
   quantity: number;
   unitOfMeasurement: string;
-
-  static get generateProductURL(): string {
-    return 'generate-product-code-fan-case';
-  }
-
-  static get generateProductURLSearch(): string {
-    return 'generate-product-code-fan-case/search';
-  }
-
-  static get productCodeURI(): string {
-    return 'product-code-fan-case'
-  }
 }

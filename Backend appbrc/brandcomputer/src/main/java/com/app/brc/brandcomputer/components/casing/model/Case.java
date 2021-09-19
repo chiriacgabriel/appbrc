@@ -1,5 +1,6 @@
 package com.app.brc.brandcomputer.components.casing.model;
 
+import com.app.brc.brandcomputer.components.product_code.model.ProductCode;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -25,7 +26,7 @@ public class Case {
 
     @ManyToOne
     @JoinColumn(name = "productCode_id")
-    private GenerateProductCodeCase generateProductCode;
+    private ProductCode generateProductCode;
 
     private String serialNumber;
     private String manufacturer;

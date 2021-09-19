@@ -22,7 +22,7 @@ public class PowerSourceMapper {
 
     public PowerSource map(PowerSourceDTO powerSourceDTO){
         return PowerSource.builder()
-                .generateProductCodePowerSource(powerSourceDTO.getGenerateProductCode())
+                .generateProductCode(powerSourceDTO.getGenerateProductCode())
                 .serialNumber(powerSourceDTO.getSerialNumber())
                 .manufacturer(powerSourceDTO.getManufacturer())
                 .model(powerSourceDTO.getModel())
@@ -48,7 +48,7 @@ public class PowerSourceMapper {
     public PowerSourceDTO map(PowerSource powerSource){
         return PowerSourceDTO.builder()
                 .id(powerSource.getId())
-                .generateProductCode(powerSource.getGenerateProductCodePowerSource())
+                .generateProductCode(powerSource.getGenerateProductCode())
                 .serialNumber(powerSource.getSerialNumber())
                 .manufacturer(powerSource.getManufacturer())
                 .model(powerSource.getModel())
@@ -81,7 +81,7 @@ public class PowerSourceMapper {
 
         PowerSource dbPowerSource = optionalPowerSource.get();
 
-        dbPowerSource.setGenerateProductCodePowerSource(powerSourceDTO.getGenerateProductCode());
+        dbPowerSource.setGenerateProductCode(powerSourceDTO.getGenerateProductCode());
         dbPowerSource.setSerialNumber(powerSourceDTO.getSerialNumber());
         dbPowerSource.setManufacturer(powerSourceDTO.getManufacturer());
         dbPowerSource.setModel(powerSourceDTO.getModel());

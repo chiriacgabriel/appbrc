@@ -45,7 +45,7 @@ public class ComputerService {
     public Page<ComputerDTO> getByProductCode(String productCode, int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
 
-        return computerRepository.findAllByGenerateProductCodeComputer(computerRepository.findByProductCode(productCode), pageable)
+        return computerRepository.findAllByGenerateProductCode(computerRepository.findByProductCode(productCode), pageable)
                 .map(computer -> computerMapper.map(computer));
     }
 
@@ -59,7 +59,7 @@ public class ComputerService {
             ComputerDTO computerDTO = ComputerDTO.builder()
                     .generateProductCode(computerRepository.findByProductCode(s))
                     .averagePrice(computerRepository.averagePriceByProductCode(s))
-                    .stock(computerRepository.sumAllByGenerateProductCodeComputer(s))
+                    .stock(computerRepository.sumAllByGenerateProductCode(s))
                     .build();
             stockList.add(computerDTO);
         });
@@ -82,7 +82,7 @@ public class ComputerService {
             ComputerDTO computerDTO = ComputerDTO.builder()
                     .generateProductCode(computerRepository.findByProductCode(s))
                     .averagePrice(computerRepository.averagePriceByProductCode(s))
-                    .stock(computerRepository.sumAllByGenerateProductCodeComputer(s))
+                    .stock(computerRepository.sumAllByGenerateProductCode(s))
                     .build();
             stockList.add(computerDTO);
         });

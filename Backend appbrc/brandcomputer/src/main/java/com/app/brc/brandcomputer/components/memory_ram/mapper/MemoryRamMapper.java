@@ -22,7 +22,7 @@ public class MemoryRamMapper {
 
     public MemoryRam map(MemoryRamDTO memoryRamDTO){
         return MemoryRam.builder()
-                .generateProductCodeMemoryRam(memoryRamDTO.getGenerateProductCode())
+                .generateProductCode(memoryRamDTO.getGenerateProductCode())
                 .serialNumber(memoryRamDTO.getSerialNumber())
                 .manufacturer(memoryRamDTO.getManufacturer())
                 .module(memoryRamDTO.getModule())
@@ -49,7 +49,7 @@ public class MemoryRamMapper {
     public MemoryRamDTO map(MemoryRam memoryRam){
         return MemoryRamDTO.builder()
                 .id(memoryRam.getId())
-                .generateProductCode(memoryRam.getGenerateProductCodeMemoryRam())
+                .generateProductCode(memoryRam.getGenerateProductCode())
                 .serialNumber(memoryRam.getSerialNumber())
                 .manufacturer(memoryRam.getManufacturer())
                 .module(memoryRam.getModule())
@@ -83,7 +83,7 @@ public class MemoryRamMapper {
 
         MemoryRam dbMemoryRam = optional.get();
 
-        dbMemoryRam.setGenerateProductCodeMemoryRam(memoryRamDTO.getGenerateProductCode());
+        dbMemoryRam.setGenerateProductCode(memoryRamDTO.getGenerateProductCode());
         dbMemoryRam.setSerialNumber(memoryRamDTO.getSerialNumber());
         dbMemoryRam.setManufacturer(memoryRamDTO.getManufacturer());
         dbMemoryRam.setModule(memoryRamDTO.getModule());

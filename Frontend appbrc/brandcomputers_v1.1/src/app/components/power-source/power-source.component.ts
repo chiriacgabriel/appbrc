@@ -144,7 +144,7 @@ export class PowerSourceComponent implements OnInit {
   }
 
   getAllGenerateProductCodes(): void {
-    this.productCodeService.getAll(PowerSource.generateProductURL).subscribe((data: any) =>{
+    this.productCodeService.getAllByCategory(GenerateProductCode.productCodeCategoryURI, new HttpParams().set('category', 'Power Source')).subscribe((data: any) =>{
       this.productCodesList = data.filter(productCode => productCode.state === true);
       this.productCodesListInactive = data.filter(productCode => productCode.state === false);
     }, (err: HttpErrorResponse) => {

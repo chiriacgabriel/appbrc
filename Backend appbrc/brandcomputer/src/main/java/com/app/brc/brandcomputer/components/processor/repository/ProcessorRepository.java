@@ -1,9 +1,7 @@
 package com.app.brc.brandcomputer.components.processor.repository;
 
-import com.app.brc.brandcomputer.components.casing.model.Case;
-import com.app.brc.brandcomputer.components.powersource.model.PowerSource;
-import com.app.brc.brandcomputer.components.processor.model.GenerateProductCodeProcessor;
 import com.app.brc.brandcomputer.components.processor.model.Processor;
+import com.app.brc.brandcomputer.components.product_code.model.ProductCode;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,8 +15,8 @@ import java.util.List;
 @Repository
 public interface ProcessorRepository extends JpaRepository<Processor, Integer>, JpaSpecificationExecutor<Processor> {
 
-    String queryMultiMatch = "SELECT p FROM Processor p WHERE p.generateProductCodeProcessor.productCode LIKE %:query% OR " +
-            "p.generateProductCodeProcessor.productName LIKE %:query% OR " +
+    String queryMultiMatch = "SELECT p FROM Processor p WHERE p.generateProductCode.productCode LIKE %:query% OR " +
+            "p.generateProductCode.productName LIKE %:query% OR " +
             "p.serialNumber LIKE %:query% OR " +
             "p.manufacturer LIKE %:query% OR " +
             "p.socket LIKE %:query% OR " +
@@ -26,8 +24,8 @@ public interface ProcessorRepository extends JpaRepository<Processor, Integer>, 
             "p.productInformation LIKE %:query% OR " +
             "p.state LIKE %:query%";
 
-    String countQueryMultiMatch = "SELECT COUNT(p) FROM Processor p WHERE p.generateProductCodeProcessor.productCode LIKE %:query% OR " +
-            "p.generateProductCodeProcessor.productName LIKE %:query% OR " +
+    String countQueryMultiMatch = "SELECT COUNT(p) FROM Processor p WHERE p.generateProductCode.productCode LIKE %:query% OR " +
+            "p.generateProductCode.productName LIKE %:query% OR " +
             "p.serialNumber LIKE %:query% OR " +
             "p.manufacturer LIKE %:query% OR " +
             "p.socket LIKE %:query% OR " +
@@ -68,31 +66,32 @@ public interface ProcessorRepository extends JpaRepository<Processor, Integer>, 
     @Query(value = "SELECT DISTINCT typeOfMemoryRAM FROM Processor")
     List<String> findAllDistinctTypesOfMemory();
 
-    Page<Processor> findAllByGenerateProductCodeProcessor(GenerateProductCodeProcessor productCode, Pageable pageable);
+    Page<Processor> findAllByGenerateProductCode(ProductCode productCode, Pageable pageable);
 
-    @Query(value = "SELECT DISTINCT generateProductCodeProcessor.productCode FROM Processor",
-            countQuery = "SELECT COUNT(DISTINCT generateProductCodeProcessor.productCode) FROM Processor")
+    @Query(value = "SELECT DISTINCT generateProductCode.productCode FROM Processor",
+            countQuery = "SELECT COUNT(DISTINCT generateProductCode.productCode) FROM Processor")
     Page<String> findAllDistinctProductCodes(Pageable pageable);
 
-    @Query(value = "SELECT DISTINCT p.generateProductCodeProcessor FROM Processor p WHERE p.generateProductCodeProcessor.productCode =:productCode")
-    GenerateProductCodeProcessor findByProductCode(@Param("productCode") String productCode);
+    @Query(value = "SELECT DISTINCT p.generateProductCode FROM Processor p WHERE p.generateProductCode.productCode =:productCode")
+    ProductCode findByProductCode(@Param("productCode") String productCode);
 
-    @Query(value = "SELECT DISTINCT p.generateProductCodeProcessor.productName FROM Processor p WHERE p.generateProductCodeProcessor.productCode =:productCode")
+    @Query(value = "SELECT DISTINCT p.generateProductCode.productName FROM Processor p WHERE p.generateProductCode.productCode =:productCode")
     String findDistinctProductNameByProductCode(@Param("productCode") String productCode);
 
-    @Query(value = "SELECT AVG(p.priceIn) FROM Processor p WHERE p.generateProductCodeProcessor.productCode =:productCode")
+    @Query(value = "SELECT AVG(p.priceIn) FROM Processor p WHERE p.generateProductCode.productCode =:productCode")
     Double averagePriceByProductCode(@Param("productCode") String productCode);
 
-    @Query(value = "SELECT SUM(p.quantity) FROM Processor p WHERE p.generateProductCodeProcessor.productCode =:productCode")
-    long sumAllByGenerateProductCodeProcessor(@Param("productCode") String productCode);
+    @Query(value = "SELECT SUM(p.quantity) FROM Processor p WHERE p.generateProductCode.productCode =:productCode")
+    long sumAllByGenerateProductCode(@Param("productCode") String productCode);
 
-    @Query(value = "SELECT DISTINCT p.generateProductCodeProcessor.productCode FROM Processor p WHERE p.generateProductCodeProcessor.productCode LIKE %:search% OR p.generateProductCodeProcessor.productName LIKE %:search%",
-            countQuery = "SELECT COUNT(DISTINCT p) FROM Processor p WHERE p.generateProductCodeProcessor.productCode LIKE %:search% OR p.generateProductCodeProcessor.productName LIKE %:search%")
+    @Query(value = "SELECT DISTINCT p.generateProductCode.productCode FROM Processor p WHERE p.generateProductCode.productCode LIKE %:search% OR p.generateProductCode.productName LIKE %:search%",
+            countQuery = "SELECT COUNT(DISTINCT p) FROM Processor p WHERE p.generateProductCode.productCode LIKE %:search% OR p.generateProductCode.productName LIKE %:search%")
     Page<String> findAllDistinctByProductNameOrProductCode(@Param("search") String search, Pageable pageable);
 
     boolean existsBySerialNumber(String serialNumber);
 
     Page<Processor> findAllByState(String state, Pageable pageable);
+
     List<Processor> findAllByState(String state);
 
     @Query(value = "SELECT p FROM Processor p WHERE p.received = false")

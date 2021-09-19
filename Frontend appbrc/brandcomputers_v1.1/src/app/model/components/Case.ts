@@ -22,19 +22,6 @@ export class Case {
     quantity: number;
     unitOfMeasurement: string;
 
-    static get generateProductURL(): string {
-        return 'generate-product-code-case';
-    }
-
-    static get generateProductURLSearch(): string {
-        return 'generate-product-code-case/search';
-    }
-
-    static get productCodeURI(): string {
-        return 'product-code-case'
-    }
-
-
     constructor(obj) {
         this.id = obj.id;
         this.generateProductCode = obj.generateProductCode;

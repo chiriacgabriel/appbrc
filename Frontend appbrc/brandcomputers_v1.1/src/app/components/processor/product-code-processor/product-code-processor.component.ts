@@ -47,7 +47,8 @@ export class ProductCodeProcessorComponent implements OnInit {
     this.validatingForm = this.formBuild.group({
       productCode: new FormControl('', Validators.required),
       productName: new FormControl('', Validators.required),
-      state: new FormControl('')
+      state: new FormControl(''),
+      category: new FormControl('Processor')
     });
   }
 
@@ -64,7 +65,9 @@ export class ProductCodeProcessorComponent implements OnInit {
   }
 
   public getAllProductCodes(): void {
-    this.generateProductCodeService.getAll(Processor.generateProductURL).subscribe((data: any) => {
+    this.params = new HttpParams();
+    this.params = this.params.set('category', 'Processor');
+    this.generateProductCodeService.getAllByCategory(GenerateProductCode.productCodeCategoryURI, this.params).subscribe((data: any) => {
       this.productCodeList = data;
 
 
@@ -74,15 +77,13 @@ export class ProductCodeProcessorComponent implements OnInit {
   }
 
   private searchProductCodes(): void {
-    this.params = this.params.set('querySearch', this.searchQuery);
-    this.generateProductCodeService.search(Processor.generateProductURLSearch, this.params).subscribe((data: any) => {
+    this.params = this.params.set('query', this.searchQuery).set('category', 'Processor');
+    this.generateProductCodeService.search(GenerateProductCode.searchProductCodeURI, this.params).subscribe((data: any) => {
 
       if (this.searchQuery !== '') {
-        this.productCodeList = [];
 
-        for (let productCode of data) {
-          this.productCodeList.push(productCode);
-        }
+        this.productCodeList = data;
+
         this.inputSearch.nativeElement.value = '';
       }
     }, (err: HttpErrorResponse) => {
@@ -92,18 +93,18 @@ export class ProductCodeProcessorComponent implements OnInit {
 
   getEventSearchResult(event: any) {
     this.searchQuery = event.target.value;
-    this.router.navigate(['/components/' + Processor.productCodeURI], {queryParams: {querySearch: this.searchQuery}})
+    this.router.navigate(['/components/' + GenerateProductCode.productCodeURI], {queryParams: {querySearch: this.searchQuery}})
     this.searchProductCodes();
   }
 
   clearSearch() {
-    this.router.navigateByUrl('/components/' + Processor.productCodeURI);
+    this.router.navigateByUrl('/components/' + GenerateProductCode.productCodeURI);
     this.getAllProductCodes();
   }
 
   /************************** Create, Update, Delete ****************************************************/
   private addProductCode(): void {
-    this.generateProductCodeService.add(Processor.generateProductURL, this.validatingForm.value).subscribe(response => {
+    this.generateProductCodeService.add(GenerateProductCode.productCodeURI, this.validatingForm.value).subscribe(response => {
       this.reloadPageService.reload();
     }, (err: HttpErrorResponse) => {
       this.errorMessage = err.error.message;
@@ -111,8 +112,8 @@ export class ProductCodeProcessorComponent implements OnInit {
   }
 
   public editProductCode(): void {
-    this.generateProductCodeService.update(Processor.generateProductURL, this.id, this.validatingForm.value).subscribe(response => {
-      this.router.navigate(['components/' + Processor.productCodeURI]).then(() => this.reloadPageService.reload());
+    this.generateProductCodeService.update(GenerateProductCode.productCodeURI, this.id, this.validatingForm.value).subscribe(response => {
+      this.router.navigate(['components/' + GenerateProductCode.productCodeURI]).then(() => this.reloadPageService.reload());
       this.validatingForm.reset();
     }, (err: HttpErrorResponse) => {
       this.errorMessage = err.error.message;
@@ -130,7 +131,7 @@ export class ProductCodeProcessorComponent implements OnInit {
       confirmButtonText: 'Da, sterge!'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.generateProductCodeService.delete(Processor.generateProductURL, Number(productCode.id)).subscribe(response => {
+        this.generateProductCodeService.delete(GenerateProductCode.productCodeURI, Number(productCode.id)).subscribe(response => {
           this.reloadPageService.reload();
         }, (err: HttpErrorResponse) => {
           this.errorMessage = err.error.message;
@@ -146,7 +147,7 @@ export class ProductCodeProcessorComponent implements OnInit {
     const closedForm = document.getElementById('close-btn');
 
     if (closedForm) {
-      this.router.navigate(['components/' + Processor.productCodeURI]);
+      this.router.navigate(['components/' + GenerateProductCode.productCodeURI]);
       this.isAddMode = true;
       this.validatingForm.reset();
     }
@@ -178,7 +179,7 @@ export class ProductCodeProcessorComponent implements OnInit {
 
   patchForm(productCode) {
     const data = this.productCodeList.find(i => i.id == productCode.id);
-    this.router.navigate(['components/' + Processor.productCodeURI],
+    this.router.navigate(['components/' + GenerateProductCode.productCodeURI],
         {queryParams: {id: productCode.id}});
     this.validatingForm.patchValue(data);
   }

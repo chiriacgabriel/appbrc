@@ -50,7 +50,7 @@ public class CpuCoolerService {
 
     public Page<CpuCoolerDTO> getCpuCoolersByProductCode(String productCode, int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
-        return cpuCoolerRepository.findAllByGenerateProductCodeCpuCooler(cpuCoolerRepository.findByProductCode(productCode), pageable)
+        return cpuCoolerRepository.findAllByGenerateProductCode(cpuCoolerRepository.findByProductCode(productCode), pageable)
                 .map(cpuCooler -> cpuCoolerMapper.map(cpuCooler));
     }
 
@@ -64,7 +64,7 @@ public class CpuCoolerService {
             CpuCoolerDTO cpuCoolerDTO = CpuCoolerDTO.builder()
                     .generateProductCode(cpuCoolerRepository.findByProductCode(s))
                     .averagePrice(cpuCoolerRepository.averagePriceByProductCode(s))
-                    .stock(cpuCoolerRepository.sumAllByGenerateProductCodeCpuCooler(s))
+                    .stock(cpuCoolerRepository.sumAllByGenerateProductCode(s))
                     .build();
             stockList.add(cpuCoolerDTO);
         });
@@ -86,7 +86,7 @@ public class CpuCoolerService {
             CpuCoolerDTO cpuCoolerDTO = CpuCoolerDTO.builder()
                     .generateProductCode(cpuCoolerRepository.findByProductCode(s))
                     .averagePrice(cpuCoolerRepository.averagePriceByProductCode(s))
-                    .stock(cpuCoolerRepository.sumAllByGenerateProductCodeCpuCooler(s))
+                    .stock(cpuCoolerRepository.sumAllByGenerateProductCode(s))
                     .build();
             searchStockList.add(cpuCoolerDTO);
         });

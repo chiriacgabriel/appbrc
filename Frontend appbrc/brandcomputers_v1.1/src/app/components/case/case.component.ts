@@ -322,15 +322,12 @@ export class CaseComponent implements OnInit {
         this.validatingForm.patchValue(aCase);
         this.validatingForm.get('productName').setValue(productCodeActive);
 
-        console.log("From productName: ", this.formFields.productName);
-        console.log("ProductCodeActive: ", productCodeActive);
-
         this.router.navigate(['components/case'], {queryParams: {id: aCase.id}});
 
     }
 
     getAllGenerateProductCodes(): void {
-        this.productCodeService.getAll(Case.generateProductURL).subscribe((data: any) =>{
+        this.productCodeService.getAllByCategory(GenerateProductCode.productCodeCategoryURI, new HttpParams().set('category', 'Case')).subscribe((data: any) =>{
             this.productCodeList = data.filter(productCode => productCode.state === true);
             this.productCodeListInactive = data.filter(productCode => productCode.state === false);
         }, (err: HttpErrorResponse) => {

@@ -47,7 +47,7 @@ public class FanCaseService {
 
     public Page<FanCaseDTO> getFanCasesByProductCode(String productCode, int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
-        return fanCaseRepository.findAllByGenerateProductCodeFanCase(fanCaseRepository.findByProductCode(productCode), pageable)
+        return fanCaseRepository.findAllByGenerateProductCode(fanCaseRepository.findByProductCode(productCode), pageable)
                 .map(fanCase -> fanCaseMapper.map(fanCase));
     }
 
@@ -61,7 +61,7 @@ public class FanCaseService {
             FanCaseDTO fanCaseDTO = FanCaseDTO.builder()
                     .generateProductCode(fanCaseRepository.findByProductCode(s))
                     .averagePrice(fanCaseRepository.averagePriceByProductCode(s))
-                    .stock(fanCaseRepository.sumAllByGenerateProductCodeFanCase(s))
+                    .stock(fanCaseRepository.sumAllByGenerateProductCode(s))
                     .build();
             stockList.add(fanCaseDTO);
         });
@@ -83,7 +83,7 @@ public class FanCaseService {
             FanCaseDTO fanCaseDTO = FanCaseDTO.builder()
                     .generateProductCode(fanCaseRepository.findByProductCode(s))
                     .averagePrice(fanCaseRepository.averagePriceByProductCode(s))
-                    .stock(fanCaseRepository.sumAllByGenerateProductCodeFanCase(s))
+                    .stock(fanCaseRepository.sumAllByGenerateProductCode(s))
                     .build();
             searchStockList.add(fanCaseDTO);
         });

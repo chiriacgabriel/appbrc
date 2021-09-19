@@ -22,7 +22,7 @@ public class SoundCardMapper {
 
     public SoundCard map(SoundCardDTO soundCardDTO) {
         return SoundCard.builder()
-                .generateProductCodeSoundCard(soundCardDTO.getGenerateProductCode())
+                .generateProductCode(soundCardDTO.getGenerateProductCode())
                 .serialNumber(soundCardDTO.getSerialNumber())
                 .manufacturer(soundCardDTO.getManufacturer())
                 .model(soundCardDTO.getModel())
@@ -46,7 +46,7 @@ public class SoundCardMapper {
     public SoundCardDTO map(SoundCard soundCard){
         return SoundCardDTO.builder()
                 .id(soundCard.getId())
-                .generateProductCode(soundCard.getGenerateProductCodeSoundCard())
+                .generateProductCode(soundCard.getGenerateProductCode())
                 .serialNumber(soundCard.getSerialNumber())
                 .manufacturer(soundCard.getManufacturer())
                 .model(soundCard.getModel())
@@ -77,7 +77,7 @@ public class SoundCardMapper {
 
         SoundCard dbSoundCard = optional.get();
 
-        dbSoundCard.setGenerateProductCodeSoundCard(soundCardDTO.getGenerateProductCode());
+        dbSoundCard.setGenerateProductCode(soundCardDTO.getGenerateProductCode());
         dbSoundCard.setSerialNumber(soundCardDTO.getSerialNumber());
         dbSoundCard.setManufacturer(soundCardDTO.getManufacturer());
         dbSoundCard.setModel(soundCardDTO.getModel());

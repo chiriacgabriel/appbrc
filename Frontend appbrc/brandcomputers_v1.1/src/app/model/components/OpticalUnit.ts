@@ -19,15 +19,4 @@ export class OpticalUnit {
   quantity: number;
   unitOfMeasurement: string;
 
-  static get generateProductURL(): string {
-    return 'generate-product-code-optical-unit';
-  }
-
-  static get generateProductURLSearch(): string {
-    return 'generate-product-code-optical-unit/search';
-  }
-
-  static get productCodeURI(): string {
-    return 'product-code-optical-unit'
-  }
 }

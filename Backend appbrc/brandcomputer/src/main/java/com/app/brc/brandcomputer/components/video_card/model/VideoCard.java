@@ -1,7 +1,6 @@
 package com.app.brc.brandcomputer.components.video_card.model;
 
-import com.app.brc.brandcomputer.accounting.nir.model.Nir;
-import com.app.brc.brandcomputer.computers.model.Computer;
+import com.app.brc.brandcomputer.components.product_code.model.ProductCode;
 import com.app.brc.brandcomputer.computersAssembly.model.ComputerAssembly;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -26,7 +25,7 @@ public class VideoCard {
 
     @ManyToOne
     @JoinColumn(name = "productCode_id")
-    private GenerateProductCodeVideoCard generateProductCodeVideoCard;
+    private ProductCode generateProductCode;
 
     private String serialNumber;
     private String manufacturer;

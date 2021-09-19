@@ -23,7 +23,7 @@ public class VideoCardMapper {
     public VideoCard map(VideoCardDTO videoCardDTO) {
 
         return VideoCard.builder()
-                .generateProductCodeVideoCard(videoCardDTO.getGenerateProductCode())
+                .generateProductCode(videoCardDTO.getGenerateProductCode())
                 .serialNumber(videoCardDTO.getSerialNumber())
                 .manufacturer(videoCardDTO.getManufacturer())
                 .model(videoCardDTO.getModel())
@@ -60,7 +60,7 @@ public class VideoCardMapper {
     public VideoCardDTO map(VideoCard videoCard) {
         return VideoCardDTO.builder()
                 .id(videoCard.getId())
-                .generateProductCode(videoCard.getGenerateProductCodeVideoCard())
+                .generateProductCode(videoCard.getGenerateProductCode())
                 .serialNumber(videoCard.getSerialNumber())
                 .manufacturer(videoCard.getManufacturer())
                 .model(videoCard.getModel())
@@ -103,7 +103,7 @@ public class VideoCardMapper {
 
         VideoCard dbVideoCard = optional.get();
 
-        dbVideoCard.setGenerateProductCodeVideoCard(videoCardDTO.getGenerateProductCode());
+        dbVideoCard.setGenerateProductCode(videoCardDTO.getGenerateProductCode());
         dbVideoCard.setSerialNumber(videoCardDTO.getSerialNumber());
         dbVideoCard.setManufacturer(videoCardDTO.getManufacturer());
         dbVideoCard.setModel(videoCardDTO.getModel());

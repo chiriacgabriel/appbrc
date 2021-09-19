@@ -1,9 +1,6 @@
 package com.app.brc.brandcomputer.components.fan_case.repository;
-import com.app.brc.brandcomputer.components.casing.model.Case;
-import com.app.brc.brandcomputer.components.cpu_cooler.model.GenerateProductCodeCpuCooler;
-import com.app.brc.brandcomputer.components.fan_case.mapper.FanCaseMapper;
 import com.app.brc.brandcomputer.components.fan_case.model.FanCase;
-import com.app.brc.brandcomputer.components.fan_case.model.GenerateProductCodeFanCase;
+import com.app.brc.brandcomputer.components.product_code.model.ProductCode;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,15 +14,15 @@ import java.util.List;
 @Repository
 public interface FanCaseRepository extends JpaRepository<FanCase, Integer>, JpaSpecificationExecutor<FanCase> {
 
-    String queryMultiMatch = "SELECT f from FanCase f WHERE f.generateProductCodeFanCase.productCode LIKE %:query% OR " +
-            "f.generateProductCodeFanCase.productName LIKE %:query% OR " +
+    String queryMultiMatch = "SELECT f from FanCase f WHERE f.generateProductCode.productCode LIKE %:query% OR " +
+            "f.generateProductCode.productName LIKE %:query% OR " +
             "f.serialNumber LIKE %:query% OR " +
             "f.manufacturer LIKE %:query% OR " +
             "f.productInformation LIKE %:query% OR " +
             "f.state LIKE %:query% OR " +
             "f.dimension LIKE %:query%";
-    String countQueryMultiMatch = "SELECT COUNT(f) from FanCase f WHERE f.generateProductCodeFanCase.productCode LIKE %:query% OR " +
-            "f.generateProductCodeFanCase.productName LIKE %:query% OR " +
+    String countQueryMultiMatch = "SELECT COUNT(f) from FanCase f WHERE f.generateProductCode.productCode LIKE %:query% OR " +
+            "f.generateProductCode.productName LIKE %:query% OR " +
             "f.serialNumber LIKE %:query% OR " +
             "f.manufacturer LIKE %:query% OR " +
             "f.productInformation LIKE %:query% OR " +
@@ -38,25 +35,25 @@ public interface FanCaseRepository extends JpaRepository<FanCase, Integer>, JpaS
     @Query(value = "SELECT DISTINCT dimension from FanCase")
     List<String> findAllDistinctDimensions();
 
-    Page<FanCase> findAllByGenerateProductCodeFanCase(GenerateProductCodeFanCase productCode, Pageable pageable);
+    Page<FanCase> findAllByGenerateProductCode(ProductCode productCode, Pageable pageable);
 
-    @Query(value = "SELECT DISTINCT fc.generateProductCodeFanCase FROM FanCase fc WHERE fc.generateProductCodeFanCase.productCode =:productCode")
-    GenerateProductCodeFanCase findByProductCode(@Param("productCode") String productCode);
+    @Query(value = "SELECT DISTINCT fc.generateProductCode FROM FanCase fc WHERE fc.generateProductCode.productCode =:productCode")
+    ProductCode findByProductCode(@Param("productCode") String productCode);
 
-    @Query(value = "SELECT DISTINCT generateProductCodeFanCase.productCode from FanCase", countQuery = "SELECT COUNT(DISTINCT generateProductCodeFanCase.productCode) from FanCase")
+    @Query(value = "SELECT DISTINCT generateProductCode.productCode from FanCase", countQuery = "SELECT COUNT(DISTINCT generateProductCode.productCode) from FanCase")
     Page<String> findAllDistinctProductCodes(Pageable pageable);
 
-    @Query(value = "select distinct f.generateProductCodeFanCase.productName from FanCase f  where f.generateProductCodeFanCase.productCode =:productCode")
+    @Query(value = "select distinct f.generateProductCode.productName from FanCase f  where f.generateProductCode.productCode =:productCode")
     String findDistinctProductNameByProductCode(@Param("productCode") String productCode);
 
-    @Query("SELECT AVG(f.priceIn) FROM FanCase f WHERE f.generateProductCodeFanCase.productCode =:productCode")
+    @Query("SELECT AVG(f.priceIn) FROM FanCase f WHERE f.generateProductCode.productCode =:productCode")
     Double averagePriceByProductCode(@Param("productCode") String productCode);
 
-    @Query(value = "SELECT SUM(fc.quantity) FROM FanCase fc WHERE fc.generateProductCodeFanCase.productCode =:productCode")
-    long sumAllByGenerateProductCodeFanCase(@Param("productCode") String productCode);
+    @Query(value = "SELECT SUM(fc.quantity) FROM FanCase fc WHERE fc.generateProductCode.productCode =:productCode")
+    long sumAllByGenerateProductCode(@Param("productCode") String productCode);
 
-    @Query(value = "select distinct f.generateProductCodeFanCase.productCode from FanCase f where f.generateProductCodeFanCase.productName like %:search% or f.generateProductCodeFanCase.productCode like %:search%",
-            countQuery = "select count(distinct  f) from FanCase f where f.generateProductCodeFanCase.productName like %:search% or f.generateProductCodeFanCase.productCode like %:search%")
+    @Query(value = "select distinct f.generateProductCode.productCode from FanCase f where f.generateProductCode.productName like %:search% or f.generateProductCode.productCode like %:search%",
+            countQuery = "select count(distinct  f) from FanCase f where f.generateProductCode.productName like %:search% or f.generateProductCode.productCode like %:search%")
     Page<String> findAllDistinctByProductNameOrProductCode(@Param("search") String search, Pageable pageable);
 
     boolean existsBySerialNumber(String serialNumber);

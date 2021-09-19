@@ -48,7 +48,8 @@ export class ProductCodeSoundCardComponent implements OnInit {
     this.validatingForm = this.formBuild.group({
       productCode: new FormControl('', Validators.required),
       productName: new FormControl('', Validators.required),
-      state: new FormControl('')
+      state: new FormControl(''),
+      category: new FormControl('Sound Card')
     });
   }
 
@@ -65,7 +66,9 @@ export class ProductCodeSoundCardComponent implements OnInit {
   }
 
   public getAllProductCodes(): void {
-    this.generateProductCodeService.getAll(SoundCard.generateProductURL).subscribe((data: any) => {
+    this.params = new HttpParams();
+    this.params = this.params.set('category', 'Sound Card');
+    this.generateProductCodeService.getAllByCategory(GenerateProductCode.productCodeCategoryURI, this.params).subscribe((data: any) => {
       this.productCodeList = data;
 
 
@@ -75,15 +78,12 @@ export class ProductCodeSoundCardComponent implements OnInit {
   }
 
   private searchProductCodes(): void {
-    this.params = this.params.set('querySearch', this.searchQuery);
-    this.generateProductCodeService.search(SoundCard.generateProductURLSearch, this.params).subscribe((data: any) => {
+    this.params = this.params.set('query', this.searchQuery).set('category', 'Sound Card');
+    this.generateProductCodeService.search(GenerateProductCode.searchProductCodeURI, this.params).subscribe((data: any) => {
 
       if (this.searchQuery !== '') {
-        this.productCodeList = [];
+        this.productCodeList = data;
 
-        for (let productCode of data) {
-          this.productCodeList.push(productCode);
-        }
         this.inputSearch.nativeElement.value = '';
       }
     }, (err: HttpErrorResponse) => {
@@ -93,18 +93,18 @@ export class ProductCodeSoundCardComponent implements OnInit {
 
   getEventSearchResult(event: any) {
     this.searchQuery = event.target.value;
-    this.router.navigate(['/components/' + SoundCard.productCodeURI], {queryParams: {querySearch: this.searchQuery}})
+    this.router.navigate(['/components/' + GenerateProductCode.productCodeURI], {queryParams: {querySearch: this.searchQuery}})
     this.searchProductCodes();
   }
 
   clearSearch() {
-    this.router.navigateByUrl('/components/' + SoundCard.productCodeURI);
+    this.router.navigateByUrl('/components/' + GenerateProductCode.productCodeURI);
     this.getAllProductCodes();
   }
 
   /************************** Create, Update, Delete ****************************************************/
   private addProductCode(): void {
-    this.generateProductCodeService.add(SoundCard.generateProductURL, this.validatingForm.value).subscribe(response => {
+    this.generateProductCodeService.add(GenerateProductCode.productCodeURI, this.validatingForm.value).subscribe(response => {
       this.reloadPageService.reload();
     }, (err: HttpErrorResponse) => {
       this.errorMessage = err.error.message;
@@ -112,8 +112,8 @@ export class ProductCodeSoundCardComponent implements OnInit {
   }
 
   public editProductCode(): void {
-    this.generateProductCodeService.update(SoundCard.generateProductURL, this.id, this.validatingForm.value).subscribe(response => {
-      this.router.navigate(['components/' + SoundCard.productCodeURI]).then(() => this.reloadPageService.reload());
+    this.generateProductCodeService.update(GenerateProductCode.productCodeURI, this.id, this.validatingForm.value).subscribe(response => {
+      this.router.navigate(['components/' + GenerateProductCode.productCodeURI]).then(() => this.reloadPageService.reload());
       this.validatingForm.reset();
     }, (err: HttpErrorResponse) => {
       this.errorMessage = err.error.message;
@@ -131,7 +131,7 @@ export class ProductCodeSoundCardComponent implements OnInit {
       confirmButtonText: 'Da, sterge!'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.generateProductCodeService.delete(SoundCard.generateProductURL, Number(productCode.id)).subscribe(response => {
+        this.generateProductCodeService.delete(GenerateProductCode.productCodeURI, Number(productCode.id)).subscribe(response => {
           this.reloadPageService.reload();
         }, (err: HttpErrorResponse) => {
           this.errorMessage = err.error.message;
@@ -147,7 +147,7 @@ export class ProductCodeSoundCardComponent implements OnInit {
     const closedForm = document.getElementById('close-btn');
 
     if (closedForm) {
-      this.router.navigate(['components/' + SoundCard.productCodeURI]);
+      this.router.navigate(['components/' + GenerateProductCode.productCodeURI]);
       this.isAddMode = true;
       this.validatingForm.reset();
     }
@@ -179,7 +179,7 @@ export class ProductCodeSoundCardComponent implements OnInit {
 
   patchForm(productCode) {
     const data = this.productCodeList.find(i => i.id == productCode.id);
-    this.router.navigate(['components/' + SoundCard.productCodeURI],
+    this.router.navigate(['components/' + GenerateProductCode.productCodeURI],
         {queryParams: {id: productCode.id}});
     this.validatingForm.patchValue(data);
   }

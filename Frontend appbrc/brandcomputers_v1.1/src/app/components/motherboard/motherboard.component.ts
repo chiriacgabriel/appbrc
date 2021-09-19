@@ -251,7 +251,7 @@ export class MotherboardComponent implements OnInit {
     }
 
     getAllGenerateProductCodes(): void {
-        this.productCodeService.getAll(Motherboard.generateProductURL).subscribe((data: any) => {
+        this.productCodeService.getAllByCategory(GenerateProductCode.productCodeCategoryURI, new HttpParams().set('category', 'Motherboard')).subscribe((data: any) => {
             this.productCodesList = data.filter(productCode => productCode.state === true);
             this.productCodesListInactive = data.filter(productCode => productCode.state === false);
         }, (err: HttpErrorResponse) => {

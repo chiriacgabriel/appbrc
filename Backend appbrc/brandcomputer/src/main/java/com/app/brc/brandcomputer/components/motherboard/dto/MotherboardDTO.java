@@ -1,9 +1,7 @@
 package com.app.brc.brandcomputer.components.motherboard.dto;
 
-import com.app.brc.brandcomputer.components.motherboard.model.GenerateProductCodeMotherboard;
+import com.app.brc.brandcomputer.components.product_code.model.ProductCode;
 import lombok.*;
-
-
 
 import java.time.LocalDateTime;
 
@@ -17,7 +15,7 @@ public class MotherboardDTO {
 
     private int id;
 
-    private GenerateProductCodeMotherboard generateProductCode;
+    private ProductCode generateProductCode;
 
     private long stock;
     private String serialNumber;

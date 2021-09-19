@@ -97,7 +97,7 @@ public class MotherboardService {
             MotherboardDTO motherboardDTO = MotherboardDTO.builder()
                     .generateProductCode(motherboardRepository.findByProductCode(s))
                     .averagePrice(motherboardRepository.averagePriceByProductCode(s))
-                    .stock(motherboardRepository.sumAllByGenerateProductCodeMotherboard(s))
+                    .stock(motherboardRepository.sumAllByGenerateProductCode(s))
                     .build();
             stockList.add(motherboardDTO);
 
@@ -121,7 +121,7 @@ public class MotherboardService {
             MotherboardDTO motherboardDTO = MotherboardDTO.builder()
                     .generateProductCode(motherboardRepository.findByProductCode(s))
                     .averagePrice(motherboardRepository.averagePriceByProductCode(s))
-                    .stock(motherboardRepository.sumAllByGenerateProductCodeMotherboard(s))
+                    .stock(motherboardRepository.sumAllByGenerateProductCode(s))
                     .build();
             searchStockList.add(motherboardDTO);
         });
@@ -135,7 +135,7 @@ public class MotherboardService {
 
     public Page<MotherboardDTO> getMotherboardsByProductCode(String productCode, int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
-        return motherboardRepository.findAllByGenerateProductCodeMotherboard(motherboardRepository.findByProductCode(productCode), pageable)
+        return motherboardRepository.findAllByGenerateProductCode(motherboardRepository.findByProductCode(productCode), pageable)
                 .map(motherboard -> motherboardMapper.map(motherboard));
     }
 }

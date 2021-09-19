@@ -81,7 +81,7 @@ public class ProcessorService {
 
     public Page<ProcessorDTO> getProcessorsByProductCode(String productCode, int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
-        return processorRepository.findAllByGenerateProductCodeProcessor(processorRepository.findByProductCode(productCode), pageable)
+        return processorRepository.findAllByGenerateProductCode(processorRepository.findByProductCode(productCode), pageable)
                 .map(processor -> processorMapper.map(processor));
     }
 
@@ -96,7 +96,7 @@ public class ProcessorService {
             ProcessorDTO processorDTO = ProcessorDTO.builder()
                     .generateProductCode(processorRepository.findByProductCode(s))
                     .averagePrice(processorRepository.averagePriceByProductCode(s))
-                    .stock(processorRepository.sumAllByGenerateProductCodeProcessor(s))
+                    .stock(processorRepository.sumAllByGenerateProductCode(s))
                     .build();
             stockList.add(processorDTO);
         });
@@ -118,7 +118,7 @@ public class ProcessorService {
             ProcessorDTO processorDTO = ProcessorDTO.builder()
                     .generateProductCode(processorRepository.findByProductCode(s))
                     .averagePrice(processorRepository.averagePriceByProductCode(s))
-                    .stock(processorRepository.sumAllByGenerateProductCodeProcessor(s))
+                    .stock(processorRepository.sumAllByGenerateProductCode(s))
                     .build();
             searchStockList.add(processorDTO);
         });

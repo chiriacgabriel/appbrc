@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {Observable} from 'rxjs';
 import {GenerateProductCode} from '../../model/components/GenerateProductCode';
@@ -23,6 +23,10 @@ export class GenerateProductCodeService {
 
     getAll(url: string): Observable<GenerateProductCode[]> {
         return this.http.get<GenerateProductCode[]>(`${this.apiServerUrl}/api/` + url);
+    }
+
+    getAllByCategory(urlCategory: string, params): Observable<GenerateProductCode[]> {
+        return this.http.get<GenerateProductCode[]>(`${this.apiServerUrl}/api/` + urlCategory, {params});
     }
 
     search(searchUrl: string, params): Observable<GenerateProductCode> {

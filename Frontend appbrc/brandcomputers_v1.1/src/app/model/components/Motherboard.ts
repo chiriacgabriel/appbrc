@@ -1,4 +1,4 @@
-export class Motherboard{
+export class Motherboard {
 
   id: number;
   productCode: string;
@@ -24,16 +24,4 @@ export class Motherboard{
   updatedBy: string;
   quantity: number;
   unitOfMeasurement: string;
-
-  static get generateProductURL(): string {
-    return 'generate-product-code-motherboard';
-  }
-
-  static get generateProductURLSearch(): string {
-    return 'generate-product-code-motherboard/search';
-  }
-
-  static get productCodeURI(): string {
-    return 'product-code-motherboard'
-  }
 }

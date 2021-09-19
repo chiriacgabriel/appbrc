@@ -1,7 +1,8 @@
 package com.app.brc.brandcomputer.computers.dto;
 
-import com.app.brc.brandcomputer.computers.model.GenerateProductCodeComputer;
+import com.app.brc.brandcomputer.components.product_code.model.ProductCode;
 import lombok.*;
+
 import java.time.LocalDateTime;
 
 @Getter
@@ -14,7 +15,7 @@ public class ComputerDTO {
 
     private int id;
 
-    private GenerateProductCodeComputer generateProductCode;
+    private ProductCode generateProductCode;
 
     private String serialNumber;
     private String manufacturer;

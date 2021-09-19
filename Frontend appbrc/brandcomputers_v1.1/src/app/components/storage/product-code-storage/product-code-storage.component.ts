@@ -47,7 +47,8 @@ export class ProductCodeStorageComponent implements OnInit {
     this.validatingForm = this.formBuild.group({
       productCode: new FormControl('', Validators.required),
       productName: new FormControl('', Validators.required),
-      state: new FormControl('')
+      state: new FormControl(''),
+      category: new FormControl('Storage')
     });
   }
 
@@ -64,9 +65,10 @@ export class ProductCodeStorageComponent implements OnInit {
   }
 
   public getAllProductCodes(): void {
-    this.generateProductCodeService.getAll(Storage.generateProductURL).subscribe((data: any) => {
+    this.params = new HttpParams();
+    this.params = this.params.set('category', 'Storage');
+    this.generateProductCodeService.getAllByCategory(GenerateProductCode.productCodeCategoryURI, this.params).subscribe((data: any) => {
       this.productCodeList = data;
-
 
     }, (err: HttpErrorResponse) => {
       this.errorMessage = err.error.message;
@@ -74,15 +76,12 @@ export class ProductCodeStorageComponent implements OnInit {
   }
 
   private searchProductCodes(): void {
-    this.params = this.params.set('querySearch', this.searchQuery);
-    this.generateProductCodeService.search(Storage.generateProductURLSearch, this.params).subscribe((data: any) => {
+    this.params = this.params.set('query', this.searchQuery).set('category', 'Storage');
+    this.generateProductCodeService.search(GenerateProductCode.searchProductCodeURI, this.params).subscribe((data: any) => {
 
       if (this.searchQuery !== '') {
-        this.productCodeList = [];
+        this.productCodeList = data;
 
-        for (let productCode of data) {
-          this.productCodeList.push(productCode);
-        }
         this.inputSearch.nativeElement.value = '';
       }
     }, (err: HttpErrorResponse) => {
@@ -92,18 +91,18 @@ export class ProductCodeStorageComponent implements OnInit {
 
   getEventSearchResult(event: any) {
     this.searchQuery = event.target.value;
-    this.router.navigate(['/components/' + Storage.productCodeURI], {queryParams: {querySearch: this.searchQuery}})
+    this.router.navigate(['/components/' + GenerateProductCode.productCodeURI], {queryParams: {querySearch: this.searchQuery}})
     this.searchProductCodes();
   }
 
   clearSearch() {
-    this.router.navigateByUrl('/components/' + Storage.productCodeURI);
+    this.router.navigateByUrl('/components/' + GenerateProductCode.productCodeURI);
     this.getAllProductCodes();
   }
 
   /************************** Create, Update, Delete ****************************************************/
   private addProductCode(): void {
-    this.generateProductCodeService.add(Storage.generateProductURL, this.validatingForm.value).subscribe(response => {
+    this.generateProductCodeService.add(GenerateProductCode.productCodeURI, this.validatingForm.value).subscribe(response => {
       this.reloadPageService.reload();
     }, (err: HttpErrorResponse) => {
       this.errorMessage = err.error.message;
@@ -111,8 +110,8 @@ export class ProductCodeStorageComponent implements OnInit {
   }
 
   public editProductCode(): void {
-    this.generateProductCodeService.update(Storage.generateProductURL, this.id, this.validatingForm.value).subscribe(response => {
-      this.router.navigate(['components/' + Storage.productCodeURI]).then(() => this.reloadPageService.reload());
+    this.generateProductCodeService.update(GenerateProductCode.productCodeURI, this.id, this.validatingForm.value).subscribe(response => {
+      this.router.navigate(['components/' + GenerateProductCode.productCodeURI]).then(() => this.reloadPageService.reload());
       this.validatingForm.reset();
     }, (err: HttpErrorResponse) => {
       this.errorMessage = err.error.message;
@@ -130,7 +129,7 @@ export class ProductCodeStorageComponent implements OnInit {
       confirmButtonText: 'Da, sterge!'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.generateProductCodeService.delete(Storage.generateProductURL, Number(productCode.id)).subscribe(response => {
+        this.generateProductCodeService.delete(GenerateProductCode.productCodeURI, Number(productCode.id)).subscribe(response => {
           this.reloadPageService.reload();
         }, (err: HttpErrorResponse) => {
           this.errorMessage = err.error.message;
@@ -146,7 +145,7 @@ export class ProductCodeStorageComponent implements OnInit {
     const closedForm = document.getElementById('close-btn');
 
     if (closedForm) {
-      this.router.navigate(['components/' + Storage.productCodeURI]);
+      this.router.navigate(['components/' + GenerateProductCode.productCodeURI]);
       this.isAddMode = true;
       this.validatingForm.reset();
     }
@@ -178,7 +177,7 @@ export class ProductCodeStorageComponent implements OnInit {
 
   patchForm(productCode) {
     const data = this.productCodeList.find(i => i.id == productCode.id);
-    this.router.navigate(['components/' + Storage.productCodeURI],
+    this.router.navigate(['components/' + GenerateProductCode.productCodeURI],
         {queryParams: {id: productCode.id}});
     this.validatingForm.patchValue(data);
   }

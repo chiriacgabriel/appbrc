@@ -1,10 +1,8 @@
 package com.app.brc.brandcomputer.components.processor.dto;
 
-import com.app.brc.brandcomputer.components.processor.model.GenerateProductCodeProcessor;
+import com.app.brc.brandcomputer.components.product_code.model.ProductCode;
 import lombok.*;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
 
 @Getter
@@ -17,7 +15,7 @@ public class ProcessorDTO {
 
     private int id;
 
-    private GenerateProductCodeProcessor generateProductCode;
+    private ProductCode generateProductCode;
 
     private long stock;
     private String serialNumber;

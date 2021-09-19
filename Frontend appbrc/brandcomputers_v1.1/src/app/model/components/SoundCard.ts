@@ -21,16 +21,4 @@ export class SoundCard{
 
   lastUpdated: Date;
   updatedBy: string;
-
-  static get generateProductURL(): string {
-    return 'generate-product-code-sound-card';
-  }
-
-  static get generateProductURLSearch(): string {
-    return 'generate-product-code-sound-card/search';
-  }
-
-  static get productCodeURI(): string {
-    return 'product-code-sound-card'
-  }
 }

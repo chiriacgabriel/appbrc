@@ -22,7 +22,7 @@ public class CpuCoolerMapper {
 
     public CpuCooler map(CpuCoolerDTO cpuCoolerDTO){
         return CpuCooler.builder()
-                .generateProductCodeCpuCooler(cpuCoolerDTO.getGenerateProductCode())
+                .generateProductCode(cpuCoolerDTO.getGenerateProductCode())
                 .serialNumber(cpuCoolerDTO.getSerialNumber())
                 .manufacturer(cpuCoolerDTO.getManufacturer())
                 .socket(cpuCoolerDTO.getSocket())
@@ -46,7 +46,7 @@ public class CpuCoolerMapper {
     public CpuCoolerDTO map(CpuCooler cpuCooler){
         return CpuCoolerDTO.builder()
                 .id(cpuCooler.getId())
-                .generateProductCode(cpuCooler.getGenerateProductCodeCpuCooler())
+                .generateProductCode(cpuCooler.getGenerateProductCode())
                 .serialNumber(cpuCooler.getSerialNumber())
                 .manufacturer(cpuCooler.getManufacturer())
                 .socket(cpuCooler.getSocket())
@@ -77,7 +77,7 @@ public class CpuCoolerMapper {
 
         CpuCooler dbCpuCooler = optionalCpuCoolerDTO.get();
 
-        dbCpuCooler.setGenerateProductCodeCpuCooler(cpuCoolerDTO.getGenerateProductCode());
+        dbCpuCooler.setGenerateProductCode(cpuCoolerDTO.getGenerateProductCode());
         dbCpuCooler.setManufacturer(cpuCoolerDTO.getManufacturer());
         dbCpuCooler.setSocket(cpuCoolerDTO.getSocket());
         dbCpuCooler.setPriceIn(cpuCoolerDTO.getPriceIn());

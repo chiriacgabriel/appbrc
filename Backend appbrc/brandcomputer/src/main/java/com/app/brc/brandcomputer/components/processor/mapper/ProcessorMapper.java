@@ -22,7 +22,7 @@ public class ProcessorMapper {
 
     public Processor map(ProcessorDTO processorDTO){
         return Processor.builder()
-                .generateProductCodeProcessor(processorDTO.getGenerateProductCode())
+                .generateProductCode(processorDTO.getGenerateProductCode())
                 .serialNumber(processorDTO.getSerialNumber())
                 .manufacturer(processorDTO.getManufacturer())
                 .socket(processorDTO.getSocket())
@@ -57,7 +57,7 @@ public class ProcessorMapper {
     public ProcessorDTO map(Processor processor){
         return ProcessorDTO.builder()
                 .id(processor.getId())
-                .generateProductCode(processor.getGenerateProductCodeProcessor())
+                .generateProductCode(processor.getGenerateProductCode())
                 .serialNumber(processor.getSerialNumber())
                 .manufacturer(processor.getManufacturer())
                 .socket(processor.getSocket())
@@ -100,7 +100,7 @@ public class ProcessorMapper {
 
         Processor dbProcessor = optional.get();
 
-        dbProcessor.setGenerateProductCodeProcessor(processorDTO.getGenerateProductCode());
+        dbProcessor.setGenerateProductCode(processorDTO.getGenerateProductCode());
         dbProcessor.setManufacturer(processorDTO.getManufacturer());
 
         dbProcessor.setSocket(processorDTO.getSocket());

@@ -62,7 +62,7 @@ public class MemoryRamService {
 
     public Page<MemoryRamDTO> getMemoryRamByProductCode(String productCode, int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
-        return memoryRamRepository.findAllByGenerateProductCodeMemoryRam(memoryRamRepository.findByProductCode(productCode), pageable)
+        return memoryRamRepository.findAllByGenerateProductCode(memoryRamRepository.findByProductCode(productCode), pageable)
                 .map(memoryRam -> memoryRamMapper.map(memoryRam));
     }
 
@@ -76,7 +76,7 @@ public class MemoryRamService {
             MemoryRamDTO memoryRamDTO = MemoryRamDTO.builder()
                     .generateProductCode(memoryRamRepository.findByProductCode(s))
                     .averagePrice(memoryRamRepository.averagePriceByProductCode(s))
-                    .stock(memoryRamRepository.sumAllByGenerateProductCodeMemoryRam(s))
+                    .stock(memoryRamRepository.sumAllByGenerateProductCode(s))
                     .build();
             stockList.add(memoryRamDTO);
         });
@@ -98,7 +98,7 @@ public class MemoryRamService {
             MemoryRamDTO memoryRamDTO = MemoryRamDTO.builder()
                     .generateProductCode(memoryRamRepository.findByProductCode(s))
                     .averagePrice(memoryRamRepository.averagePriceByProductCode(s))
-                    .stock(memoryRamRepository.sumAllByGenerateProductCodeMemoryRam(s))
+                    .stock(memoryRamRepository.sumAllByGenerateProductCode(s))
                     .build();
             searchStockList.add(memoryRamDTO);
         });

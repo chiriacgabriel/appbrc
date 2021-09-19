@@ -1,5 +1,5 @@
 package com.app.brc.brandcomputer.components.fan_case.dto;
-import com.app.brc.brandcomputer.components.fan_case.model.GenerateProductCodeFanCase;
+import com.app.brc.brandcomputer.components.product_code.model.ProductCode;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class FanCaseDTO {
 
     private int id;
-    private GenerateProductCodeFanCase generateProductCode;
+    private ProductCode generateProductCode;
     private String serialNumber;
     private String manufacturer;
     private String dimension;

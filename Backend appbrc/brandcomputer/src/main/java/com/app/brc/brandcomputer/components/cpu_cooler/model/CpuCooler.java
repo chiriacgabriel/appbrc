@@ -1,6 +1,6 @@
 package com.app.brc.brandcomputer.components.cpu_cooler.model;
 
-import com.app.brc.brandcomputer.accounting.nir.model.Nir;
+import com.app.brc.brandcomputer.components.product_code.model.ProductCode;
 import com.app.brc.brandcomputer.computersAssembly.model.ComputerAssembly;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -25,7 +25,7 @@ public class CpuCooler {
 
     @ManyToOne
     @JoinColumn(name = "productCode_id")
-    private GenerateProductCodeCpuCooler generateProductCodeCpuCooler;
+    private ProductCode generateProductCode;
 
     private String serialNumber;
     private String manufacturer;

@@ -1,9 +1,8 @@
 package com.app.brc.brandcomputer.components.powersource.dto;
 
-import com.app.brc.brandcomputer.components.powersource.model.GenerateProductCodePowerSource;
+import com.app.brc.brandcomputer.components.product_code.model.ProductCode;
 import lombok.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -16,7 +15,7 @@ public class PowerSourceDTO {
 
     private int id;
 
-    private GenerateProductCodePowerSource generateProductCode;
+    private ProductCode generateProductCode;
 
     private long stock;
     private String serialNumber;

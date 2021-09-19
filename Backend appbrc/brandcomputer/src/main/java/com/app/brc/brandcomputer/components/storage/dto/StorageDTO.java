@@ -1,9 +1,7 @@
 package com.app.brc.brandcomputer.components.storage.dto;
 
-import com.app.brc.brandcomputer.components.storage.model.GenerateProductCodeStorage;
+import com.app.brc.brandcomputer.components.product_code.model.ProductCode;
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -17,7 +15,7 @@ public class StorageDTO {
 
     private int id;
 
-    private GenerateProductCodeStorage generateProductCode;
+    private ProductCode generateProductCode;
 
     private long stock;
     private String serialNumber;

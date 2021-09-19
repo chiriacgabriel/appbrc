@@ -1,6 +1,6 @@
 package com.app.brc.brandcomputer.components.memory_ram.dto;
 
-import com.app.brc.brandcomputer.components.memory_ram.model.GenerateProductCodeMemoryRam;
+import com.app.brc.brandcomputer.components.product_code.model.ProductCode;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -15,7 +15,7 @@ public class MemoryRamDTO {
 
     private int id;
 
-    private GenerateProductCodeMemoryRam generateProductCode;
+    private ProductCode generateProductCode;
 
     private long stock;
     private String serialNumber;

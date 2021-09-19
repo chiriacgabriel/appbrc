@@ -1,11 +1,9 @@
 package com.app.brc.brandcomputer.components.casing.dto;
 
-import com.app.brc.brandcomputer.accounting.nir.model.Nir;
-import com.app.brc.brandcomputer.components.casing.model.GenerateProductCodeCase;
+import com.app.brc.brandcomputer.components.product_code.model.ProductCode;
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -16,7 +14,7 @@ import java.util.Set;
 public class CaseDTO {
 
     private int id;
-    private GenerateProductCodeCase generateProductCode;
+    private ProductCode generateProductCode;
 
     private String serialNumber;
     private String manufacturer;

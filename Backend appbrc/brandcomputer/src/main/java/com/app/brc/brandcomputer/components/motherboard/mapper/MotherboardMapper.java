@@ -22,7 +22,7 @@ public class MotherboardMapper {
 
     public Motherboard map(MotherboardDTO motherboardDTO){
         return Motherboard.builder()
-                .generateProductCodeMotherboard(motherboardDTO.getGenerateProductCode())
+                .generateProductCode(motherboardDTO.getGenerateProductCode())
                 .serialNumber(motherboardDTO.getSerialNumber())
                 .manufacturer(motherboardDTO.getManufacturer())
                 .model(motherboardDTO.getModel())
@@ -52,7 +52,7 @@ public class MotherboardMapper {
     public MotherboardDTO map(Motherboard motherboard){
         return MotherboardDTO.builder()
                 .id(motherboard.getId())
-                .generateProductCode(motherboard.getGenerateProductCodeMotherboard())
+                .generateProductCode(motherboard.getGenerateProductCode())
                 .serialNumber(motherboard.getSerialNumber())
                 .manufacturer(motherboard.getManufacturer())
                 .model(motherboard.getModel())
@@ -89,7 +89,7 @@ public class MotherboardMapper {
 
         Motherboard dbMotherboard = optionalMotherboard.get();
 
-        dbMotherboard.setGenerateProductCodeMotherboard(motherboardDTO.getGenerateProductCode());
+        dbMotherboard.setGenerateProductCode(motherboardDTO.getGenerateProductCode());
         dbMotherboard.setSerialNumber(motherboardDTO.getSerialNumber());
         dbMotherboard.setManufacturer(motherboardDTO.getManufacturer());
         dbMotherboard.setModel(motherboardDTO.getModel());

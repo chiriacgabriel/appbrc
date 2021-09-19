@@ -22,7 +22,7 @@ public class ComputerMapper {
 
     public Computer map(ComputerDTO computerDTO){
         return Computer.builder()
-                .generateProductCodeComputer(computerDTO.getGenerateProductCode())
+                .generateProductCode(computerDTO.getGenerateProductCode())
                 .serialNumber(computerDTO.getSerialNumber())
                 .manufacturer(computerDTO.getManufacturer())
                 .model(computerDTO.getModel())
@@ -65,7 +65,7 @@ public class ComputerMapper {
     public ComputerDTO map(Computer computer){
         return ComputerDTO.builder()
                 .id(computer.getId())
-                .generateProductCode(computer.getGenerateProductCodeComputer())
+                .generateProductCode(computer.getGenerateProductCode())
                 .serialNumber(computer.getSerialNumber())
                 .manufacturer(computer.getManufacturer())
                 .model(computer.getModel())
@@ -115,7 +115,7 @@ public class ComputerMapper {
 
         Computer dbComputer = optionalComputer.get();
 
-        dbComputer.setGenerateProductCodeComputer(computerDTO.getGenerateProductCode());
+        dbComputer.setGenerateProductCode(computerDTO.getGenerateProductCode());
         dbComputer.setSerialNumber(computerDTO.getSerialNumber());
         dbComputer.setManufacturer(computerDTO.getManufacturer());
         dbComputer.setModel(computerDTO.getModel());

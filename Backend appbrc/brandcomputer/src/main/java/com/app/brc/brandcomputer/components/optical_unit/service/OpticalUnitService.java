@@ -49,7 +49,7 @@ public class OpticalUnitService {
 
     public Page<OpticalUnitDTO> getOpticalUnitsByProductCode(String productCode, int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
-        return opticalUnitRepository.findAllByGenerateProductCodeOpticalUnit(opticalUnitRepository.findByProductCode(productCode),pageable)
+        return opticalUnitRepository.findAllByGenerateProductCode(opticalUnitRepository.findByProductCode(productCode),pageable)
                 .map(opticalUnit -> opticalUnitMapper.map(opticalUnit));
     }
 
@@ -63,7 +63,7 @@ public class OpticalUnitService {
             OpticalUnitDTO opticalUnitDTO = OpticalUnitDTO.builder()
                     .generateProductCode(opticalUnitRepository.findByProductCode(s))
                     .averagePrice(opticalUnitRepository.averagePriceByProductCode(s))
-                    .stock(opticalUnitRepository.sumAllByGenerateProductCodeOpticalUnit(s))
+                    .stock(opticalUnitRepository.sumAllByGenerateProductCode(s))
                     .build();
             stockList.add(opticalUnitDTO);
         });
@@ -85,7 +85,7 @@ public class OpticalUnitService {
             OpticalUnitDTO opticalUnitDTO = OpticalUnitDTO.builder()
                     .generateProductCode(opticalUnitRepository.findByProductCode(s))
                     .averagePrice(opticalUnitRepository.averagePriceByProductCode(s))
-                    .stock(opticalUnitRepository.sumAllByGenerateProductCodeOpticalUnit(s))
+                    .stock(opticalUnitRepository.sumAllByGenerateProductCode(s))
                     .build();
             searchStockList.add(opticalUnitDTO);
         });

@@ -26,10 +26,11 @@
                             </div>
 
                             <!-- FORMS -->
-                            <div class="col-md-12 no-empty-unreceived-list">
 
+                            <div class="col-md-12 container-unreceived">
                                 <div>
-                                    <form [formGroup]="validatingNirForm" class="needs-validation" id="form-wrapper" name="form-wrapper" (ngSubmit)="onSubmit()">
+                                    <form [formGroup]="validatingNirForm" class="needs-validation" id="form-wrapper"
+                                          name="form-wrapper" (ngSubmit)="onSubmit()">
                                         <div id="steps-container">
 
                                             <!-- First Step -->
@@ -38,12 +39,14 @@
                                                     produsele: </h5>
                                                 <div class="table-responsive">
 
+
                                                     <table class="table table-striped table-format">
                                                         <thead class="text-primary">
                                                         <th>
                                                             <div class="form-check ">
                                                                 <label class="form-check-label hide-input">
-                                                                    <input (change)="checkUncheckAll($event)" class="form-check-input" type="checkbox">
+                                                                    <input (change)="checkUncheckAll($event)"
+                                                                           class="form-check-input" type="checkbox">
                                                                     <span class="form-check-sign"></span>
                                                                 </label>
                                                             </div>
@@ -55,10 +58,12 @@
                                                         </thead>
                                                         <tbody>
                                                         <tr *ngFor="let unreceived of unreceivedList">
-                                                            <td class="text-left" >
+                                                            <td class="text-left">
                                                                 <div class="form-check">
                                                                     <label class="form-check-label hide-input">
-                                                                        <input [checked]="unreceived.selected" (click)="selectProduct(unreceived, $event)" class="form-check-input" type="checkbox">
+                                                                        <input [checked]="unreceived.selected"
+                                                                               (click)="selectProduct(unreceived, $event)"
+                                                                               class="form-check-input" type="checkbox">
                                                                         <span class="form-check-sign"></span>
                                                                     </label>
                                                                 </div>
@@ -94,7 +99,8 @@
 
 
                                                     <div class="modal-body-filter" *ngIf="toggleForm">
-                                                        <form [formGroup]="validatingProviderForm" (ngSubmit)="onSubmitProvider()">
+                                                        <form [formGroup]="validatingProviderForm"
+                                                              (ngSubmit)="onSubmitProvider()">
                                                             <div class="row">
                                                                 <div class="form-group col-lg-3">
                                                                     <label for="name"><i
@@ -228,7 +234,8 @@
                                                         </h5>
                                                         <ng-select id="county-select" formControlName="provider">
                                                             <ng-option *ngFor="let provider of providerList"
-                                                                       [value]="provider">{{provider.name}}, {{provider.cif}}</ng-option>
+                                                                       [value]="provider">{{provider.name}}
+                                                                , {{provider.cif}}</ng-option>
                                                         </ng-select>
                                                     </div>
 
@@ -238,50 +245,60 @@
                                             <div class="step">
                                                 <h5 class="title-step"><span class="number-step">3</span> Completare
                                                     Date Contabile NIR</h5>
-                                                    <div class="row">
-                                                        <div class="form-group col-lg-2">
-                                                            <label for="nirNumber"><i class="fas fa-sort-numeric-up"></i> Nr.
-                                                                NIR</label>
-                                                            <input type="text" class="form-control" id="nirNumber" formControlName="nirNumber">
-                                                        </div>
-
-                                                        <div class="form-group col-lg-3">
-                                                            <label for="date"><i class="far fa-calendar-alt"></i> Data NIR </label>
-                                                            <input class="form-control" id="date" placeholder="Selecteaza data..."
-                                                                   name="dp1" ngbDatepicker #d1="ngbDatepicker"
-                                                                   (click)="d1.toggle()" formControlName="date">
-                                                        </div>
-
-                                                        <div class="form-group col-lg-2">
-                                                            <label for="administration"><i class="fas fa-truck-loading"></i> Gestiune </label>
-                                                            <input type="text" class="form-control" id="administration" formControlName="administration">
-                                                        </div>
-
+                                                <div class="row">
+                                                    <div class="form-group col-lg-2">
+                                                        <label for="nirNumber"><i class="fas fa-sort-numeric-up"></i>
+                                                            Nr.
+                                                            NIR</label>
+                                                        <input type="text" class="form-control" id="nirNumber"
+                                                               formControlName="nirNumber">
                                                     </div>
 
-                                                    <div class="row">
-                                                        <div class="form-group col-lg-2">
-                                                            <label for="vat"><i class="fas fa-donate"></i> TVA </label>
-                                                            <select class="form-control" id="vat" formControlName="vat">
-                                                                <option selected value="0.19">19%</option>
-                                                                <option value="0.09">9%</option>
-                                                                <option value="0.05">5%</option>
-                                                                <option value="0">0%</option>
-                                                            </select>
-                                                        </div>
-
-                                                        <div class="form-group col-lg-3">
-                                                            <label for="invoiceNumber"><i class="fas fa-print"></i> Nr. factura furnizor </label>
-                                                            <input type="text" class="form-control" id="invoiceNumber" formControlName="invoiceNumber">
-                                                        </div>
-
-                                                        <div class="form-group col-lg-2">
-                                                            <label for="debitAccount"><i class="fas fa-donate"></i> Cont debitor </label>
-                                                            <input type="text" class="form-control" id="debitAccount" formControlName="debitAccount">
-                                                        </div>
-
-
+                                                    <div class="form-group col-lg-3">
+                                                        <label for="date"><i class="far fa-calendar-alt"></i> Data NIR
+                                                        </label>
+                                                        <input class="form-control" id="date"
+                                                               placeholder="Selecteaza data..."
+                                                               name="dp1" ngbDatepicker #d1="ngbDatepicker"
+                                                               (click)="d1.toggle()" formControlName="date">
                                                     </div>
+
+                                                    <div class="form-group col-lg-2">
+                                                        <label for="administration"><i class="fas fa-truck-loading"></i>
+                                                            Gestiune </label>
+                                                        <input type="text" class="form-control" id="administration"
+                                                               formControlName="administration">
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="form-group col-lg-2">
+                                                        <label for="vat"><i class="fas fa-donate"></i> TVA </label>
+                                                        <select class="form-control" id="vat" formControlName="vat">
+                                                            <option selected value="0.19">19%</option>
+                                                            <option value="0.09">9%</option>
+                                                            <option value="0.05">5%</option>
+                                                            <option value="0">0%</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group col-lg-3">
+                                                        <label for="invoiceNumber"><i class="fas fa-print"></i> Nr.
+                                                            factura furnizor </label>
+                                                        <input type="text" class="form-control" id="invoiceNumber"
+                                                               formControlName="invoiceNumber">
+                                                    </div>
+
+                                                    <div class="form-group col-lg-2">
+                                                        <label for="debitAccount"><i class="fas fa-donate"></i> Cont
+                                                            debitor </label>
+                                                        <input type="text" class="form-control" id="debitAccount"
+                                                               formControlName="debitAccount">
+                                                    </div>
+
+
+                                                </div>
 
                                             </div>
 
@@ -305,7 +322,7 @@
                                         </div>
                                     </form>
                                 </div>
-                            </div>
+                            </div >
 
                             <div class="col-md-12 empty-unreceived-list">
                                 <div>
@@ -317,6 +334,7 @@
                                     </div>
                                 </div>
                             </div>
+
 
                         </div>
                     </div>

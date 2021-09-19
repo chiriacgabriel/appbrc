@@ -1,8 +1,6 @@
 package com.app.brc.brandcomputer.components.video_card.repository;
 
-import com.app.brc.brandcomputer.components.casing.model.Case;
-import com.app.brc.brandcomputer.components.storage.model.Storage;
-import com.app.brc.brandcomputer.components.video_card.model.GenerateProductCodeVideoCard;
+import com.app.brc.brandcomputer.components.product_code.model.ProductCode;
 import com.app.brc.brandcomputer.components.video_card.model.VideoCard;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,8 +17,8 @@ public interface VideoCardRepository extends JpaRepository<VideoCard, Integer>, 
 
     boolean existsBySerialNumber(String serialNumber);
 
-    String queryMultiMatch = "SELECT v from VideoCard v WHERE v.generateProductCodeVideoCard.productCode LIKE %:query% OR " +
-            "v.generateProductCodeVideoCard.productName LIKE %:query% OR " +
+    String queryMultiMatch = "SELECT v from VideoCard v WHERE v.generateProductCode.productCode LIKE %:query% OR " +
+            "v.generateProductCode.productName LIKE %:query% OR " +
             "v.serialNumber LIKE %:query% OR " +
             "v.manufacturer LIKE %:query% OR " +
             "v.productInformation LIKE %:query% OR " +
@@ -29,8 +27,8 @@ public interface VideoCardRepository extends JpaRepository<VideoCard, Integer>, 
             "v.profile LIKE %:query% OR " +
             "v.typeOfMemory LIKE %:query% OR " +
             "v.series LIKE %:query%";
-    String countQueryMultiMatch = "SELECT COUNT(v) from VideoCard v WHERE v.generateProductCodeVideoCard.productCode LIKE %:query% OR " +
-            "v.generateProductCodeVideoCard.productName LIKE %:query% OR " +
+    String countQueryMultiMatch = "SELECT COUNT(v) from VideoCard v WHERE v.generateProductCode.productCode LIKE %:query% OR " +
+            "v.generateProductCode.productName LIKE %:query% OR " +
             "v.serialNumber LIKE %:query% OR " +
             "v.manufacturer LIKE %:query% OR " +
             "v.productInformation LIKE %:query% OR " +
@@ -43,25 +41,25 @@ public interface VideoCardRepository extends JpaRepository<VideoCard, Integer>, 
     @Query(value = queryMultiMatch, countQuery = countQueryMultiMatch)
     Page<VideoCard> multiMatchQuery(String query, Pageable pageable);
 
-    Page<VideoCard> findAllByGenerateProductCodeVideoCard(GenerateProductCodeVideoCard productCode, Pageable pageable);
+    Page<VideoCard> findAllByGenerateProductCode(ProductCode productCode, Pageable pageable);
 
-    @Query(value = "SELECT DISTINCT generateProductCodeVideoCard.productCode from VideoCard", countQuery = "SELECT COUNT(DISTINCT generateProductCodeVideoCard.productCode) from VideoCard")
+    @Query(value = "SELECT DISTINCT generateProductCode.productCode from VideoCard", countQuery = "SELECT COUNT(DISTINCT generateProductCode.productCode) from VideoCard")
     Page<String> findAllDistinctProductCodes(Pageable pageable);
 
-    @Query(value = "SELECT DISTINCT vc.generateProductCodeVideoCard FROM VideoCard vc WHERE vc.generateProductCodeVideoCard.productCode =:productCode")
-    GenerateProductCodeVideoCard findByProductCode(@Param("productCode") String productCode);
+    @Query(value = "SELECT DISTINCT vc.generateProductCode FROM VideoCard vc WHERE vc.generateProductCode.productCode =:productCode")
+    ProductCode findByProductCode(@Param("productCode") String productCode);
 
-    @Query(value = "select DISTINCT v.generateProductCodeVideoCard.productName from VideoCard v  where v.generateProductCodeVideoCard.productCode =:productCode")
+    @Query(value = "select DISTINCT v.generateProductCode.productName from VideoCard v  where v.generateProductCode.productCode =:productCode")
     String findDistinctProductNameByProductCode(@Param("productCode") String productCode);
 
-    @Query(value = "SELECT SUM(vc.quantity) FROM VideoCard vc WHERE vc.generateProductCodeVideoCard.productCode =:productCode")
-    long sumAllByGenerateProductCodeVideoCard(@Param("productCode") String productCode);
+    @Query(value = "SELECT SUM(vc.quantity) FROM VideoCard vc WHERE vc.generateProductCode.productCode =:productCode")
+    long sumAllByGenerateProductCode(@Param("productCode") String productCode);
 
-    @Query("SELECT AVG(v.priceIn) FROM VideoCard v WHERE v.generateProductCodeVideoCard.productCode =:productCode")
+    @Query("SELECT AVG(v.priceIn) FROM VideoCard v WHERE v.generateProductCode.productCode =:productCode")
     Double averagePriceByProductCode(@Param("productCode") String productCode);
 
-    @Query(value = "select distinct v.generateProductCodeVideoCard.productCode from VideoCard v where v.generateProductCodeVideoCard.productName like %:search% or v.generateProductCodeVideoCard.productCode like %:search%",
-            countQuery = "select count(distinct v) from VideoCard v where v.generateProductCodeVideoCard.productName like %:search% or v.generateProductCodeVideoCard.productCode like %:search%")
+    @Query(value = "select distinct v.generateProductCode.productCode from VideoCard v where v.generateProductCode.productName like %:search% or v.generateProductCode.productCode like %:search%",
+            countQuery = "select count(distinct v) from VideoCard v where v.generateProductCode.productName like %:search% or v.generateProductCode.productCode like %:search%")
     Page<String> findAllDistinctByProductNameOrProductCode(@Param("search") String search, Pageable pageable);
 
     @Query(value = "SELECT DISTINCT manufacturer from VideoCard")
@@ -89,6 +87,7 @@ public interface VideoCardRepository extends JpaRepository<VideoCard, Integer>, 
     List<String> findAllDistinctState();
 
     Page<VideoCard> findAllByState(String state, Pageable pageable);
+
     List<VideoCard> findAllByState(String state);
 
     @Query(value = "SELECT vc FROM VideoCard vc WHERE vc.received = false")

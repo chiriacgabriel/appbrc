@@ -54,4 +54,6 @@ public class NirDTO {
     private Double totalValue;
     private Double vat;
 
+    private String nameOfEmployee;
+
 }

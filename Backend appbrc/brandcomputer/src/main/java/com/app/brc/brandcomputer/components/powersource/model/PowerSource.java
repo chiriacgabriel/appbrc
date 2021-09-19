@@ -1,15 +1,12 @@
 package com.app.brc.brandcomputer.components.powersource.model;
 
-import com.app.brc.brandcomputer.accounting.nir.model.Nir;
-import com.app.brc.brandcomputer.components.casing.model.Case;
-import com.app.brc.brandcomputer.computers.model.Computer;
+import com.app.brc.brandcomputer.components.product_code.model.ProductCode;
 import com.app.brc.brandcomputer.computersAssembly.model.ComputerAssembly;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -28,7 +25,7 @@ public class PowerSource {
 
     @ManyToOne
     @JoinColumn(name = "productCode_id")
-    private GenerateProductCodePowerSource generateProductCodePowerSource;
+    private ProductCode generateProductCode;
 
     private String serialNumber;
     private String manufacturer;

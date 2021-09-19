@@ -20,17 +20,6 @@ export class PowerSource {
   quantity: number;
   unitOfMeasurement: string;
 
-  static get generateProductURL(): string {
-    return 'generate-product-code-power-source';
-  }
-
-  static get generateProductURLSearch(): string {
-    return 'generate-product-code-power-source/search';
-  }
-
-  static get productCodeURI(): string {
-    return 'product-code-power-source'
-  }
 }
 
 

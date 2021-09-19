@@ -49,7 +49,7 @@ public class SoundCardService {
 
     public Page<SoundCardDTO> getSoundCardsByProductCode(String productCode, int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
-        return soundCardRepository.findAllByGenerateProductCodeSoundCard(soundCardRepository.findByProductCode(productCode), pageable)
+        return soundCardRepository.findAllByGenerateProductCode(soundCardRepository.findByProductCode(productCode), pageable)
                 .map(soundCard -> soundCardMapper.map(soundCard));
     }
 
@@ -63,7 +63,7 @@ public class SoundCardService {
             SoundCardDTO soundCardDTO = SoundCardDTO.builder()
                     .generateProductCode(soundCardRepository.findByProductCode(s))
                     .averagePrice(soundCardRepository.averagePriceByProductCode(s))
-                    .stock(soundCardRepository.sumAllByGenerateProductCodeSoundCard(s))
+                    .stock(soundCardRepository.sumAllByGenerateProductCode(s))
                     .build();
             stockList.add(soundCardDTO);
         });
@@ -85,7 +85,7 @@ public class SoundCardService {
             SoundCardDTO soundCardDTO = SoundCardDTO.builder()
                     .generateProductCode(soundCardRepository.findByProductCode(s))
                     .averagePrice(soundCardRepository.averagePriceByProductCode(s))
-                    .stock(soundCardRepository.sumAllByGenerateProductCodeSoundCard(s))
+                    .stock(soundCardRepository.sumAllByGenerateProductCode(s))
                     .build();
             searchStockList.add(soundCardDTO);
         });

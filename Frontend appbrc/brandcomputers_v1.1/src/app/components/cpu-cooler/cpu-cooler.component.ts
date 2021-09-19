@@ -449,7 +449,7 @@ export class CpuCoolerComponent implements OnInit {
   }
 
   getAllGenerateProductCodes(): void {
-    this.productCodeService.getAll(CpuCooler.generateProductURL).subscribe((data: any) => {
+    this.productCodeService.getAllByCategory(GenerateProductCode.productCodeCategoryURI, new HttpParams().set('category', 'CPU Cooler')).subscribe((data: any) => {
       this.productCodesList = data.filter(productCode => productCode.state === true);
       this.productCodesListInactive = data.filter(productCode => productCode.state === false);
     }, (error: HttpErrorResponse) => {

@@ -1,6 +1,6 @@
 package com.app.brc.brandcomputer.components.optical_unit.dto;
 
-import com.app.brc.brandcomputer.components.optical_unit.model.GenerateProductCodeOpticalUnit;
+import com.app.brc.brandcomputer.components.product_code.model.ProductCode;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -15,7 +15,7 @@ public class OpticalUnitDTO {
 
     private int id;
 
-    private GenerateProductCodeOpticalUnit generateProductCode;
+    private ProductCode generateProductCode;
 
     private long stock;
     private String serialNumber;

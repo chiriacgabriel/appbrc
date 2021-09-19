@@ -22,7 +22,7 @@ public class OpticalUnitMapper {
 
     public OpticalUnit map(OpticalUnitDTO opticalUnitDTO) {
         return OpticalUnit.builder()
-                .generateProductCodeOpticalUnit(opticalUnitDTO.getGenerateProductCode())
+                .generateProductCode(opticalUnitDTO.getGenerateProductCode())
                 .serialNumber(opticalUnitDTO.getSerialNumber())
                 .manufacturer(opticalUnitDTO.getManufacturer())
                 .type(opticalUnitDTO.getType())
@@ -46,7 +46,7 @@ public class OpticalUnitMapper {
     public OpticalUnitDTO map(OpticalUnit opticalUnit){
         return OpticalUnitDTO.builder()
                 .id(opticalUnit.getId())
-                .generateProductCode(opticalUnit.getGenerateProductCodeOpticalUnit())
+                .generateProductCode(opticalUnit.getGenerateProductCode())
                 .serialNumber(opticalUnit.getSerialNumber())
                 .manufacturer(opticalUnit.getManufacturer())
                 .type(opticalUnit.getType())
@@ -76,7 +76,7 @@ public class OpticalUnitMapper {
 
         OpticalUnit dbOpticalUnit = optional.get();
 
-        dbOpticalUnit.setGenerateProductCodeOpticalUnit(opticalUnitDTO.getGenerateProductCode());
+        dbOpticalUnit.setGenerateProductCode(opticalUnitDTO.getGenerateProductCode());
         dbOpticalUnit.setSerialNumber(opticalUnitDTO.getSerialNumber());
         dbOpticalUnit.setManufacturer(opticalUnitDTO.getManufacturer());
         dbOpticalUnit.setType(opticalUnitDTO.getType());

@@ -95,7 +95,7 @@ public class StorageService {
 
     public Page<StorageDTO> getStoragesByProductCode(String productCode, int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
-        return storageRepository.findAllByGenerateProductCodeStorage(storageRepository.findByProductCode(productCode), pageable)
+        return storageRepository.findAllByGenerateProductCode(storageRepository.findByProductCode(productCode), pageable)
                 .map(storage -> storageMapper.map(storage));
     }
 
@@ -109,7 +109,7 @@ public class StorageService {
             StorageDTO storageDTO = StorageDTO.builder()
                     .generateProductCode(storageRepository.findByProductCode(s))
                     .averagePrice(storageRepository.averagePriceByProductCode(s))
-                    .stock(storageRepository.sumAllByGenerateProductCodeStorage(s))
+                    .stock(storageRepository.sumAllByGenerateProductCode(s))
                     .build();
             stockList.add(storageDTO);
         });
@@ -130,7 +130,7 @@ public class StorageService {
             StorageDTO storageDTO = StorageDTO.builder()
                     .generateProductCode(storageRepository.findByProductCode(s))
                     .averagePrice(storageRepository.averagePriceByProductCode(s))
-                    .stock(storageRepository.sumAllByGenerateProductCodeStorage(s))
+                    .stock(storageRepository.sumAllByGenerateProductCode(s))
                     .build();
             searchStockList.add(storageDTO);
         });

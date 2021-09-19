@@ -1,6 +1,6 @@
 package com.app.brc.brandcomputer.computers.model;
 
-import com.app.brc.brandcomputer.accounting.nir.model.Nir;
+import com.app.brc.brandcomputer.components.product_code.model.ProductCode;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -24,7 +24,7 @@ public class Computer {
 
     @ManyToOne
     @JoinColumn(name = "productCode_id")
-    private GenerateProductCodeComputer generateProductCodeComputer;
+    private ProductCode generateProductCode;
 
     private String serialNumber;
     private String manufacturer;

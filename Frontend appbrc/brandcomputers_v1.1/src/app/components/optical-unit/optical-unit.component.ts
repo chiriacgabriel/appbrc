@@ -459,7 +459,7 @@ export class OpticalUnitComponent implements OnInit {
   }
 
   getAllGenerateProductCodes(): void {
-    this.productCodeService.getAll(OpticalUnit.generateProductURL).subscribe((data: any) => {
+    this.productCodeService.getAllByCategory(GenerateProductCode.productCodeCategoryURI, new HttpParams().set('category', 'Optical Unit')).subscribe((data: any) => {
       this.productCodesList = data.filter(productCode => productCode.state === true);
       this.productCodesListInactive = data.filter(productCode => productCode.state === false);
     }, (error: HttpErrorResponse) => {

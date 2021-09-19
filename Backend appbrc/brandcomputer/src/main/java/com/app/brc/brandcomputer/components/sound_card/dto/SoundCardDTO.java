@@ -1,6 +1,6 @@
 package com.app.brc.brandcomputer.components.sound_card.dto;
 
-import com.app.brc.brandcomputer.components.sound_card.model.GenerateProductCodeSoundCard;
+import com.app.brc.brandcomputer.components.product_code.model.ProductCode;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -15,7 +15,7 @@ public class SoundCardDTO {
 
     private int id;
 
-    private GenerateProductCodeSoundCard generateProductCode;
+    private ProductCode generateProductCode;
 
     private long stock;
     private String serialNumber;

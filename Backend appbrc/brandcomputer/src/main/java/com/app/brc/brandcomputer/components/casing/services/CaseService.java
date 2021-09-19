@@ -54,7 +54,7 @@ public class CaseService {
             CaseDTO caseDTO = CaseDTO.builder()
                     .generateProductCode(caseRepository.findByProductCode(s))
                     .averagePrice(caseRepository.averagePriceByProductCode(s))
-                    .stock(caseRepository.sumAllByGenerateProductCodeCase(s))
+                    .stock(caseRepository.sumAllByGenerateProductCode(s))
                     .build();
             stockList.add(caseDTO);
         });
@@ -77,7 +77,7 @@ public class CaseService {
             CaseDTO caseDTO = CaseDTO.builder()
                     .generateProductCode(caseRepository.findByProductCode(s))
                     .averagePrice(caseRepository.averagePriceByProductCode(s))
-                    .stock(caseRepository.sumAllByGenerateProductCodeCase(s))
+                    .stock(caseRepository.sumAllByGenerateProductCode(s))
                     .build();
             searchStockList.add(caseDTO);
         });

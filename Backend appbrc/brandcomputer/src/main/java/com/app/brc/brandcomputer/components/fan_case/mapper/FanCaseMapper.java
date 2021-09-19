@@ -22,7 +22,7 @@ public class FanCaseMapper {
 
     public FanCase map(FanCaseDTO fanCaseDTO) {
         return FanCase.builder()
-                .generateProductCodeFanCase(fanCaseDTO.getGenerateProductCode())
+                .generateProductCode(fanCaseDTO.getGenerateProductCode())
                 .serialNumber(fanCaseDTO.getSerialNumber())
                 .manufacturer(fanCaseDTO.getManufacturer())
                 .dimension(fanCaseDTO.getDimension())
@@ -46,7 +46,7 @@ public class FanCaseMapper {
     public FanCaseDTO map(FanCase fanCase) {
         return FanCaseDTO.builder()
                 .id(fanCase.getId())
-                .generateProductCode(fanCase.getGenerateProductCodeFanCase())
+                .generateProductCode(fanCase.getGenerateProductCode())
                 .serialNumber(fanCase.getSerialNumber())
                 .manufacturer(fanCase.getManufacturer())
                 .dimension(fanCase.getDimension())
@@ -77,7 +77,7 @@ public class FanCaseMapper {
 
         FanCase dbFanCase = optionalFanCase.get();
 
-        dbFanCase.setGenerateProductCodeFanCase(fanCaseDTO.getGenerateProductCode());
+        dbFanCase.setGenerateProductCode(fanCaseDTO.getGenerateProductCode());
         dbFanCase.setManufacturer(fanCaseDTO.getManufacturer());
         dbFanCase.setDimension(fanCaseDTO.getDimension());
         dbFanCase.setPriceIn(fanCaseDTO.getPriceIn());

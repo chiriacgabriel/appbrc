@@ -7,6 +7,7 @@ import {Motherboard} from '../model/components/Motherboard';
 import {Processor} from '../model/components/Processor';
 import {Storage} from '../model/components/Storage';
 import {ProviderService} from '../services/accounting/provider.service';
+import {TokenStorageService} from '../services/token-storage.service';
 
 @Component({
     selector: 'app-unreceived',
@@ -18,7 +19,6 @@ import {ProviderService} from '../services/accounting/provider.service';
         '../../assets/css/_fav_icons_custom.css',
         '../../assets/css/_modal_filter.css']
 })
-
 
 export class UnreceivedComponent implements OnInit {
 
@@ -37,7 +37,8 @@ export class UnreceivedComponent implements OnInit {
 
     constructor(private formBuilder: FormBuilder,
                 private nirService: NirService,
-                private providerService: ProviderService) {
+                private providerService: ProviderService,
+                private tokenService: TokenStorageService) {
     }
 
     ngOnInit(): void {
@@ -47,9 +48,7 @@ export class UnreceivedComponent implements OnInit {
         this.generateNir();
         this.getProviders();
         this.getUnreceived();
-
     }
-
 
     /********************************************** Generate NIR ***********************************************/
 
@@ -73,7 +72,8 @@ export class UnreceivedComponent implements OnInit {
             videoCardList: new FormControl([]),
             computerList: new FormControl([]),
             debitAccount: new FormControl('', Validators.required),
-            vat: new FormControl('', Validators.required)
+            vat: new FormControl('', Validators.required),
+            nameOfEmployee: new FormControl(this.tokenService.getUser().firstName + " " + this.tokenService.getUser().lastName)
         });
     }
 
@@ -94,7 +94,17 @@ export class UnreceivedComponent implements OnInit {
     getUnreceived() {
         this.nirService.getAllUnreceived().subscribe((data: any) => {
             this.unreceivedList = data;
-            console.log(data);
+
+            let emptyUnreceivedList = document.getElementsByClassName('empty-unreceived-list')[0];
+            let containerUnreceived = document.getElementsByClassName('container-unreceived')[0];
+            if (this.unreceivedList.length == 0) {
+                emptyUnreceivedList.classList.remove('d-none');
+                containerUnreceived.classList.add('d-none');
+            } else {
+                emptyUnreceivedList.classList.add('d-none');
+                containerUnreceived.classList.remove('d-none');
+            }
+            this.generateNir();
         }, (error: HttpErrorResponse) => {
             this.errorMessage = error.error.message;
         });

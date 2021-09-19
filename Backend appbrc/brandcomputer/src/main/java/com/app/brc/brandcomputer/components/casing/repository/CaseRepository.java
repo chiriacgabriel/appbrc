@@ -1,7 +1,7 @@
 package com.app.brc.brandcomputer.components.casing.repository;
 
 import com.app.brc.brandcomputer.components.casing.model.Case;
-import com.app.brc.brandcomputer.components.casing.model.GenerateProductCodeCase;
+import com.app.brc.brandcomputer.components.product_code.model.ProductCode;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -38,10 +38,10 @@ public interface CaseRepository extends JpaRepository<Case, Integer>, JpaSpecifi
     @Query(value = "SELECT DISTINCT compatibleMotherboard from Case")
     List<String> findAllDistinctCompatibleMotherboard();
 
-    Page<Case> findAllByGenerateProductCode(GenerateProductCodeCase productCode, Pageable pageable);
+    Page<Case> findAllByGenerateProductCode(ProductCode productCode, Pageable pageable);
 
     @Query(value = "SELECT DISTINCT c.generateProductCode FROM Case c WHERE c.generateProductCode.productCode =:productCode")
-    GenerateProductCodeCase findByProductCode(@Param("productCode") String productCode);
+    ProductCode findByProductCode(@Param("productCode") String productCode);
 
     @Query(value = "SELECT DISTINCT generateProductCode.productCode from Case", countQuery = "SELECT COUNT(DISTINCT generateProductCode.productCode) from Case")
     Page<String> findAllDistinctProductCodes(Pageable pageable);
@@ -50,7 +50,7 @@ public interface CaseRepository extends JpaRepository<Case, Integer>, JpaSpecifi
     String findDistinctProductNameByProductCode(@Param("productCode") String productCode);
 
     @Query(value = "SELECT SUM(c.quantity) from Case c where c.generateProductCode.productCode =:productCode")
-    long sumAllByGenerateProductCodeCase(@Param("productCode") String productCode);
+    long sumAllByGenerateProductCode(@Param("productCode") String productCode);
 
     @Query("SELECT AVG(c.priceIn) FROM Case c WHERE c.generateProductCode.productCode =:productCode")
     Double averagePriceByProductCode(@Param("productCode") String productCode);

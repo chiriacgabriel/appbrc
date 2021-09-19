@@ -30,17 +30,5 @@ export class VideoCard {
   updatedBy: string
   quantity: number;
   unitOfMeasurement: string;
-
-  static get generateProductURL(): string {
-    return 'generate-product-code-video-card';
-  }
-
-  static get generateProductURLSearch(): string {
-    return 'generate-product-code-video-card/search';
-  }
-
-  static get productCodeURI(): string {
-    return 'product-code-video-card'
-  }
 }
 

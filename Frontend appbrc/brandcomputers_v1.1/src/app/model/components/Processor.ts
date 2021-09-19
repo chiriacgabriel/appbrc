@@ -28,16 +28,4 @@ export class Processor {
   updatedBy: string;
   quantity: number;
   unitOfMeasurement: string;
-
-  static get generateProductURL(): string {
-    return 'generate-product-code-processor';
-  }
-
-  static get generateProductURLSearch(): string {
-    return 'generate-product-code-processor/search';
-  }
-
-  static get productCodeURI(): string {
-    return 'product-code-processor'
-  }
 }

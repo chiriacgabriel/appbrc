@@ -1,6 +1,6 @@
 package com.app.brc.brandcomputer.components.cpu_cooler.dto;
 
-import com.app.brc.brandcomputer.components.cpu_cooler.model.GenerateProductCodeCpuCooler;
+import com.app.brc.brandcomputer.components.product_code.model.ProductCode;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 public class CpuCoolerDTO {
 
     private int id;
-    private GenerateProductCodeCpuCooler generateProductCode;
+    private ProductCode generateProductCode;
 
     private long stock;
 

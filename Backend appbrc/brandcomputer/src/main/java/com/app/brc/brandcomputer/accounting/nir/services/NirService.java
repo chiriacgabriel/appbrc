@@ -6,13 +6,16 @@ import com.app.brc.brandcomputer.accounting.nir.dto.NirDTO;
 import com.app.brc.brandcomputer.accounting.nir.dto.NirProductReportDTO;
 import com.app.brc.brandcomputer.accounting.nir.mapper.NirMapper;
 import com.app.brc.brandcomputer.accounting.nir.repository.NirRepository;
+import com.app.brc.brandcomputer.components.product_code.model.ProductCode;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
-
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -58,6 +61,35 @@ public class NirService {
         return nirMapper.getAllUnreceived();
     }
 
+
+
+//    static <T> NirProductReportDTO mapObjectToNirProduct(T object, ProductCode productCode, Double vat){
+//
+//        try{
+//            Method productCode = object.getClass().getDeclaredMethod("getGenerateProductCode", Object.class).getClass().getDeclaredMethod("getProductCode", String.class);
+//            Method productName = object.getClass().getDeclaredMethod("getGenerateProductCode", Object.class).getClass().getDeclaredMethod("getProductName", String.class);
+//            Method unitOfMeasurement = object.getClass().getDeclaredMethod("getUnitOfMeasurement", String.class);
+//            Method quantity = object.getClass().getDeclaredMethod("getQuantity", Integer.class);
+//            Method priceIn = object.getClass().getDeclaredMethod("getPriceIn", Double.class);
+//
+//
+//
+//            return NirProductReportDTO.builder()
+//                        .productCode((String) productCode.invoke(object))
+//                        .productName((String) productName.invoke(object))
+//                        .unitOfMeasurement((String) unitOfMeasurement.invoke(object))
+//                        .quantity((Integer) quantity.invoke(object))
+//                        .priceIn((Double) priceIn.invoke(object))
+//                        .vat(vat).build();
+//        }catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException exception){
+//            exception.printStackTrace();
+//        }
+//
+//
+//        return null;
+//    }
+
+
     public void generateNir(NirDTO nirDTO) {
         try{
 
@@ -71,6 +103,19 @@ public class NirService {
                         .unitOfMeasurement(aCase.getUnitOfMeasurement())
                         .quantity(aCase.getQuantity())
                         .priceIn(aCase.getPriceIn())
+                        .vat(nirDTO.getVat()).build();
+
+                listProductCode.add(productReportDTO);
+            });
+
+            nirDTO.getCpuCoolerList().forEach(cpuCooler -> {
+
+                NirProductReportDTO productReportDTO = NirProductReportDTO.builder()
+                        .productCode(cpuCooler.getGenerateProductCode().getProductCode())
+                        .productName(cpuCooler.getGenerateProductCode().getProductName())
+                        .unitOfMeasurement(cpuCooler.getUnitOfMeasurement())
+                        .quantity(cpuCooler.getQuantity())
+                        .priceIn(cpuCooler.getPriceIn())
                         .vat(nirDTO.getVat()).build();
 
                 listProductCode.add(productReportDTO);
@@ -95,6 +140,9 @@ public class NirService {
             parameters.put("providerName", nirDTO.getProvider().getName());
             parameters.put("providerCode", nirDTO.getProvider().getProviderCode());
             parameters.put("invoiceNumber", nirDTO.getInvoiceNumber());
+            parameters.put("debitAccount", nirDTO.getDebitAccount());
+
+            parameters.put("nameOfEmployee", nirDTO.getNameOfEmployee());
 
             JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(listProductCode);
 
