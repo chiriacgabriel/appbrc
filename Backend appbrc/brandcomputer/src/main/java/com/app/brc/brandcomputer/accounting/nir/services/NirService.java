@@ -5,16 +5,17 @@ import com.app.brc.brandcomputer.accounting.companyData.repository.CompanyDataRe
 import com.app.brc.brandcomputer.accounting.nir.dto.NirDTO;
 import com.app.brc.brandcomputer.accounting.nir.dto.NirProductReportDTO;
 import com.app.brc.brandcomputer.accounting.nir.mapper.NirMapper;
+import com.app.brc.brandcomputer.accounting.nir.model.NirFile;
+import com.app.brc.brandcomputer.accounting.nir.repository.NirFileRepository;
 import com.app.brc.brandcomputer.accounting.nir.repository.NirRepository;
 import com.app.brc.brandcomputer.components.product_code.model.ProductCode;
+import lombok.SneakyThrows;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -25,12 +26,15 @@ public class NirService {
     private NirRepository nirRepository;
     private NirMapper nirMapper;
     private CompanyDataRepository companyDataRepository;
+    private NirFileRepository nirFileRepository;
 
     @Autowired
-    public NirService(NirRepository nirRepository, NirMapper nirMapper, CompanyDataRepository companyDataRepository) {
+    public NirService(NirRepository nirRepository, NirMapper nirMapper, CompanyDataRepository companyDataRepository,
+                      NirFileRepository nirFileRepository) {
         this.nirRepository = nirRepository;
         this.nirMapper = nirMapper;
         this.companyDataRepository = companyDataRepository;
+        this.nirFileRepository = nirFileRepository;
     }
 
     public List<NirDTO> getAll() {
@@ -61,103 +65,92 @@ public class NirService {
         return nirMapper.getAllUnreceived();
     }
 
-
-
-//    static <T> NirProductReportDTO mapObjectToNirProduct(T object, ProductCode productCode, Double vat){
-//
-//        try{
-//            Method productCode = object.getClass().getDeclaredMethod("getGenerateProductCode", Object.class).getClass().getDeclaredMethod("getProductCode", String.class);
-//            Method productName = object.getClass().getDeclaredMethod("getGenerateProductCode", Object.class).getClass().getDeclaredMethod("getProductName", String.class);
-//            Method unitOfMeasurement = object.getClass().getDeclaredMethod("getUnitOfMeasurement", String.class);
-//            Method quantity = object.getClass().getDeclaredMethod("getQuantity", Integer.class);
-//            Method priceIn = object.getClass().getDeclaredMethod("getPriceIn", Double.class);
-//
-//
-//
-//            return NirProductReportDTO.builder()
-//                        .productCode((String) productCode.invoke(object))
-//                        .productName((String) productName.invoke(object))
-//                        .unitOfMeasurement((String) unitOfMeasurement.invoke(object))
-//                        .quantity((Integer) quantity.invoke(object))
-//                        .priceIn((Double) priceIn.invoke(object))
-//                        .vat(vat).build();
-//        }catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException exception){
-//            exception.printStackTrace();
-//        }
-//
-//
-//        return null;
-//    }
-
-
     public void generateNir(NirDTO nirDTO) {
         try{
 
             List<NirProductReportDTO> listProductCode = new ArrayList<>();
 
-            nirDTO.getCaseList().forEach(aCase -> {
-
-               NirProductReportDTO productReportDTO = NirProductReportDTO.builder()
-                        .productCode(aCase.getGenerateProductCode().getProductCode())
-                        .productName(aCase.getGenerateProductCode().getProductName())
-                        .unitOfMeasurement(aCase.getUnitOfMeasurement())
-                        .quantity(aCase.getQuantity())
-                        .priceIn(aCase.getPriceIn())
-                        .vat(nirDTO.getVat()).build();
-
-                listProductCode.add(productReportDTO);
-            });
-
-            nirDTO.getCpuCoolerList().forEach(cpuCooler -> {
-
-                NirProductReportDTO productReportDTO = NirProductReportDTO.builder()
-                        .productCode(cpuCooler.getGenerateProductCode().getProductCode())
-                        .productName(cpuCooler.getGenerateProductCode().getProductName())
-                        .unitOfMeasurement(cpuCooler.getUnitOfMeasurement())
-                        .quantity(cpuCooler.getQuantity())
-                        .priceIn(cpuCooler.getPriceIn())
-                        .vat(nirDTO.getVat()).build();
-
-                listProductCode.add(productReportDTO);
-            });
+            nirDTO.getCaseList().forEach(obj -> listProductCode.add(mapToProductReportDTO(obj, obj.getGenerateProductCode(), nirDTO.getVat())));
+            nirDTO.getCpuCoolerList().forEach(obj -> listProductCode.add(mapToProductReportDTO(obj, obj.getGenerateProductCode(), nirDTO.getVat())));
+            nirDTO.getFanCaseList().forEach(obj -> listProductCode.add(mapToProductReportDTO(obj, obj.getGenerateProductCode(), nirDTO.getVat())));
+            nirDTO.getMemoryRamList().forEach(obj -> listProductCode.add(mapToProductReportDTO(obj, obj.getGenerateProductCode(), nirDTO.getVat())));
+            nirDTO.getMotherboardList().forEach(obj -> listProductCode.add(mapToProductReportDTO(obj, obj.getGenerateProductCode(), nirDTO.getVat())));
+            nirDTO.getOpticalUnitList().forEach(obj -> listProductCode.add(mapToProductReportDTO(obj, obj.getGenerateProductCode(), nirDTO.getVat())));
+            nirDTO.getPowerSourceList().forEach(obj -> listProductCode.add(mapToProductReportDTO(obj, obj.getGenerateProductCode(), nirDTO.getVat())));
+            nirDTO.getProcessorList().forEach(obj -> listProductCode.add(mapToProductReportDTO(obj, obj.getGenerateProductCode(), nirDTO.getVat())));
+            nirDTO.getSoundCardList().forEach(obj -> listProductCode.add(mapToProductReportDTO(obj, obj.getGenerateProductCode(), nirDTO.getVat())));
+            nirDTO.getStorageList().forEach(obj -> listProductCode.add(mapToProductReportDTO(obj, obj.getGenerateProductCode(), nirDTO.getVat())));
+            nirDTO.getVideoCardList().forEach(obj -> listProductCode.add(mapToProductReportDTO(obj, obj.getGenerateProductCode(), nirDTO.getVat())));
 
             Optional<CompanyData> companyData = companyDataRepository.findById(1);
-
-            Map<String, Object> parameters = new HashMap<>();
-
-            parameters.put("name", companyData.get().getName());
-            parameters.put("cif", companyData.get().getCIF());
-            parameters.put("tradeRegister", companyData.get().getTradeRegister());
-            parameters.put("socialCapital", companyData.get().getSocialCapital());
-            parameters.put("city", companyData.get().getCity());
-            parameters.put("streetAddress", companyData.get().getStreetAddress());
-            parameters.put("county", companyData.get().getCounty());
-            parameters.put("phone", companyData.get().getPhone());
-
-            parameters.put("nirNumber", nirDTO.getNirNumber());
-            parameters.put("date", nirDTO.getDate().toString());
-            parameters.put("administration", nirDTO.getAdministration());
-            parameters.put("providerName", nirDTO.getProvider().getName());
-            parameters.put("providerCode", nirDTO.getProvider().getProviderCode());
-            parameters.put("invoiceNumber", nirDTO.getInvoiceNumber());
-            parameters.put("debitAccount", nirDTO.getDebitAccount());
-
-            parameters.put("nameOfEmployee", nirDTO.getNameOfEmployee());
 
             JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(listProductCode);
 
             String filePath = ResourceUtils.getFile("classpath:nir.jrxml").getAbsolutePath();
+
             JasperReport report = JasperCompileManager.compileReport(filePath);
-            JasperPrint print = JasperFillManager.fillReport(report, parameters, dataSource);
+            JasperPrint print = JasperFillManager.fillReport(report, parameters(companyData.get(), nirDTO), dataSource);
 
-            JasperExportManager.exportReportToPdfFile(print, "D:\\AppBrc\\Backend appbrc\\brandcomputer\\src\\main\\resources\\reportTemplates\\companyTestToJasper.pdf");
-
+            JasperExportManager.exportReportToPdfFile(print, "D:\\AppBrc\\Backend appbrc\\brandcomputer\\src\\main\\resources\\reportTemplates\\saveNirFile.pdf");
             System.out.println("Report Created");
+
+            byte [] saveReport = JasperExportManager.exportReportToPdf(print);
+            NirFile nirFile = new NirFile();
+            nirFile.setFile(saveReport);
+            nirFile.setNirNumber(nirDTO.getNirNumber());
+            nirFileRepository.save(nirFile);
+
+            NirFile dbNirFile = nirFileRepository.findByNirNumber(nirDTO.getNirNumber());
+            nirDTO.setNirFile(dbNirFile);
+
+            this.add(nirDTO);
+            System.out.println("Save pdf to database");
 
         }catch (Exception e){
             e.printStackTrace();
         }
     }
 
+    private Map<String, Object> parameters(CompanyData companyData, NirDTO nirDTO) {
+        Map<String, Object> parameters = new HashMap<>();
+
+        parameters.put("name", companyData.getName());
+        parameters.put("cif", companyData.getCIF());
+        parameters.put("tradeRegister", companyData.getTradeRegister());
+        parameters.put("socialCapital", companyData.getSocialCapital());
+        parameters.put("city", companyData.getCity());
+        parameters.put("streetAddress", companyData.getStreetAddress());
+        parameters.put("county", companyData.getCounty());
+        parameters.put("phone", companyData.getPhone());
+
+        parameters.put("nirNumber", nirDTO.getNirNumber());
+        parameters.put("date", nirDTO.getDate().toString());
+        parameters.put("administration", nirDTO.getAdministration());
+        parameters.put("providerName", nirDTO.getProvider().getName());
+        parameters.put("providerCode", nirDTO.getProvider().getProviderCode());
+        parameters.put("invoiceNumber", nirDTO.getInvoiceNumber());
+        parameters.put("debitAccount", nirDTO.getDebitAccount());
+
+        parameters.put("nameOfEmployee", nirDTO.getNameOfEmployee());
+
+        return parameters;
+    }
+
+    @SneakyThrows
+    private NirProductReportDTO mapToProductReportDTO(Object obj, ProductCode generateProductCode, Double vat) {
+
+        Method unitOfMeasurement = obj.getClass().getMethod("getUnitOfMeasurement");
+        Method quantity = obj.getClass().getMethod("getQuantity");
+        Method priceIn = obj.getClass().getMethod("getPriceIn");
+
+        return NirProductReportDTO.builder()
+            .productCode(generateProductCode.getProductCode())
+            .productName(generateProductCode.getProductName())
+            .unitOfMeasurement((String) unitOfMeasurement.invoke(obj))
+            .quantity((Integer) quantity.invoke(obj))
+            .priceIn((Double) priceIn.invoke(obj))
+            .vat(vat)
+            .build();
+    }
 
 }

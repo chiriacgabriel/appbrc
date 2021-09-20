@@ -34,6 +34,7 @@ export class CaseComponent implements OnInit {
     @ViewChild('inputSearch') inputSearch: ElementRef;
     @ViewChild('inputSearchStock') inputSearchStock: ElementRef;
     @ViewChild('closeAddEditModal') closeAddEditModal;
+    @ViewChild('productCode') htmlElementProductCode: ElementRef;
 
     id: number;
     selectedProductCode = new GenerateProductCode();
@@ -244,6 +245,7 @@ export class CaseComponent implements OnInit {
                 this.formFields.productName.enable();
                 this.getCaseSearchResult();
                 this.getAllProductCodesWithStock();
+
             }).catch((error: HttpErrorResponse) => {
             this.errorMessage = error.error.message;
             document.getElementById('addCase-btn').setAttribute('data-backdrop', 'static');
@@ -339,7 +341,9 @@ export class CaseComponent implements OnInit {
         if (event === undefined || event === null){
             return;
         }
-        this.selectedProductCode = this.productCodeList.find(p => p.productName === event.productName);
+
+        this.htmlElementProductCode.nativeElement.value = event.productCode;
+        this.selectedProductCode = event;
     }
 
     /*********************** End Create, Update, Delete, Submit, Patch Form ****************************************************/

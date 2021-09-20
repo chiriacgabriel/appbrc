@@ -94,7 +94,6 @@ public class ComputerService {
         return searchStockByProductCode;
     }
 
-
     public Map<String, Object> getAllDataForFilter() {
         Map<String, Object> dataMap = new HashMap<>();
 

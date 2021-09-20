@@ -41,13 +41,13 @@ public class ComputerAssembly {
     private Case aCase;
 
     @OneToMany(mappedBy = "computerAssembly", cascade = CascadeType.ALL)
-    List<CpuCooler> cpuCoolerList = new ArrayList<>();
+    private List<CpuCooler> cpuCoolerList = new ArrayList<>();
 
     @OneToMany(mappedBy = "computerAssembly", cascade = CascadeType.ALL)
-    List<FanCase> fanCaseList = new ArrayList<>();
+    private List<FanCase> fanCaseList = new ArrayList<>();
 
     @OneToMany(mappedBy = "computerAssembly", cascade = CascadeType.ALL)
-    List<MemoryRam> memoryRamList = new ArrayList<>();
+    private List<MemoryRam> memoryRamList = new ArrayList<>();
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "motherboard_id")
@@ -58,18 +58,18 @@ public class ComputerAssembly {
     private OpticalUnit opticalUnit;
 
     @OneToMany(mappedBy = "computerAssembly", cascade = CascadeType.ALL)
-    List<PowerSource> powerSourceList = new ArrayList<>();
+    private List<PowerSource> powerSourceList = new ArrayList<>();
 
     @OneToMany(mappedBy = "computerAssembly", cascade = CascadeType.ALL)
-    List<Processor> processorList = new ArrayList<>();
+    private List<Processor> processorList = new ArrayList<>();
 
     @OneToMany(mappedBy = "computerAssembly", cascade = CascadeType.ALL)
-    List<SoundCard> soundCardList = new ArrayList<>();
+    private List<SoundCard> soundCardList = new ArrayList<>();
 
     @OneToMany(mappedBy = "computerAssembly", cascade = CascadeType.ALL)
-    List<Storage> storageList = new ArrayList<>();
+    private List<Storage> storageList = new ArrayList<>();
 
     @OneToMany(mappedBy = "computerAssembly", cascade = CascadeType.ALL)
-    List<VideoCard> videoCardList = new ArrayList<>();
+    private List<VideoCard> videoCardList = new ArrayList<>();
 
 }

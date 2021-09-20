@@ -29,6 +29,7 @@ export class PowerSourceComponent implements OnInit {
   @ViewChild('inputSearch') inputSearch: ElementRef;
   @ViewChild('inputSearchStock') inputSearchStock: ElementRef;
   @ViewChild('closeAddEditModal') closeAddEditModal;
+  @ViewChild('productCode') htmlElementProductCode: ElementRef;
 
   validatingForm: FormGroup;
   id: number;
@@ -466,7 +467,10 @@ export class PowerSourceComponent implements OnInit {
     if (event === undefined || event === null){
       return;
     }
-    this.selectedProductCode = this.productCodesList.find(p => p.productName === event.productName);
+
+    this.htmlElementProductCode.nativeElement.value = event.productCode;
+    this.selectedProductCode = event;
+
   }
 
   toggleProductCodeTable(){
@@ -479,7 +483,6 @@ export class PowerSourceComponent implements OnInit {
       this.isTableProductCodeSelected = !this.isTableProductCodeSelected;
     }
   }
-
   /***********************End General Functions **********************************************************/
 
 }

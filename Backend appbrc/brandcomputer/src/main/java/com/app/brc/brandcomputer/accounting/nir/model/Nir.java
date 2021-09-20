@@ -51,6 +51,10 @@ public class Nir {
     @JoinColumn(name = "provider_id")
     private Provider provider;
 
+    @OneToOne
+    @JoinColumn(name = "nir_file_id")
+    private NirFile nirFile;
+
     private String invoiceNumber;
 
     @OneToMany

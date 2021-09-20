@@ -28,6 +28,7 @@ import com.app.brc.brandcomputer.components.video_card.mapper.VideoCardMapper;
 import com.app.brc.brandcomputer.components.video_card.repository.VideoCardRepository;
 import com.app.brc.brandcomputer.computers.mapper.ComputerMapper;
 import com.app.brc.brandcomputer.computers.repository.ComputerRepository;
+import lombok.SneakyThrows;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -114,6 +115,7 @@ public class NirMapper {
                 .date(nirDTO.getDate())
                 .administration(nirDTO.getAdministration())
                 .provider(nirDTO.getProvider())
+                .nirFile(nirDTO.getNirFile())
                 .invoiceNumber(nirDTO.getInvoiceNumber())
                 .caseList(nirDTO.getCaseList())
                 .cpuCoolerList(nirDTO.getCpuCoolerList())
@@ -141,6 +143,7 @@ public class NirMapper {
                 .date(nir.getDate())
                 .administration(nir.getAdministration())
                 .provider(nir.getProvider())
+                .nirFile(nir.getNirFile())
                 .invoiceNumber(nir.getInvoiceNumber())
                 .caseList(nir.getCaseList())
                 .cpuCoolerList(nir.getCpuCoolerList())
@@ -171,6 +174,7 @@ public class NirMapper {
         dbNir.setDate(nirDTO.getDate());
         dbNir.setAdministration(nirDTO.getAdministration());
         dbNir.setProvider(nirDTO.getProvider());
+        dbNir.setNirFile(nirDTO.getNirFile());
         dbNir.setInvoiceNumber(nirDTO.getInvoiceNumber());
         dbNir.setCaseList(nirDTO.getCaseList());
         dbNir.setCpuCoolerList(nirDTO.getCpuCoolerList());
@@ -208,30 +212,29 @@ public class NirMapper {
 
     public void setReceived(NirDTO nirDTO) {
 
-        nirDTO.getCaseList().forEach(obj -> setReceived(obj, caseRepository, obj.getId()));
-        nirDTO.getCpuCoolerList().forEach(obj -> setReceived(obj, cpuCoolerRepository, obj.getId()));
-        nirDTO.getFanCaseList().forEach(obj -> setReceived(obj, fanCaseRepository, obj.getId()));
-        nirDTO.getMemoryRamList().forEach(obj -> setReceived(obj, memoryRamRepository, obj.getId()));
-        nirDTO.getMotherboardList().forEach(obj -> setReceived(obj, motherboardRepository, obj.getId()));
-        nirDTO.getOpticalUnitList().forEach(obj -> setReceived(obj, opticalUnitRepository, obj.getId()));
-        nirDTO.getPowerSourceList().forEach(obj -> setReceived(obj, powerSourceRepository, obj.getId()));
-        nirDTO.getProcessorList().forEach(obj -> setReceived(obj, processorRepository, obj.getId()));
-        nirDTO.getSoundCardList().forEach(obj -> setReceived(obj, soundCardRepository, obj.getId()));
-        nirDTO.getStorageList().forEach(obj -> setReceived(obj, storageRepository, obj.getId()));
-        nirDTO.getVideoCardList().forEach(obj -> setReceived(obj, videoCardRepository, obj.getId()));
-        nirDTO.getComputerList().forEach(obj -> setReceived(obj, computerRepository, obj.getId()));
+        nirDTO.getCaseList().forEach(obj -> setReceived(caseRepository, obj.getId()));
+        nirDTO.getCpuCoolerList().forEach(obj -> setReceived(cpuCoolerRepository, obj.getId()));
+        nirDTO.getFanCaseList().forEach(obj -> setReceived(fanCaseRepository, obj.getId()));
+        nirDTO.getMemoryRamList().forEach(obj -> setReceived(memoryRamRepository, obj.getId()));
+        nirDTO.getMotherboardList().forEach(obj -> setReceived(motherboardRepository, obj.getId()));
+        nirDTO.getOpticalUnitList().forEach(obj -> setReceived(opticalUnitRepository, obj.getId()));
+        nirDTO.getPowerSourceList().forEach(obj -> setReceived(powerSourceRepository, obj.getId()));
+        nirDTO.getProcessorList().forEach(obj -> setReceived(processorRepository, obj.getId()));
+        nirDTO.getSoundCardList().forEach(obj -> setReceived(soundCardRepository, obj.getId()));
+        nirDTO.getStorageList().forEach(obj -> setReceived(storageRepository, obj.getId()));
+        nirDTO.getVideoCardList().forEach(obj -> setReceived(videoCardRepository, obj.getId()));
+        nirDTO.getComputerList().forEach(obj -> setReceived(computerRepository, obj.getId()));
 
     }
 
     //setReceived is a setter from the OBJECT passed
-    private <T> void setReceived(T t, JpaRepository jpa, int id) {
+    @SneakyThrows
+    private <T> void setReceived(JpaRepository jpa, int id) {
         Optional<T> optionalObject = jpa.findById(id);
-        try{
-            Method setReceived = optionalObject.get().getClass().getDeclaredMethod("setReceived", boolean.class);
-            setReceived.invoke(optionalObject.get(), true);
-        }catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e){
-            e.printStackTrace();
-        }
+
+        Method setReceived = optionalObject.get().getClass().getDeclaredMethod("setReceived", boolean.class);
+        setReceived.invoke(optionalObject.get(), true);
+
         jpa.save(optionalObject.get());
     }
 

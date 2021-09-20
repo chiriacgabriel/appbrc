@@ -42,9 +42,6 @@ public class NirController {
         }
 
         nirService.generateNir(nirDTO);
-
-        nirService.add(nirDTO);
-
         return ResponseEntity.ok().build();
     }
 

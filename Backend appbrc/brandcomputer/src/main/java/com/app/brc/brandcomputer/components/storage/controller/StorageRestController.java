@@ -79,6 +79,7 @@ public class StorageRestController {
     public ResponseEntity<Page<StorageDTO>> getStoragesByProductCode(@PathVariable String productCode,
                                                                      @RequestParam int page,
                                                                      @RequestParam int size) {
+        System.out.println(storageService.getStoragesByProductCode(productCode, page, size));
         return ResponseEntity.ok(storageService.getStoragesByProductCode(productCode, page, size));
     }
 

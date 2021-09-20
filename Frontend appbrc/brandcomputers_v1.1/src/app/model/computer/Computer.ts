@@ -37,16 +37,4 @@ export class Computer {
     createdBy: string;
     lastUpdated: Date;
     updatedBy: string;
-
-    static get generateProductURL(): string {
-        return 'generate-product-code-computer';
-    }
-
-    static get generateProductURLSearch(): string {
-        return 'generate-product-code-computer/search';
-    }
-
-    static get productCodeURI(): string {
-        return 'product-code-computer'
-    }
 }

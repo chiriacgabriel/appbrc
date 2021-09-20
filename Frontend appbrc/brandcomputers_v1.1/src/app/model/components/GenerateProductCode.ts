@@ -16,4 +16,5 @@ export class GenerateProductCode {
   static get productCodeCategoryURI(): string {
     return 'product-code/category'
   }
+
 }

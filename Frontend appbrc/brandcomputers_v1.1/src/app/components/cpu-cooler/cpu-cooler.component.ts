@@ -31,6 +31,7 @@ export class CpuCoolerComponent implements OnInit {
   @ViewChild('inputSearch') inputSearch: ElementRef;
   @ViewChild('inputSearchStock')inputSearchStock: ElementRef;
   @ViewChild('closeAddEditModal') closeAddEditModal;
+  @ViewChild('productCode') htmlElementProductCode: ElementRef;
 
   id: number;
   selectedProductCode = new GenerateProductCode();
@@ -461,11 +462,11 @@ export class CpuCoolerComponent implements OnInit {
     if (event === undefined || event === null) {
       return;
     }
-    this.selectedProductCode = this.productCodesList.find(p => p.productName === event.productName);
+
+    this.htmlElementProductCode.nativeElement.value = event.productCode
+    this.selectedProductCode = event;
 
   }
   /***********************End Create, Update, Delete ****************************************************/
-
-
 
 }

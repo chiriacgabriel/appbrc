@@ -1,6 +1,7 @@
 package com.app.brc.brandcomputer.accounting.nir.dto;
 
 import com.app.brc.brandcomputer.accounting.companyData.model.CompanyData;
+import com.app.brc.brandcomputer.accounting.nir.model.NirFile;
 import com.app.brc.brandcomputer.accounting.provider.model.Provider;
 import com.app.brc.brandcomputer.components.casing.model.Case;
 import com.app.brc.brandcomputer.components.cpu_cooler.model.CpuCooler;
@@ -37,6 +38,7 @@ public class NirDTO {
     private LocalDate date;
     private String administration;
     private Provider provider;
+    private NirFile nirFile;
     private String invoiceNumber;
     private List<Case> caseList;
     private List<CpuCooler> cpuCoolerList;

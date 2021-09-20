@@ -61,7 +61,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/api/register/**", "/api/login/**", "/api/nir/**", "/api/product-code/**")
+                .antMatchers("/api/register/**", "/api/login/**", "/api/storage/**" )
                 .permitAll()
                 .antMatchers(
                         "/api/motherboard/**",
@@ -72,7 +72,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/api/memory-ram/**",
                         "/api/optical-unit/**",
                         "/api/processor/**",
-                        "/api/storage/**",
                         "/api/video-card/**",
                         "/api/case/**",
                         "/api/broken/**",
@@ -80,18 +79,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/api/computer-assembly",
                         "/api/company-data/**",
                         "/api/providers/**",
-                        "/api/generate-product-code-case/**",
-                        "/api/generate-product-code-fan-case/**",
-                        "/api/generate-product-code-cpu-cooler/**",
-                        "/api/generate-product-code-power-source/**",
-                        "/api/generate-product-code-motherboard/**",
-                        "/api/generate-product-code-sound-card/**",
-                        "/api/generate-product-code-memory-ram/**",
-                        "/api/generate-product-code-optical-unit/**",
-                        "/api/generate-product-code-processor/**",
-                        "/api/generate-product-code-storage/**",
-                        "/api/generate-product-code-computer/**",
-                        "/api/generate-product-code-video-card/**").hasAnyRole("USER", "ADMIN")
+                        "/api/nir/**",
+                        "/api/product-code/**").hasAnyRole("USER", "ADMIN")
                 .anyRequest()
                 .authenticated();
 

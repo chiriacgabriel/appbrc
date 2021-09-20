@@ -30,6 +30,7 @@ export class ProcessorComponent implements OnInit {
     @ViewChild('inputSearch') inputSearch: ElementRef;
     @ViewChild('inputSearchStock') inputSearchStock: ElementRef;
     @ViewChild('closeAddEditModal') closeAddEditModal;
+    @ViewChild('productCode') htmlElementProductCode: ElementRef;
 
     id: number;
     processorList = [];
@@ -500,7 +501,8 @@ export class ProcessorComponent implements OnInit {
             return;
         }
 
-        this.selectedProductCode = this.productCodesList.find(p => p.productName === event.productName);
+        this.htmlElementProductCode.nativeElement.value = event.productCode;
+        this.selectedProductCode = event;
     }
 
     getRouting() {

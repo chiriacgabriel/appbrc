@@ -368,7 +368,8 @@
                     <div class="row">
                         <div class="form-group col">
                             <label for="generateProductCode"><i class="fa fa-barcode fa-sm"></i> Cod produs</label>
-                            <input type="text" class="form-control" id="generateProductCode" formControlName="generateProductCode"
+                            <input type="text" class="form-control" id="generateProductCode" #productCode
+                                   formControlName="generateProductCode"
                                    [value]="selectedProductCode.productCode" >
                         </div>
 

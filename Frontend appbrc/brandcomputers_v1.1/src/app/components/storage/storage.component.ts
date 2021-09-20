@@ -29,6 +29,7 @@ export class StorageComponent implements OnInit {
     @ViewChild('inputSearch') inputSearch: ElementRef;
     @ViewChild('inputSearchStock') inputSearchStock: ElementRef;
     @ViewChild('closeAddEditModal') closeAddEditModal;
+    @ViewChild('productCode') htmlElementProductCode: ElementRef;
 
     id: number;
     getProductCode: string;
@@ -305,7 +306,7 @@ export class StorageComponent implements OnInit {
     getStorageByProductCode(productCode: any) {
         this.toggleProductCodeTable();
         this.getProductCode = productCode;
-        const params = this.getPaginationParams(this.pageStorageByProductCode, this.pageStorageByProductCode);
+        const params = this.getPaginationParams(this.pageStorageByProductCode, this.pageSizeStorageByProductCode);
         this.storageService.getByProductCode(productCode, params).subscribe((data: any) => {
             this.storageListByProductCode = data.content;
             this.countStorageByProductCode = data.totalElements;
@@ -509,7 +510,9 @@ export class StorageComponent implements OnInit {
         if (event === undefined || event === null) {
             return;
         }
-        this.selectedProductCode = this.productCodesList.find(p => p.productName == event.productName);
+
+        this.htmlElementProductCode.nativeElement.value = event.productCode;
+        this.selectedProductCode = event;
 
     }
 
