@@ -58,7 +58,11 @@ export const AppRoutes: Routes = [{
     {
         path: '',
         loadChildren: () => import('./accounting/provider/provider.module').then(m => m.ProviderModule)
-    }
+    },
+    {
+        path: '',
+        loadChildren: () => import('./accounting/document/document-data.module').then(m => m.DocumentDataModule)
+    },
     ]
 }, {
     path: '',

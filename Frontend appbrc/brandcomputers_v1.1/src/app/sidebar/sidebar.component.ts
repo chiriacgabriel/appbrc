@@ -143,6 +143,12 @@ export const ROUTES: RouteInfo[] = [{
             title: 'Furnizori',
             type: 'link',
             iconComponent: 'fas fa-truck-loading'
+        },
+        {
+            path: 'documents',
+            title: 'Documente',
+            type: 'link',
+            iconComponent: 'fas fa-print'
         }
     ]
 },

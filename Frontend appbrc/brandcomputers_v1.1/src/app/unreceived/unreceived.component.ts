@@ -85,7 +85,7 @@ export class UnreceivedComponent implements OnInit {
         this.nirService.add(this.validatingNirForm.value)
             .toPromise()
             .then((response) => {
-
+                this.getUnreceived();
             }).catch( (error: HttpErrorResponse) => {
                 this.errorMessage = error.error.message;
         });
@@ -97,12 +97,15 @@ export class UnreceivedComponent implements OnInit {
 
             let emptyUnreceivedList = document.getElementsByClassName('empty-unreceived-list')[0];
             let containerUnreceived = document.getElementsByClassName('container-unreceived')[0];
+            let progressBar = document.getElementsByClassName('progress-bar')[0] as HTMLElement;
             if (this.unreceivedList.length == 0) {
                 emptyUnreceivedList.classList.remove('d-none');
                 containerUnreceived.classList.add('d-none');
+                progressBar.classList.add('d-none');
             } else {
                 emptyUnreceivedList.classList.add('d-none');
                 containerUnreceived.classList.remove('d-none');
+                progressBar.classList.remove('d-none');
             }
             this.generateNir();
         }, (error: HttpErrorResponse) => {

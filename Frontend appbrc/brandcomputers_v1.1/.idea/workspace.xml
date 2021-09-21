@@ -2,45 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b76812b0-b115-4f5d-ade8-93f21588c5ac" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/controller/NirController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/controller/NirController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/accounting/document/document-data.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/accounting/document/document-data.routing.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/accounting/document/document.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/accounting/document/document.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/accounting/document/document.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/dto/NirDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/dto/NirDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/mapper/NirMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/mapper/NirMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/model/Nir.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/model/Nir.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/services/NirService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/services/NirService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/storage/controller/StorageRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/storage/controller/StorageRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/computers/services/ComputerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/computers/services/ComputerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/computersAssembly/model/ComputerAssembly.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/computersAssembly/model/ComputerAssembly.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/config/WebSecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/resources/nir.jrxml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/resources/nir.jrxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/resources/reportTemplates/FINAL - Jasper Report.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/resources/reportTemplates/companyTestToJasper.pdf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/case/case.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/case/case.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/case/case.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/case/case.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/cpu-cooler/cpu-cooler.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/cpu-cooler/cpu-cooler.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/cpu-cooler/cpu-cooler.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/cpu-cooler/cpu-cooler.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/fan-case/fan-case.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/fan-case/fan-case.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/fan-case/fan-case.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/fan-case/fan-case.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/memory-ram/memory-ram.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/memory-ram/memory-ram.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/memory-ram/memory-ram.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/memory-ram/memory-ram.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/motherboard/motherboard.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/motherboard/motherboard.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/motherboard/motherboard.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/motherboard/motherboard.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/optical-unit/optical-unit.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/optical-unit/optical-unit.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/optical-unit/optical-unit.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/optical-unit/optical-unit.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/power-source/power-source.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/power-source/power-source.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/power-source/power-source.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/power-source/power-source.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/processor/processor.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/processor/processor.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/processor/processor.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/processor/processor.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/sound-card/sound-card.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/sound-card/sound-card.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/sound-card/sound-card.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/sound-card/sound-card.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/storage/storage.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/storage/storage.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/storage/storage.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/storage/storage.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/video-card/video-card.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/video-card/video-card.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/video-card/video-card.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/video-card/video-card.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/computer/computer.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/computer/computer.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/computer/product-code-computer/product-code-computer.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/computer/product-code-computer/product-code-computer.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/model/components/GenerateProductCode.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/components/GenerateProductCode.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/model/computer/Computer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/computer/Computer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.routing.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.routing.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/sidebar/sidebar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sidebar/sidebar.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/unreceived/unreceived.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/unreceived/unreceived.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/css/_fav_icons_custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/_fav_icons_custom.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +89,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../.." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/app/accounting" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
@@ -127,11 +103,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\AppBrc\Frontend appbrc\brandcomputers_v1.1\src\app\accounting" />
       <recent name="D:\AppBrc\Frontend appbrc\brandcomputers_v1.1\src\assets\img\faces" />
       <recent name="D:\AppBrc\Frontend appbrc\brandcomputers_v1.1\src\app\unreceived" />
       <recent name="D:\AppBrc\Frontend appbrc\brandcomputers_v1.1\src\assets\img" />
       <recent name="D:\AppBrc\Frontend appbrc\brandcomputers_v1.1\src\assets\css" />
-      <recent name="D:\AppBrc\Frontend appbrc\brandcomputers_v1.1\src\assets\scss\paper-dashboard" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\AppBrc\Frontend appbrc\brandcomputers_v1.1\src\assets\img\icons" />
@@ -239,7 +215,7 @@
       <workItem from="1631726669653" duration="604000" />
       <workItem from="1631732612647" duration="3977000" />
       <workItem from="1631816654136" duration="37461000" />
-      <workItem from="1632069083719" duration="12235000" />
+      <workItem from="1632069083719" duration="20077000" />
     </task>
     <servers />
   </component>

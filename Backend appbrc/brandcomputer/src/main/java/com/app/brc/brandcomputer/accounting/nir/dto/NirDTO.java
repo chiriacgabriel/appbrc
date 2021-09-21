@@ -18,9 +18,7 @@ import com.app.brc.brandcomputer.computers.model.Computer;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Getter
 @Setter
