@@ -28,7 +28,6 @@ export class DocumentComponent implements OnInit {
 
     getAllNir() {
         this.nirService.getAll().subscribe((data: any) => {
-            console.log(data);
             this.nirList = data;
         }, (error: HttpErrorResponse) => {
             this.errorMessage = error.error.message;
@@ -40,4 +39,20 @@ export class DocumentComponent implements OnInit {
         this.pdfFileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`data:application/pdf;base64, ${nirFile.file}`);
     }
 
+    viewFile(nirFile: any) {
+        // Embed the PDF into the HTML page and show it to the user
+        const obj = document.createElement('object');
+        obj.style.width = '100%';
+        obj.style.height = '80vh';
+        obj.type = 'application/pdf';
+        obj.data = 'data:application/pdf;base64,' + nirFile.file;
+
+
+        const contentViewPdf = document.getElementById('content-view-pdf');
+
+        if (contentViewPdf.children.length >= 1) {
+            contentViewPdf.removeChild(contentViewPdf.children[0]);
+        }
+        contentViewPdf.appendChild(obj);
+    }
 }

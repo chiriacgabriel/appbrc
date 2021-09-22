@@ -92,9 +92,6 @@ public class NirService {
         JasperReport report = JasperCompileManager.compileReport(filePath);
         JasperPrint print = JasperFillManager.fillReport(report, parameters(companyData.get(), nirDTO), dataSource);
 
-        JasperExportManager.exportReportToPdfFile(print, "D:\\AppBrc\\Backend appbrc\\brandcomputer\\src\\main\\resources\\reportTemplates\\saveNirFile.pdf");
-        System.out.println("Report Created");
-
         byte[] saveReport = JasperExportManager.exportReportToPdf(print);
         NirFile nirFile = new NirFile();
         nirFile.setFile(saveReport);

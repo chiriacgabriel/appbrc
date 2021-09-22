@@ -67,7 +67,7 @@
                                             </a>
                                         </td>
                                         <td>
-                                            <a class="docs-design" href="#">
+                                            <a data-target="#view-pdf" data-toggle="modal" (click)="viewFile(nir.nirFile)" class="docs-design">
                                                 <img class="fav-icon-small-doc" src="assets/img/icons/view-pdf.ico"/>
                                             </a>
                                         </td>
@@ -90,3 +90,22 @@
         </div>
     </div>
 </div>
+
+<!-- Modal View PDF -->
+<div class="modal fade" id="view-pdf" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl p-0">
+        <div class="modal-content">
+            <div class="modal-header p-0 border-0">
+
+            </div>
+            <div id="content-view-pdf" class="modal-body">
+
+            </div>
+            <div class="modal-footer mx-auto">
+                <button type="button" class="btn btn-secondary " data-dismiss="modal">Inchide</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- End Modal View PDF -->
