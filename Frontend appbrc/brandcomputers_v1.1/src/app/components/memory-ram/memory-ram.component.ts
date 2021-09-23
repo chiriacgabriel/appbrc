@@ -3,7 +3,6 @@ import {HttpErrorResponse, HttpParams} from '@angular/common/http';
 import {MemoryRam} from '../../model/components/MemoryRam';
 import Swal from 'sweetalert2';
 import {FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { EnumTypeOfMemoryRAM } from 'app/model/enum/EnumTypeOfMemoryRAM';
 import { EnumRAMModule } from 'app/model/enum/EnumRAMModule';
 import { EnumState } from 'app/model/enum/EnumState';
 import {Location} from '@angular/common';
@@ -15,6 +14,13 @@ import { ReloadPageService } from 'app/services/reload-page.service';
 import { TokenStorageService } from 'app/services/token-storage.service';
 import { MemoryRamService } from 'app/services/components/memory-ram.service';
 import { GenerateProductCode } from 'app/model/components/GenerateProductCode';
+
+export enum EnumTypeOfMemoryRAM {
+  DDR = 'DDR',
+  DDR_2 = 'DDR2',
+  DDR_3 = 'DDR3',
+  DDR_4 = 'DDR4'
+}
 
 @Component({
   selector: 'app-memory-ram',
@@ -508,7 +514,7 @@ export class MemoryRamComponent implements OnInit {
     if (event === undefined || event === null) {
       return;
     }
-    
+
     this.htmlElementProductCode.nativeElement.value = event.productCode;
     this.selectedProductCode = event;
   }

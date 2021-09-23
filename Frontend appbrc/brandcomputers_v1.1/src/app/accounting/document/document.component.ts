@@ -55,4 +55,12 @@ export class DocumentComponent implements OnInit {
         }
         contentViewPdf.appendChild(obj);
     }
+
+    getEventSearchResult($event: any) {
+
+    }
+
+    clearSearch() {
+
+    }
 }

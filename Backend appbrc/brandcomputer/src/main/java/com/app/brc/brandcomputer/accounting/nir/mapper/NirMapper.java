@@ -4,7 +4,6 @@ import com.app.brc.brandcomputer.accounting.nir.dto.NirDTO;
 import com.app.brc.brandcomputer.accounting.nir.model.Nir;
 import com.app.brc.brandcomputer.accounting.nir.repository.NirRepository;
 import com.app.brc.brandcomputer.components.casing.mapper.CaseMapper;
-import com.app.brc.brandcomputer.components.casing.model.Case;
 import com.app.brc.brandcomputer.components.casing.repository.CaseRepository;
 import com.app.brc.brandcomputer.components.cpu_cooler.mapper.CpuCoolerMapper;
 import com.app.brc.brandcomputer.components.cpu_cooler.repository.CpuCoolerRepository;
@@ -34,8 +33,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import javax.validation.constraints.NotNull;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;

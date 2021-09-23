@@ -144,9 +144,7 @@
                         </div>
                         <div class="form-group col">
                             <label for="county"><i class="fas fa-city"></i> Judet</label>
-                            <ng-select id="county" formControlName="county">
-                                <ng-option *ngFor="let county of countyList" [value]="county">{{county}}</ng-option>
-                            </ng-select>
+                            <input type="text" class="form-control" id="county" formControlName="county">
                         </div>
                         <div class="form-group col">
                             <label for="country"><i class="far fa-flag"></i> Tara</label>

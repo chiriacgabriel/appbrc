@@ -2,21 +2,80 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b76812b0-b115-4f5d-ade8-93f21588c5ac" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/controller/NirController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/controller/NirController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/dto/NirDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/dto/NirDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/dto/NirProductReportDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/dto/NirProductReportDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/mapper/NirMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/mapper/NirMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/model/Nir.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/model/Nir.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/model/NirFile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/repository/NirFileRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/repository/NirRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/repository/NirRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/services/NirService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/services/NirService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/validator/NirValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/accounting/nir/validator/NirValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/config/WebSecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/model/enum/EnumTypeOfMemoryRam.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/enum/EnumTypeOfMemoryRam.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/common.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/common.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/default-node_modules_chart_js_dist_Chart_js.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/default-node_modules_chart_js_dist_Chart_js.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/default-node_modules_jw-bootstrap-switch-ng2___ivy_ngcc___fesm2015_jw-bootstrap-switch-ng2_js.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/default-node_modules_jw-bootstrap-switch-ng2___ivy_ngcc___fesm2015_jw-bootstrap-switch-ng2_js.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/default-node_modules_ng-select_ng-select___ivy_ngcc___fesm2015_ng-select-ng-select_js-src_ass-528309.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/default-node_modules_ng-select_ng-select___ivy_ngcc___fesm2015_ng-select-ng-select_js-src_ass-528309.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/default-node_modules_ngx-pagination___ivy_ngcc___dist_ngx-pagination_js-src_assets_css__fav_i-0d5897.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/default-node_modules_ngx-pagination___ivy_ngcc___dist_ngx-pagination_js-src_assets_css__fav_i-0d5897.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/default-node_modules_sweetalert2_dist_sweetalert2_all_js.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/default-node_modules_sweetalert2_dist_sweetalert2_all_js.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/default-src_app_helper_enum_service_ts-src_app_helper_filter_service_ts-src_app_model_compone-ff564b.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/default-src_app_helper_enum_service_ts-src_app_helper_filter_service_ts-src_app_model_compone-ff564b.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/main.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/nucleo-icons.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/nucleo-icons.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/nucleo-icons.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/nucleo-icons.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/polyfills-es5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/polyfills-es5.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/polyfills.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/polyfills.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/preloader.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/runtime.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/runtime.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/scripts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/scripts.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src_app_accounting_company-data_company-data_module_ts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src_app_accounting_company-data_company-data_module_ts.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src_app_accounting_document_document-data_module_ts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src_app_accounting_document_document-data_module_ts.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src_app_accounting_provider_provider_module_ts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src_app_accounting_provider_provider_module_ts.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src_app_calendar_calendar_module_ts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src_app_calendar_calendar_module_ts.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src_app_charts_charts_module_ts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src_app_charts_charts_module_ts.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src_app_components_components_module_ts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src_app_components_components_module_ts.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src_app_computer_computer_module_ts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src_app_computer_computer_module_ts.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src_app_dashboard_dashboard_module_ts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src_app_dashboard_dashboard_module_ts.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src_app_forms_forms_module_ts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src_app_forms_forms_module_ts.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src_app_maps_maps_module_ts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src_app_maps_maps_module_ts.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src_app_pages_pages_module_ts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src_app_pages_pages_module_ts.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src_app_tables_tables_module_ts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src_app_tables_tables_module_ts.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src_app_timeline_timeline_module_ts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src_app_timeline_timeline_module_ts.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src_app_unreceived_unreceived_module_ts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src_app_unreceived_unreceived_module_ts.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src_app_userpage_user_module_ts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src_app_userpage_user_module_ts.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src_app_widgets_widgets_module_ts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src_app_widgets_widgets_module_ts.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/styles.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/vendor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/vendor.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/accounting/document/document.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/accounting/document/document.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/accounting/provider/provider.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/accounting/provider/provider.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/memory-ram/memory-ram.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/memory-ram/memory-ram.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/model/enum/EnumTypeOfMemoryRam.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environments/environment.prod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/environments/environment.prod.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/environments/environment.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -216,7 +275,7 @@
       <workItem from="1631726669653" duration="604000" />
       <workItem from="1631732612647" duration="3977000" />
       <workItem from="1631816654136" duration="37461000" />
-      <workItem from="1632069083719" duration="39242000" />
+      <workItem from="1632069083719" duration="44134000" />
     </task>
     <servers />
   </component>
