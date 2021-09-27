@@ -15,7 +15,7 @@ public interface ProductCodeRepository extends JpaRepository<ProductCode, Intege
 
     List<ProductCode> findAllByCategory(String category);
 
-    @Query(value = "SELECT pc from ProductCode AS pc WHERE pc.productCode LIKE %:query% OR pc.productName LIKE %:query% AND pc.category =:category")
+    @Query(value = "SELECT pc from ProductCode AS pc WHERE (pc.productCode LIKE %:query% OR pc.productName LIKE %:query%) AND pc.category =:category")
     List<ProductCode> findAllByProductNameOrProductCodeOrCategory(@Param("query") String query, @Param("category") String category);
 
     @Query(value = "SELECT pc FROM ProductCode AS pc WHERE pc.productCode =:productCode")

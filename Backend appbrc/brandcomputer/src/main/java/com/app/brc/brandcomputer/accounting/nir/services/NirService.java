@@ -139,7 +139,6 @@ public class NirService {
         Method productCode = objProductCode.getClass().getDeclaredMethod("getProductCode");
         Method productName = objProductCode.getClass().getDeclaredMethod("getProductName");
 
-
         Method unitOfMeasurement = components.getClass().getMethod("getUnitOfMeasurement");
         Method quantity = components.getClass().getMethod("getQuantity");
         Method priceIn = components.getClass().getMethod("getPriceIn");

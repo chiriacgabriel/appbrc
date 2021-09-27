@@ -480,7 +480,7 @@ export class VideoCardComponent implements OnInit {
   }
 
   getAllGenerateProductCodes(): void {
-    this.productCodeService.getAllByCategory(GenerateProductCode.productCodeCategoryURI, new HttpParams().set('category', 'Video Card')).subscribe((data: any) => {
+    this.productCodeService.getAllByCategory(GenerateProductCode.productCodeURI, 'video-card').subscribe((data: any) => {
       this.productCodesList = data.filter(productCode => productCode.state === true);
       this.productCodesListInactive = data.filter(productCode => productCode.state === false);
     }, (error: HttpErrorResponse) => {

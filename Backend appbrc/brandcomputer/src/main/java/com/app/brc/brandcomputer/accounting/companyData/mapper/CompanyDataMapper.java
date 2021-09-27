@@ -32,7 +32,7 @@ public class CompanyDataMapper {
                 .city(companyDataDTO.getCity())
                 .vatPayer(companyDataDTO.isVatPayer())
                 .bank(companyDataDTO.getBank())
-                .iban(companyDataDTO.getBank())
+                .iban(companyDataDTO.getIban())
                 .phone(companyDataDTO.getPhone())
                 .fax(companyDataDTO.getFax())
                 .email(companyDataDTO.getEmail())

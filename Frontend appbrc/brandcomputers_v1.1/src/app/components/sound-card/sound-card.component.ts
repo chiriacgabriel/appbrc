@@ -469,7 +469,7 @@ export class SoundCardComponent implements OnInit {
     }
 
     getAllGenerateProductCodes(): void {
-        this.productCodeService.getAllByCategory(GenerateProductCode.productCodeCategoryURI, new HttpParams().set('category', 'Sound Card')).subscribe((data: any) => {
+        this.productCodeService.getAllByCategory(GenerateProductCode.productCodeURI, 'sound-card').subscribe((data: any) => {
             this.productCodesList = data.filter(productCode => productCode.state === true);
             this.productCodesListInactive = data.filter(productCode => productCode.state === false);
         }, (error: HttpErrorResponse) => {

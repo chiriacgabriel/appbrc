@@ -496,7 +496,7 @@ export class ComputerComponent implements OnInit {
     }
 
     getAllGenerateProductCodes(): void {
-        this.productCodeService.getAllByCategory(GenerateProductCode.productCodeCategoryURI, new HttpParams().set('category', 'Computer')).subscribe((data: any) => {
+        this.productCodeService.getAllByCategory(GenerateProductCode.productCodeURI, 'computer').subscribe((data: any) => {
             this.productCodesList = data.filter(productCode => productCode.state === true);
         }, (error: HttpErrorResponse) => {
             this.errorMessage = error.error.message;
@@ -510,8 +510,6 @@ export class ComputerComponent implements OnInit {
         this.selectedProductCode = this.productCodesList.find(p => p.productName == event.productName);
 
     }
-
-
 
     getSelectedOption(event) {
 
