@@ -26,6 +26,7 @@ export interface ChildrenItems {
 
 export interface SubChildrenItems {
     path: string;
+    subPath?: string;
     title: string;
     type?: string;
     collapse?: string;
@@ -35,6 +36,7 @@ export interface SubChildrenItems {
 
 export interface SubSubChildrenItems {
     path: string;
+    subPath?: string;
     title: string;
     type?: string;
     iconComponent?: string;
@@ -104,20 +106,21 @@ export const ROUTES: RouteInfo[] = [{
                         collapse: 'component',
                         iconComponent: 'nc-icon nc-layout-11',
                         children: [
-                            {path: 'product-code-case', title: 'Carcase', iconComponent: 'fas fa-suitcase'},
-                            {path: 'product-code-cpu-cooler', title: 'Coolere CPU', iconComponent: 'fas fa-fan'},
-                            {path: 'product-code-fan-case', title: 'Coolere Carcasa', iconComponent: 'fas fa-fan'},
-                            {path: 'product-code-memory-ram', title: 'Memorii RAM', iconComponent: 'fas fa-memory'},
-                            {path: 'product-code-motherboard', title: 'Placi de baza', iconComponent: 'fas fa-microchip'},
-                            {path: 'product-code-optical-unit', title: 'Unitati optice', iconComponent: 'fas fa-compact-disc'},
-                            {path: 'product-code-power-source', title: 'Surse de alimentare', iconComponent: 'fas fa-plug'},
-                            {path: 'product-code-processor', title: 'Procesoare', iconComponent: 'fas fa-microchip'},
-                            {path: 'product-code-sound-card', title: 'Placi de sunet', iconComponent: 'fas fa-volume-down'},
-                            {path: 'product-code-storage', title: 'Unitati de stocare', iconComponent: 'fas fa-hdd'},
-                            {path: 'product-code-video-card', title: 'Placi video', iconComponent: 'fas fa-microchip'}]
+                            {path: 'product-code', subPath: 'case', title: 'Carcase', iconComponent: 'fas fa-suitcase'},
+                            {path: 'product-code', subPath: 'cpu-cooler', title: 'Coolere CPU', iconComponent: 'fas fa-fan'},
+                            {path: 'product-code', subPath: 'fan-case', title: 'Coolere Carcasa', iconComponent: 'fas fa-fan'},
+                            {path: 'product-code', subPath: 'memory-ram', title: 'Memorii RAM', iconComponent: 'fas fa-memory'},
+                            {path: 'product-code', subPath: 'motherboard', title: 'Placi de baza', iconComponent: 'fas fa-microchip'},
+                            {path: 'product-code', subPath: 'optical-unit', title: 'Unitati optice', iconComponent: 'fas fa-compact-disc'},
+                            {path: 'product-code', subPath: 'power-source', title: 'Surse de alimentare', iconComponent: 'fas fa-plug'},
+                            {path: 'product-code', subPath: 'processor', title: 'Procesoare', iconComponent: 'fas fa-microchip'},
+                            {path: 'product-code', subPath: 'sound-card', title: 'Placi de sunet', iconComponent: 'fas fa-volume-down'},
+                            {path: 'product-code', subPath: 'storage', title: 'Unitati de stocare', iconComponent: 'fas fa-hdd'},
+                            {path: 'product-code', subPath: 'video-card', title: 'Placi video', iconComponent: 'fas fa-microchip'}]
                     },
                     {
-                        path: '/components/product-code-computer',
+                        path: '/components/product-code',
+                        subPath: 'computer',
                         title: 'PC/Server',
                         type: 'link',
                         iconComponent: 'fas fa-server'

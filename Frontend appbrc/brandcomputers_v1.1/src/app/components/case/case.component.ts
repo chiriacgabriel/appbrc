@@ -329,7 +329,7 @@ export class CaseComponent implements OnInit {
     }
 
     getAllGenerateProductCodes(): void {
-        this.productCodeService.getAllByCategory(GenerateProductCode.productCodeCategoryURI, new HttpParams().set('category', 'Case')).subscribe((data: any) =>{
+        this.productCodeService.getAllByCategory(GenerateProductCode.productCodeURI, 'case').subscribe((data: any) =>{
             this.productCodeList = data.filter(productCode => productCode.state === true);
             this.productCodeListInactive = data.filter(productCode => productCode.state === false);
         }, (err: HttpErrorResponse) => {

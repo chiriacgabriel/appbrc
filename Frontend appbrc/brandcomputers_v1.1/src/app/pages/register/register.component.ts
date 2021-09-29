@@ -11,7 +11,8 @@ declare var $: any;
 @Component({
     moduleId: module.id,
     selector: 'register-cmp',
-    templateUrl: './register.component.html'
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.css']
 })
 
 export class RegisterComponent implements OnInit {

@@ -143,14 +143,17 @@ export class NavbarComponent implements OnInit {
 
                 for (let current = 0; current < parent.children.length; current++) {
                     if (parent.children[current].path === children_from_url) {
+                        console.log("first");
                         return parent.children[current].title;
                     }else if (parent.children[current].children){
                         for (let subChildren = 0; subChildren < parent.children[current].children.length; subChildren++){
                             if (parent.children[current].children[subChildren].path === children_from_url){
+                                console.log("second");
                                 return parent.children[current].children[subChildren].title;
                             }else if (parent.children[current].children[subChildren].children){
                                 for (let subSubChildren = 0; subSubChildren < parent.children[current].children[subChildren].children.length; subSubChildren++){
                                     if (parent.children[current].children[subChildren].children[subSubChildren].path === children_from_url){
+                                        console.log("3rd");
                                         return parent.children[current].children[subChildren].children[subSubChildren].title;
                                     }
                                 }

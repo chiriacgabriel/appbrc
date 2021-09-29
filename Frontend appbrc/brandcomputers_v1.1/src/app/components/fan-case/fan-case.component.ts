@@ -441,7 +441,7 @@ export class FanCaseComponent implements OnInit {
   }
 
   getAllGenerateProductCodes(): void {
-    this.productCodeService.getAllByCategory(GenerateProductCode.productCodeCategoryURI, new HttpParams().set('category', 'Fan Case')).subscribe((data: any) => {
+    this.productCodeService.getAllByCategory(GenerateProductCode.productCodeURI, 'fan-case').subscribe((data: any) => {
       this.productCodesList = data.filter(productCode => productCode.state === true);
       this.productCodesListInactive = data.filter(productCode => productCode.state === false);
     }, (error: HttpErrorResponse) => {

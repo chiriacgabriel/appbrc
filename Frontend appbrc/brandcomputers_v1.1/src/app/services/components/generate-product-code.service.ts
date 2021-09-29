@@ -26,7 +26,7 @@ export class GenerateProductCodeService {
     }
 
     getAllByCategory(urlCategory: string, params): Observable<GenerateProductCode[]> {
-        return this.http.get<GenerateProductCode[]>(`${this.apiServerUrl}/api/` + urlCategory, {params});
+        return this.http.get<GenerateProductCode[]>(`${this.apiServerUrl}/api/` + urlCategory + params);
     }
 
     search(searchUrl: string, params): Observable<GenerateProductCode> {
@@ -39,12 +39,12 @@ export class GenerateProductCodeService {
     }
 
     update(url: string, id: number, generatedProductCode: GenerateProductCode): Observable<GenerateProductCode> {
-        return this.http.put<GenerateProductCode>(`${this.apiServerUrl}/api/` + url + '/' + id,
+        return this.http.put<GenerateProductCode>(`${this.apiServerUrl}/api/` + url + id,
             generatedProductCode, httpOptions);
     }
 
     delete(url: string, id: number): Observable<GenerateProductCode> {
-        return this.http.delete<GenerateProductCode>(`${this.apiServerUrl}/api/` + url + '/' + id);
+        return this.http.delete<GenerateProductCode>(`${this.apiServerUrl}/api/` + url + id);
     }
 
     inactiveProductCode(param: any, productCodeInactive: any) {

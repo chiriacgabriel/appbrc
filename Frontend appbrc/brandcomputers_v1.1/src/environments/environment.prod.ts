@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'http://localhost:8080'
+  apiBaseUrl: 'https://app.webitech.ro:8088/brandcomputer-0.0.1-SNAPSHOT'
 };

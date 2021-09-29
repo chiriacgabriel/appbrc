@@ -14,6 +14,7 @@ export class CompanyDataComponent implements OnInit {
 
     errorMessage = '';
     validatingForm: FormGroup;
+    existCompanyData = false;
 
     constructor(private companyService: CompanyDataService,
                 private formBuilder: FormBuilder) {
@@ -47,8 +48,10 @@ export class CompanyDataComponent implements OnInit {
 
     getCompanyData() {
         this.companyService.getAll().subscribe((data: any) => {
+            if (data) {
+                this.existCompanyData = true;
+            }
             this.validatingForm.patchValue(data);
-            console.log(data);
         }, (error: HttpErrorResponse) => {
             this.errorMessage = error.error.message;
         });
@@ -57,14 +60,23 @@ export class CompanyDataComponent implements OnInit {
 
     onSubmit() {
         const id = this.validatingForm.get('id').value;
-
-        this.companyService.editById(Number(id), this.validatingForm.value)
-            .toPromise()
-            .then((response) => {
-                this.getCompanyData();
-            }).catch((error: HttpErrorResponse) => {
+        if (id) {
+            this.companyService.editById(Number(id), this.validatingForm.value)
+                .toPromise()
+                .then((response) => {
+                    this.getCompanyData();
+                }).catch((error: HttpErrorResponse) => {
                 this.errorMessage = error.error.message;
-        });
+            });
+        } else {
+            this.companyService.add(this.validatingForm.value)
+                .toPromise()
+                .then(() => {
+                    this.getCompanyData();
+                }).catch((error: HttpErrorResponse) => {
+                this.errorMessage = error.error.message;
+            });
+        }
     }
 
 

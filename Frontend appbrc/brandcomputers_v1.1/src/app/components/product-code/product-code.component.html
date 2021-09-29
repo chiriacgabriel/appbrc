@@ -14,7 +14,7 @@
                         </div>
                         <div class="btn-group-sm col-auto pull-right" role="group"
                              aria-label="add-product-code-refresh-search">
-                            <button id="add-product-code-btn" (click)="toggleForm()" type="button"
+                            <button id="add-product-code-btn" (click)="openAddForm()" type="button"
                                     class="btn btn-primary">
                                 <i class="fa fa-plus" aria-hidden="true"></i>
                             </button>
@@ -39,7 +39,8 @@
                             <button type="submit" class="btn btn-primary" *ngIf="isAddMode">Adauga</button>
                             <button type="submit" class="btn btn-success" *ngIf="!isAddMode">Salveaza modificarile
                             </button>
-                            <button type="button" (click)="toggleForm()" class="btn btn-danger" id="close-btn">Inchide
+                            <button type="button" (click)="closeModal()"
+                                    class="btn btn-danger" id="close-btn" #closeProductCodeModal>Inchide
                             </button>
                         </form>
                     </div>
@@ -71,9 +72,9 @@
                                 </td>
                                 <td class="center-toggle">
                                     <bSwitch (changeState)="setState($event, productCode)"
-                                            [switch-on-color]="'success'"
-                                            [switch-off-color]="'primary'"
-                                            [(ngModel)]="productCode.state">
+                                             [switch-on-color]="'success'"
+                                             [switch-off-color]="'primary'"
+                                             [(ngModel)]="productCode.state">
                                     </bSwitch>
                                 </td>
                             </tr>

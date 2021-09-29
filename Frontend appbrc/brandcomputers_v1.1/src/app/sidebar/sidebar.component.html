@@ -99,7 +99,7 @@
                                     <span class="sidebar-normal">{{subChild.title}}</span>
                                 </a>
 
-                                <a [routerLink]="[subChild.path]"
+                                <a [routerLink]="[subChild.path, subChild.subPath]"
                                    *ngIf="subChild.type === 'link'">
                                     <i class="sidebar-mini-icon {{subChild.iconComponent}}"></i>
                                     <span class="sidebar-mini-icon">{{subChild.ab}}</span>
@@ -117,7 +117,7 @@
                         <ng-container *ngFor="let subSubChild of subChild.children">
                             <ul id="{{subChild.collapse}}" class="collapse no-bullet">
                                 <li routerLinkActive="active">
-                                    <a [routerLink]="[childitem.path, subSubChild.path]">
+                                    <a [routerLink]="[childitem.path, subSubChild.path, subSubChild.subPath]">
                                         <i class="sidebar-mini-icon {{subSubChild.iconComponent}}"></i>
                                         <span class="sidebar-mini-icon">{{subSubChild.ab}}</span>
                                         <span class="sidebar-normal">{{subSubChild.title}}</span>

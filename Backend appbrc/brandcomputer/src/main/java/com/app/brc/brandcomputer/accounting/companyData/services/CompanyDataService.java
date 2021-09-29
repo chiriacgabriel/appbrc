@@ -4,7 +4,9 @@ import com.app.brc.brandcomputer.accounting.companyData.dto.CompanyDataDTO;
 import com.app.brc.brandcomputer.accounting.companyData.mapper.CompanyDataMapper;
 import com.app.brc.brandcomputer.accounting.companyData.repository.CompanyDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class CompanyDataService {
@@ -19,7 +21,12 @@ public class CompanyDataService {
     }
 
     public CompanyDataDTO findCompany() {
-        return companyDataMapper.map(companyDataRepository.getCompany());
+        if (companyDataRepository.getCompany() != null) {
+            return companyDataMapper.map(companyDataRepository.getCompany());
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Company Data not found");
+        }
+
     }
 
     public void add(CompanyDataDTO companyDataDTO) {

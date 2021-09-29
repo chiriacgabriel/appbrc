@@ -488,7 +488,7 @@ export class ProcessorComponent implements OnInit {
     }
 
     getAllGenerateProductCodes(): void {
-        this.productCodeService.getAllByCategory(GenerateProductCode.productCodeCategoryURI, new HttpParams().set('category', 'Processor')).subscribe((data: any) => {
+        this.productCodeService.getAllByCategory(GenerateProductCode.productCodeURI, 'processor').subscribe((data: any) => {
             this.productCodesList = data.filter(productCode => productCode.state === true);
             this.productCodesListInactive = data.filter(productCode => productCode.state === false);
         }, (err: HttpErrorResponse) => {

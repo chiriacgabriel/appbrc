@@ -10,11 +10,7 @@ export class GenerateProductCode {
   }
 
   static get productCodeURI(): string {
-    return 'product-code'
-  }
-
-  static get productCodeCategoryURI(): string {
-    return 'product-code/category'
+    return 'product-code/'
   }
 
 }
