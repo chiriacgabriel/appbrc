@@ -2,68 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b76812b0-b115-4f5d-ade8-93f21588c5ac" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/product_code/controller/ProductCodeRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/product_code/controller/ProductCodeRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/broken/broken.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/broken/broken.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/broken/broken.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/buttons/buttons.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/buttons/buttons.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/case/case.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/case/case.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/case/case.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/components.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/components.routing.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/cpu-cooler/cpu-cooler.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/cpu-cooler/cpu-cooler.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/cpu-cooler/cpu-cooler.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/fan-case/fan-case.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/fan-case/fan-case.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/fan-case/fan-case.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/grid/grid.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/grid/grid.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/icons/icons.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/icons/icons.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/memory-ram/memory-ram.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/memory-ram/memory-ram.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/memory-ram/memory-ram.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/motherboard/motherboard.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/motherboard/motherboard.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/motherboard/motherboard.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/notifications/notifications.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/notifications/notifications.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/optical-unit/optical-unit.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/optical-unit/optical-unit.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/optical-unit/optical-unit.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/panels/panels.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/panels/panels.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/power-source/power-source.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/power-source/power-source.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/power-source/power-source.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/processor/processor.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/processor/processor.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/processor/processor.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/product-code/product-code.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/product-code/product-code.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/product-code/product-code.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/product-code/product-code.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/sound-card/sound-card.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/sound-card/sound-card.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/sound-card/sound-card.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/storage/storage.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/storage/storage.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/storage/storage.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/sweetalert/sweetalert.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/sweetalert/sweetalert.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/typography/typography.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/typography/typography.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/video-card/video-card.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/video-card/video-card.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/video-card/video-card.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/computer/computer.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/computer/computer.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/computer/computer.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/computer/computer.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/computer/computer.routing.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/navbar/navbar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/navbar/navbar.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,7 +182,7 @@
       <workItem from="1632069083719" duration="44134000" />
       <workItem from="1632837408055" duration="1042000" />
       <workItem from="1632849218969" duration="6156000" />
-      <workItem from="1632933361855" duration="2343000" />
+      <workItem from="1632933361855" duration="3219000" />
     </task>
     <servers />
   </component>
