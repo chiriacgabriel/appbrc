@@ -29,8 +29,8 @@ public class ProductCodeRestController {
         return ResponseEntity.ok(productCodeService.getProductCodes());
     }
 
-    @GetMapping("/category")
-    public ResponseEntity<List<ProductCodeDTO>> getProductCodes(@RequestParam String category){
+    @GetMapping("/{category}")
+    public ResponseEntity<List<ProductCodeDTO>> getProductCodes(@PathVariable String category){
         return ResponseEntity.ok(productCodeService.getProductCodesByCategory(category));
     }
 
