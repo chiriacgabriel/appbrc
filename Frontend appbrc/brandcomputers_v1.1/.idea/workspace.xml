@@ -3,7 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="b76812b0-b115-4f5d-ade8-93f21588c5ac" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/navbar/navbar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/navbar/navbar.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/313.dc7687647a65ec295bb4.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/571.b2c53fdcf5a2f0548512.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/common.17c5fbd2a36c5adb67ba.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/main.977f82ee6482eaa04b76.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/runtime.bcb53a9ee5128fcbb7ce.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +58,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/app" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../SDA/CursReact/final-project/webitech" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
@@ -82,19 +87,6 @@
     </key>
   </component>
   <component name="RunManager" selected="npm.Angular CLI Server">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="E2E Tests (pd-pro-angularcli-e2e)" type="JavaScriptTestRunnerProtractor">
       <config-file value="$PROJECT_DIR$/protractor.conf.js" />
       <node-interpreter value="project" />
@@ -182,7 +174,8 @@
       <workItem from="1632069083719" duration="44134000" />
       <workItem from="1632837408055" duration="1042000" />
       <workItem from="1632849218969" duration="6156000" />
-      <workItem from="1632933361855" duration="3219000" />
+      <workItem from="1632933361855" duration="4793000" />
+      <workItem from="1632940749797" duration="251000" />
     </task>
     <servers />
   </component>
