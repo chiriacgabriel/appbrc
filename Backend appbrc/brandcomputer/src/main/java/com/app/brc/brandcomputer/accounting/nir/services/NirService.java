@@ -12,8 +12,10 @@ import lombok.SneakyThrows;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.lang.reflect.Method;
 import java.util.*;
@@ -83,26 +85,32 @@ public class NirService {
                 .map(obj -> nirToProductReport(obj, nirDTO.getVat()))
                 .collect(Collectors.toList());
 
-        Optional<CompanyData> companyData = companyDataRepository.findById(1);
+        CompanyData companyData = companyDataRepository.getCompany();
 
         JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(listProductCode);
 
         String filePath = ResourceUtils.getFile("classpath:nir.jrxml").getAbsolutePath();
 
         JasperReport report = JasperCompileManager.compileReport(filePath);
-        JasperPrint print = JasperFillManager.fillReport(report, parameters(companyData.get(), nirDTO), dataSource);
 
-        byte[] saveReport = JasperExportManager.exportReportToPdf(print);
-        NirFile nirFile = new NirFile();
-        nirFile.setFile(saveReport);
-        nirFile.setNirNumber(nirDTO.getNirNumber());
-        nirFileRepository.save(nirFile);
+        if (companyData != null) {
+            JasperPrint print = JasperFillManager.fillReport(report, parameters(companyData, nirDTO), dataSource);
 
-        NirFile dbNirFile = nirFileRepository.findByNirNumber(nirDTO.getNirNumber());
-        nirDTO.setNirFile(dbNirFile);
 
-        this.add(nirDTO);
-        System.out.println("Save pdf to database");
+            byte[] saveReport = JasperExportManager.exportReportToPdf(print);
+            NirFile nirFile = new NirFile();
+            nirFile.setFile(saveReport);
+            nirFile.setNirNumber(nirDTO.getNirNumber());
+            nirFileRepository.save(nirFile);
+
+            NirFile dbNirFile = nirFileRepository.findByNirNumber(nirDTO.getNirNumber());
+            nirDTO.setNirFile(dbNirFile);
+
+            this.add(nirDTO);
+            System.out.println("Save pdf to database");
+        }else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Company Data not found !");
+        }
 
     }
 

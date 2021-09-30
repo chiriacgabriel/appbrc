@@ -41,51 +41,51 @@ public class ProductCode {
     private String category;
     private boolean state;
 
-    @OneToMany(mappedBy = "generateProductCode")
+    @OneToMany(mappedBy = "generateProductCode", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Case> caseList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "generateProductCode")
+    @OneToMany(mappedBy = "generateProductCode", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<CpuCooler> cpuCoolerList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "generateProductCode")
+    @OneToMany(mappedBy = "generateProductCode", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<FanCase> fanCaseList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "generateProductCode")
+    @OneToMany(mappedBy = "generateProductCode", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<MemoryRam> memoryRamList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "generateProductCode")
+    @OneToMany(mappedBy = "generateProductCode", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Motherboard> motherboardList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "generateProductCode")
+    @OneToMany(mappedBy = "generateProductCode", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<OpticalUnit> opticalUnitList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "generateProductCode")
+    @OneToMany(mappedBy = "generateProductCode", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<PowerSource> powerSourceList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "generateProductCode")
+    @OneToMany(mappedBy = "generateProductCode", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Processor> processorList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "generateProductCode")
+    @OneToMany(mappedBy = "generateProductCode", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<SoundCard> soundCardList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "generateProductCode")
+    @OneToMany(mappedBy = "generateProductCode", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Storage> storageList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "generateProductCode")
+    @OneToMany(mappedBy = "generateProductCode", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<VideoCard> videoCardList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "generateProductCode")
+    @OneToMany(mappedBy = "generateProductCode", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Computer> computerList = new ArrayList<>();
 }
