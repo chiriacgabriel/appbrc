@@ -27,16 +27,29 @@ public class RegisterRestController {
     @PostMapping
     public ResponseEntity<?> registerUser(@Valid @RequestBody UserDTO userDTO) {
         if (registerValidator.validate(userDTO)) {
-            return ResponseEntity.badRequest().body(new MessageResponse("Error: " + userDTO.getEmail() + " is already taken!"));
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("There is an account with the email address: " + userDTO.getEmail()));
         }
 
         if (!registerValidator.confirmPasswordFor(userDTO)) {
-            return ResponseEntity.badRequest().body(new MessageResponse("Error: Passwords do not match !"));
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: Passwords do not match !"));
         }
 
         if (!registerValidator.passwordComplexity(userDTO)) {
-            return ResponseEntity.badRequest()
-                    .body(new MessageResponse("Error: Password must have: minimum 4 characters, 1 lower case, 1 upper case, 1 number, one special character [@ # $ % !]"));
+
+            final String message = "Password must have: \n" +
+                    "at least one numeric character \n" +
+                    "at least one lowercase character \n" +
+                    "at least one uppercase character \n" +
+                    "at least one special character @ # $ % ! \n" +
+                    "password length should be at least 8 characters";
+
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse(message));
         }
 
         if (!registerValidator.emailValidation(userDTO)) {

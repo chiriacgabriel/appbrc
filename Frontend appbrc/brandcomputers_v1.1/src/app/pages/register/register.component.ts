@@ -57,7 +57,7 @@ export class RegisterComponent implements OnInit {
         this.registerForm();
         this.checkFullPageBackgroundImage();
 
-        let navbar: HTMLElement = this.element.nativeElement;
+        const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
 
         setTimeout(function () {
@@ -67,25 +67,25 @@ export class RegisterComponent implements OnInit {
     }
 
     ngOnDestroy() {
-        let body = document.getElementsByTagName('body')[0];
+        const body = document.getElementsByTagName('body')[0];
         body.classList.remove('register-page');
     }
 
     checkFullPageBackgroundImage() {
-        let $page = $('.full-page');
-        let image_src = $page.data('image');
-        let body = document.getElementsByTagName('body')[0];
+        const $page = $('.full-page');
+        const image_src = $page.data('image');
+        const body = document.getElementsByTagName('body')[0];
         body.classList.add('register-page');
         if (image_src !== undefined) {
-            let image_container = '<div class="full-page-background" style="background-image: url(' + image_src + ') "/>'
+            const image_container = '<div class="full-page-background" style="background-image: url(' + image_src + ') "/>'
             $page.append(image_container);
         }
     };
 
     sidebarToggle() {
-        let toggleButton = this.toggleButton;
-        let body = document.getElementsByTagName('body')[0];
-        let sidebar = document.getElementsByClassName('navbar-collapse')[0];
+        const toggleButton = this.toggleButton;
+        const body = document.getElementsByTagName('body')[0];
+        const sidebar = document.getElementsByClassName('navbar-collapse')[0];
         if (this.sidebarVisible == false) {
             setTimeout(function () {
                 toggleButton.classList.add('toggled');
@@ -104,9 +104,17 @@ export class RegisterComponent implements OnInit {
             this.isRegistered = true;
             this.isSignupFailed = false;
             this.router.navigateByUrl('pages/login').then();
-            this.notificationService.showNotification("top", "center", "Te-ai inregistrat cu succes!", "success");
+            this.notificationService.showNotification('top', 'center', 'Te-ai inregistrat cu succes!', 'success');
         }, error => {
-            this.notificationService.showNotification("top", "center", error.error.message, "danger");
+
+            const message = error.error.message.split(/\r\n|\r|\n/);
+
+            this.notificationService.showNotification('top',
+                'center',
+                message.join('<span style="display: block"/>' +
+                    '<span style="margin-left: 2vw"/>' +
+                    '<i class="fa fa-circle" style="font-size: 8px; padding-right: 5px; text-align: center;" aria-hidden="true"></i>'),
+                'danger');
             this.isSignupFailed = true;
         });
     }

@@ -36,7 +36,7 @@ public class RegisterValidator {
     }
 
     public boolean passwordComplexity(UserDTO userDTO) {
-        String regex = "((?=.*[a-z])(?=.*\\d)(?=.*[A-Z])(?=.*[@#$%!]).{4,40})";
+        String regex = "((?=.*[a-z])(?=.*\\d)(?=.*[A-Z])(?=.*[@#$%!]).{8,64})";
 
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(userDTO.getPassword());

@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b76812b0-b115-4f5d-ade8-93f21588c5ac" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/login/controller/RegisterRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/login/controller/RegisterRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/login/validator/RegisterValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/login/validator/RegisterValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/313.dc7687647a65ec295bb4.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/571.b2c53fdcf5a2f0548512.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/common.17c5fbd2a36c5adb67ba.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main.977f82ee6482eaa04b76.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/runtime.bcb53a9ee5128fcbb7ce.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/register/register.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/register/register.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +39,7 @@
     <setting file="file://$PROJECT_DIR$/src/app/unreceived/unreceived.component.ts" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/app/pages/login/login.component.ts" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/app/shared/navbar/navbar.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/pages/register/register.component.ts" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/app/model/enum/EnumCategory.ts" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/app/dashboard/dashboard.component.ts" root0="SKIP_INSPECTION" />
   </component>
@@ -176,6 +174,8 @@
       <workItem from="1632849218969" duration="6156000" />
       <workItem from="1632933361855" duration="4793000" />
       <workItem from="1632940749797" duration="251000" />
+      <workItem from="1633017978330" duration="5284000" />
+      <workItem from="1633156761953" duration="10066000" />
     </task>
     <servers />
   </component>
