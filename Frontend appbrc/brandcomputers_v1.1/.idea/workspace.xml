@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b76812b0-b115-4f5d-ade8-93f21588c5ac" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/login/controller/RegisterRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/login/controller/RegisterRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/login/validator/RegisterValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/login/validator/RegisterValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/login/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/login/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/login/model/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/login/model/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/resources/data.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/register/register.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/register/register.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +176,7 @@
       <workItem from="1632933361855" duration="4793000" />
       <workItem from="1632940749797" duration="251000" />
       <workItem from="1633017978330" duration="5284000" />
-      <workItem from="1633156761953" duration="10066000" />
+      <workItem from="1633156761953" duration="10665000" />
     </task>
     <servers />
   </component>

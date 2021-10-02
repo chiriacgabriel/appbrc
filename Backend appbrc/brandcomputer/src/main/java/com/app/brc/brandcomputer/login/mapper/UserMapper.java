@@ -43,7 +43,7 @@ public class UserMapper {
 
     public User registerUser(UserDTO userDTO) {
 
-        Role role = roleRepository.findByEnumRole(Role.EnumRole.ROLE_USER)
+        Role role = roleRepository.findByEnumRole(Role.EnumRole.ROLE_GUEST)
                 .orElseThrow(() -> new RuntimeException("Error: Role user has not been found!"));
         return User.builder()
                 .firstName(userDTO.getFirstName())

@@ -6,6 +6,8 @@ import com.app.brc.brandcomputer.login.services.UserServiceImplement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -13,6 +15,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
@@ -61,30 +64,44 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
+                .expressionHandler(webExpressionHandler())
                 .antMatchers("/api/register/**", "/api/login/**")
                 .permitAll()
-                .antMatchers(
-                        "/api/motherboard/**",
-                        "/api/powerSource/**",
-                        "/api/fan-case/**",
-                        "/api/cpu-cooler/**",
-                        "/api/sound-card/**",
-                        "/api/memory-ram/**",
-                        "/api/optical-unit/**",
-                        "/api/processor/**",
-                        "/api/video-card/**",
-                        "/api/case/**",
-                        "/api/broken/**",
-                        "/api/computer/**",
-                        "/api/computer-assembly",
-                        "/api/company-data/**",
-                        "/api/providers/**",
-                        "/api/product-code/**",
-                        "/api/storage/**",
-                        "/api/nir/**" ).hasAnyRole("USER", "ADMIN")
+                .antMatchers("/api/motherboard/**").hasAnyRole("USER", "GUEST")
+                .antMatchers("/api/powerSource/**").hasAnyRole("USER", "GUEST")
+                .antMatchers("/api/fan-case/**").hasAnyRole("USER", "GUEST")
+                .antMatchers("/api/cpu-cooler/**").hasAnyRole("USER", "GUEST")
+                .antMatchers("/api/sound-card/**").hasAnyRole("USER", "GUEST")
+                .antMatchers("/api/memory-ram/**").hasAnyRole("USER", "GUEST")
+                .antMatchers("/api/optical-unit/**").hasAnyRole("USER", "GUEST")
+                .antMatchers("/api/processor/**").hasAnyRole("USER", "GUEST")
+                .antMatchers("/api/video-card/**").hasAnyRole("USER", "GUEST")
+                .antMatchers("/api/case/**").hasAnyRole("USER", "GUEST")
+                .antMatchers("/api/broken/**").hasAnyRole("USER", "GUEST")
+                .antMatchers("/api/computer/**").hasAnyRole("USER", "GUEST")
+                .antMatchers("/api/computer-assembly").hasAnyRole("USER", "GUEST")
+                .antMatchers("/api/company-data/**").hasAnyRole("USER", "GUEST")
+                .antMatchers("/api/providers/**").hasAnyRole("ADMIN", "ACCOUNTANT")
+                .antMatchers("/api/product-code/**").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/api/storage/**").hasAnyRole("USER", "GUEST")
+                .antMatchers("/api/nir/**").hasRole("ADMIN")
                 .anyRequest()
                 .authenticated();
 
         http.addFilterBefore(authenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+    }
+
+    @Bean
+    public RoleHierarchy roleHierarchy() {
+        RoleHierarchyImpl roleHierarchy = new RoleHierarchyImpl();
+        String hierarchy = "ROLE_ADMIN > ROLE_ACCOUNTANT > ROLE_USER > ROLE_GUEST";
+        roleHierarchy.setHierarchy(hierarchy);
+        return roleHierarchy;
+    }
+
+    public DefaultWebSecurityExpressionHandler webExpressionHandler() {
+        DefaultWebSecurityExpressionHandler expressionHandler = new DefaultWebSecurityExpressionHandler();
+        expressionHandler.setRoleHierarchy(roleHierarchy());
+        return expressionHandler;
     }
 }

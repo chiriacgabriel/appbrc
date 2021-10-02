@@ -31,8 +31,11 @@ public class Role {
 
 
     public enum EnumRole {
+
+        ROLE_ADMIN("Admin"),
+        ROLE_ACCOUNTANT("Accountant"),
         ROLE_USER("User"),
-        ROLE_ADMIN("Admin");
+        ROLE_GUEST("Guest");
 
         private String nameOfRole;
 
