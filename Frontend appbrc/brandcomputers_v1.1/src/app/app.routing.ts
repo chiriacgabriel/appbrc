@@ -63,6 +63,10 @@ export const AppRoutes: Routes = [{
         path: '',
         loadChildren: () => import('./accounting/document/document-data.module').then(m => m.DocumentDataModule)
     },
+    {
+        path: '',
+        loadChildren: () => import('./accounting/reports/reports.module').then(m => m.ReportsModule)
+    },
     ]
 }, {
     path: '',

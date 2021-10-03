@@ -29,13 +29,13 @@ public class Role {
     @OneToMany(mappedBy = "role")
     private List<User> userList = new ArrayList<>();
 
-
     public enum EnumRole {
 
         ROLE_ADMIN("Admin"),
         ROLE_ACCOUNTANT("Accountant"),
         ROLE_USER("User"),
-        ROLE_GUEST("Guest");
+        ROLE_GUEST("Guest"),
+        ROLE_WEBSITE("WebAdmin");
 
         private String nameOfRole;
 

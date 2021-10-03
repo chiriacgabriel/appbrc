@@ -156,6 +156,13 @@ export const ROUTES: RouteInfo[] = [{
     ]
 },
 {
+    path: '/reports',
+    title: 'Rapoarte',
+    type: 'link',
+    collapse: 'reports',
+    icontype: 'nc-icon nc-chart-pie-36',
+},
+{
     path: '/components/broken',
     title: 'Defecte',
     type: 'link',

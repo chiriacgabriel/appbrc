@@ -1,13 +1,12 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import {
-  AgmCoreModule
-} from '@agm/core';
-import { DashboardComponent } from './dashboard.component';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import {RouterModule} from '@angular/router';
+import {CommonModule, DatePipe} from '@angular/common';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AgmCoreModule} from '@agm/core';
+import {DashboardComponent} from './dashboard.component';
 
-import { DashboardRoutes } from './dashboard.routing';
+import {DashboardRoutes} from './dashboard.routing';
+import {NgSelectModule} from '@ng-select/ng-select';
 
 @NgModule({
     imports: [
@@ -15,11 +14,16 @@ import { DashboardRoutes } from './dashboard.routing';
         RouterModule.forChild(DashboardRoutes),
         FormsModule,
         AgmCoreModule.forRoot({
-          apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
-        })
+            apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
+        }),
+        NgSelectModule,
+        FormsModule,
+        ReactiveFormsModule,
     ],
     declarations: [DashboardComponent],
+    providers: [DatePipe],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 
-export class DashboardModule {}
+export class DashboardModule {
+}

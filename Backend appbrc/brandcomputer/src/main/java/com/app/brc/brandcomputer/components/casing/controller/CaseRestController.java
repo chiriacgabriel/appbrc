@@ -7,6 +7,7 @@ import com.app.brc.brandcomputer.components.casing.validator.CaseValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
-//@PreAuthorize("hasAnyRole('USER','ADMIN')")
+@PreAuthorize("hasAnyRole('GUEST')")
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping(value = "/api/case", produces = "application/json")
 public class CaseRestController {
