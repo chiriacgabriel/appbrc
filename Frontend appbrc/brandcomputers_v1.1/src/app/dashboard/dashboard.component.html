@@ -12,7 +12,7 @@
                         <div class="col-7 col-md-8">
                             <div class="numbers">
                                 <p class="card-category">Componente adaugate</p>
-                                <p class="card-title">--
+                                <p class="card-title">{{componentsAdded}}
                                 </p>
                             </div>
                         </div>
@@ -25,13 +25,12 @@
                             <i class="fa fa-refresh"></i> Update Now
                         </div>
                         <div class="col-md-6 d-flex justify-content-end">
-                            <div class="btn-group">
-                                <select (change)="show($event)" class="selectpicker " data-size="5" data-style="btn btn-primary btn-round" title="Single Select">
-                                    <option value="today" selected>Astazi</option>
-                                    <option value="currentWeek">Saptamana curenta</option>
-                                    <option value="currentMonth">Luna curenta</option>
-                                </select>
-                            </div>
+                            <select (change)="show($event)" class="date-range-selection" title="Single Select">
+                                <option value="today" selected>Astazi</option>
+                                <option value="currentWeek">Saptamana curenta</option>
+                                <option value="currentMonth">Luna curenta</option>
+                                <option value="pastMonth">Luna trecuta</option>
+                            </select>
                         </div>
                     </div>
                 </div>

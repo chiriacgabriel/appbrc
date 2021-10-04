@@ -65,7 +65,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .expressionHandler(webExpressionHandler())
-                .antMatchers("/api/register/**", "/api/login/**")
+                .antMatchers("/api/register/**", "/api/login/**", "/api/reports/**")
                 .permitAll()
                 .antMatchers("/api/motherboard/**").hasAnyRole("USER", "GUEST")
                 .antMatchers("/api/powerSource/**").hasAnyRole("USER", "GUEST")

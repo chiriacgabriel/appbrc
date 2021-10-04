@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
 
-export interface DateSelector {
-  startDate: string,
-  endDate: string
-}
-
 @Injectable({
   providedIn: 'root'
 })
@@ -30,19 +25,22 @@ export class TransformDateService {
     return new Date(date.getFullYear(), date.getMonth(), 1);
   }
 
-  public setWeek(start: string, end: string): DateSelector {
-    let currentWeek = {
-      startDate: start,
-      endDate: end
-    }
-    return currentWeek;
+  public startOfPastMonth(date: Date): Date {
+    const year = date.getFullYear();
+    const month = date.getMonth() - 1;
+
+    return new Date(year, month, 1);
   }
 
-  public setMonth(start: string, end: string): DateSelector {
-    let currentMonth = {
-      startDate: start,
-      endDate: end
-    }
-    return currentMonth;
+  public lastDayOfPastMonth(date: Date): Date {
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    let temp = new Date(year, month);
+    temp.setDate(0);
+    temp.setHours(0,0,0,0);
+
+    return temp;
   }
+
+
 }

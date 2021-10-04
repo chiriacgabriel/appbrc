@@ -1,0 +1,14 @@
+.date-range-selection {
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.8571em;
+    line-height: 1.35em;
+    text-transform: uppercase;
+    border: 2px solid #2c2c2c;
+    border-radius: 5px;
+    padding: 3px 5px;
+    cursor: pointer;
+    background-color: #fff;
+    color: black;
+    transition: all 150ms linear;
+}

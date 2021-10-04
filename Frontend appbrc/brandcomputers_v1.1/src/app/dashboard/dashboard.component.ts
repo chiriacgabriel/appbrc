@@ -1,43 +1,69 @@
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import {DateSelector, TransformDateService} from '../helper/transform-date.service';
+import { TransformDateService} from '../helper/transform-date.service';
+import {HttpErrorResponse, HttpParams} from '@angular/common/http';
+import {ReportsService} from '../services/reports/reports.service';
 
 @Component({
   selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html'
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['../../assets/css/_dashboard.css']
 })
 export class DashboardComponent implements OnInit {
 
   today: Date;
-  currentWeek: DateSelector;
-  currentMonth: DateSelector;
+
+  stringToday: string;
+  errorMessage = '';
+
+  componentsAdded: number;
+  params = new HttpParams();
 
   constructor(public datePipe: DatePipe,
+              private reportsService: ReportsService,
               private transformDate: TransformDateService) {
     this.today = new Date();
+    this.componentsAdded = 0;
+    this.stringToday = this.datePipe.transform(this.today, 'yyyy-MM-dd');
   }
 
   public ngOnInit() {
-
+    this.params = this.params.set("startDate", this.stringToday).set("endDate", this.stringToday);
+    this.getComponentsCount();
   }
 
   show(event) {
-    let stringToday = this.datePipe.transform(this.today, 'yyyy-MM-dd');
+
     let stringStartDateOfWeek = this.datePipe.transform(this.transformDate.previousMonday(new Date()), 'yyyy-MM-dd');
     let stringStartDateOfMonth = this.datePipe.transform(this.transformDate.startOfCurrentMonth(new Date()), 'yyyy-MM-dd');
+    let stringStartDateOfPastMonth = this.datePipe.transform(this.transformDate.startOfPastMonth(new Date()), 'yyyy-MM-dd');
+    let stringLastDateOfPastMonth = this.datePipe.transform(this.transformDate.lastDayOfPastMonth(new Date()), 'yyyy-MM-dd');
 
     switch (event.target.value){
       case 'today':
-        console.log(stringToday);
+        this.params = this.params.set("startDate", this.stringToday).set("endDate", this.stringToday);
+        this.getComponentsCount();
         break;
       case 'currentWeek':
-        this.currentWeek = this.transformDate.setWeek(stringStartDateOfWeek, stringToday);
-        console.log(this.currentWeek);
+        this.params = this.params.set("startDate", stringStartDateOfWeek).set("endDate", this.stringToday);
+        this.getComponentsCount();
         break;
       case 'currentMonth':
-        this.currentMonth = this.transformDate.setMonth(stringStartDateOfMonth, stringToday);
-        console.log(this.currentMonth);
+        this.params = this.params.set("startDate", stringStartDateOfMonth).set("endDate", this.stringToday);
+        this.getComponentsCount();
+        break;
+      case 'pastMonth':
+        this.params = this.params.set("startDate", stringStartDateOfPastMonth).set("endDate", stringLastDateOfPastMonth);
+        this.getComponentsCount();
         break;
     }
+  }
+
+  getComponentsCount(){
+    this.reportsService.getComponentsAdded(this.params).subscribe((data: any) => {
+      this.componentsAdded = data;
+    }, (error: HttpErrorResponse) => {
+      this.errorMessage = error.error.message;
+    })
   }
 }

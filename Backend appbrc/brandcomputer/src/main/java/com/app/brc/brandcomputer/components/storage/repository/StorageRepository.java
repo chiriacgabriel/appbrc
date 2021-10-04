@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -84,4 +85,6 @@ public interface StorageRepository extends JpaRepository<Storage, Integer>, JpaS
     List<Storage> findAllUnreceived();
 
     Page<Storage> findAllByOrderByIdDesc(Pageable pageable);
+
+    int countAllByCreatedDateBetween(LocalDateTime startDate, LocalDateTime endDate);
 }

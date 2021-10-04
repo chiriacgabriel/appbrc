@@ -25,6 +25,7 @@ public class ComputerService {
     public ComputerService(ComputerRepository computerRepository, ComputerMapper computerMapper) {
         this.computerRepository = computerRepository;
         this.computerMapper = computerMapper;
+
     }
 
     public Page<ComputerDTO> multiMatchQuery(String query, int page, int size) {
@@ -119,34 +120,34 @@ public class ComputerService {
 
         Pageable pageable = PageRequest.of(page, size);
 
-       return computerRepository.findAll((root, criteriaQuery, criteriaBuilder) -> {
+        return computerRepository.findAll((root, criteriaQuery, criteriaBuilder) -> {
             List<Predicate> predicates = new ArrayList<>();
 
-            if (cpuModel != null && !cpuModel.isEmpty()){
+            if (cpuModel != null && !cpuModel.isEmpty()) {
                 predicates.add(root.get("cpuModel").in(cpuModel));
             }
 
-            if (memoryCapacity != null && !memoryCapacity.isEmpty()){
+            if (memoryCapacity != null && !memoryCapacity.isEmpty()) {
                 predicates.add(root.get("memoryCapacity").in(memoryCapacity));
             }
 
-            if (storageCapacity != null && !storageCapacity.isEmpty()){
+            if (storageCapacity != null && !storageCapacity.isEmpty()) {
                 predicates.add(root.get("storageCapacity").in(storageCapacity));
             }
 
-            if (opticalUnitExist != null && !opticalUnitExist.isEmpty()){
+            if (opticalUnitExist != null && !opticalUnitExist.isEmpty()) {
                 predicates.add(root.get("opticalUnitExist").in(opticalUnitExist));
             }
 
-            if (videoCardExist != null && !videoCardExist.isEmpty()){
+            if (videoCardExist != null && !videoCardExist.isEmpty()) {
                 predicates.add(root.get("videoCardExist").in(videoCardExist));
             }
 
-            if (manufacturer != null && !manufacturer.isEmpty()){
+            if (manufacturer != null && !manufacturer.isEmpty()) {
                 predicates.add(root.get("manufacturer").in(manufacturer));
             }
 
-            if (form != null && !form.isEmpty()){
+            if (form != null && !form.isEmpty()) {
                 predicates.add(root.get("form").in(form));
             }
 
