@@ -1,6 +1,6 @@
 package com.app.brc.brandcomputer.reports.controller;
 
-
+import com.app.brc.brandcomputer.config.OnlineUsersCounter;
 import com.app.brc.brandcomputer.reports.service.ReportsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,9 +19,14 @@ public class ReportsRestController {
     }
 
     @GetMapping("/componentsAdded")
-    public ResponseEntity<?> componentsAdded(@RequestParam String startDate,
+    public ResponseEntity<Integer> componentsAdded(@RequestParam String startDate,
                                              @RequestParam String endDate){
 
         return ResponseEntity.ok(reportsService.componentsAdded(startDate, endDate));
+    }
+
+    @GetMapping("/numberOfUsersLoggedIn")
+    public ResponseEntity<Integer> numberOfUsersLoggedIn(){
+        return ResponseEntity.ok(OnlineUsersCounter.getNumberOfSessions());
     }
 }

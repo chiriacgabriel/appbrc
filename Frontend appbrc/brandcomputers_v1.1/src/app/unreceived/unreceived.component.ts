@@ -8,6 +8,8 @@ import {Processor} from '../model/components/Processor';
 import {Storage} from '../model/components/Storage';
 import {ProviderService} from '../services/accounting/provider.service';
 import {TokenStorageService} from '../services/token-storage.service';
+import Swal from 'sweetalert2';
+import {NotificationService} from '../helper/notification.service';
 
 @Component({
     selector: 'app-unreceived',
@@ -30,7 +32,6 @@ export class UnreceivedComponent implements OnInit {
     validatingNirForm: FormGroup;
     providerList = [];
     errorMessage = '';
-    isCIFPresent: boolean;
     unreceivedList = [];
     caseList = [];
     checkedList = [];
@@ -38,6 +39,7 @@ export class UnreceivedComponent implements OnInit {
     constructor(private formBuilder: FormBuilder,
                 private nirService: NirService,
                 private providerService: ProviderService,
+                private notificationService: NotificationService,
                 private tokenService: TokenStorageService) {
     }
 
@@ -45,7 +47,6 @@ export class UnreceivedComponent implements OnInit {
 
         this.providerForm();
         this.nirForm();
-        this.generateNir();
         this.getProviders();
         this.getUnreceived();
     }
@@ -98,6 +99,7 @@ export class UnreceivedComponent implements OnInit {
             let emptyUnreceivedList = document.getElementsByClassName('empty-unreceived-list')[0];
             let containerUnreceived = document.getElementsByClassName('container-unreceived')[0];
             let progressBar = document.getElementsByClassName('progress-bar')[0] as HTMLElement;
+
             if (this.unreceivedList.length == 0) {
                 emptyUnreceivedList.classList.remove('d-none');
                 containerUnreceived.classList.add('d-none');
@@ -142,14 +144,20 @@ export class UnreceivedComponent implements OnInit {
         }
 
         nextBtn.addEventListener('click', () => {
+            const noComponentSelected = 'Nu ai selectat nici o componenta !'
 
-            this.goUp.nativeElement.scrollIntoView();
+            if (current_step === 0 && this.checkedList.length <= 0){
+                this.notificationService.showNotification('top', 'center', noComponentSelected, 'warning');
+                return;
+            }
 
             if (current_step == 0){
                 for (let obj of this.checkedList){
                     this.setCheckListOnForm(obj);
                 }
             }
+
+            this.goUp.nativeElement.scrollIntoView();
 
             current_step++;
             let previous_step = current_step - 1;
@@ -175,7 +183,6 @@ export class UnreceivedComponent implements OnInit {
             }
             progress((100 / stepCount) * current_step);
         });
-
 
         prevBtn.addEventListener('click', () => {
             if (current_step > 0) {
@@ -217,8 +224,6 @@ export class UnreceivedComponent implements OnInit {
     selectProduct(unreceived: any, event: any) {
         if (event.target.checked == true){
             this.checkedList.push(unreceived);
-            console.log(unreceived);
-            console.log(this.checkedList);
         }else {
             for (let i = 0; i < this.checkedList.length; i++){
                 if (this.checkedList[i].id == unreceived.id && this.checkedList[i].category == unreceived.category){
@@ -288,7 +293,6 @@ export class UnreceivedComponent implements OnInit {
         }
     }
 
-
     /************************************* Provider Form, Add Provider, Get all Provider ***************************************/
 
     providerForm() {
@@ -297,7 +301,7 @@ export class UnreceivedComponent implements OnInit {
             cif: new FormControl('', Validators.required),
             tradeRegister: new FormControl('', Validators.required),
             providerCode: new FormControl('', Validators.required),
-            vatPayer: new FormControl('', Validators.required),
+            vatPayer: new FormControl('', [Validators.required, Validators.minLength(1)]),
             streetAddress: new FormControl('', Validators.required),
             city: new FormControl('', Validators.required),
             county: new FormControl('', Validators.required),
@@ -319,31 +323,23 @@ export class UnreceivedComponent implements OnInit {
     }
 
     onSubmitProvider() {
-        if (this.validatingProviderForm.invalid) {
-            return
-        }
-
         if (this.toggleForm) {
             this.addProvider();
         }
-
     }
 
     private addProvider(): void {
         this.providerService.add(this.validatingProviderForm.value)
             .toPromise()
             .then((response) => {
-                this.isCIFPresent = false;
                 this.toggleForm = false;
                 this.validatingProviderForm.reset();
                 this.getProviders();
             }).catch((error: HttpErrorResponse) => {
-            this.isCIFPresent = true;
             this.toggleForm = true;
-            this.errorMessage = error.error.message;
+            this.notificationService.showNotification('top', 'center', error.error.message, 'warning');
         });
     }
 
     /************************************* End Provider Form, Add Provider ***************************************/
-
 }

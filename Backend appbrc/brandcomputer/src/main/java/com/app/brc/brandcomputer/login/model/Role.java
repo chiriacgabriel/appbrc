@@ -1,6 +1,5 @@
 package com.app.brc.brandcomputer.login.model;
 
-
 import lombok.*;
 
 import javax.persistence.*;

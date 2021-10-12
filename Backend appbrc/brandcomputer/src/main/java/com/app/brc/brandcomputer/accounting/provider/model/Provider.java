@@ -1,6 +1,5 @@
 package com.app.brc.brandcomputer.accounting.provider.model;
 
-import com.app.brc.brandcomputer.accounting.nir.model.Nir;
 import lombok.*;
 
 import javax.persistence.*;

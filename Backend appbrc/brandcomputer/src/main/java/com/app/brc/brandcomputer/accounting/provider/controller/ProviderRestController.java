@@ -33,7 +33,39 @@ public class ProviderRestController {
     @PostMapping
     public ResponseEntity<?> add(@RequestBody ProviderDTO providerDTO){
         if (providerValidator.validateCIF(providerDTO.getCIF())){
-            return ResponseEntity.badRequest().body(new MessageResponse("Provider with " + providerDTO.getCIF() + " already exists !"));
+            return providerValidator.returnValidationMessage(providerDTO.getCIF());
+        }
+
+        if (providerDTO.getName().trim().length() == 0){
+            return providerValidator.validateName();
+        }
+
+        if (providerDTO.getTradeRegister().trim().length() == 0){
+            return providerValidator.validateTradeRegister();
+        }
+
+        if (providerDTO.getProviderCode().trim().length() == 0){
+            return providerValidator.validateProviderCode();
+        }
+
+        if (!providerDTO.isVatPayer()){
+            return providerValidator.validateVatPayer();
+        }
+
+        if (providerDTO.getCity().trim().length() == 0){
+            return providerValidator.validateCity();
+        }
+
+        if (providerDTO.getCounty().trim().length() == 0){
+            return providerValidator.validateCounty();
+        }
+
+        if (providerDTO.getCountry().trim().length() == 0){
+            return providerValidator.validateCountry();
+        }
+
+        if (providerDTO.getStreetAddress().trim().length() == 0){
+            return providerValidator.validateStreetAddress();
         }
 
         providerService.add(providerDTO);

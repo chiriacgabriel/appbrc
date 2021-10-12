@@ -22,7 +22,7 @@
                     <hr>
                     <div class="row stats">
                         <div class="col-md-6">
-                            <i class="fa fa-refresh"></i> Update Now
+                            <i class="fa fa-refresh"></i>
                         </div>
                         <div class="col-md-6 d-flex justify-content-end">
                             <select (change)="show($event)" class="date-range-selection" title="Single Select">
@@ -40,15 +40,15 @@
             <div class="card card-stats">
                 <div class="card-body ">
                     <div class="row">
-                        <div class="col-5 col-md-4">
+                        <div class="col-5 col-md-3">
                             <div class="icon-big text-center icon-warning">
                                 <i class="nc-icon nc-money-coins text-success"></i>
                             </div>
                         </div>
-                        <div class="col-7 col-md-8">
+                        <div class="col-7 col-md-9">
                             <div class="numbers">
-                                <p class="card-category">Revenue</p>
-                                <p class="card-title">$ 1,345
+                                <p class="card-category">Componente Nereceptionate</p>
+                                <p class="card-title"><span>{{numberOfUnreceived}}</span>
                                 </p>
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                 <div class="card-footer ">
                     <hr>
                     <div class="stats">
-                        <i class="fa fa-calendar-o"></i> Last day
+                        <i class="fa fa-calendar-o"></i>
                     </div>
                 </div>
             </div>
@@ -73,8 +73,8 @@
                         </div>
                         <div class="col-7 col-md-8">
                             <div class="numbers">
-                                <p class="card-category">Errors</p>
-                                <p class="card-title">23
+                                <p class="card-category">Useri online</p>
+                                <p class="card-title">{{numberOfActiveUsers}}
                                 </p>
                             </div>
                         </div>
@@ -83,7 +83,7 @@
                 <div class="card-footer ">
                     <hr>
                     <div class="stats">
-                        <i class="fa fa-clock-o"></i> In the last hour
+                        <i class="fa fa-clock-o"></i> In ultimele 15 min
                     </div>
                 </div>
             </div>

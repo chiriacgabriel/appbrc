@@ -19,7 +19,7 @@ import { GenerateProductCode } from 'app/model/components/GenerateProductCode';
 
 
 @Component({
-    moduleId: module.id,
+    // moduleId: module.id,
     selector: 'app-case',
     templateUrl: './case.component.html',
     styleUrls: ['./case.component.css',
@@ -146,7 +146,7 @@ export class CaseComponent implements OnInit {
                 this.inputSearch.nativeElement.value = '';
             }
         }, (error: HttpErrorResponse) => {
-            this.caseList = JSON.parse(error.message).message;
+            this.errorMessage = error.error.message;
         });
     }
 

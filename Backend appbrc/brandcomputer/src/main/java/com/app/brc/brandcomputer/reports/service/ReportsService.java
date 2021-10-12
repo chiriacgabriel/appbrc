@@ -14,10 +14,8 @@ import com.app.brc.brandcomputer.computers.repository.ComputerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Array;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -60,19 +58,19 @@ public class ReportsService {
         LocalDateTime localEndDate = LocalDateTime.parse(endDate + " 23:59:59", dateTimeFormatter);
 
         List<Integer> resultList = Arrays.asList(
-                                    caseRepository.countAllByCreatedDateBetween(localStartDate, localEndDate),
-                                    cpuCoolerRepository.countAllByCreatedDateBetween(localStartDate, localEndDate),
-                                    fanCaseRepository.countAllByCreatedDateBetween(localStartDate,localEndDate),
-                                    memoryRamRepository.countAllByCreatedDateBetween(localStartDate,localEndDate),
-                                    motherboardRepository.countAllByCreatedDateBetween(localStartDate,localEndDate),
-                                    opticalUnitRepository.countAllByCreatedDateBetween(localStartDate,localEndDate),
-                                    powerSourceRepository.countAllByCreatedDateBetween(localStartDate,localEndDate),
-                                    processorRepository.countAllByCreatedDateBetween(localStartDate,localEndDate),
-                                    storageRepository.countAllByCreatedDateBetween(localStartDate,localEndDate),
-                                    videoCardRepository.countAllByCreatedDateBetween(localStartDate,localEndDate),
-                                    computerRepository.countAllByCreatedDateBetween(localStartDate,localEndDate));
+                caseRepository.countAllByCreatedDateBetween(localStartDate, localEndDate),
+                cpuCoolerRepository.countAllByCreatedDateBetween(localStartDate, localEndDate),
+                fanCaseRepository.countAllByCreatedDateBetween(localStartDate, localEndDate),
+                memoryRamRepository.countAllByCreatedDateBetween(localStartDate, localEndDate),
+                motherboardRepository.countAllByCreatedDateBetween(localStartDate, localEndDate),
+                opticalUnitRepository.countAllByCreatedDateBetween(localStartDate, localEndDate),
+                powerSourceRepository.countAllByCreatedDateBetween(localStartDate, localEndDate),
+                processorRepository.countAllByCreatedDateBetween(localStartDate, localEndDate),
+                storageRepository.countAllByCreatedDateBetween(localStartDate, localEndDate),
+                videoCardRepository.countAllByCreatedDateBetween(localStartDate, localEndDate),
+                computerRepository.countAllByCreatedDateBetween(localStartDate, localEndDate));
 
-        for (Integer item: resultList) {
+        for (Integer item : resultList) {
             sum += item;
         }
 

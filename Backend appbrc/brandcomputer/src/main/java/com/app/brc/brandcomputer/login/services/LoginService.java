@@ -34,6 +34,8 @@ public class LoginService {
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtUtils.generateJwtToken(authentication);
 
+        System.out.println("JWT TOKEN Created: " + jwt);
+
         UserDetailsImplement userDetailsImplement = (UserDetailsImplement) authentication.getPrincipal();
 
         List<String> roles = userDetailsImplement.getAuthorities()

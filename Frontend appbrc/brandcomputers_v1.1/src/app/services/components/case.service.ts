@@ -1,8 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
-import {Observable} from 'rxjs';
+import {Observable, throwError} from 'rxjs';
 import {Case} from '../../model/components/Case';
+import {catchError} from 'rxjs/operators';
+import {TokenStorageService} from '../token-storage.service';
 
 const httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -15,11 +17,18 @@ export class CaseService {
 
     private apiServerUrl = environment.apiBaseUrl;
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient,
+                private token: TokenStorageService) {
     }
 
     getSearchResult(search: string, params): Observable<Case> {
-        return this.http.get<Case>(`${this.apiServerUrl}/api/case/search/` + search, {params});
+        return this.http.get<Case>(`${this.apiServerUrl}/api/case/search/` + search, {params})
+            .pipe(catchError(error => {
+                if (error.status === 401) {
+                    this.token.signOut();
+                }
+            return throwError(error);
+        }));
     }
 
     getByProductCode(productCode: string, params: any): Observable<Case[]> {

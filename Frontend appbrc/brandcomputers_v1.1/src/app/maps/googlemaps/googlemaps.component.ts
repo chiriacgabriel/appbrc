@@ -12,7 +12,7 @@ declare var $: any;
 export class GoogleMapsComponent implements OnInit{
 
     ngOnInit(){
-    
+
 
     }
 }

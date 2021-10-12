@@ -88,7 +88,7 @@
                                                         <input checked class="form-check-input question__input"
                                                                id="q_2_yes" name="q_2" type="radio" value="true">
                                                         <label class="form-check-label question__label" for="q_2_yes"
-                                                               (click)="noForm()">Da</label>
+                                                              (click)="noForm()">Da</label>
                                                     </div>
                                                     <div class="provider-exist">
                                                         <input class="form-check-input question__input" id="q_2_no"
@@ -97,31 +97,27 @@
                                                                (click)="yesForm()">Nu</label>
                                                     </div>
 
-
                                                     <div class="modal-body-filter" *ngIf="toggleForm">
                                                         <form [formGroup]="validatingProviderForm"
                                                               (ngSubmit)="onSubmitProvider()">
                                                             <div class="row">
                                                                 <div class="form-group col-lg-3">
-                                                                    <label for="name"><i
-                                                                            class="fas fa-file-signature"></i> Nume
+                                                                    <label for="name" class="required-field required"><i
+                                                                            class="fas fa-file-signature "></i> Nume
                                                                         furnizor</label>
                                                                     <input type="text" class="form-control" id="name"
                                                                            formControlName="name">
                                                                 </div>
                                                                 <div class="form-group col-lg-3">
-                                                                    <label for="cif"><i
+                                                                    <label for="cif" class="required-field required"><i
                                                                             class="fas fa-sort-numeric-up"></i>
                                                                         CIF</label>
                                                                     <input type="text" class="form-control" id="cif"
                                                                            formControlName="cif">
                                                                 </div>
-                                                                <div *ngIf="isCIFPresent"
-                                                                     class="form-group alert alert-warning">
-                                                                    <span>{{errorMessage}}</span>
-                                                                </div>
+
                                                                 <div class="form-group col-lg-3">
-                                                                    <label for="tradeRegister"><i
+                                                                    <label for="tradeRegister" class="required-field required"><i
                                                                             class="fas fa-swatchbook"></i> Registrul
                                                                         comertului</label>
                                                                     <input type="text" class="form-control"
@@ -129,7 +125,7 @@
                                                                            formControlName="tradeRegister">
                                                                 </div>
                                                                 <div class="form-group col-lg-3">
-                                                                    <label for="providerCode"><i
+                                                                    <label for="providerCode" class="required-field required"><i
                                                                             class="fas fa-barcode"></i> Cod
                                                                         furnizor</label>
                                                                     <input type="text" class="form-control"
@@ -139,31 +135,31 @@
                                                             </div>
                                                             <div class="row">
                                                                 <div class="form-group col-lg-3">
-                                                                    <label for="vatPayer"><i
+                                                                    <label for="vatPayer" class="required-field required"><i
                                                                             class="fa fa-money fa-sm"></i> Platitor TVA</label>
                                                                     <select id="vatPayer" class="form-control"
                                                                             formControlName="vatPayer">
-                                                                        <option value="" disabled selected>Platitor
-                                                                            TVA
+                                                                        <option value="" disabled selected>Selecteaza ...
                                                                         </option>
                                                                         <option value="true">DA</option>
                                                                         <option value="false">NU</option>
                                                                     </select>
+
                                                                 </div>
                                                                 <div class="form-group col-lg-3">
-                                                                    <label for="city"><i class="fas fa-city"></i>
+                                                                    <label for="city" class="required-field required"><i class="fas fa-city"></i>
                                                                         Localitate</label>
                                                                     <input type="city" class="form-control" id="city"
                                                                            formControlName="city">
                                                                 </div>
                                                                 <div class="form-group col-lg-3">
-                                                                    <label for="county"><i class="fas fa-city"></i>
+                                                                    <label for="county" class="required-field required"><i class="fas fa-city"></i>
                                                                         Judet</label>
                                                                     <input type="county" class="form-control"
                                                                            id="county" formControlName="county">
                                                                 </div>
                                                                 <div class="form-group col-lg-3">
-                                                                    <label for="country"><i class="far fa-flag"></i>
+                                                                    <label for="country" class="required-field required"><i class="far fa-flag"></i>
                                                                         Tara</label>
                                                                     <input type="text" class="form-control" id="country"
                                                                            formControlName="country">
@@ -171,7 +167,7 @@
                                                             </div>
                                                             <div class="row">
                                                                 <div class="form-group col">
-                                                                    <label for="streetAddress"><img
+                                                                    <label for="streetAddress" class="required-field required"><img
                                                                             class="fav-icon-small"
                                                                             src="assets/img/icons/address.ico"/> Adresa</label>
                                                                     <input type="text" class="form-control"
@@ -301,7 +297,6 @@
                                                 </div>
 
                                             </div>
-
 
                                             <div class="step">
                                                 <div class="mt-1">

@@ -3,10 +3,12 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor, HTTP_INTERCEPTORS
+  HttpInterceptor, HTTP_INTERCEPTORS, HttpErrorResponse, HttpResponse
 } from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Observable, throwError} from 'rxjs';
 import {TokenStorageService} from '../services/token-storage.service';
+import {catchError} from 'rxjs/operators';
+import {error} from 'protractor';
 
 const TOKEN_HEADER_KEY = 'Authorization';
 
@@ -23,7 +25,12 @@ export class AuthorizationInterceptor implements HttpInterceptor {
       authorization = request.clone({headers: request.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + token)});
     }
 
-    return next.handle(authorization);
+    return next.handle(authorization).pipe(catchError(error => {
+      if (error.status === 401){
+        this.token.signOut();
+      }
+      return throwError(error);
+    }));
   }
 }
 

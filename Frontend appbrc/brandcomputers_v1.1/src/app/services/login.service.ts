@@ -5,22 +5,23 @@ import {environment} from '../../environments/environment';
 
 
 const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class LoginService {
-  private apiServerUrl = environment.apiBaseUrl;
+    private apiServerUrl = environment.apiBaseUrl;
 
-  constructor(private http: HttpClient) {
-  }
+    constructor(private http: HttpClient) {
+    }
 
-  login(user: any): Observable<any> {
-    return this.http.post<any>(`${this.apiServerUrl}/api/login`, {
-      email: user.email,
-      password: user.password
-    }, httpOptions);
-  }
+    login(user: any): Observable<any> {
+        return this.http.post<any>(`${this.apiServerUrl}/api/login`, {
+            email: user.email,
+            password: user.password
+        }, httpOptions);
+    }
+
 }

@@ -3,6 +3,7 @@ import { DatePipe } from '@angular/common';
 import { TransformDateService} from '../helper/transform-date.service';
 import {HttpErrorResponse, HttpParams} from '@angular/common/http';
 import {ReportsService} from '../services/reports/reports.service';
+import {NirService} from '../services/accounting/nir.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,20 +17,27 @@ export class DashboardComponent implements OnInit {
   stringToday: string;
   errorMessage = '';
 
+  numberOfUnreceived: number;
+  numberOfActiveUsers: number;
+
   componentsAdded: number;
   params = new HttpParams();
 
   constructor(public datePipe: DatePipe,
               private reportsService: ReportsService,
+              private nirService: NirService,
               private transformDate: TransformDateService) {
-    this.today = new Date();
     this.componentsAdded = 0;
+    this.numberOfUnreceived = 0;
+    this.today = new Date();
     this.stringToday = this.datePipe.transform(this.today, 'yyyy-MM-dd');
   }
 
   public ngOnInit() {
     this.params = this.params.set("startDate", this.stringToday).set("endDate", this.stringToday);
     this.getComponentsCount();
+    this.unreceivedList();
+    this.getNumberOfUsersOnline();
   }
 
   show(event) {
@@ -64,6 +72,24 @@ export class DashboardComponent implements OnInit {
       this.componentsAdded = data;
     }, (error: HttpErrorResponse) => {
       this.errorMessage = error.error.message;
+    });
+  }
+
+  getNumberOfUsersOnline(){
+    this.reportsService.getNumberOfUsersOnline().subscribe((data: any) => {
+      this.numberOfActiveUsers = data;
+    }, (error: HttpErrorResponse) => {
+      this.errorMessage = error.error.message;
     })
+  }
+
+  unreceivedList(): number{
+    this.nirService.getAllUnreceived().subscribe((data: any) => {
+      this.numberOfUnreceived = data.length;
+    }, (error: HttpErrorResponse) => {
+      this.errorMessage = error.error.message;
+    });
+
+    return this.numberOfUnreceived;
   }
 }
