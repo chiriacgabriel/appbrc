@@ -4,7 +4,6 @@ import com.app.brc.brandcomputer.components.casing.dto.CaseDTO;
 import com.app.brc.brandcomputer.components.casing.mapper.CaseMapper;
 import com.app.brc.brandcomputer.components.casing.repository.CaseRepository;
 import com.app.brc.brandcomputer.components.casing.validator.CaseValidator;
-import net.sf.jasperreports.engine.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
