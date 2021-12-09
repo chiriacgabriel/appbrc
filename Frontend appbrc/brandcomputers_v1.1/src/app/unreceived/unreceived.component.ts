@@ -86,6 +86,7 @@ export class UnreceivedComponent implements OnInit {
         this.nirService.add(this.validatingNirForm.value)
             .toPromise()
             .then((response) => {
+                this.checkedList = [];
                 this.getUnreceived();
             }).catch( (error: HttpErrorResponse) => {
                 this.errorMessage = error.error.message;
@@ -99,11 +100,23 @@ export class UnreceivedComponent implements OnInit {
             let emptyUnreceivedList = document.getElementsByClassName('empty-unreceived-list')[0];
             let containerUnreceived = document.getElementsByClassName('container-unreceived')[0];
             let progressBar = document.getElementsByClassName('progress-bar')[0] as HTMLElement;
+            let progress = document.getElementsByClassName('progress')[0] as HTMLElement;
+            let submitBtn = document.getElementById('submit-btn');
+            let prevBtn = document.getElementById('prev-btn');
+            let step = document.getElementsByClassName('step');
 
             if (this.unreceivedList.length == 0) {
                 emptyUnreceivedList.classList.remove('d-none');
                 containerUnreceived.classList.add('d-none');
                 progressBar.classList.add('d-none');
+                progress.classList.add('d-none');
+            } else if (this.unreceivedList.length > 0) {
+
+                emptyUnreceivedList.classList.add('d-none');
+                containerUnreceived.classList.remove('d-none');
+                progressBar.style.width = `${0}%`;
+                step[3].classList.remove('d-block');
+
             } else {
                 emptyUnreceivedList.classList.add('d-none');
                 containerUnreceived.classList.remove('d-none');
@@ -125,6 +138,7 @@ export class UnreceivedComponent implements OnInit {
         let preloader = document.getElementById('preloader-wrapper');
         let bodyElement = document.querySelector('body');
         let successDiv = document.getElementById('success');
+        let progressBar = document.getElementsByClassName('progress-bar')[0] as HTMLElement;
 
         form.onsubmit = () => {
             return false
@@ -133,18 +147,17 @@ export class UnreceivedComponent implements OnInit {
         let stepCount = 3
         step[current_step].classList.add('d-block');
         if (current_step == 0) {
-            prevBtn.classList.add('d-none');
-            submitBtn.classList.add('d-none');
-            nextBtn.classList.add('d-inline-block');
+            this.removeBtn(prevBtn);
+            this.removeBtn(submitBtn);
+            this.addBtn(nextBtn);
         }
 
         const progress = (value) => {
-            let progressBar = document.getElementsByClassName('progress-bar')[0] as HTMLElement;
             progressBar.style.width = `${value}%`;
         }
 
         nextBtn.addEventListener('click', () => {
-            const noComponentSelected = 'Nu ai selectat nici o componenta !'
+            const noComponentSelected = 'Nu ai selectat nici o componenta !';
 
             if (current_step === 0 && this.checkedList.length <= 0){
                 this.notificationService.showNotification('top', 'center', noComponentSelected, 'warning');
@@ -162,17 +175,14 @@ export class UnreceivedComponent implements OnInit {
             current_step++;
             let previous_step = current_step - 1;
             if ((current_step > 0) && (current_step <= stepCount)) {
-                prevBtn.classList.remove('d-none');
-                prevBtn.classList.add('d-inline-block');
-                step[current_step].classList.remove('d-none');
-                step[current_step].classList.add('d-block');
-                step[previous_step].classList.remove('d-block');
-                step[previous_step].classList.add('d-none');
+
+                this.addBtn(prevBtn);
+                this.currentStep(step[current_step]);
+                this.previouseStep(step[previous_step]);
+
                 if (current_step == stepCount) {
-                    submitBtn.classList.remove('d-none');
-                    submitBtn.classList.add('d-inline-block');
-                    nextBtn.classList.remove('d-inline-block');
-                    nextBtn.classList.add('d-none');
+                    this.addBtn(submitBtn);
+                    this.removeBtn(nextBtn);
                 }
             } else {
                 if (current_step > stepCount) {
@@ -188,29 +198,43 @@ export class UnreceivedComponent implements OnInit {
             if (current_step > 0) {
                 current_step--;
                 let previous_step = current_step + 1;
-                prevBtn.classList.add('d-none');
-                prevBtn.classList.add('d-inline-block');
-                step[current_step].classList.remove('d-none');
-                step[current_step].classList.add('d-block')
-                step[previous_step].classList.remove('d-block');
-                step[previous_step].classList.add('d-none');
+
+                this.addBtn(prevBtn);
+
+                this.currentStep(step[current_step]);
+                this.previouseStep(step[previous_step]);
+
                 if (current_step < stepCount) {
-                    submitBtn.classList.remove('d-inline-block');
-                    submitBtn.classList.add('d-none');
-                    nextBtn.classList.remove('d-none');
-                    nextBtn.classList.add('d-inline-block');
-                    prevBtn.classList.remove('d-none');
-                    prevBtn.classList.add('d-inline-block');
+                    this.removeBtn(submitBtn);
+                    this.addBtn(nextBtn);
+                    this.addBtn(prevBtn);
                 }
             }
 
             if (current_step == 0) {
-                prevBtn.classList.remove('d-inline-block');
-                prevBtn.classList.add('d-none');
+                this.removeBtn(prevBtn);
             }
             progress((100 / stepCount) * current_step);
         });
+    }
 
+    currentStep(step){
+        step.classList.remove('d-none');
+        step.classList.add('d-block')
+    }
+
+    previouseStep(step){
+        step.classList.remove('d-block');
+        step.classList.add('d-none');
+    }
+
+    addBtn(btn){
+        btn.classList.add('d-inline-block');
+        btn.classList.remove('d-none');
+    }
+    removeBtn(btn){
+        btn.classList.add('d-none');
+        btn.classList.remove('d-inline-block');
     }
 
     noForm() {
@@ -234,7 +258,8 @@ export class UnreceivedComponent implements OnInit {
     }
 
     private reOccurance(category, formProperty) {
-        this.validatingNirForm.get(formProperty).setValue(this.checkedList.filter(obj => obj.category == category));
+        this.validatingNirForm.get(formProperty)
+            .setValue(this.checkedList.filter(obj => obj.category == category));
     }
 
     setCheckListOnForm(unreceived) {

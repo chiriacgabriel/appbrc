@@ -114,7 +114,10 @@ export class LoginComponent implements OnInit {
             this.roles = this.tokenStorage.getUser().roles;
             this.reloadPage();
         }, error => {
-            this.notificationService.showNotification("top", "center", error.error.message, "danger");
+            this.notificationService.showNotification("top",
+                        "center",
+                        error.error.message,
+                        "danger");
             this.isLoginFailed = true;
         });
     }

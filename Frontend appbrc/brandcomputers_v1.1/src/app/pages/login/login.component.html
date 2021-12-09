@@ -44,7 +44,9 @@
                       <i class="nc-icon nc-email-85"></i>
                     </span>
                   </div>
-                  <input type="text" class="form-control" formControlName="email" placeholder="Adresa de email..." (focus)="focus=true" (blur)="focus=false">
+                  <input type="text" class="form-control"
+                         formControlName="email" placeholder="Adresa de email..."
+                         (focus)="focus=true" (blur)="focus=false">
                 </div>
                 <div class="input-group"  [ngClass]="{'input-group-focus':focus1===true}">
                   <div class="input-group-prepend">
@@ -52,7 +54,8 @@
                       <i class="nc-icon nc-key-25"></i>
                     </span>
                   </div>
-                  <input type="password" placeholder="Parola" class="form-control" formControlName="password" (focus)="focus1=true" (blur)="focus1=false">
+                  <input type="password" placeholder="Parola" class="form-control"
+                         formControlName="password" (focus)="focus1=true" (blur)="focus1=false">
                 </div>
                 <br/>
               </div>

@@ -23,5 +23,4 @@ export class LoginService {
             password: user.password
         }, httpOptions);
     }
-
 }

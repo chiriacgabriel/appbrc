@@ -19,7 +19,7 @@ export class CpuCoolerService {
   constructor(private http: HttpClient) {
   }
 
-  getSearchResult(search: string, params): Observable<CpuCooler>{
+  getSearchResult(search: string, params): Observable<CpuCooler> {
     return this.http.get<CpuCooler>(`${this.apiServerUrl}/api/cpu-cooler/search/` + search, {params});
   }
 

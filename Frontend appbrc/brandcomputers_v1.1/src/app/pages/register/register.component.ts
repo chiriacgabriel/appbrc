@@ -104,16 +104,22 @@ export class RegisterComponent implements OnInit {
             this.isRegistered = true;
             this.isSignupFailed = false;
             this.router.navigateByUrl('pages/login').then();
-            this.notificationService.showNotification('top', 'center', 'Te-ai inregistrat cu succes!', 'success');
+            this.notificationService
+                .showNotification('top',
+                                    'center',
+                                    'Te-ai inregistrat cu succes!',
+                                    'success');
         }, error => {
-
             const message = error.error.message.split(/\r\n|\r|\n/);
 
             this.notificationService.showNotification('top',
                 'center',
                 message.join('<span style="display: block"/>' +
                     '<span style="margin-left: 2vw"/>' +
-                    '<i class="fa fa-circle" style="font-size: 8px; padding-right: 5px; text-align: center;" aria-hidden="true"></i>'),
+                    '<i class="fa fa-circle" ' +
+                    'style="font-size: 8px; ' +
+                    'padding-right: 5px; ' +
+                    'text-align: center;" aria-hidden="true"></i>'),
                 'danger');
             this.isSignupFailed = true;
         });

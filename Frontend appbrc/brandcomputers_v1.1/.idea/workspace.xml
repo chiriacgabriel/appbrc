@@ -2,24 +2,320 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b76812b0-b115-4f5d-ade8-93f21588c5ac" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/casing/services/CaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/components/casing/services/CaseService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/257.f8b8c13f4504fe8ca46f.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/282.d0628cdb69ff90654bfc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/299.086a249fb086c0cb5750.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/567.20ee04f3222b26f82623.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/75.3d0d2e874a76b57a6fa6.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/816.8c90182c757812f26615.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/913.a91bccae38b737f549ac.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/css/unreceived_nir.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/assets/css/unreceived_nir.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/plugins/_plugin-bootstrap-select.scss" beforeDir="false" afterPath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/plugins/_plugin-bootstrap-select.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/common.3c21b9b843d9f2a7a815.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main.fa43b73bd3f731471fa2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/runtime.d2aa775eb612ac3032de.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/styles.d7a39325835e7bec96aa.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proxy.conf.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/123.32a7a2296fa9008b9e85.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/210.fdf7de6c9a2e3146300f.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/257.2405157818e0fc41d368.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/269.f283693c8fe086aae8e6.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/279.8a7323646d0ff8c008c7.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/299.c3affef9fbf54dbe43fa.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/373.1dd000afea567963004f.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/391.e5f31bee417734153633.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/3rdpartylicenses.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/407.f08a0d45422c6290c1cf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/501.393c6bd68c4beefc65e1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/571.b34206e31e3453fe1647.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/675.b782a59861f5262a5dbf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/677.6535c5bb91fe8a0302b0.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/69.fa75b1acf9245e35707e.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/774.fb198460c458c7962a9f.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/78.2c9d71cfc23491ac9a67.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/816.e2afe0da32ba50b20013.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/823.2693432cb98a0453c9cc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/863.e4eb3132712c4867ddb8.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/913.dc1c7967cd52b564e80c.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/985.2f143bca940d29d789b2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/989.3e618e394e79168a6ee2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/countiesRO.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/css/_broken.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/css/_dashboard.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/css/_fav_icons_custom.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/css/_modal_filter.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/css/_pagination_custom.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/css/_tab_pane_custom.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/css/_table_format.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/css/_toggle_switch.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/css/demo.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/css/unreceived_nir.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/fonts/nucleo-icons.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/fonts/nucleo-icons.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/fonts/nucleo-icons.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/fonts/nucleo-icons.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/AU.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/BR.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/DE.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/GB.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/RO.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/US.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/accept.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/agenda.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/angular.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/angular2-logo-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/bg/cool-background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/bg/hdpcb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/default-avatar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/emilyz.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/evernote.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/face-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/face-3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/faces/face.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/faces/user_avatar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/favicon_brand_computer.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/AD.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/AE.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/AG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/AM.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/AR.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/AT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/AU.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/BE.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/BF.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/BG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/BO.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/BR.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/CA.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/CD.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/CG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/CH.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/CL.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/CM.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/CN.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/CO.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/CZ.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/DE.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/DJ.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/DK.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/DZ.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/EE.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/EG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/ES.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/FI.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/FR.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/GA.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/GB.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/GM.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/GT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/HN.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/HT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/HU.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/ID.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/IE.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/IL.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/IN.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/IQ.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/IR.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/IT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/JM.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/JO.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/JP.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/KG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/KN.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/KP.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/KR.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/KW.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/KZ.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/LA.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/LB.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/LC.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/LS.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/LU.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/LV.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/MG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/MK.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/ML.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/MM.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/MT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/MX.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/NA.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/NE.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/NG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/NI.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/NL.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/NO.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/OM.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/PA.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/PE.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/PG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/PK.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/PL.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/PT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/PY.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/QA.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/RO.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/RU.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/RW.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/SA.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/SE.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/SG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/SL.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/SN.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/SO.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/SV.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/TD.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/TJ.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/TL.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/TR.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/TZ.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/UA.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/US.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/VE.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/VN.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/flags/YE.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/header.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/address.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/bank.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/bits.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/computer.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/cpu.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/cpu_case.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/cpu_cooler.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/dimension.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/displayport.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/dvi.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/edit-nir.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/fan_case.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/file-pdf-download.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/frequency.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/hdd.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/hdd_capacity.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/hdd_format.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/hdd_speed.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/hdd_type.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/hdmi.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/lithography.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/measure.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/model_cpu.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/module_ram.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/motherboard.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/number_of.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/optical_unit.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/power_source.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/power_source_type.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/provider.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/series.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/sound_model.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/state.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/vga.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/video-card.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/video_card_profile.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/video_memory.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/icons/view-pdf.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/image_placeholder.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/james.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/logo-small.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/logo120x38.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/mike.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/now-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/placeholder.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/preloader.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/img/stylus.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/js/jquery.validate.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_alerts.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_animated-buttons.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_badges.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_buttons.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_cards.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_carousel.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_checkboxes-radio.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_dropdown.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_example-pages.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_fixed-plugin.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_footers.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_images.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_info-areas.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_inputs.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_media-queries.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_misc-extend.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_misc.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_mixins.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_modals.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_navbar.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_nucleo-outline.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_page-header.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_pagination.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_pills.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_popups.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_progress.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_responsive.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_sections.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_sidebar-and-main-panel.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_social-buttons.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_tables.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_tabs.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_timeline.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_typography.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/_variables.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/cards/_card-background.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/cards/_card-chart.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/cards/_card-collapse.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/cards/_card-contributions.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/cards/_card-info-area.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/cards/_card-lock.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/cards/_card-map.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/cards/_card-plain.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/cards/_card-pricing.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/cards/_card-profile.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/cards/_card-signup.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/cards/_card-stats-mini.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/cards/_card-stats.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/cards/_card-subcategories.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/cards/_card-tasks.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/cards/_card-testimonials.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/cards/_card-user.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/mixins/_badges.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/mixins/_buttons.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/mixins/_cards.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/mixins/_chartist.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/mixins/_dropdown.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/mixins/_inputs.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/mixins/_modals.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/mixins/_page-header.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/mixins/_popovers.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/mixins/_social-buttons.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/mixins/_tags.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/mixins/_transparency.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/mixins/_vendor-prefixes-extend.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/mixins/_vendor-prefixes.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/mixins/_wizard.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/plugins/_plugin-animate-bootstrap-notify.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/plugins/_plugin-bootstrap-select.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/plugins/_plugin-bootstrap-switch.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/plugins/_plugin-bootstrap-table.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/plugins/_plugin-card-wizard.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/plugins/_plugin-datatables.net.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/plugins/_plugin-datetimepicker.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/plugins/_plugin-fullcalendar.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/plugins/_plugin-jasny-fileupload.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/plugins/_plugin-jquery.jvectormap.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/plugins/_plugin-nouislider.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/plugins/_plugin-perfect-scrollbar.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/plugins/_plugin-sweetalert2.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/scss/paper-dashboard/plugins/_plugin-tagsinput.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/svg/nir-docs.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/common.d2973b870fbae0e4f0e2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/main.840c529875ef62317dd2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/nucleo-icons.4466aeec3386b965a232.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/nucleo-icons.8e954b749f951b654fc6.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/nucleo-icons.bd42d77b9672555647d1.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/nucleo-icons.ec16bc4cc4526801004d.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/polyfills-es5.3cd70d748b39a86c29c3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/polyfills.05e38bc01ee36e900a3e.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/preloader.24b055a3ae5d3aafddf2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/runtime.ccb470ffd6e522bc24da.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/scripts.8bd076596839455857e0.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/styles.01ac3bc6d92949ba3d7d.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/case/case.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/case/case.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/product-code/product-code.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/product-code/product-code.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/dashboard/dashboard.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/dashboard.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/login/login.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/login/login.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/register/register.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/register/register.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/components/cpu-cooler.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/components/cpu-cooler.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/login.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/login.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/unreceived/unreceived.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/unreceived/unreceived.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,19 +345,20 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/app/pages/register/register.component.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/services/reports/reports.service.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/pages/login/login.component.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/assets/css/_dashboard.css" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/dashboard/dashboard.component.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/model/enum/EnumCategory.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/helper/authorization.interceptor.ts" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/app/helper/transform-date.service.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/unreceived/unreceived.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/model/enum/EnumCategory.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/product-code/product-code.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/assets/css/_dashboard.css" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/pages/register/register.component.ts" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/app/shared/navbar/navbar.component.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/charts/charts.component.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/components/case/case.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/dashboard/dashboard.component.ts" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/app/helper/enum.service.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/services/reports/reports.service.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/case/case.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/unreceived/unreceived.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/helper/authorization.interceptor.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/charts/charts.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/pages/login/login.component.ts" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectId" id="1ta9O0DQnrwuqTGd3zZJYfJAcJK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -76,7 +373,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/img/icons" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
@@ -86,7 +383,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="ics" />
-    <property name="ts.external.directory.path" value="D:\AppBrc\Frontend appbrc\brandcomputers_v1.1\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="D:\Webitech\app-brc\Frontend appbrc\brandcomputers_v1.1\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -230,7 +527,25 @@
       <workItem from="1634841434273" duration="689000" />
       <workItem from="1634923993677" duration="5685000" />
       <workItem from="1634992115493" duration="2219000" />
-      <workItem from="1635408775520" duration="7587000" />
+      <workItem from="1635408775520" duration="9100000" />
+      <workItem from="1635504854844" duration="635000" />
+      <workItem from="1635581930954" duration="1209000" />
+      <workItem from="1635677451467" duration="71000" />
+      <workItem from="1635769041401" duration="634000" />
+      <workItem from="1635837222411" duration="626000" />
+      <workItem from="1636567940831" duration="975000" />
+      <workItem from="1636968121505" duration="4716000" />
+      <workItem from="1637139851817" duration="2423000" />
+      <workItem from="1637668956633" duration="380000" />
+      <workItem from="1637694860142" duration="591000" />
+      <workItem from="1637776222311" duration="13116000" />
+      <workItem from="1638029675984" duration="594000" />
+      <workItem from="1638201413872" duration="641000" />
+      <workItem from="1638450787935" duration="1384000" />
+      <workItem from="1638524673298" duration="5491000" />
+      <workItem from="1638788188728" duration="674000" />
+      <workItem from="1638895268310" duration="621000" />
+      <workItem from="1639075923676" duration="7224000" />
     </task>
     <servers />
   </component>

@@ -231,7 +231,9 @@ export class CaseComponent implements OnInit {
     /************************** Create, Update, Delete, Submit, Patch Form ****************************************************/
 
     private addCase(): void {
-        this.validatingForm.get('createdBy').setValue(this.tokenService.getUser().firstName + ' ' + this.tokenService.getUser().lastName);
+        this.validatingForm
+            .get('createdBy')
+            .setValue(this.tokenService.getUser().firstName + ' ' + this.tokenService.getUser().lastName);
 
         this.formFields.generateProductCode.enable();
         this.formFields.productName.disable();

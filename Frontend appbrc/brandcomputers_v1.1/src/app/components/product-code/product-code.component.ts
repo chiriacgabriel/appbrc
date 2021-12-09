@@ -124,12 +124,14 @@ export class ProductCodeComponent implements OnInit {
         });
   }
 
-  public editProductCode(): void {
+  private editProductCode(): void {
 
-    this.generateProductCodeService.update(GenerateProductCode.productCodeURI, this.id, this.validatingForm.value).subscribe(response => {
+    this.generateProductCodeService
+        .update(GenerateProductCode.productCodeURI, this.id, this.validatingForm.value)
+        .subscribe(response => {
 
-      this.getAllProductCodes();
-      this.closeProductCodeModal.nativeElement.click();
+        this.getAllProductCodes();
+        this.closeProductCodeModal.nativeElement.click();
 
     }, (err: HttpErrorResponse) => {
       this.errorMessage = err.error.message;
