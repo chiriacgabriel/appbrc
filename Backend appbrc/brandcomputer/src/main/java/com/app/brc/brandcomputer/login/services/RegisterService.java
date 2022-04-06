@@ -12,8 +12,6 @@ public class RegisterService {
     private UserMapper userMapper;
     private UserRepository userRepository;
 
-
-
     @Autowired
     public RegisterService(UserMapper userMapper, UserRepository userRepository) {
         this.userMapper = userMapper;

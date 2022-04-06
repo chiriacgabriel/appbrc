@@ -1,0 +1,23 @@
+/********************** Fav-Icons-Custom **********************************/
+
+.fav-icon {
+    width: 36px;
+}
+
+.fav-icon-small {
+    width: 20px;
+}
+
+.fav-icon-number-of {
+    width: 12px;
+}
+
+.docs-design {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.fav-icon-small-doc {
+    width: 30px;
+}
+/********************** End Fav-Icons-Custom **********************************/

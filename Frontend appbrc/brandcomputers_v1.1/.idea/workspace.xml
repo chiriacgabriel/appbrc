@@ -2,54 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b76812b0-b115-4f5d-ade8-93f21588c5ac" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/login/services/RegisterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backend appbrc/brandcomputer/src/main/java/com/app/brc/brandcomputer/login/services/RegisterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.routing.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.routing.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/calendar/calendar.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/calendar/calendar.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/calendar/calendar.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/calendar/calendar.routing.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/charts/charts.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/charts/charts.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/charts/charts.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/charts/charts.routing.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/forms/equal-validator.directive.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/forms/extendedforms/extendedforms.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/forms/extendedforms/extendedforms.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/forms/forms.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/forms/forms.routing.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/forms/regularforms/regularforms.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/forms/regularforms/regularforms.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/forms/validationforms/password-validator.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/forms/validationforms/validationforms.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/forms/validationforms/validationforms.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/forms/wizard/wizard.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/forms/wizard/wizard.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/maps/fullscreenmap/fullscreenmap.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/maps/fullscreenmap/fullscreenmap.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/maps/googlemaps/googlemaps.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/maps/googlemaps/googlemaps.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/maps/maps.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/maps/maps.routing.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/maps/vectormaps/vectormaps.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/maps/vectormaps/vectormaps.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/tables/datatable.net/datatable.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/tables/datatable.net/datatable.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/tables/extendedtable/extendedtable.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/tables/extendedtable/extendedtable.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/tables/regulartable/regulartable.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/tables/regulartable/regulartable.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/tables/tables.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/tables/tables.routing.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/userpage/user.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/userpage/user.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/userpage/user.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/userpage/user.routing.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/widgets/widgets.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/widgets/widgets.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/widgets/widgets.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/widgets/widgets.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/widgets/widgets.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/widgets/widgets.routing.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,19 +35,22 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/app/helper/transform-date.service.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/model/enum/EnumCategory.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/components/product-code/product-code.component.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/assets/css/_dashboard.css" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/app/pages/register/register.component.ts" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/app/shared/navbar/navbar.component.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/dashboard/dashboard.component.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/helper/enum.service.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/services/reports/reports.service.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/components/case/case.component.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/unreceived/unreceived.component.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/app/helper/authorization.interceptor.ts" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/app/pages/login/login.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/services/reports/reports.service.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/model/enum/EnumCategory.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/unreceived/unreceived.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/helper/transform-date.service.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/helper/authorization.interceptor.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/assets/css/_dashboard.css" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/helper/enum.service.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/case/case.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/dashboard/dashboard.component.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/app/components/product-code/product-code.component.ts" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="1ta9O0DQnrwuqTGd3zZJYfJAcJK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -280,7 +239,25 @@
       <workItem from="1638895268310" duration="621000" />
       <workItem from="1639075923676" duration="7224000" />
       <workItem from="1639155788430" duration="1273000" />
-      <workItem from="1639204948883" duration="302000" />
+      <workItem from="1639204948883" duration="2947000" />
+      <workItem from="1639558491726" duration="590000" />
+      <workItem from="1639642296046" duration="4039000" />
+      <workItem from="1639681971263" duration="90000" />
+      <workItem from="1641988382285" duration="1361000" />
+      <workItem from="1642164522962" duration="6700000" />
+      <workItem from="1642255674622" duration="4430000" />
+      <workItem from="1642365441015" duration="243000" />
+      <workItem from="1642869361733" duration="7526000" />
+      <workItem from="1643223391748" duration="1044000" />
+      <workItem from="1643396924504" duration="1800000" />
+      <workItem from="1643444322771" duration="2703000" />
+      <workItem from="1643790855438" duration="1569000" />
+      <workItem from="1644003548792" duration="890000" />
+      <workItem from="1644587816703" duration="964000" />
+      <workItem from="1645264181272" duration="679000" />
+      <workItem from="1648146740309" duration="2214000" />
+      <workItem from="1648575677142" duration="907000" />
+      <workItem from="1649187512726" duration="2369000" />
     </task>
     <servers />
   </component>

@@ -1,0 +1,27 @@
+/************************************Custom Tabs Table**********************/
+.nav-tabs-navigation {
+    border-bottom: 3px solid #fbc658;
+
+}
+
+.custom-tab-pane {
+    margin: auto;
+    max-width: calc(100% - 2.2em);
+}
+
+.nav-tabs-navigation .nav-link {
+    margin-bottom: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-weight: 500;
+    color: #2e353d;
+}
+
+.nav-tabs-navigation .nav-item.show .nav-link, .nav-tabs-navigation .nav-link.active {
+    background-color: #2e353d !important;
+    border-color: transparent;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: #fbc658;
+}
+
+/************************************End Tabs Table**********************/
